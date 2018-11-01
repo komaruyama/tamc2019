@@ -44,6 +44,12 @@ $\delta = 1$において転写されたbeadが一意に定まるためには、�
 
 \subsection{Proof}
 
+We will show that there are more bonds in decreasing than in increasing.
+
+
+First, we divide cases of there is a bead in a tunnel and there is out of the tunnel.
+The bead have two cases which a next bead is in a tunnel or out of the tunnel if the bead in the tunnel. On the other hand if the bead out of the tunnel, the bead have two cases which it exists in far away of tunnels or at an entrance of a tunnel(fig.\ref{TTT_position1}). Paths are transition of dicided position of a next bead in this figure.
+
 この定理を示すには、トンネルを消費した際に増加するbondの数より減少するbondの数の方が多いことを示せば良い。
 
 
@@ -54,17 +60,17 @@ $\delta = 1$において転写されたbeadが一意に定まるためには、�
     \begin{tikzpicture}
       \draw[thick]
       (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
-      \node at(2.5,1) {トンネルの外};
-      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {トンネルの入り口};
-      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {トンネルから離れている};
+      \node at(2.5,1) {Out of tunnels};
+      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
+      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Far away of tunnels};
 
       
       
       \draw[thick]
       (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
-      \node at(10.5,1) {トンネルの中};
-      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {次もトンネル};
-      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {次は外};
+      \node at(10.5,1) {Inside of tunnels};
+      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Next to a tunnel};
+      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Next to outside};
 
       \draw[->]
       (outside) edge [bend left] node[above] {} (enter)
@@ -79,7 +85,7 @@ $\delta = 1$において転写されたbeadが一意に定まるためには、�
       ;
       
     \end{tikzpicture}
-    \caption{beadの位置による場合分け}
+    \caption{Cases on position of a bead}
     \label{TTT_position1}
   \end{center}
 \end{figure}
@@ -251,7 +257,75 @@ $\delta = 1$において転写されたbeadが一意に定まるためには、�
 
 
 
-以上より、トンネルA,B,Cいずれを消費した場合も増加するbondの数より減少するbondの数の方が多い。よってこの定理は示された。
+以上より、トンネルA,B,Cのどれを消費した場合もbondの増加量は-1以下となる(fig.\ref{TTT_delta-1}は増加量が$-1$となる例)。よってこの定理は示された。
+
+\begin{figure}[h]
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thick, rounded corners = 10pt]
+      (-2,-2)--(5,-2)--(5,3)--(-2,3)-- cycle;
+
+      \fill(0,0) circle [radius=0.1];
+      \foreach \theta in {60,-60,120}{
+        \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
+        \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+      }
+      \foreach \theta in {180,-120}{
+        \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+      }
+
+      \draw[->] (120:1.4) -- (120:0.1);
+      \draw[dashed] (-60:0.1) -- (-60:1.4);
+      
+      \begin{scope}[shift=(60:1.5)]
+        \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
+        \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
+        
+        \foreach \theta in {60,120,0}{
+          \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
+          \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+        }
+
+        \draw[->] (60:1.4)--(60:0.1);
+        \draw[->] (180:0.1)--(180:1.4);
+        \draw[dashed] (120:0.1)--(120:1.4);
+        \draw[dashed] (0:0.1)--(0:1.4);
+
+        \begin{scope}[shift=(0:1.5)]
+          \foreach \theta in {60,0}{
+            \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
+            \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+          }
+          \draw[dashed] (120:0.1)--(120:1.4);
+          \draw (0:0.1)--(0:1.4);
+          \draw (60:0.1)--(60:1.4);
+        \end{scope}
+      \end{scope}
+      \begin{scope}[shift=(0:1.5)]
+        \fill(0,0) circle [radius=0.1];
+        \fill(0:1.5) circle [radius=0.1];
+        \draw(0:3) circle [radius=0.1];
+        \draw[shift=(0:1.5),shift=(-60:1.5)] circle [radius=0.1];
+        \foreach \theta in {-60}{
+          \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
+          \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+        }
+
+        \draw[->] (180:1.4)--(180:0.1);
+        \draw[->] (0:0.1)--(0:1.4);
+        \draw[->] (0:1.6)--(0:2.9);
+        \draw[dashed] (-60:0.1)--(-60:1.4);
+
+        \node[above] at (180:1.5) {$(-1)$};
+        \node[above] at (0:0) {$(-1)$};
+        \node[above] at (0:1.5) {$(+1)$};
+        
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  \caption{増加量が$-1$となる例}
+  \label{TTT_delta-1}
+\end{figure}
 
 
 \begin{figure}[h]
@@ -259,28 +333,28 @@ $\delta = 1$において転写されたbeadが一意に定まるためには、�
     \begin{tikzpicture}
       \draw[thick]
       (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
-      \node at(2.5,1) {トンネルの外};
-      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {トンネルの入り口};
-      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {トンネルから離れている};
+      \node at(2.5,1) {Out of tunnels};
+      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
+      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Far away of tunnels};
 
       
       
       \draw[thick]
       (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
       \node at(10.5,1) {トンネルの中};
-      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {次もトンネル};
-      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {次は外};
+      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Next to a tunnel};
+      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Next to outside};
 
       \draw[->]
       (outside) edge [bend left] node[left] {$-1$} (enter)
-                edge [loop left, transform canvas={xshift=-1cm}] node[left] {$0$} (outside)
+                edge [loop left, transform canvas={xshift=-1cm}] node[left] {$\pm 0$} (outside)
       (enter)   edge [bend left] node[above] {$-1$} (next-tunnel)
                 edge [bend left] node[above] {$-a$} (next-outside)
-                edge [bend left] node[right] {$0$}  (outside)
+                edge [bend left] node[right] {$\pm 0$}  (outside)
       (next-tunnel) edge         node[right] {$-a$} (next-outside)
-                edge [loop right]node[right] {$0$}    (next-tunnel)
-      (next-outside) edge[bend left] node[above] {$a$}  (outside)
-                edge [bend left]     node[above] {$a-1$}(enter)
+                edge [loop right]node[below] {$\pm 0$}    (next-tunnel)
+      (next-outside) edge[bend left] node[above] {$+a$}  (outside)
+                edge [bend left]     node[above] {$+(a-1)$}(enter)
       ;
       
     \end{tikzpicture}
