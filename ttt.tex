@@ -705,4 +705,67 @@ Tunnel Cの構造を維持したまま入口にTunnel消費によるbeadを固�
   \end{center}
 \end{figure}
 
+
+\subsubsection{TunnelCの入口のbeadがTunnelを使わずに固定された場合}
+TunnelCの入口のbeadがTunnelを使わずに固定される時、そのbeadは既存のbondを使うことによって固定される。fig.\ref{TTT_tunnelC_enter_usingBond}において$t_1$がいくつのbondを消費したかで場合分けを考える。
+
+\begin{itemize}
+\item{$t_1$が1つのbondを消費する場合}\\
+  この時$t_1$は1つの有効なbondを生み出す。$t_2$は頂点A,B,Cの少なくとも一つとbondを結ぶ必要があり、かつ有効なbondを増やさない。$t_3$について考えると、$t_1$がbondを残していることから$t_3$と$t_1$はbondで結ばれる。故にbondの総数は1以上減少する。
+
+\item{$t_1$が2つのbondを消費する場合}\\
+  この時$t_1$はbondを生み出さない。$t_2$については先程と同様bondの総数を1減らす。今、$t_3$はどのbeadともbondを結ばない可能性があるため、bondの総数を最大で2増加させる。故にbondの総数は1以上減少する。
+\end{itemize}
+
+
+
+\begin{figure}[h]
+  \begin{center}
+    \begin{tabular}{cc}
+      
+      \begin{minipage}{0.48\hsize}
+        \begin{tikzpicture}
+          \draw[thick, rounded corners = 10pt]
+          (-3,2)--(2.5,2)--(2.5,-3)--(-3,-3)-- cycle;
+          
+          \foreach \theta in {60,-60,120,0}{
+            \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
+            \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+          }
+
+          \fill(180:1.5) circle [radius=0.1];
+          \fill(0:0) circle [radius=0.1];
+
+          \draw[transform canvas={shift=(180:1.5)}] (105:1.4) edge[bend right] (105:0.1);
+          \draw[->] (180:1.4) -- (180:0.1);
+          \draw[->] (-120:0.1) -- (-120:1.4);
+
+          \node[below] at (180:1.5) {$t_1$};
+          \node[right] at (0:0) {$t_2$};
+          \node[left] at (-120:1.5) {$t_3$};
+
+          \node[right] at (120:1.5) {A};
+          \node[right] at (60:1.5) {B};
+          \node[right] at (0:1.5) {C};
+
+          \begin{scope}[shift=(-120:1.5)]
+            \draw(0,0) circle [radius=0.1];
+            \foreach \theta in {-120,-60,180}{
+              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1) rectangle (0.1,0.1);
+            }
+            
+          \end{scope}
+          
+          \node at (-0.25,-3.5) {Pattern 1};
+        \end{tikzpicture}
+      \end{minipage}
+
+      
+      
+    \end{tabular}
+    \caption{Tunnelを消費せずに入口に固定されたbead}
+    \label{TTT_tunnelC_enter_usingBond}
+  \end{center}
+\end{figure}
+
 \end{document}
