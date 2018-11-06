@@ -15,6 +15,7 @@
 \usepackage{float}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{tikz}
+\usepackage{calc}
 \usetikzlibrary{automata}
 \usetikzlibrary{lindenmayersystems}
 \usepackage{geometry}
@@ -28,71 +29,178 @@
 
 \begin{document}
 
-\section{Tunnel Troll Theorem}
-\subsection{Introduction}
-決定性Oritatami Systemでは転写されたbeadが固定される時、その位置は一意に定まる。
-$\delta = 1$において転写されたbeadが一意に定まるためには、既に固定されている別のbeadとそのbeadがbondを結ぶか、あるいはトンネルを消費する必要がある。
+\section{Infiniteness of delay-1, arity-2 unary deterministic oritatami system}
 
-ここで言う「トンネル」とは、ある三角格子上の点の周囲6点のうち、ちょうど4点が既に埋まっているような構造を指す。このトンネルの空いている頂点に直前のbeadが転写され、次のbeadがトンネルの中心に固定された時、そのbeadの周囲5点が埋まっていることになり、その次のbeadの位置は空いている1点に定まる。
-
-
-この「トンネル」について以下が成り立つ。
-
-\begin{myth}[Tunnel Troll Theorem]
-  $|\Sigma| = 1, \delta = 1, \alpha = 2$を満たすOritatami Systemにおいて、トンネルを消費する時、Bondの数が減少する。
-\end{myth}
-
-\subsection{Proof}
-
-We will show that there are more bonds in decreasing than in increasing.
-
-
-First, we divide cases of there is a bead in a tunnel and there is out of the tunnel.
-The bead have two cases which a next bead is in a tunnel or out of the tunnel if the bead in the tunnel. On the other hand if the bead out of the tunnel, the bead have two cases which it exists in far away of tunnels or at an entrance of a tunnel(fig.\ref{TTT_position1}). Paths are transition of dicided position of a next bead in this figure.
-
-この定理を示すには、トンネルを消費した際に増加するbondの数より減少するbondの数の方が多いことを示せば良い。
-
-
-まず直前に固定されたbeadがトンネルの中にいるか外にいるかで場合分けを考える。トンネルの中にいる場合、次のbeadの固定される位置は既に決定されているが、次に固定される位置が再びトンネルの中であるかトンネルの外であるかでも場合分けを考える。また、トンネルの外にいる場合、そこがトンネルから離れた位置であるかトンネルの入り口であるかで場合分けをする(fig.\ref{TTT_position1})。パスは次のbeadが固定された時の状態遷移である。
-
-\begin{figure}[h]
+\begin{figure}
   \begin{center}
     \begin{tikzpicture}
-      \draw[thick]
-      (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
-      \node at(2.5,1) {Out of tunnels};
-      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
-      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Far away of tunnels};
+      \draw[thick, rounded corners = 10pt]
+      (-1,-1)--(7,-1)--(7,2)--(-1,2)-- cycle;
 
-      
-      
-      \draw[thick]
-      (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
-      \node at(10.5,1) {Inside of tunnels};
-      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Next to a tunnel};
-      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Next to outside};
+      \fill (0,0) circle[radius = 0.1];
+      \fill (1.5,0) circle[radius = 0.1];
+      \fill (3,0) circle[radius = 0.1];
+      \fill (4.5,0) circle[radius = 0.1];
+      \fill (6,0) circle[radius = 0.1];
 
-      \draw[->]
-      (outside) edge [bend left] node[above] {} (enter)
-                edge [loop left, transform canvas={xshift=-1cm}] node {} (outside)
-      (enter)   edge [bend left] (next-tunnel)
-                edge [bend left] (next-outside)
-                edge [bend left] (outside)
-      (next-tunnel) edge         (next-outside)
-                edge [loop right]    (next-tunnel)
-      (next-outside) edge[bend left] (outside)
-                edge [bend left]     (enter)
-      ;
+      \draw[dashed] (0,0)--(1.5,0);
+      \draw[dashed] (1.5,0)--(3,0);
+      \draw[dashed] (3,0)--(4.5,0);
+      \draw[dashed] (4.5,0)--(6,0);
+      \draw[->] (0,0)--(60:1.3);
+      \draw[->] (1.5,0)--++(60:1.3);
+      \draw[->] (3,0)--++(60:1.3);
+      \draw[->] (4.5,0)--++(60:1.3);
+      
+      \begin{scope}[shift=(60:1.5)]
+        \fill (0,0) circle[radius = 0.1];
+        \fill (1.5,0) circle[radius = 0.1];
+        \fill (3,0) circle[radius = 0.1];
+        \fill (4.5,0) circle[radius = 0.1];
+        \draw[dashed] (0,0)--(1.5,0);
+        \draw[dashed] (1.5,0)--(3,0);
+        \draw[dashed] (3,0)--(4.5,0);
+        \draw[->] (0,0)--(-60:1.3);
+        \draw[->] (1.5,0)--++(-60:1.3);
+        \draw[->] (3,0)--++(-60:1.3);
+        \draw[->] (4.5,0)--++(-60:1.3);
+      \end{scope}
       
     \end{tikzpicture}
-    \caption{Cases on position of a bead}
-    \label{TTT_position1}
+    \caption{zig-zag conformation}
+    \label{TTT_zigzag}
   \end{center}
 \end{figure}
 
-また、beadの位置とは別にトンネルの形状についても場合分けができる。三角格子上での対称性を考えるとトンネルの形状は以下の3つが考えられる(fig.\ref{TTT_tunnel})。この図において、バツが既にbeadが存在する頂点、白マルが空いている頂点である。また、トンネルの入口に注目すると、トンネルA,Bはどちらもトンネル内部に入る時のtranscriptのエッジに対して両側にbeadが存在する。一方でトンネルCは片側にのみbeadが存在する(fig.\ref{TTT_enterpoint})。出口についてはいずれのトンネルも同じ形になる(fig.\ref{TTT_exitpoint})。
+\subsection{Introduction}
 
-\begin{figure}[h]
+
+In this section, we prove that unary oritatami system can form infinitely at delay 1 and arity 1 deterministically moreover the infinite terminal which its oritatami system can yield is only zig-zag conformations shown in Fig\ref{TTT_zigzag}. 
+
+
+Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its seed $\sigma$ consists of $n$ beads. Let us denote its transcript by $w = w_1 w_2 w_3 \cdots$ for some $w_1,w_2,w_3 \in \Sigma = \{e\}$. For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$ that is foldable by $\Xi$. Hence $C_0 = \sigma$.
+
+
+Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w_{i+1},w_{i+2},\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupt four neighbors of a point(Fig.\ref{TTT_tunnel_intro}). Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are not occupied. We call such beads as $p$ $inside\ of\ a\ tunnel$ and such beads as $p^\prime$ $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $a_{i-2}$ and $a_{i-1}$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $a_i$ cannot help but be stabilized at the other free neighbor. In this way, $a_i$ can get stabilized without being bound.
+
+
+%Tunnel sections and unbound beads, or more precisely, their some capabilities of binding, are the resources for beads to get stabilized deterministically at delay 1 
+
+
+If a bead is stabilized through a tunnel section, then it can provide two binging capabilities and create tunnel sections.
+
+
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \fill (0:0) circle [radius=0.05];
+      \fill (0:1.5) circle [radius=0.05];
+      \fill (180:1.5) circle [radius=0.05];
+      \node[above] at (0:1.5) { $p^\prime$ };
+      \node[above] at (0:0) { $p$ };
+      \node[above] at (180:1.5) { $p^\prime$ };
+      
+      \fill (60 : 1.5) circle [radius=0.1];
+      \fill (-60 : 1.5) circle [radius=0.1];
+      \fill (120 : 1.5) circle [radius=0.1];
+      \fill (-120 : 1.5) circle [radius=0.1];
+      \node[above] at (60 :1.5) { $a_{j_1}$ };
+      \node[above] at (-60 :1.5) { $a_{j_2}$ };
+      \node[above] at (120 :1.5) { $a_{j_3}$ };
+      \node[above] at (-120 :1.5) { $a_{j_4}$ };
+      
+      \begin{scope}[shift=(0:5)]
+        \fill (0:0) circle [radius=0.1];
+        \fill (0:1.5) circle [radius=0.05];
+        \fill (180:1.5) circle [radius=0.1];
+        \node[above] at (180:1.5) { $a_{i-2}$ };
+        \node[above] at (0:0) { $a_{i-1}$ };
+        \draw[->] (180:1.4) -- (180:0.1);
+        
+        \fill (60 : 1.5) circle [radius=0.1];
+        \fill (-60 : 1.5) circle [radius=0.1];
+        \fill (120 : 1.5) circle [radius=0.1];
+        \fill (-120 : 1.5) circle [radius=0.1];
+        \node[above] at (60 :1.5) { $a_{j_1}$ };
+        \node[above] at (-60 :1.5) { $a_{j_2}$ };
+        \node[above] at (120 :1.5) { $a_{j_3}$ };
+        \node[above] at (-120 :1.5) { $a_{j_4}$ };
+      \end{scope}
+      \begin{scope}[shift=(0:10)]
+        \fill (0:0) circle [radius=0.1];
+        \fill (0:1.5) circle [radius=0.1];
+        \fill (180:1.5) circle [radius=0.1];
+        \node[above] at (180:1.5) { $a_{i-2}$ };
+        \node[above] at (0:0) { $a_{i-1}$ };
+        \node[above] at (0:1.5) { $a_i$ };
+        \draw[->] (180:1.4) -- (180:0.1);
+        \draw[->] (0:0.1) -- (0:1.4);
+        
+        \fill (60 : 1.5) circle [radius=0.1];
+        \fill (-60 : 1.5) circle [radius=0.1];
+        \fill (120 : 1.5) circle [radius=0.1];
+        \fill (-120 : 1.5) circle [radius=0.1];
+        \node[above] at (60 :1.5) { $a_{j_1}$ };
+        \node[above] at (-60 :1.5) { $a_{j_2}$ };
+        \node[above] at (120 :1.5) { $a_{j_3}$ };
+        \node[above] at (-120 :1.5) { $a_{j_4}$ };
+      \end{scope}
+    \end{tikzpicture} 
+    \caption{Through a tunnel section}
+    \label{TTT_tunnel_intro}
+  \end{center}
+\end{figure}
+
+
+%決定性Oritatami Systemでは転写されたbeadが固定される時、その位置は一意に定まる。
+%$\delta = 1$において転写されたbeadが一意に定まるためには、既に固定されている別のbeadとそのbeadがbondを結ぶか、あるいはトンネルを消費する必要がある。
+
+%ここで言う「トンネル」とは、ある三角格子上の点の周囲6点のうち、ちょうど4点が既に埋まっているような構造を指す。このトンネルの空いている頂点に直前のbeadが転写され、次のbeadがトンネルの中心に固定された時、そのbeadの周囲5点が埋まっていることになり、その次のbeadの位置は空いている1点に定まる。
+
+
+%この「トンネル」について以下が成り立つ。
+
+
+
+\begin{myth}[Tunnel Troll Theorem]
+  Let $\Xi$ be an unary oritatami system of delay 1 and arity 2. If a bead is stabilized through a tunnel section, then it consume some binging capabilities.
+\end{myth}
+
+\subsection{Proof of Tunnel Troll Theorem}
+Assume $\Xi$ is deterministic. Let us represent its transcript $w$ as $w = w_1 w_2 w_3 \cdots$ for beads $w_1 , w_2 , w_3 , \cdots \in \Sigma = \{e\}$. Each of these beads is stabilized either by being bound or through a tunnel section (or by both). How they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. On the other hand, each of beads are bound either inside of tunnel or outside (Fig. \ref{TTT_position1}). If a bead is stabilized at inside of tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized at outside of a tunnel, then its position is an entrance of a tunnel or otherwise.
+
+
+Tunnel sections have three possible shape with considering symmetry such as acute turn, straight and obtuse turn (Figure \ref{TTT_tunnel}). Let us focus entrances of a tunnel such as $p^\prime$, then Entrances have two possible shape (Figure \ref{TTT_enterpoint}).
+
+
+Let us consider tunnel sections only tunnel A and B. See Figure \ref{TTT_position2}. According to appendix, we add maximum number which each transitions provide binding capabilities for each edge where $a$ is number of consuming binding capabilities when the bead is stabilized at position of $successer\ in\ outside$.
+
+
+Next, we consider on tunnel C section. If $w[i]$ is stabilized by tunnel C and $S[i+1]$ is $t$, then $w[i+1]$ is stabilized by tunnel A or B because if $w[i+1]$ is stabilized by tunnel C, then $C_{i+1}$ is a terminal. Hence, tunnel C section is devided cases sush as Figure \ref{TTT_tunnelC_graph}. Cases of $S[i...] = bt^l (l \geq 2)$ are already considered (Upper). According to appendix, cases of $S[i..i+2] = btb$ also consume some binding capabilities.
+
+
+Thus, if a bead is stabilized through a tunnel section, then it consume some binging capabilities.
+
+%この定理を示すには、トンネルを消費した際に増加するbondの数より減少するbondの数の方が多いことを示せば良い。
+
+
+%まず直前に固定されたbeadがトンネルの中にいるか外にいるかで場合分けを考える。トンネルの中にいる場合、次のbeadの固定される位置は既に決定されているが、次に固定される位置が再びトンネルの中であるかトンネルの外であるかでも場合分けを考える。また、トンネルの外にいる場合、そこがトンネルから離れた位置であるかトンネルの入り口であるかで場合分けをする(fig.\ref{TTT_position1})。パスは次のbeadが固定された時の状態遷移である。
+
+
+
+%また、beadの位置とは別にトンネルの形状についても場合分けができる。三角格子上での対称性を考えるとトンネルの形状は以下の3つが考えられる(fig.\ref{TTT_tunnel})。この図において、バツが既にbeadが存在する頂点、白マルが空いている頂点である。また、トンネルの入口に注目すると、トンネルA,Bはどちらもトンネル内部に入る時のtranscriptのエッジに対して両側にbeadが存在する。一方でトンネルCは片側にのみbeadが存在する(fig.\ref{TTT_enterpoint})。出口についてはいずれのトンネルも同じ形になる(fig.\ref{TTT_exitpoint})。
+
+%今、トンネルAとトンネルBの場合だけを考える。Appendixより、各状態遷移においてbondの増加量の最大値をそれぞれのedgeに加えると以下のようになる(fig.\ref{TTT_position2})。ただし$a$は自然数とし、「次は外」の状態に遷移するたびに値が更新される。この図のように、トンネルの内と外を往来するとbondの数が減少する。
+
+
+%次にトンネルCについて考える。fig.\ref{TTT_enterpoint}とfig.\ref{TTT_exitpoint}よりトンネルCの入口にbeadが固定される時、トンネルの出口とトンネルCの入口は共存出来ないため、トンネルCは連続したトンネル構造の途中や出口に使用することはできない。これを考慮し、トンネルCが使用されるケースについて場合分けを考える(fig.\ref{TTT_tunnelC_graph})。この場合分けの内、上２つはトンネルA,Bの中へ入るためbondの数が減少する。そのため下２つについて考えれば良い。Appendixより、いずれの場合もbondの数が減少する。
+
+
+
+%以上より、トンネルA,B,Cのどれを消費した場合もbondの増加量は-1以下となる(fig.\ref{TTT_delta-1}は増加量が$-1$となる例)。よってこの定理は示された。
+
+\begin{figure}
   \begin{center}
     \begin{tabular}{ccc}
       
@@ -102,10 +210,12 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
           (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.1];
+            \fill(0,0) circle [radius=0.05];
+            \node[above] at (180:1.5) {$p^\prime$};
+            \node[above] at (0:1.5) {$p^\prime$};
 
             \foreach \theta in {0,180}{
-              \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+              \fill[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {60,-60,120,-120}{
@@ -124,10 +234,12 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
           (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.1];
+            \fill(0,0) circle [radius=0.05];
+            \node[above] at (180:1.5) {$p^\prime$};
+            \node[above] at (-60:1.5) {$p^\prime$};
 
             \foreach \theta in {-60,180}{
-              \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+              \fill[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {0,60,120,-120}{
@@ -146,10 +258,12 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
           (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.1];
+            \fill(0,0) circle [radius=0.05];
+            \node[above] at (180:1.5) {$p^\prime$};
+            \node[above] at (-1200:1.5) {$p^\prime$};
 
             \foreach \theta in {-120,180}{
-              \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+              \fill[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {0,60,-60,120}{
@@ -163,7 +277,7 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
       \end{minipage}
       
     \end{tabular}
-    \caption{トンネルの形状}
+    \caption{All possible tunnel sections}
     \label{TTT_tunnel}
   \end{center}
 \end{figure}
@@ -178,7 +292,9 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
           (0,0)--(2.5,0)--(2.5,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.1];
+            \fill(0,0) circle [radius=0.1];
+            \node[above] at (180:1.5) {$p^\prime$};
+            
             \fill[transform canvas={shift=(180:1.5)}](0,0) circle [radius=0.1];
             
             
@@ -200,7 +316,8 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
           (0,0)--(2.5,0)--(2.5,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.1];
+            \fill(0,0) circle [radius=0.1];
+            \node[above] at (180:1.5) {$p^\prime$};
 
             \draw[transform canvas={shift=(-120:1.5)}](0,0) circle [radius=0.1];
             \fill[transform canvas={shift=(180:1.5)}](0,0) circle [radius=0.1];
@@ -219,47 +336,40 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
       \end{minipage}
 
     \end{tabular}
-    \caption{トンネルの入り口}
+    \caption{Entrance of a tunnel}
     \label{TTT_enterpoint}
   \end{center}
 \end{figure}
 
-\begin{figure}[h]
-  \begin{center}
-    \begin{tikzpicture}
-      \draw[thick, rounded corners = 10pt]
-      (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
-
-      \begin{scope}[xshift=2cm, yshift=2cm]
-        \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
-        \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
-
-        \foreach \theta in {0}{
-          \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
-        }
-        
-        \foreach \theta in {60,-60,120,-120,180}{
-          \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-          \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
-        }
-        \draw[->] (0.1,0) -- (1.4,0);
-      \end{scope}
-    \end{tikzpicture}
-    \caption{トンネルの出口}
-    \label{TTT_exitpoint}
-  \end{center}
-\end{figure}
-
-今、トンネルAとトンネルBの場合だけを考える。Appendixより、各状態遷移においてbondの増加量の最大値をそれぞれのedgeに加えると以下のようになる(fig.\ref{TTT_position2})。ただし$a$は自然数とし、「次は外」の状態に遷移するたびに値が更新される。この図のように、トンネルの内と外を往来するとbondの数が減少する。
-
-
-次にトンネルCについて考える。fig.\ref{TTT_enterpoint}とfig.\ref{TTT_exitpoint}よりトンネルCの入口にbeadが固定される時、トンネルの出口とトンネルCの入口は共存出来ないため、トンネルCは連続したトンネル構造の途中や出口に使用することはできない。これを考慮し、トンネルCが使用されるケースについて場合分けを考える(fig.\ref{TTT_tunnelC_graph})。この場合分けの内、上２つはトンネルA,Bの中へ入るためbondの数が減少する。そのため下２つについて考えれば良い。Appendixより、いずれの場合もbondの数が減少する。
+%\begin{figure}
+%  \begin{center}
+%    \begin{tikzpicture}
+%      \draw[thick, rounded corners = 10pt]
+%      (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
+%
+%      \begin{scope}[xshift=2cm, yshift=2cm]
+%        \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
+%        \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
+%
+%        \foreach \theta in {0}{
+%          \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+%        }
+%        
+%        \foreach \theta in {60,-60,120,-120,180}{
+%          \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
+%          \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+%        }
+%        \draw[->] (0.1,0) -- (1.4,0);
+%      \end{scope}
+%    \end{tikzpicture}
+%    \caption{トンネルの出口}
+%    \label{TTT_exitpoint}
+%  \end{center}
+%\end{figure}
 
 
 
-以上より、トンネルA,B,Cのどれを消費した場合もbondの増加量は-1以下となる(fig.\ref{TTT_delta-1}は増加量が$-1$となる例)。よってこの定理は示された。
-
-\begin{figure}[h]
+\begin{figure}
   \begin{center}
     \begin{tikzpicture}
       \draw[thick, rounded corners = 10pt]
@@ -328,26 +438,61 @@ The bead have two cases which a next bead is in a tunnel or out of the tunnel if
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}
   \begin{center}
     \begin{tikzpicture}
       \draw[thick]
       (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
-      \node at(2.5,1) {Out of tunnels};
+      \node at(2.5,1) {Outside};
       \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
-      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Far away of tunnels};
+      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Otherwise};
 
       
       
       \draw[thick]
       (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
-      \node at(10.5,1) {トンネルの中};
-      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Next to a tunnel};
-      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Next to outside};
+      \node at(10.5,1) {Inside of a tunnel};
+      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Successor in inside};
+      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Successor in outside};
+
+      \draw[->]
+      (outside) edge [bend left] node[left] {$b$} (enter)
+                edge [loop left] node[left] {$b$} (outside)
+      (enter)   edge [bend left] node[above] {$b$} (next-tunnel)
+                edge [bend left] node[above] {$b$} (next-outside)
+                edge [bend left] node[right] {$b$}  (outside)
+      (next-tunnel) edge         node[right] {$t$} (next-outside)
+                edge [loop right]node[below] {$t$}    (next-tunnel)
+      (next-outside) edge[bend left] node[above] {$t$}  (outside)
+                edge [bend left]     node[above] {$t$}(enter)
+      ;
+      
+    \end{tikzpicture}
+    \caption{Cases on position of a bead}
+    \label{TTT_position1}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thick]
+      (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
+      \node at(2.5,1) {Outside};
+      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
+      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Otherwise};
+
+      
+      
+      \draw[thick]
+      (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
+      \node at(10.5,1) {Inside of a tunnel};
+      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Successer in inside};
+      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Successer in outside};
 
       \draw[->]
       (outside) edge [bend left] node[left] {$-1$} (enter)
-                edge [loop left, transform canvas={xshift=-1cm}] node[left] {$\pm 0$} (outside)
+                edge [loop left] node[left] {$\pm 0$} (outside)
       (enter)   edge [bend left] node[above] {$-1$} (next-tunnel)
                 edge [bend left] node[above] {$-a$} (next-outside)
                 edge [bend left] node[right] {$\pm 0$}  (outside)
