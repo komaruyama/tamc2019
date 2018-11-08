@@ -676,26 +676,26 @@ Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into 
 
 \subsubsection{Tunnel C}
 
-Tunnel Cの入口に固定されるbeadについて、そのbeadがTunnelを消費して固定されたか、
-そうでないかによって場合分けをする。なお、Tunnel Cの出口はTunnelA,Bの中でないとする。
+Assume $w[i]$ is a bead which stabilized by tunnel C. Let us consider kinds of stabilization $S[i-2..i] = tbt$ or $S[i-2..i] = bbt$ except cases of $w[i]$ is inside of tunnel A, B.
 
-\subsubsection{Tunnel Cの入口のbeadがTunnelを消費して固定された場合}
-Tunnel Cの構造を維持したまま入口にTunnel消費によるbeadを固定するパターンはfig.\ref{TTT_tunnelC_enter_usingTunnel}の２通りがある。
+\subsubsection{Case of $S[i-2..i] = tbt$}
+Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilization depending on structures of tunnel C.
 
 \begin{itemize}
-\item{Pattern1}\\
-  頂点$t_1$が転写される前では、$t_3$がトンネルの外であることから頂点Aの周囲3点は空いてる。よって頂点Aのbeadは1つ以上bondを持つため、頂点Aと$t_1$はbondを結ぶ。また、頂点$t_2$が決定的に固定されるためには頂点B,C,Dとの間とbondを結ぶ必要がある。一方で、頂点$t_1,t_2$は、たとえbondを増やしたとしても周囲6点が埋まっているため、それを使うことができない。つまり$t_2$が固定された時点でbondは$2$減少している。今、$t_3$が固定された時を考えると、このbeadはbondを最大で2つ増やす可能性がある。しかし今$t_3$の周囲で空いているのは頂点e,fで、このうち一方はback boneのために使われるため、$t_3$の増やしたbondは1つのみが有効なbondとなる。よって全体でbondの総数を1以上減少させる。
+\item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
+  In this figure, Bead A has at least one binding so that $w_{i-2}$ has to bound A. Moreover, $w_{i-1}$ has to bound one of B, C, D in order to stabilize deterministically. On the other hand, $w_i$ can supply two bindings but free neighbors of $w_i$ are two points. One of them is occupied a successor. Therefore $w_i$ can only bind one of $e,f$ that is $w_i$ supplies at most one binding. Thus, this case consumes some binding capabilities.
 
-\item{Pattern2}\\
-  頂点$t_1$が固定される時そのbeadが幾つ周囲のbondを消費するかで場合分けできる。
+\item{Right of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
+  This cases are divided on number of capabilities that $w_{i-2}$ consumes.
   \begin{itemize}
-  \item[-]{$t_1$がbondを消費しない場合}\\
-    頂点$t_2$が決定的に固定される時、bondを1以上消費しかつ有効なbondを増やさない。頂点$t_3$が固定される時、頂点$t_1$はbondを持っているため、$t_3$,$t_1$の間でbondを結ぶ。よって$t_3$の固定で増加するbondの数は0以下。一方で、この時$t_1$はまだ有効なbondを一つ持っている。もし頂点eが埋まっているならこのbondは有効でなくなりbondの総数は減少する。そこで仮に頂点eが空いている場合を考える。今$t_3$の次に固定されるbeadを$t_4$とする。もし$t_4$が頂点eに固定されたなら、$t_1$のbondを消費しかつ$t_4$はbondを1つ消費し1つ増やす。よって$t_1$から$t_4$の固定においてbondの総数は減少する。次に$t_4$が頂点f,gのどちらかに固定される場合を考える。頂点eは空いているため、決定的に固定するに$t_4$は2つのbondを消費する必要がある。よって$t_1$が増やしたbondを加味してもbond$t_1$から$t_4$の固定でbondの総数を減らすことになる。よっていずれのケースを考えてもbondの総数は減少する。
+  \item[-]{$w_i$ does not consume any bindings}\\
+    $w_{i-1}$ has to bound one of B, C, D in order to stabilize deterministically. $w_i$ has to be bound to $w_{i-2}$ because $w_{i-2}$ has bindings. This time, let us consider either $e$ is occupied or not. If $e$ is occupied, then $w_{i-2}$ has no active bindings that is this situation consumes some binding capabilities. If $e$ is free and $w_{i+1}$ is stabilized in $e$, then $w_{i-2}$ has to bind $w_{i+1}$. Therefore, In this case, stabilization of $w[i-2..i+1]$ consumes some bindings. If $e$ is free and $w_{i+1}$ is stabilized except $e$, then this oritatami system has to use two binding capabilities in order to bind $w_{i+1}$. Therefore, in this case consumes some bindings. Thus in this cases consume some binding capabilities.
 
-  \item[-]{$t_1$がbondを1つ消費する場合}\\
-    $t_2$は同様にしてbondの総数を1つ減少させ、$t_3$も増加させるbondの数は0以下。この時$t_1$はbondを増やさない。よってbondの総数は2以上減少する。
-  \item[-]{$t_1$がbondを2つ消費する場合}\\
-    $t_2$はbondを1つ以上減少させ、$t_3$はbondを2つ増加させる。よってbondの総数は減少する。
+  \item[-]{$w_i$ consumes one binding}\\
+    In this case, $w_{i-1}$ has to be bound one of B, C, D. In addition, $w_{i-2}$ and $w_i$ are not supply any bindings. Thus, in this cases consume some binding capabilities.。
+  \item[-]{$w_i$ consumes two bindings}\\
+    In this case, $w_{i-2}$ already consumes two binding. $w_{i-1}$ has to be bound. $w_i$ supplies two bindings. Thus, in this cases consume some binding capabilities.
+   
   \end{itemize}
 \end{itemize}
 
@@ -733,9 +733,9 @@ Tunnel Cの構造を維持したまま入口にTunnel消費によるbeadを固�
             \draw[->] (180:1.4)--(180:0.1);
             \draw[->] (-120:0.1)--(-120:1.4);
 
-            \node[below] at (180:1.5) {$t_1$};
-            \node[right] at (0:0) {$t_2$};
-            \node[right] at (-120:1.5) {$t_3$};
+            \node[below] at (180:1.5) {$w_{i-2}$};
+            \node[right] at (0:0) {$w_{i-1}$};
+            \node[right] at (-120:1.5) {$w_i$};
 
             \node[left] at (120:1.5) {B};
             \node[left] at (60:1.5) {C};
@@ -786,9 +786,9 @@ Tunnel Cの構造を維持したまま入口にTunnel消費によるbeadを固�
             \draw[->] (180:1.4)--(180:0.1);
             \draw[->] (-120:0.1)--(-120:1.4);
 
-            \node[below] at (180:1.5) {$t_1$};
-            \node[right] at (0:0) {$t_2$};
-            \node[right] at (-120:1.5) {$t_3$};
+            \node[below] at (180:1.5) {$w_{i-2}$};
+            \node[right] at (0:0) {$w_{i-1}$};
+            \node[right] at (-120:1.5) {$w_i$};
 
             \node[left] at (120:1.5) {A};
             \node[left] at (60:1.5) {B};
@@ -814,21 +814,22 @@ Tunnel Cの構造を維持したまま入口にTunnel消費によるbeadを固�
       
       
     \end{tabular}
-    \caption{Tunnelを消費して入口に固定されたbead}
+    \caption{Case of $S[i-2..i] = tbt$}
     \label{TTT_tunnelC_enter_usingTunnel}
   \end{center}
 \end{figure}
 
 
-\subsubsection{TunnelCの入口のbeadがTunnelを使わずに固定された場合}
-TunnelCの入口のbeadがTunnelを使わずに固定される時、そのbeadは既存のbondを使うことによって固定される。fig.\ref{TTT_tunnelC_enter_usingBond}において$t_1$がいくつのbondを消費したかで場合分けを考える。
+\subsubsection{Case of $S[i-2..i] = bbt$}
+Let us consider number of consumed by $w_{i-2}$ (Fig.\ref{TTT_tunnelC_enter_usingBond}).
 
 \begin{itemize}
-\item{$t_1$が1つのbondを消費する場合}\\
-  この時$t_1$は1つの有効なbondを生み出す。$t_2$は頂点A,B,Cの少なくとも一つとbondを結ぶ必要があり、かつ有効なbondを増やさない。$t_3$について考えると、$t_1$がbondを残していることから$t_3$と$t_1$はbondで結ばれる。故にbondの総数は1以上減少する。
+\item{$w_{i-2}$ consumes one binding}\\
+  In this situation, $w_{i-2}$ supplies one active binding whereas $w_{i}$ consumes this binding. In addtion, $w_{i-1}$ has to bound to one of A, B, C.
+  Thus, in this cases consume some binding capabilities.
 
-\item{$t_1$が2つのbondを消費する場合}\\
-  この時$t_1$はbondを生み出さない。$t_2$については先程と同様bondの総数を1減らす。今、$t_3$はどのbeadともbondを結ばない可能性があるため、bondの総数を最大で2増加させる。故にbondの総数は1以上減少する。
+\item{$w_{i-2}$ consumes two bindings}\\
+  In this case, $w_{i-2}$ already consumes two binding. $w_{i-1}$ has to be bound. $w_i$ supplies at most two bindings. Thus, in this cases consume some binding capabilities.
 \end{itemize}
 
 
@@ -877,7 +878,7 @@ TunnelCの入口のbeadがTunnelを使わずに固定される時、そのbead�
       
       
     \end{tabular}
-    \caption{Tunnelを消費せずに入口に固定されたbead}
+    \caption{Case of $S[i-2..i] = bbt$}
     \label{TTT_tunnelC_enter_usingBond}
   \end{center}
 \end{figure}
