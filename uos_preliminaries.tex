@@ -1,0 +1,10 @@
+Let $\Sigma$ be a set of types of abstract molecules, or \textit{beads}. 
+By $\Sigma^*$ and $\Sigma^\omega$, we denote the set of finite sequences of beads and that of one-way infinite sequences of beads, respectively. 
+A bead of type $a \in \Sigma$ is called an $a$-bead. 
+Let $w = b_1 b_2 \cdots b_n \in \Sigma^*$ be a sequence of length $n$ for some integer $n$ and bead types $b_1, \ldots, b_n \in \Sigma$. 
+The \textit{length} of $w$ is denoted by $|w|$, that is, $|w| = n$. 
+For two indices $i, j$ with $1 \le i \le j \le n$, we let $w[i..j]$ refer to the subsequence $b_i b_{i+1} \cdots b_{j-1}b_j$; if $i = j$, then $w[i..i]$ is simplified as $w[i]$. 
+For $k \ge 1$, $w[1..k]$ is called a \textit{prefix} of $w$. 
+
+Oritatami systems folds their transcript, which is a sequence of beads, over the triangular grid graph $\mathbb{T} = (V, E)$ cotranscriptionally. 
+A directed path $P = p_1 p_2 \cdots p_n$ in $\mathbb{T}$ is a sequence of \textit{pairwise-distinct} points $p_1, p_2, \ldots, p_n \in V$ such that $\{p_i, p_{i+1}\} \in E$ for all $1 \le i < n$. 
