@@ -1,33 +1,23 @@
-\documentclass[a4,dvipdfmx,11pt]{article}
+\documentclass[runningheads]{llncs}
 
 
-\usepackage{fancyhdr}
-\usepackage{amsmath,amssymb}
-\usepackage{fancybox,ascmac}
-\usepackage[]{multicol}
-\usepackage{caption}
-\usepackage{mathtools}
 
 
 
 \usepackage[dvipdfmx]{color}
 
-\usepackage{float}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{tikz}
 \usepackage{calc}
 \usetikzlibrary{automata}
-\usetikzlibrary{lindenmayersystems}
-\usepackage{geometry}
 
-\usepackage{amsthm}
-\usepackage{amsmath}
 
-\theoremstyle{definition}
-\newtheorem{myth}{Theorem}[section]
-\newtheorem{myproof}{Proof}[section]
+
+
 
 \begin{document}
+
+\title{On finiteness of structures produced deterministically by co-transcriptional folding}
 
 \section{Infiniteness of delay-1, arity-2 unary deterministic oritatami system}
 
@@ -83,8 +73,6 @@ Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its
 
 Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w_{i+1},w_{i+2},\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupt four neighbors of a point(Fig.\ref{TTT_tunnel_intro}). Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are not occupied. We call such beads as $p$ $inside\ of\ a\ tunnel$ and such beads as $p^\prime$ $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $a_{i-2}$ and $a_{i-1}$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $a_i$ cannot help but be stabilized at the other free neighbor. In this way, $a_i$ can get stabilized without being bound.
 
-
-%Tunnel sections and unbound beads, or more precisely, their some capabilities of binding, are the resources for beads to get stabilized deterministically at delay 1 
 
 
 If a bead is stabilized through a tunnel section, then it can provide two binging capabilities and create tunnel sections.
@@ -153,52 +141,29 @@ If a bead is stabilized through a tunnel section, then it can provide two bingin
 \end{figure}
 
 
-%決定性Oritatami Systemでは転写されたbeadが固定される時、その位置は一意に定まる。
-%$\delta = 1$において転写されたbeadが一意に定まるためには、既に固定されている別のbeadとそのbeadがbondを結ぶか、あるいはトンネルを消費する必要がある。
-
-%ここで言う「トンネル」とは、ある三角格子上の点の周囲6点のうち、ちょうど4点が既に埋まっているような構造を指す。このトンネルの空いている頂点に直前のbeadが転写され、次のbeadがトンネルの中心に固定された時、そのbeadの周囲5点が埋まっていることになり、その次のbeadの位置は空いている1点に定まる。
 
 
-%この「トンネル」について以下が成り立つ。
-
-
-
-\begin{myth}[Tunnel Troll Theorem]
+\begin{theorem}[Tunnel Troll Theorem]
   Let $\Xi$ be an unary oritatami system of delay 1 and arity 2. If a bead is stabilized through a tunnel section, then it consume some binging capabilities.
-\end{myth}
+\end{theorem}
 
 \subsection{Proof of Tunnel Troll Theorem}
-Assume $\Xi$ is deterministic. Let us represent its transcript $w$ as $w = w_1 w_2 w_3 \cdots$ for beads $w_1 , w_2 , w_3 , \cdots \in \Sigma = \{e\}$. Each of these beads is stabilized either by being bound or through a tunnel section (or by both). How they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. On the other hand, each of beads are bound either inside of tunnel or outside (Fig. \ref{TTT_position1}). If a bead is stabilized at inside of tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized at outside of a tunnel, then its position is an entrance of a tunnel or otherwise.
+Assume $\Xi$ is deterministic. Let us represent its transcript $w$ as $w = w_1 w_2 w_3 \cdots$ for beads $w_1 , w_2 , w_3 , \cdots \in \Sigma = \{e\}$. Each of these beads is stabilized either by being bound or through a tunnel section (or by both). How they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
+On the other hand, each of beads are bound either inside of tunnel or outside (Fig. \ref{TTT_position1}). If a bead is stabilized at inside of tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized at outside of a tunnel, then its position is an entrance of a tunnel or otherwise.
 
 
 Tunnel sections have three possible shape with considering symmetry such as acute turn, straight and obtuse turn (Figure \ref{TTT_tunnel}). Let us focus entrances of a tunnel such as $p^\prime$, then Entrances have two possible shape (Figure \ref{TTT_enterpoint}).
 
 
-Let us consider tunnel sections only tunnel A and B. See Figure \ref{TTT_position2}. According to appendix, we add maximum number which each transitions provide binding capabilities for each edge where $a$ is number of consuming binding capabilities when the bead is stabilized at position of $successer\ in\ outside$.
+Let us consider tunnel sections only tunnel A and B. See Fig. \ref{TTT_position2}. From appendix (Entrance of Tunnel A, B and Exit of Tunnel), we add maximum number which each transitions provide binding capabilities for each edge where $a$ is number of consuming binding capabilities when the bead is stabilized at position of $successer\ in\ outside$.
 
 
-Next, we consider on tunnel C section. If $w[i]$ is stabilized by tunnel C and $S[i+1]$ is $t$, then $w[i+1]$ is stabilized by tunnel A or B because if $w[i+1]$ is stabilized by tunnel C, then $C_{i+1}$ is a terminal. Hence, tunnel C section is devided cases sush as Figure \ref{TTT_tunnelC_graph}. Cases of $S[i...] = bt^l (l \geq 2)$ are already considered (Upper). According to appendix, cases of $S[i..i+2] = btb$ also consume some binding capabilities.
+Next, we consider on tunnel C section. If $w[i]$ is stabilized by tunnel C and $S[i+1]$ is $t$, then $w[i+1]$ is stabilized by tunnel A or B because if $w[i+1]$ is stabilized by tunnel C, then $C_{i+1}$ is a terminal. Hence, tunnel C section is devided cases sush as Figure \ref{TTT_tunnelC_graph}. Cases of $S[i...] = bt^l (l \geq 2)$ are already considered (Upper). According to appendix (Tunnel C), cases of $S[i..i+2] = btb$ also consume some binding capabilities (Lower).
 
 
 Thus, if a bead is stabilized through a tunnel section, then it consume some binging capabilities.
 
-%この定理を示すには、トンネルを消費した際に増加するbondの数より減少するbondの数の方が多いことを示せば良い。
 
-
-%まず直前に固定されたbeadがトンネルの中にいるか外にいるかで場合分けを考える。トンネルの中にいる場合、次のbeadの固定される位置は既に決定されているが、次に固定される位置が再びトンネルの中であるかトンネルの外であるかでも場合分けを考える。また、トンネルの外にいる場合、そこがトンネルから離れた位置であるかトンネルの入り口であるかで場合分けをする(fig.\ref{TTT_position1})。パスは次のbeadが固定された時の状態遷移である。
-
-
-
-%また、beadの位置とは別にトンネルの形状についても場合分けができる。三角格子上での対称性を考えるとトンネルの形状は以下の3つが考えられる(fig.\ref{TTT_tunnel})。この図において、バツが既にbeadが存在する頂点、白マルが空いている頂点である。また、トンネルの入口に注目すると、トンネルA,Bはどちらもトンネル内部に入る時のtranscriptのエッジに対して両側にbeadが存在する。一方でトンネルCは片側にのみbeadが存在する(fig.\ref{TTT_enterpoint})。出口についてはいずれのトンネルも同じ形になる(fig.\ref{TTT_exitpoint})。
-
-%今、トンネルAとトンネルBの場合だけを考える。Appendixより、各状態遷移においてbondの増加量の最大値をそれぞれのedgeに加えると以下のようになる(fig.\ref{TTT_position2})。ただし$a$は自然数とし、「次は外」の状態に遷移するたびに値が更新される。この図のように、トンネルの内と外を往来するとbondの数が減少する。
-
-
-%次にトンネルCについて考える。fig.\ref{TTT_enterpoint}とfig.\ref{TTT_exitpoint}よりトンネルCの入口にbeadが固定される時、トンネルの出口とトンネルCの入口は共存出来ないため、トンネルCは連続したトンネル構造の途中や出口に使用することはできない。これを考慮し、トンネルCが使用されるケースについて場合分けを考える(fig.\ref{TTT_tunnelC_graph})。この場合分けの内、上２つはトンネルA,Bの中へ入るためbondの数が減少する。そのため下２つについて考えれば良い。Appendixより、いずれの場合もbondの数が減少する。
-
-
-
-%以上より、トンネルA,B,Cのどれを消費した場合もbondの増加量は-1以下となる(fig.\ref{TTT_delta-1}は増加量が$-1$となる例)。よってこの定理は示された。
 
 \begin{figure}
   \begin{center}
@@ -341,101 +306,6 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
   \end{center}
 \end{figure}
 
-%\begin{figure}
-%  \begin{center}
-%    \begin{tikzpicture}
-%      \draw[thick, rounded corners = 10pt]
-%      (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
-%
-%      \begin{scope}[xshift=2cm, yshift=2cm]
-%        \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
-%        \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
-%
-%        \foreach \theta in {0}{
-%          \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
-%        }
-%        
-%        \foreach \theta in {60,-60,120,-120,180}{
-%          \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-%          \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
-%        }
-%        \draw[->] (0.1,0) -- (1.4,0);
-%      \end{scope}
-%    \end{tikzpicture}
-%    \caption{トンネルの出口}
-%    \label{TTT_exitpoint}
-%  \end{center}
-%\end{figure}
-
-
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \draw[thick, rounded corners = 10pt]
-      (-2,-2)--(5,-2)--(5,3)--(-2,3)-- cycle;
-
-      \fill(0,0) circle [radius=0.1];
-      \foreach \theta in {60,-60,120}{
-        \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-        \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
-      }
-      \foreach \theta in {180,-120}{
-        \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
-      }
-
-      \draw[->] (120:1.4) -- (120:0.1);
-      \draw[dashed] (-60:0.1) -- (-60:1.4);
-      
-      \begin{scope}[shift=(60:1.5)]
-        \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
-        \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
-        
-        \foreach \theta in {60,120,0}{
-          \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-          \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
-        }
-
-        \draw[->] (60:1.4)--(60:0.1);
-        \draw[->] (180:0.1)--(180:1.4);
-        \draw[dashed] (120:0.1)--(120:1.4);
-        \draw[dashed] (0:0.1)--(0:1.4);
-
-        \begin{scope}[shift=(0:1.5)]
-          \foreach \theta in {60,0}{
-            \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-            \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
-          }
-          \draw[dashed] (120:0.1)--(120:1.4);
-          \draw (0:0.1)--(0:1.4);
-          \draw (60:0.1)--(60:1.4);
-        \end{scope}
-      \end{scope}
-      \begin{scope}[shift=(0:1.5)]
-        \fill(0,0) circle [radius=0.1];
-        \fill(0:1.5) circle [radius=0.1];
-        \draw(0:3) circle [radius=0.1];
-        \draw[shift=(0:1.5),shift=(-60:1.5)] circle [radius=0.1];
-        \foreach \theta in {-60}{
-          \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-          \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
-        }
-
-        \draw[->] (180:1.4)--(180:0.1);
-        \draw[->] (0:0.1)--(0:1.4);
-        \draw[->] (0:1.6)--(0:2.9);
-        \draw[dashed] (-60:0.1)--(-60:1.4);
-
-        \node[above] at (180:1.5) {$(-1)$};
-        \node[above] at (0:0) {$(-1)$};
-        \node[above] at (0:1.5) {$(+1)$};
-        
-      \end{scope}
-    \end{tikzpicture}
-  \end{center}
-  \caption{増加量が$-1$となる例}
-  \label{TTT_delta-1}
-\end{figure}
 
 
 \begin{figure}
@@ -511,19 +381,19 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
 \begin{figure}[h]
   \begin{center}
     \begin{tikzpicture}
-      \node at (0,4)   [rectangle, draw,rounded corners] (outside1) {トンネルから離れている};
-      \node at (4.5,4) [rectangle, draw,rounded corners] (enter1)   {トンネルの入り口};
-      \node at (8,4)   [rectangle, draw, rounded corners] (inside1) {トンネルC};
-      \node at (11,4)  [rectangle, draw, rounded corners] (exit1)   {トンネルA,Bの中};
+      \node at (0,4)   [rectangle, draw,rounded corners] (outside1) {Otherwise};
+      \node at (4.5,4) [rectangle, draw,rounded corners] (enter1)   {Entrance of a tunnel};
+      \node at (8,4)   [rectangle, draw, rounded corners] (inside1) {Inside of a tunnel C};
+      \node at (11,4)  [rectangle, draw, rounded corners] (exit1)   {Inside of a tunnel A or B};
       \draw[->] (outside1)--(enter1);
       \draw[->] (enter1)  --(inside1);
       \draw[->] (inside1) --(exit1);
       
       
-      \node at (0,3)   [rectangle, draw,rounded corners] (outside2) {トンネルの中};
-      \node at (4.5,3) [rectangle, draw,rounded corners] (enter2)   {トンネルの入り口};
-      \node at (8,3)   [rectangle, draw, rounded corners] (inside2) {トンネルC};
-      \node at (11,3)  [rectangle, draw, rounded corners] (exit2)   {トンネルA,Bの中};     
+      \node at (0,3)   [rectangle, draw,rounded corners] (outside2) {Inside of a tunnel};
+      \node at (4.5,3) [rectangle, draw,rounded corners] (enter2)   {Entrance of a tunnel};
+      \node at (8,3)   [rectangle, draw, rounded corners] (inside2) {Inside of a tunnel C};
+      \node at (11,3)  [rectangle, draw, rounded corners] (exit2)   {Inside of a tunnel A or B};     
       \draw[->] (outside2)--(enter2);
       \draw[->] (enter2)  --(inside2);
       \draw[->] (inside2) --(exit2);
@@ -549,24 +419,27 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
   \end{center}
 \end{figure}
 
-\newpage
 
 \subsection{Appendix of Tunnel Troll Theorem}
 \subsubsection{Entrance of TunnelA,B}
-Tunnelの入口に固定されたbeadが、どの方向から来たかで場合分けをする(fig.\ref{TTT_tunnel_direction})。
-その結果３通りの場合分けが出来るが、以下のようにいずれの場合もbondの総数は減少する。
+
+Fig.\ref{TTT_tunnel_direction} exhibits all the three kinds of entrance of tunnel A, B.
+Any cases in $\delta = 1, \alpha = 2$ consume some binding capabilities into the follows.
+
 
 \begin{itemize}
-\item{Pattern1の時}\\
-  四角で表されてる2頂点が埋まっているかどうかで分けられる。もしどちらも埋まっているとすると、トンネルの入り口ではなくトンネルの中になってしまうので、必ず少なくとも一方は空いている。今、頂点cが空いているとする。すると頂点Aの周囲は3点以上空いている事になる。Aの周囲2頂点はback boneとしてつながっている。そのためもしBが既にbondを消費しているならば、残りの1頂点に存在するbeadとのみbondを結ぶ事となる。頂点Bの周囲は３点空いている事を考えるとBは1つ以上のbondを残している。そのため入口に固定されるbeadと必ずbondを結ぶ事になる。もし頂点dも空いている場合、固定されるbeadはbondを２つとも消費し、かつ既存のbondも２つ消費しbondの総数は減少する。頂点dが埋まっていたとしても、頂点Aとは同様にしてbondを結び、決定的に固定するために頂点Bかdとbondを結ぶ。故にいずれの場合もbondの総数は減少する。
+\item{Case of $t_0$}\\
+  Let us consider points of $c,d$ either occupied or not. A point $c$ or $d$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $c$ is free, then $p^\prime$ has to be bound to a bead except $A$ due to deterministically stabilize. In this situation, at least three neighbors of A are free that is at most three neighbors of A are occupied. A leave at least one binging capability because beads of beighbors are predecessor and successor in addition A is able to consume itself binging capabilities only one-time. Hence, $p^\prime$ must be bound to A. Thus, a case of $t_0$ consumes some binding capabilities.
 
-\item{Pattern2の時}\\
-  Pattern1と同様にして頂点c,dが埋まっているかどうかで分けられる。Pattern1の例よりどちらも埋まっていることはない。頂点cが空いている場合決定的にbeadを固定するためにA,B少なくとも一方のbondを消費する。一方、頂点cが埋まっていて頂点dが空いている場合、Pattern1のように、固定されるbeadと頂点Bはbondを結ぶためbondを消費する。
+\item{Case of $t_{\pm 60}$}\\
+  In this case, a point $c$ or $d$ is free, too. If $c$ is free, $p^\prime$ has to be bound to A or B. If $c$ is occupied, then $d$ is free. This time, B has some binding capabilitie so $p^\prime$ has to be bound to B.
+  
 
-  Pattern2の場合、固定されるbeadはbondを１つ増やす可能性がある。もし仮にbondが増えたとするならば、そのbondを使用するためはに頂点cかdにbeadが固定される必要がある。しかし今頂点BとPはback boneによってつながっている。Jordan curve theoremより、これ以降に転写され得るbeadの領域に頂点c,dは含まれないため、このbondを消費することはできず、bondの数は増加しない。よって既存のbondを減少させ、かつ新たに有効なbondを増やさないことからbondの総数は減少する。
+  In this situation, $p^\prime$ is able to supply a binding capability. if this capability is active, $p^\prime$ bind a bead into $c$ or $d$. However, B and P are exist in back bone. According to Jordan curve theorem, any successors of $p^\prime$ cannot reach a point $c$ or $d$ so this capability is inactive. Thus, a case of $t_{\pm 60}$ consumes some binding capabilities.
 
-\item{Pattern3の時}\\
-  頂点nは空いているため、決定的に固定するために頂点c,d,eのいずれかとbondを結ぶ必要がある、そのため既存のbondを消費する。一方、固定されるbeadはbondを１つ増やす可能性があるが、pattern2と同様に頂点AとPがback boneでつながっているため、これ以降に転写され得るbeadの領域に頂点c,d,eは含まれていないため、増やされるbondを使用できない。よって既存のbondを減少させ、かつ新たに有効なbondを増やさないことからbondの総数は減少する。
+\item{Case of $t_{\pm 120}$}\\
+  Binding capabilities that $p^\prime$ supply are inactive according to Jordan curve theorem on A and P. Moreover, $p^\prime$ has to be bound to one of $c$, $d$,$e$ in order to deterministically stabilize.
+Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
   
 \end{itemize}
 
@@ -581,6 +454,7 @@ Tunnelの入口に固定されたbeadが、どの方向から来たかで場合�
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
+            \node[above] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
               \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
@@ -605,7 +479,7 @@ Tunnelの入口に固定されたbeadが、どの方向から来たかで場合�
             \node[transform canvas={shift=(-120:1.5)},left] {d};
           \end{scope}
 
-          \node at (2,-0.5) {Pattern 1};
+          \node at (2,-0.5) {$t_0$};
         \end{tikzpicture}
       \end{minipage}
 
@@ -616,6 +490,7 @@ Tunnelの入口に固定されたbeadが、どの方向から来たかで場合�
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
+            \node[below] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
               \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
@@ -641,7 +516,7 @@ Tunnelの入口に固定されたbeadが、どの方向から来たかで場合�
             \node[transform canvas={shift=(-120:1.5)},left] {d};
           \end{scope}
 
-          \node at (2,-0.5) {Pattern 2};
+          \node at (2,-0.5) {$t_{\pm 60}$};
         \end{tikzpicture}
       \end{minipage}
 
@@ -652,6 +527,7 @@ Tunnelの入口に固定されたbeadが、どの方向から来たかで場合�
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
+            \node[above] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
               \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
@@ -678,12 +554,12 @@ Tunnelの入口に固定されたbeadが、どの方向から来たかで場合�
             \node[transform canvas={shift=(0:1.5)},below] {n};
           \end{scope}
 
-          \node at (2,-0.5) {Pattern 3};
+          \node at (2,-0.5) {$t_{\pm 120}$};
         \end{tikzpicture}
       \end{minipage}
       
     \end{tabular}
-    \caption{入口へ至る方向}
+    \caption{Direction into a entrance}
     \label{TTT_tunnel_direction}
   \end{center}
 \end{figure}
@@ -691,15 +567,33 @@ Tunnelの入口に固定されたbeadが、どの方向から来たかで場合�
 
 \subsubsection{Exit of Tunnel}
 
-Tunnelの出口について場合分けを考える(fig.\ref{TTT_tunnel_exit})。この場合分けは頂点c,dについてその頂点が既に埋まっているか埋まっていないかで場合分けされている。なお、頂点c,dの両方とも埋まっている場合は、Tunnelの出口ではなくトンネルの中になるため場合分けに含めない。今、出口に固定されるbeadの1つ前のbeadが、$a$以下のbond消費したとする。すると以下で示されるようにTunnelの出口で増加するbondの数は高々$a$程度となる。つまり、Tunnelを出る事によって増加するbondの最大値は$0$となる。
+
+Fig.\ref{TTT_tunnel_exit} exhibits all the two kings of exit of tunnel. 
+At least one of point $c$ or $d$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
+
+\paragraph{$\delta = 1, \alpha = 2$}
+ Any cases of $\delta = 1, \alpha = 2$ supply at most $a$ binding capabilities into follows where $a$ is number of predecessor of $p^\prime$ consumes binging capabilities.
 
 \begin{itemize}
-\item{Pattern1の時}\\
-  頂点c,dが空いていたとする。入口の時と同様に考えると、頂点A,Bはbondを残しているため、頂点Pは頂点A,Bとbondを結ぶ。すなわち$a=2$となる。$\alpha = 2$を考えるとTunnel出口に固定されるbeadのよって増加するbondは高々$a=2$程度。
-\item{Pattern2の時}\\
-  頂点cのみが埋まっていたとする。頂点Bはbondを残しているため、頂点PとBはbondを結ぶ。よって$a \geq 1$また、Tunnel出口で固定されるbeadはbondを$2$増加させる可能性があるが、空いている頂点e,dについて一方はback boneとして消費されるため、このbeadが増加させたbondを使用できるのは後にbeadが頂点e,dのいずれかに来た時のみ。よってTunnel出口に固定されるbeadは有効なbondを高々$1$程度しか増やさない。よって増加するbondの数は高々$a$程度であることが言える。
+\item{Case of $c$ and $d$ are free}\\
+  This case can be regarded same situation as entrance. See Fig.\ref{TTT_tunnel_exit} (Left). Predecessor P has to be bound A and B because each of A and B leave binding capabilities. Hence, at least $a=2$. This time, $\alpha = 2$ that is this case supply at most only $a$ binding capabilities.
+  
+\item{Case of $c$ is occupied}\\
+  See Fig.\ref{TTT_tunnel_exit} (Right). If $c$ is pccupied, then $d$ is free so that P has to be bound B. Hence, at least $a=1$. This case can supply two binding capabilities but $p^\prime$ can bind to only one of $e$ or $d$ because $e$ or $d$ will be occupied a successor of $p^\prime$. Therefore, this case supply at most only $a=1$ active binding capabiliry.
   
 \end{itemize}
+
+\paragraph{$\delta = 1, \alpha \geq 3$}
+Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into follows.
+
+\begin{itemize}
+\item{Case of $c$ and $d$ are free}\\
+  In $\alpha \geq 3$, if three neighbors of a bead leave, then it can supply two binding capabilities. Therefore Predecessor P has to be bound A and B, and $p^\prime$, too. In this case, at least consumes four bindings and supplies at most two bindings. Thus, it consumes some binding capabilities, totally.
+  
+\item{Case of $c$ is occupied}\\
+  In this case, B leave at least two bindings and A, $c$ also leave at least one binding. Therefore P has to be bound A and B, and $p^\prime$ also has to be bound B and $c$. In this case, at least consumes four bindings and supplies at most one binding. Thus, it consumes some binding capabiliries, totally.
+\end{itemize}
+
 
 \begin{figure}[h]
   \begin{center}
@@ -712,6 +606,7 @@ Tunnelの出口について場合分けを考える(fig.\ref{TTT_tunnel_exit})�
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
+            \node[above] at (0,0) {$p^\prime$};
 
             
             \foreach \theta in {120,-120,180}{
@@ -733,7 +628,7 @@ Tunnelの出口について場合分けを考える(fig.\ref{TTT_tunnel_exit})�
             \node[transform canvas={shift=(-60:1.5)},left] {d};
           \end{scope}
 
-          \node at (2,-0.5) {Pattern 1};
+          \node at (2,-0.5) {Point $c$ and $d$ are free};
         \end{tikzpicture}
       \end{minipage}
 
@@ -744,7 +639,7 @@ Tunnelの出口について場合分けを考える(fig.\ref{TTT_tunnel_exit})�
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
-
+            \node[above] at (0,0) {$p^\prime$};
             
             \foreach \theta in {120,-120,180,60}{
               \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
@@ -766,14 +661,14 @@ Tunnelの出口について場合分けを考える(fig.\ref{TTT_tunnel_exit})�
             \node[transform canvas={shift=(0:1.5)},right] {e};
           \end{scope}
           
-          \node at (2,-0.5) {Pattern 2};
+          \node at (2,-0.5) {Point $c$ is occupied};
         \end{tikzpicture}
       \end{minipage}
 
       
       
     \end{tabular}
-    \caption{出口のパターン}
+    \caption{Exit of Tunnel}
     \label{TTT_tunnel_exit}
   \end{center}
 \end{figure}
@@ -986,5 +881,8 @@ TunnelCの入口のbeadがTunnelを使わずに固定される時、そのbead�
     \label{TTT_tunnelC_enter_usingBond}
   \end{center}
 \end{figure}
+
+
+By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities.
 
 \end{document}
