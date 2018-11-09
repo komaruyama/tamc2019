@@ -13,6 +13,8 @@
 \usepackage{amsmath, amssymb}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
+\usepackage{wasysym}
+
 \usetikzlibrary{automata}
 
 
@@ -21,10 +23,19 @@
 \title{On finiteness of structures produced deterministically by oritatami co-transcriptional folding
 \thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~S.}
 }
-\author{Shinnosuke Seki\inst{2}\thanks{Corresponding author (\email{s.seki@uec.ac.jp})}}
-\institute{Akita University 
+\author{
+Szil\'{a}rd Zsolt Fazekas\inst{1} \and
+Shinnosuke Seki\inst{2}\thanks{Corresponding author}}
+\institute{
+Akita University, 
+Graduate School of Engineering Science, 
+1-1 Tegate Gakuen-machi, Akita, 0108502, Japan \\
+\email{szilard.fazekas@ie.akita-u.ac.jp}
 \and
-The University of Electro-Communications, 1-5-1 Chofugaoka, Chofu, Tokyo, 1828585, Japan
+The University of Electro-Communications, 
+Graduate School of Informatics and Engineering, 
+1-5-1 Chofugaoka, Chofu, Tokyo, 1828585, Japan \\
+\email{s.seki@uec.ac.jp}
 }
 
 \begin{document}
@@ -40,6 +51,14 @@ The University of Electro-Communications, 1-5-1 Chofugaoka, Chofu, Tokyo, 182858
 
 \section{Preliminaries}
 \input{uos_preliminaries.tex}
+
+\begin{theorem}\label{thm:OS_to_2dTM}
+	There exists a Turing machine with 2-dimensional tape that simulates any oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time $O(((|\sigma| + |w|)\delta)^\delta)$. 
+\end{theorem}
+\begin{proof}
+	Take any step in the computation, up to which some $i \ge 0$ first beads of $w$ have been stabilized, with the last bead at a point $p$. 
+	The number of all possible elongations of the current conformation by the next $\delta$-beads is $(6 \times 5^{\delta-1}) \times ((2^4)^{\delta-1} \times 2^5)$. 
+\end{proof}
 
 \section{Case of $\delta = 1$}
 

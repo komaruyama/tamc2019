@@ -7,8 +7,9 @@ The \textit{length} of $w$ is denoted by $|w|$, that is, $|w| = n$.
 For two indices $i, j$ with $1 \le i \le j \le n$, we let $w[i..j]$ refer to the subsequence $b_i b_{i+1} \cdots b_{j-1}b_j$; if $i = j$, then $w[i..i]$ is simplified as $w[i]$. 
 For $k \ge 1$, $w[1..k]$ is called a \textit{prefix} of $w$. 
 
-Oritatami systems folds their transcript, which is a sequence of beads, over the triangular grid graph $\mathbb{T} = (V, E)$ cotranscriptionally. 
+Oritatami systems fold their transcript, which is a sequence of beads, over the triangular grid graph $\mathbb{T} = (V, E)$ cotranscriptionally. 
 We designate one point in $V$ as the origin $O$ of $\mathbb{T}$. 
+For a point $p \in V$, let $\hexagon_p^d$ denote the set of points which lie in the regular hexagon of radius $d$ centered at the point $p$. 
 A directed path $P = p_1 p_2 \cdots p_n$ in $\mathbb{T}$ is a sequence of \textit{pairwise-distinct} points $p_1, p_2, \ldots, p_n \in V$ such that $\{p_i, p_{i+1}\} \in E$ for all $1 \le i < n$. 
 Its $i$-th point is referred to as $P[i]$. 
 Now we are ready to abstract RNA single-stranded structures in the name of conformation. 
@@ -19,14 +20,22 @@ A \textit{rule set} $R \subseteq \Sigma \times \Sigma$ is a symmetric relation o
 A bond $\{i, j\} \in H$ is \textit{valid with respect to $R$}, or simply $R$-valid, if $(w[i], w[j]) \in R$. 
 This conformation $C$ is \textit{$R$-valid} if all of its bonds are $R$-valid. 
 For an integer $\alpha \ge 1$, $C$ is \textit{of arity $\alpha$} if it contains a bead that forms $\alpha$ bonds but none of its bead forms more. 
-By $\mathcal{C}_{\le \alpha}$, we denote the set of all conformations of arity at most $\alpha$. 
+By $\mathcal{C}_{\le \alpha}(\Sigma)$, we denote the set of all conformations over $\Sigma$ whose arity is at most $\alpha$; its argument $\Sigma$ is omitted whenever $\Sigma$ is clear from the context. 
 
 The oritatami system grows conformations by an operation called elongation. 
 Given a rule set $R$ and an $R$-valid conformation $C_1 = (P, w, H)$, we say that another conformation $C_2$ is an elongation of $C_1$ by a bead $b \in \Sigma$, written as $C_1 \xrightarrow{R}_b C_2$, if $C_2 = (P p, wb, H \cup H')$ for some point $p \in V$ not along the path $P$ and set $H' \subseteq \bigl\{ \{i, |w|+1\} \bigm| 1 \le i < |w|, \{P[i], p\} \in E, (w[i], b) \in R \bigr\}$ of bonds formed by the $b$-bead; this set $H'$ can be empty. 
 Note that $C_2$ is also $R$-valid. 
 This operation is recursively extended to the elongation by a finite sequence of beads as: for any conformation $C$, $C \xrightarrow{R}_\lambda^* C$; and for a finite sequence of beads $w \in \Sigma^*$ and a bead $b \in \Sigma$, a conformation $C_1$ is elongated to a conformation $C_2$ by $wb$, written as $C_1 \xrightarrow{R}_{wb}^* C_2$, if there is a conformation $C'$ that satisfies $C_1 \xrightarrow{R}_w^* C'$ and $C' \xrightarrow{R}_b C_2$. 
 
-An \textit{oritatami system} (OS) is a 6-tuple $\Xi = (\Sigma, R, \alpha, \delta, \sigma, w)$, where $\Sigma$ is a set of bead types, $R\subseteq \Sigma \times \Sigma$ is a rule set, $\alpha$ is an arity, $\delta \ge 1$ is a parameter called the \textit{delay}, $\sigma$ is an initial $R$-valid conformation of arity at most $\alpha$ over $\Sigma$ called the \textit{seed}, upon which its finite \textit{transcript} $w \in \Sigma^*$ is to be folded by stabilizing beads of $w$ one at a time so as to minimize energy collaboratively with the succeeding $\delta{-}1$ nascent beads. 
+An \textit{oritatami system} (OS) $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ is composed of
+\begin{itemize}
+\item a set $\Sigma$ of bead types, 
+\item a rule set $R \subseteq \Sigma \times \Sigma$, 
+\item a positive integer $\delta$ called the \textit{delay}, 
+\item a positive integer $\alpha$ called the \textit{arity}, 
+\item an initial $R$-valid conformation $\sigma \in C_{\le \alpha}(\Sigma)$ called the \textit{seed}, upon which 
+\item its (possibly infinite) \textit{transcript} $w \in \Sigma^* \cup \Sigma^\omega$ is to be folded by stabilizing beads of $w$ one at a time so as to minimize energy collaboratively with the succeeding $\delta{-}1$ nascent beads. 
+\end{itemize}
 The energy of a conformation $C = (P, w, H)$, denoted by $\Delta G(C)$, is defined to be ${-}|H|$; the more bonds a conformation has, the more stable it gets. 
 The set $\mathcal{F}(\Xi)$ of conformations \textit{foldable} by the system $\Xi$ is recursively defined as: the seed $\sigma$ is in $\mathcal{F}(\Xi)$; and provided that an elongation $C_i$ of $\sigma$ by the prefix $w[1..i]$ be foldable (i.e., $C_0 = \sigma$), its further elongation $C_{i+1}$ by the next bead $w[i+1]$ is foldable if 
 \begin{equation}\label{eq:OS_CF}
@@ -44,15 +53,16 @@ C \xrightarrow{R}^*_{w[i+2...i+k]}C', k\le \delta, C' \in \mathcal{C}_{\le \alph
 Then we say that the bead $w[i+1]$ and the bonds it forms are \textit{stabilized} according to $C_{i+1}$. 
 Note that an arity-$\alpha$ oritatami system cannot fold any conformation of arity larger than $\alpha$. 
 A conformation foldable by $\Xi$ is \textit{terminal} if none of its elongations is foldable by $\Xi$. 
-The OS $\Xi$ is \textit{deterministic} if for all $i \ge 0$, there exists at most one $C_{i+1}$ that satisfies \eqref{eq:OS_CF}. 
+The oritatami system $\Xi$ is \textit{deterministic} if for all $i \ge 0$, there exists at most one $C_{i+1}$ that satisfies \eqref{eq:OS_CF}. 
 A deterministic oritatami system folds into a unique terminal conformation. 
 An oritatami system with the empty rule set just folds into an arbitrary elongation of its seed nondeterministically. 
 Thus, the rule set is always assumed to be non-empty. 
 
-In this paper, we mainly consider the unary oritatami system. 
+In the second half of this paper, we consider the unary oritatami system. 
 An oritatami system is \textit{unary} if its bead type set $\Sigma$ is of size 1. 
 Its sole bead type is denoted by $a$, that is, $\Sigma = \{a\}$. 
 Its only possible rule is $(a, a)$ so that the non-empty rule set assumption implies that its rule set is $R = \{(a, a)\}$. 
 Its transcript is a sequence of $a$-beads. 
 That is to say, the behavior of a unary oritatami system is fully determined by the delay, arity, and seed. 
+
 
