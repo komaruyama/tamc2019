@@ -46,10 +46,13 @@ Note that an arity-$\alpha$ oritatami system cannot fold any conformation of ari
 A conformation foldable by $\Xi$ is \textit{terminal} if none of its elongations is foldable by $\Xi$. 
 The OS $\Xi$ is \textit{deterministic} if for all $i \ge 0$, there exists at most one $C_{i+1}$ that satisfies \eqref{eq:OS_CF}. 
 A deterministic oritatami system folds into a unique terminal conformation. 
+An oritatami system with the empty rule set just folds into an arbitrary elongation of its seed nondeterministically. 
+Thus, the rule set is always assumed to be non-empty. 
 
 In this paper, we mainly consider the unary oritatami system. 
 An oritatami system is \textit{unary} if its bead type set $\Sigma$ is of size 1. 
-Its sole element is denoted by $a$, that is, $\Sigma = \{a\}$. 
-Its only possible rule is $(a, a)$ and without that, the system would not fold into anything meaningful but just into any elongation of its seed nondeterministically. 
-
+Its sole bead type is denoted by $a$, that is, $\Sigma = \{a\}$. 
+Its only possible rule is $(a, a)$ so that the non-empty rule set assumption implies that its rule set is $R = \{(a, a)\}$. 
+Its transcript is a sequence of $a$-beads. 
+That is to say, the behavior of a unary oritatami system is fully determined by the delay, arity, and seed. 
 
