@@ -12,7 +12,7 @@ We designate one point in $V$ as the origin $O$ of $\mathbb{T}$.
 A directed path $P = p_1 p_2 \cdots p_n$ in $\mathbb{T}$ is a sequence of \textit{pairwise-distinct} points $p_1, p_2, \ldots, p_n \in V$ such that $\{p_i, p_{i+1}\} \in E$ for all $1 \le i < n$. 
 Its $i$-th point is referred to as $P[i]$. 
 Now we are ready to abstract RNA single-stranded structures in the name of conformation. 
-A \textit{conformation} $C$ is a triple $(P, w, H)$ of a directed path $P$ in $\mathbb{T}$, $w \in \Sigma^*$ of the same length as $P$, and a set of h-interactions $H \subseteq \bigl\{\{i, j\} \bigm| 1 \le i, i+2 \le j, \{P[i], P[j]\} \in E \bigr\}$. 
+A \textit{conformation} $C$ (over $\Sigma$) is a triple $(P, w, H)$ of a directed path $P$ in $\mathbb{T}$, $w \in \Sigma^*$ of the same length as $P$, and a set of h-interactions $H \subseteq \bigl\{\{i, j\} \bigm| 1 \le i, i+2 \le j, \{P[i], P[j]\} \in E \bigr\}$. 
 This is to be interpreted as the sequence $w$ being folded along the path $P$ in such a manner that its $i$-th bead $w[i]$ is placed at the $i$-th point $P[i]$ and the $i$-th and $j$-th beads are bound (by a hydrogen-bond-based interaction) if and only if $\{i, j\} \in H$. 
 The condition $i+2 \le j$ represents the topological restriction that two consecutive beads along the path cannot be bound. 
 A \textit{rule set} $R \subseteq \Sigma \times \Sigma$ is a symmetric relation over $\Sigma$, that is, for all bead types $a, b \in \Sigma$, $(a, b) \in R$ implies $(b, a) \in R$. 
@@ -26,10 +26,10 @@ Given a rule set $R$ and an $R$-valid conformation $C_1 = (P, w, H)$, we say tha
 Note that $C_2$ is also $R$-valid. 
 This operation is recursively extended to the elongation by a finite sequence of beads as: for any conformation $C$, $C \xrightarrow{R}_\lambda^* C$; and for a finite sequence of beads $w \in \Sigma^*$ and a bead $b \in \Sigma$, a conformation $C_1$ is elongated to a conformation $C_2$ by $wb$, written as $C_1 \xrightarrow{R}_{wb}^* C_2$, if there is a conformation $C'$ that satisfies $C_1 \xrightarrow{R}_w^* C'$ and $C' \xrightarrow{R}_b C_2$. 
 
-An \textit{oritatami system} (OS) is a 6-tuple $\Xi = (\Sigma, R, \alpha, \delta, \sigma, w)$, where $R$ is a rule set, $\alpha$ is an arity, $\delta \ge 1$ is a parameter called the \textit{delay}, $\sigma$ is an initial $R$-valid conformation of arity at most $\alpha$ called the \textit{seed}, upon which its finite \textit{transcript} $w \in \Sigma^*$ is to be folded by stabilizing beads of $w$ one at a time so as to minimize energy collaboratively with the succeeding $\delta{-}1$ nascent beads. 
+An \textit{oritatami system} (OS) is a 6-tuple $\Xi = (\Sigma, R, \alpha, \delta, \sigma, w)$, where $\Sigma$ is a set of bead types, $R\subseteq \Sigma \times \Sigma$ is a rule set, $\alpha$ is an arity, $\delta \ge 1$ is a parameter called the \textit{delay}, $\sigma$ is an initial $R$-valid conformation of arity at most $\alpha$ over $\Sigma$ called the \textit{seed}, upon which its finite \textit{transcript} $w \in \Sigma^*$ is to be folded by stabilizing beads of $w$ one at a time so as to minimize energy collaboratively with the succeeding $\delta{-}1$ nascent beads. 
 The energy of a conformation $C = (P, w, H)$, denoted by $\Delta G(C)$, is defined to be ${-}|H|$; the more bonds a conformation has, the more stable it gets. 
 The set $\mathcal{F}(\Xi)$ of conformations \textit{foldable} by the system $\Xi$ is recursively defined as: the seed $\sigma$ is in $\mathcal{F}(\Xi)$; and provided that an elongation $C_i$ of $\sigma$ by the prefix $w[1..i]$ be foldable (i.e., $C_0 = \sigma$), its further elongation $C_{i+1}$ by the next bead $w[i+1]$ is foldable if 
-\begin{equation}\label{eq:folding}
+\begin{equation}\label{eq:OS_CF}
 C_{i+1} \in \argmin_{
 \substack{
 C \in \mathcal{C}_{\le \alpha} s.t. \\
@@ -40,3 +40,16 @@ C_i \xrightarrow{R}_{w[i+1]}C \\
 C \xrightarrow{R}^*_{w[i+2...i+k]}C', k\le \delta, C' \in \mathcal{C}_{\le \alpha}
 \Bigr\}.
 \end{equation}
+%
+Then we say that the bead $w[i+1]$ and the bonds it forms are \textit{stabilized} according to $C_{i+1}$. 
+Note that an arity-$\alpha$ oritatami system cannot fold any conformation of arity larger than $\alpha$. 
+A conformation foldable by $\Xi$ is \textit{terminal} if none of its elongations is foldable by $\Xi$. 
+The OS $\Xi$ is \textit{deterministic} if for all $i \ge 0$, there exists at most one $C_{i+1}$ that satisfies \eqref{eq:OS_CF}. 
+A deterministic oritatami system folds into a unique terminal conformation. 
+
+In this paper, we mainly consider the unary oritatami system. 
+An oritatami system is \textit{unary} if its bead type set $\Sigma$ is of size 1. 
+Its sole element is denoted by $a$, that is, $\Sigma = \{a\}$. 
+Its only possible rule is $(a, a)$ and without that, the system would not fold into anything meaningful but just into any elongation of its seed nondeterministically. 
+
+
