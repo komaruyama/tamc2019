@@ -9,7 +9,9 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{tikz}
 \usepackage{calc}
+\usepackage{amsmath,amssymb}
 \usetikzlibrary{automata}
+
 
 
 
@@ -834,7 +836,7 @@ Let us consider number of consumed by $w_{i-2}$ (Fig.\ref{TTT_tunnelC_enter_usin
 
 
 
-\begin{figure}[h]
+\begin{figure}
   \begin{center}
     \begin{tabular}{cc}
       
@@ -884,6 +886,62 @@ Let us consider number of consumed by $w_{i-2}$ (Fig.\ref{TTT_tunnelC_enter_usin
 \end{figure}
 
 
-By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities.
+By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities. If the sequence $S$ is free from any subsequence of the form $bt^+bt^+$, then it can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+$. Assume the length of $\sigma$ is $n$, seed supplies at most $2n$ binding capabilities. Therefore formula \ref{TTT_only_hold} hold.
+
+\begin{eqnarray}
+  \exists i \in \mathbb{N} \quad s.t. \quad u_{i-1} , u_i , u_{i+1} , u_{i+2} , \cdots \in \{ b \}
+  \label{TTT_only_bond}
+\end{eqnarray}
+
+
+Let us represent $S$ as $S[i.i+1...] = v_i v_{i+1} v_{i+2} \cdots$ for some $v_i, v_{i+1}, v_{i+2}, \cdots \in \{ a, o\}$ where if $v_k$ is $a$, then $v_{k+1}$ is bound to $v_{k-1}$, if $v_k$ is $o$, then $v_{k+1}$ is NOT bound to $v_{k-1}$.
+
+
+Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $v_{i-1}$ consumes some binding capabilities because $S[i-1]$ is $b$. If the number of $v_{i-1}$'s bindings is one binding, then $v_{i+1}$ has to be bound except A or B so that $v_{i+1}$ must consumes two bindings except the case of A and B are occupied and $v_i$ consumes at least one binding. If A and B are occupied, then $v_{i-1}$'s binginds are inactive that is $v_{i-1}$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $v_{i-1}$ dose Not have any bindings, then $v_{i-1}$ already consumes two bindings. In addition, $v_i$ and $v_{i+1}$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold.
+
+\begin{eqnarray}
+  \exists j \in \mathbb{N} \quad s.t. \quad u_j , u_{j+1} , u_{j+2} , \cdots \in \{ a \}
+  \label{TTT_only_a}
+\end{eqnarray}
+
+\begin{eqnarray}
+  | S | > \forall m \in \mathbb{N} \quad \to \quad \exists n \in \mathbb{N} \quad s.t. \quad S[n], S[n+1], \cdots \in \{ a \}
+  \label{TTT_structure}
+\end{eqnarray}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thick, rounded corners = 10pt]
+      (-1.5,2)--(3,2)--(3,-2.5)--(-1.5,-2.5)-- cycle;
+      
+      \draw[transform canvas={shift=(-120:1.5)}](-0.1,-0.1)--(0.1,0.1);
+      \draw[transform canvas={shift=(-120:1.5)}](0.1,-0.1)--(-0.1,0.1);
+      
+      \fill(0:0) circle [radius=0.1];
+      \fill(0:1.5) circle [radius=0.1];
+      \fill[shift=(0:1.5)](40:1.5) circle [radius=0.1];
+
+      
+      \draw[->] (-120:1.4) edge[bend left] (-120:0.1);
+      \draw[->] (0:0) -- (0:1.3);
+      \draw[->,transform canvas={shift=(0:1.5)}] (0:0.1) edge[bend right] (40:1.3);
+
+      \draw [shift=(60:1.5)] (-0.1,-0.1) rectangle (0.1,0.1);
+      \draw [shift=(-60:1.5)] (-0.1,-0.1) rectangle (0.1,0.1);
+      
+      \node[below] at (-120:1.5) {$v_{i-2}$};
+      \node[above] at (0:0) {$v_{i-1}$};
+      \node[above] at (0:1.5) {$v_i$};
+      \node[left, shift=(0:1.5)] at (40:1.5) {$v_{i+1}$};
+
+      \node[right] at (60:1.5) {A};
+      \node[right] at (-60:1.5) {B};
+        
+    \end{tikzpicture}
+    \caption{Case of $S[i$}
+    \label{TTT_case_of_o}
+  \end{center}
+\end{figure}
 
 \end{document}
