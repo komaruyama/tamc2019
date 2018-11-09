@@ -53,11 +53,12 @@ Graduate School of Informatics and Engineering,
 \input{uos_preliminaries.tex}
 
 \begin{theorem}\label{thm:OS_to_2dTM}
-	There exists a Turing machine with 2-dimensional tape that simulates any oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time $O(((|\sigma| + |w|)\delta)^\delta)$. 
+	There exists a Turing machine with 2-dimensional tape that simulates any oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time ??. 
 \end{theorem}
 \begin{proof}
 	Take any step in the computation, up to which some $i \ge 0$ first beads of $w$ have been stabilized, with the last bead at a point $p$. 
-	The number of all possible elongations of the current conformation by the next $\delta$-beads is $(6 \times 5^{\delta-1}) \times ((2^4)^{\delta-1} \times 2^5)$. 
+	The number of all possible elongations of the current conformation by the next $\delta$-beads is $(6 \times 5^{\delta-1}) \times ((2^4)^{\delta-1} \times 2^5) \in 2^{O(\delta)}$. 
+	We can check for each of these elongations whether its arity is at most $\alpha$ or not and whether it is $R$-valid or not in time $O(\delta)$. 
 \end{proof}
 
 \section{Case of $\delta = 1$}
