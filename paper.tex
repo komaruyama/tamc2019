@@ -52,14 +52,51 @@ Graduate School of Informatics and Engineering,
 \section{Preliminaries}
 \input{uos_preliminaries.tex}
 
+
+\begin{proposition}\label{prop:check_validity}
+	For any rule set $R$, arity $\alpha$ and conformation $C = (P,w,H)$ it is possible to check whether $C$ is $R$-valid and whether $C\in \mathcal{C}_{\leq \alpha}$ in time $\mathcal{O}(|H|\cdot|w|\cdot|R|)$.
+\end{proposition}
+\begin{proof}
+	To check whether $C$ is $R$-valid:
+	\begin{enumerate}
+		\item FOR each $(i,j)\in H$:
+		\item \hspace{1cm} IF $(w[i],w[j])\notin R$ THEN answer NO and HALT
+		\item answer YES and HALT
+	\end{enumerate}	
+	Checking the condition in 2. can be done in $\mathcal{O}(|w|\cdot|R|)$ time for any reasonable representation of $w$ and $R$, hence the whole process takes $\mathcal{O}(|H|\cdot |w|\cdot|R|)$ time.	
+	To check the arity constraint $C\in \mathcal{C}_{\leq \alpha}$: 
+	\begin{enumerate}
+		\item FOR each $i\in \{1,\dots,|w|\}$:
+		\item \hspace{1cm} IF $\mathrm{degree}(i)=|\{j | (i,j)\in H \}|>\alpha$ THEN answer NO and HALT
+		\item answer YES and HALT
+	\end{enumerate}	
+	Checking the condition in 2. can be done in $\mathcal{O}(|H|)$ time for any reasonable representation of $H$, hence the whole process takes $\mathcal{O}(|w|\cdot|H|)$ time.
+\end{proof}
 \begin{theorem}\label{thm:OS_to_2dTM}
-	There exists a Turing machine with 2-dimensional tape that simulates any oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time ??. 
+	There is an algorithm that simulates any oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$. 
 \end{theorem}
 \begin{proof}
 	Take any step in the computation, up to which some $i \ge 0$ first beads of $w$ have been stabilized, with the last bead at a point $p$. 
 	The number of all possible elongations of the current conformation by the next $\delta$-beads is $(6 \times 5^{\delta-1}) \times ((2^4)^{\delta-1} \times 2^5) \in 2^{O(\delta)}$. 
-	We can check for each of these elongations whether its arity is at most $\alpha$ or not and whether it is $R$-valid or not in time $O(\delta)$. 
+	By Proposition~\ref{prop:check_validity}, we can check for each of these elongations whether its arity is at most $\alpha$ or not and whether it is $R$-valid or not in time $\mathcal{O}((2^4)^{\delta-1}\cdot2^5\cdot \delta\cdot|R|)=2^{\mathcal{O}(\delta)}\cdot|R|$.  Therefore, the total running time is $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$.
 \end{proof}
+
+\begin{corollary}
+	For fixed $\delta$ and $\alpha$, the class of problems solvable by oritatami systems $(\Sigma, R, \delta, \alpha, \sigma, w)$ is included in $\mathrm{DTIME}(n^3)$.
+\end{corollary}
+\begin{proof}
+	The claim follows from Theorem~\ref{thm:OS_to_2dTM} and the fact that $|R|$ is implicitly bounded by $|w|^2$.
+\end{proof}
+
+%\begin{corollary}\label{polytranscript}
+%	Let $k$ be a non-negative number. Let $\Sigma$, $H$, $\delta$, $\alpha$ be fixed and the transcript length bounded polynomially by the seed length, i.e., $|w|\in O(|\sigma|^k)$. Then, the language of seeds $\sigma$ accepted by an OS $(\Sigma, R, \delta, \alpha, \sigma, w)$ is in $\mathrm{DTIME}(|\sigma|^{2k})$.
+%\end{corollary}
+
+%If the transcript length is polynomially bounded by the seed length, than the accepted language is in $\mathrm{P}$. 
+
+Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \mathrm{EXP}$, so we can conclude that OS which cannot deterministically fold transcripts of length exponential in the length of the seed are not computationally universal.
+
+
 
 \section{Case of $\delta = 1$}
 
