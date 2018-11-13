@@ -1,12 +1,6 @@
 \documentclass[runningheads]{llncs}
 
 
-
-
-
-\usepackage[dvipdfmx]{color}
-
-\usepackage[dvipdfmx]{graphicx}
 \usepackage{tikz}
 \usepackage{calc}
 \usepackage{amsmath,amssymb}
@@ -26,9 +20,6 @@
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
-      \draw[thick, rounded corners = 10pt]
-      (-1,-1)--(7,-1)--(7,2)--(-1,2)-- cycle;
-
       \fill (0,0) circle[radius = 0.1];
       \fill (1.5,0) circle[radius = 0.1];
       \fill (3,0) circle[radius = 0.1];
@@ -67,13 +58,15 @@
 \subsection{Introduction}
 
 
-In this section, we prove that unary oritatami system can form infinitely at delay 1 and arity 1 deterministically moreover the infinite terminal which its oritatami system can yield is only zig-zag conformations shown in Fig\ref{TTT_zigzag}. 
+In this section, we prove that unary oritatami system can form infinitely at delay 1 and arity 2 deterministically and moreover that the only infinite conformations which its oritatami system can yield is only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
 
 
-Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its seed $\sigma$ consists of $n$ beads. Let us denote its transcript by $w = w_1 w_2 w_3 \cdots$ for some $w_1,w_2,w_3 \in \Sigma = \{e\}$. For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$ that is foldable by $\Xi$. Hence $C_0 = \sigma$.
+Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its seed $\sigma$ consists of $n$ beads.
+%Let us denote its transcript by $w = w_1 w_2 w_3 \cdots$ for some $w_1,w_2,w_3 \in \Sigma = \{e\}$.
+For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$ that is foldable by $\Xi$. Hence $C_0 = \sigma$.
 
 
-Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w_{i+1},w_{i+2},\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupt four neighbors of a point(Fig.\ref{TTT_tunnel_intro}). Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are not occupied. We call such beads as $p$ $inside\ of\ a\ tunnel$ and such beads as $p^\prime$ $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $a_{i-2}$ and $a_{i-1}$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $a_i$ cannot help but be stabilized at the other free neighbor. In this way, $a_i$ can get stabilized without being bound.
+Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w[i+1],w[i+2],\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupy four neighbors of a point (Fig.\ref{TTT_tunnel_intro}). Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such beads as $p$ $inside\ of\ a\ tunnel$ and such beads as $p^\prime$ $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
 
 
@@ -85,56 +78,56 @@ If a bead is stabilized through a tunnel section, then it can provide two bingin
   \begin{center}
     \begin{tikzpicture}
       \fill (0:0) circle [radius=0.05];
-      \fill (0:1.5) circle [radius=0.05];
-      \fill (180:1.5) circle [radius=0.05];
-      \node[above] at (0:1.5) { $p^\prime$ };
+      \fill (0:1.2) circle [radius=0.05];
+      \fill (180:1.2) circle [radius=0.05];
+      \node[above] at (0:1.2) { $p^\prime$ };
       \node[above] at (0:0) { $p$ };
-      \node[above] at (180:1.5) { $p^\prime$ };
+      \node[above] at (180:1.2) { $p^\prime$ };
       
-      \fill (60 : 1.5) circle [radius=0.1];
-      \fill (-60 : 1.5) circle [radius=0.1];
-      \fill (120 : 1.5) circle [radius=0.1];
-      \fill (-120 : 1.5) circle [radius=0.1];
-      \node[above] at (60 :1.5) { $a_{j_1}$ };
-      \node[above] at (-60 :1.5) { $a_{j_2}$ };
-      \node[above] at (120 :1.5) { $a_{j_3}$ };
-      \node[above] at (-120 :1.5) { $a_{j_4}$ };
+      \fill (60 : 1.2) circle [radius=0.1];
+      \fill (-60 : 1.2) circle [radius=0.1];
+      \fill (120 : 1.2) circle [radius=0.1];
+      \fill (-120 : 1.2) circle [radius=0.1];
+      \node[above] at (60 :1.2) { $a_{j_1}$ };
+      \node[above] at (-60 :1.2) { $a_{j_2}$ };
+      \node[above] at (120 :1.2) { $a_{j_3}$ };
+      \node[above] at (-120 :1.2) { $a_{j_4}$ };
       
       \begin{scope}[shift=(0:5)]
         \fill (0:0) circle [radius=0.1];
-        \fill (0:1.5) circle [radius=0.05];
-        \fill (180:1.5) circle [radius=0.1];
-        \node[above] at (180:1.5) { $a_{i-2}$ };
+        \fill (0:1.2) circle [radius=0.05];
+        \fill (180:1.2) circle [radius=0.1];
+        \node[above] at (180:1.2) { $a_{i-2}$ };
         \node[above] at (0:0) { $a_{i-1}$ };
-        \draw[->] (180:1.4) -- (180:0.1);
+        \draw[->] (180:1.1) -- (180:0.1);
         
-        \fill (60 : 1.5) circle [radius=0.1];
-        \fill (-60 : 1.5) circle [radius=0.1];
-        \fill (120 : 1.5) circle [radius=0.1];
-        \fill (-120 : 1.5) circle [radius=0.1];
-        \node[above] at (60 :1.5) { $a_{j_1}$ };
-        \node[above] at (-60 :1.5) { $a_{j_2}$ };
-        \node[above] at (120 :1.5) { $a_{j_3}$ };
-        \node[above] at (-120 :1.5) { $a_{j_4}$ };
+        \fill (60 : 1.2) circle [radius=0.1];
+        \fill (-60 : 1.2) circle [radius=0.1];
+        \fill (120 : 1.2) circle [radius=0.1];
+        \fill (-120 : 1.2) circle [radius=0.1];
+        \node[above] at (60 :1.2) { $a_{j_1}$ };
+        \node[above] at (-60 :1.2) { $a_{j_2}$ };
+        \node[above] at (120 :1.2) { $a_{j_3}$ };
+        \node[above] at (-120 :1.2) { $a_{j_4}$ };
       \end{scope}
       \begin{scope}[shift=(0:10)]
         \fill (0:0) circle [radius=0.1];
-        \fill (0:1.5) circle [radius=0.1];
-        \fill (180:1.5) circle [radius=0.1];
-        \node[above] at (180:1.5) { $a_{i-2}$ };
+        \fill (0:1.2) circle [radius=0.1];
+        \fill (180:1.2) circle [radius=0.1];
+        \node[above] at (180:1.2) { $a_{i-2}$ };
         \node[above] at (0:0) { $a_{i-1}$ };
-        \node[above] at (0:1.5) { $a_i$ };
-        \draw[->] (180:1.4) -- (180:0.1);
-        \draw[->] (0:0.1) -- (0:1.4);
+        \node[above] at (0:1.2) { $a_i$ };
+        \draw[->] (180:1.1) -- (180:0.1);
+        \draw[->] (0:0.1) -- (0:1.1);
         
-        \fill (60 : 1.5) circle [radius=0.1];
-        \fill (-60 : 1.5) circle [radius=0.1];
-        \fill (120 : 1.5) circle [radius=0.1];
-        \fill (-120 : 1.5) circle [radius=0.1];
-        \node[above] at (60 :1.5) { $a_{j_1}$ };
-        \node[above] at (-60 :1.5) { $a_{j_2}$ };
-        \node[above] at (120 :1.5) { $a_{j_3}$ };
-        \node[above] at (-120 :1.5) { $a_{j_4}$ };
+        \fill (60 : 1.2) circle [radius=0.1];
+        \fill (-60 : 1.2) circle [radius=0.1];
+        \fill (120 : 1.2) circle [radius=0.1];
+        \fill (-120 : 1.2) circle [radius=0.1];
+        \node[above] at (60 :1.2) { $a_{j_1}$ };
+        \node[above] at (-60 :1.2) { $a_{j_2}$ };
+        \node[above] at (120 :1.2) { $a_{j_3}$ };
+        \node[above] at (-120 :1.2) { $a_{j_4}$ };
       \end{scope}
     \end{tikzpicture} 
     \caption{Through a tunnel section}
@@ -173,73 +166,66 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
       
       \begin{minipage}{0.3\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
-
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.5) {$p^\prime$};
-            \node[above] at (0:1.5) {$p^\prime$};
+            \node[above] at (180:1.2) {$p^\prime$};
+            \node[above] at (0:1.2) {$p^\prime$};
 
             \foreach \theta in {0,180}{
-              \fill[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.05];
+              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {60,-60,120,-120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
           \end{scope}
 
-          \node at (2,-0.5) {Tunnel A};
+          \node at (2,0) {Tunnel A};
         \end{tikzpicture}
       \end{minipage}
 
       \begin{minipage}{0.3\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.5) {$p^\prime$};
-            \node[above] at (-60:1.5) {$p^\prime$};
+            \node[above] at (180:1.2) {$p^\prime$};
+            \node[above] at (-60:1.2) {$p^\prime$};
 
             \foreach \theta in {-60,180}{
-              \fill[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.05];
+              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {0,60,120,-120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
           \end{scope}
 
-          \node at (2,-0.5) {Tunnel B};
+          \node at (2,0) {Tunnel B};
         \end{tikzpicture}
       \end{minipage}
 
       \begin{minipage}{0.3\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.5) {$p^\prime$};
-            \node[above] at (-1200:1.5) {$p^\prime$};
+            \node[above] at (180:1.2) {$p^\prime$};
+            \node[above] at (-1200:1.2) {$p^\prime$};
 
             \foreach \theta in {-120,180}{
-              \fill[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.05];
+              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {0,60,-60,120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
           \end{scope}
 
-          \node at (2,-0.5) {Tunnel C};
+          \node at (2,0) {Tunnel C};
         \end{tikzpicture}
       \end{minipage}
       
@@ -249,56 +235,52 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
   \end{center}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}
   \begin{center}
-    \begin{tabular}{cc}
+    \begin{tabular}{lr}
       
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.2\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(2.5,0)--(2.5,4)--(0,4)-- cycle;
 
-          \begin{scope}[xshift=2cm, yshift=2cm]
+          \begin{scope}[xshift=1cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
-            \node[above] at (180:1.5) {$p^\prime$};
+            \node[above] at (180:1.2) {$p^\prime$};
             
-            \fill[transform canvas={shift=(180:1.5)}](0,0) circle [radius=0.1];
+            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
             
             
             \foreach \theta in {120,-120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
 
-            \draw[->] (-1.4,0) -- (-0.1,0);
+            \draw[->] (-1.1,0) -- (-0.1,0);
           \end{scope}
 
-          \node at (1.25,-0.5) {Tunnel A,B};
+          \node at (0.25,0) {Tunnel A,B};
         \end{tikzpicture}
       \end{minipage}
 
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.2\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(2.5,0)--(2.5,4)--(0,4)-- cycle;
 
-          \begin{scope}[xshift=2cm, yshift=2cm]
+          \begin{scope}[xshift=1cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
-            \node[above] at (180:1.5) {$p^\prime$};
+            \node[above] at (180:1.2) {$p^\prime$};
 
-            \draw[transform canvas={shift=(-120:1.5)}](0,0) circle [radius=0.1];
-            \fill[transform canvas={shift=(180:1.5)}](0,0) circle [radius=0.1];
+            \draw[transform canvas={shift=(-120:1.2)}](0,0) circle [radius=0.1];
+            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
             
             
             \foreach \theta in {120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
 
-            \draw[->] (-1.4,0) -- (-0.1,0);
+            \draw[->] (-1.1,0) -- (-0.1,0);
           \end{scope}
 
-          \node at (1.25,-0.5) {Tunnel C};
+          \node at (0.25,0) {Tunnel C};
         \end{tikzpicture}
       \end{minipage}
 
@@ -375,17 +357,17 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
       ;
       
     \end{tikzpicture}
-    \caption{Tunnel A,Bにおけるbondの増加量}
+    \caption{Increment on Tunnel A,B}
     \label{TTT_position2}
   \end{center}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}
   \begin{center}
     \begin{tikzpicture}
-      \node at (0,4)   [rectangle, draw,rounded corners] (outside1) {Otherwise};
-      \node at (4.5,4) [rectangle, draw,rounded corners] (enter1)   {Entrance of a tunnel};
-      \node at (8,4)   [rectangle, draw, rounded corners] (inside1) {Inside of a tunnel C};
+      \node at (0,4)   [rectangle, draw,rounded corners] (outside1) {Outside of tunnels};
+      \node at (3.5,4) [rectangle, draw,rounded corners] (enter1)   {Entrance of a tunnel};
+      \node at (7,4)   [rectangle, draw, rounded corners] (inside1) {Inside of a tunnel C};
       \node at (11,4)  [rectangle, draw, rounded corners] (exit1)   {Inside of a tunnel A or B};
       \draw[->] (outside1)--(enter1);
       \draw[->] (enter1)  --(inside1);
@@ -393,30 +375,30 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
       
       
       \node at (0,3)   [rectangle, draw,rounded corners] (outside2) {Inside of a tunnel};
-      \node at (4.5,3) [rectangle, draw,rounded corners] (enter2)   {Entrance of a tunnel};
-      \node at (8,3)   [rectangle, draw, rounded corners] (inside2) {Inside of a tunnel C};
+      \node at (3.5,3) [rectangle, draw,rounded corners] (enter2)   {Entrance of a tunnel};
+      \node at (7,3)   [rectangle, draw, rounded corners] (inside2) {Inside of a tunnel C};
       \node at (11,3)  [rectangle, draw, rounded corners] (exit2)   {Inside of a tunnel A or B};     
       \draw[->] (outside2)--(enter2);
       \draw[->] (enter2)  --(inside2);
       \draw[->] (inside2) --(exit2);
 
-      \node at (0,1)   [rectangle, draw,rounded corners] (outside3) {トンネルから離れている};
-      \node at (4.5,1) [rectangle, draw,rounded corners] (enter3)   {トンネルの入り口};
-      \node at (8,1)   [rectangle, draw, rounded corners] (inside3) {トンネルC};
-      \node at (11,1)  [rectangle, draw, rounded corners] (exit3)   {トンネルの外};     
+      \node at (0,1)   [rectangle, draw,rounded corners] (outside3) {Outside of tunnels};
+      \node at (3.5,1) [rectangle, draw,rounded corners] (enter3)   {Entrance of a tunnel};
+      \node at (7,1)   [rectangle, draw, rounded corners] (inside3) {Inside of a tunnel C};
+      \node at (11,1)  [rectangle, draw, rounded corners] (exit3)   {Outside of tunnels};     
       \draw[->] (outside3)--(enter3);
       \draw[->] (enter3)  --(inside3);
       \draw[->] (inside3) --(exit3);
 
-      \node at (0,0)   [rectangle, draw,rounded corners] (outside4) {トンネルの中};
-      \node at (4.5,0) [rectangle, draw,rounded corners] (enter4)   {トンネルの入り口};
-      \node at (8,0)   [rectangle, draw, rounded corners] (inside4) {トンネルC};
-      \node at (11,0)  [rectangle, draw, rounded corners] (exit4)   {トンネルの外};     
+      \node at (0,0)   [rectangle, draw,rounded corners] (outside4) {Inside of atunnel};
+      \node at (3.5,0) [rectangle, draw,rounded corners] (enter4)   {Entrance of a tunnel};
+      \node at (7,0)   [rectangle, draw, rounded corners] (inside4) {Inside of a tunnel C};
+      \node at (11,0)  [rectangle, draw, rounded corners] (exit4)   {Outside of tunnels};     
       \draw[->] (outside4)--(enter4);
       \draw[->] (enter4)  --(inside4);
       \draw[->] (inside4) --(exit4);
     \end{tikzpicture}
-    \caption{Tunnel Cの場合分け}
+    \caption{Case of Tunnel C}
     \label{TTT_tunnelC_graph}
   \end{center}
 \end{figure}
@@ -445,40 +427,38 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
   
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}
   \begin{center}
     \begin{tabular}{ccc}
       
       \begin{minipage}{0.3\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
             \node[above] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
             }
             
             \foreach \theta in {60,-60,180}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
 
             \foreach \theta in {120,-120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
             }
 
-            \draw[->] (180:1.4)--(180:0.1);
-            \draw[->] (0:0.1)--(0:1.4);
+            \draw[->] (180:1.1)--(180:0.1);
+            \draw[->] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(60:1.5)},right] {A};
-            \node[transform canvas={shift=(-60:1.5)},right] {B};
+            \node[transform canvas={shift=(60:1.2)},right] {A};
+            \node[transform canvas={shift=(-60:1.2)},right] {B};
 
-            \node[transform canvas={shift=(120:1.5)},left] {c};
-            \node[transform canvas={shift=(-120:1.5)},left] {d};
+            \node[transform canvas={shift=(120:1.2)},left] {c};
+            \node[transform canvas={shift=(-120:1.2)},left] {d};
           \end{scope}
 
           \node at (2,-0.5) {$t_0$};
@@ -487,35 +467,33 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
 
       \begin{minipage}{0.3\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
             \node[below] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
             }
             
             \foreach \theta in {60,-60,120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
 
             \foreach \theta in {180,-120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
             }
             
-            \draw[->] (120:1.4)--(120:0.1);
-            \draw[->] (0:0.1)--(0:1.4);
+            \draw[->] (120:1.1)--(120:0.1);
+            \draw[->] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(60:1.5)},right] {A};
-            \node[transform canvas={shift=(-60:1.5)},right] {B};
-            \node[transform canvas={shift=(120:1.5)},left] {P};
+            \node[transform canvas={shift=(60:1.2)},right] {A};
+            \node[transform canvas={shift=(-60:1.2)},right] {B};
+            \node[transform canvas={shift=(120:1.2)},left] {P};
 
-            \node[transform canvas={shift=(180:1.5)},left] {c};
-            \node[transform canvas={shift=(-120:1.5)},left] {d};
+            \node[transform canvas={shift=(180:1.2)},left] {c};
+            \node[transform canvas={shift=(-120:1.2)},left] {d};
           \end{scope}
 
           \node at (2,-0.5) {$t_{\pm 60}$};
@@ -524,36 +502,34 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
 
       \begin{minipage}{0.3\hsize}
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
             \node[above] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.5)}](0,0) circle [radius=0.1];
+              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
             }
             
             \foreach \theta in {60,-60}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
 
             \foreach \theta in {180,-120,120}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
             }
             
-            \draw[->] (60:1.4)--(60:0.1);
-            \draw[->] (0:0.1)--(0:1.4);
+            \draw[->] (60:1.1)--(60:0.1);
+            \draw[->] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(-60:1.5)},right] {A};
-            \node[transform canvas={shift=(60:1.5)},right] {P};
+            \node[transform canvas={shift=(-60:1.2)},right] {A};
+            \node[transform canvas={shift=(60:1.2)},right] {P};
 
-            \node[transform canvas={shift=(120:1.5)},left] {c};
-            \node[transform canvas={shift=(180:1.5)},left] {d};
-            \node[transform canvas={shift=(-120:1.5)},left] {e};
-            \node[transform canvas={shift=(0:1.5)},below] {n};
+            \node[transform canvas={shift=(120:1.2)},left] {c};
+            \node[transform canvas={shift=(180:1.2)},left] {d};
+            \node[transform canvas={shift=(-120:1.2)},left] {e};
+            \node[transform canvas={shift=(0:1.2)},below] {n};
           \end{scope}
 
           \node at (2,-0.5) {$t_{\pm 120}$};
@@ -597,73 +573,68 @@ Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into 
 \end{itemize}
 
 
-\begin{figure}[h]
-  \begin{center}
+\begin{figure}
+  \centering
     \begin{tabular}{cc}
       
-      \begin{minipage}{0.48\hsize}
+      \begin{minipage}{0.48\linewidth}
+      \centering
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
-          \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
             \node[above] at (0,0) {$p^\prime$};
 
             
             \foreach \theta in {120,-120,180}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
 
             \foreach \theta in {0,60,-60}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
             }
 
-            \draw[->] (180:1.4)--(180:0.1);
+            \draw[->] (180:1.1)--(180:0.1);
 
-            \node[transform canvas={shift=(120:1.5)},right] {A};
-            \node[transform canvas={shift=(-120:1.5)},right] {B};
-            \node[transform canvas={shift=(180:1.5)},left] {P};
+            \node[transform canvas={shift=(120:1.2)},right] {A};
+            \node[transform canvas={shift=(-120:1.2)},right] {B};
+            \node[transform canvas={shift=(180:1.2)},left] {P};
 
-            \node[transform canvas={shift=(60:1.5)},left] {c};
-            \node[transform canvas={shift=(-60:1.5)},left] {d};
-          \end{scope}
+            \node[transform canvas={shift=(60:1.2)},left] {c};
+            \node[transform canvas={shift=(-60:1.2)},left] {d};
 
-          \node at (2,-0.5) {Point $c$ and $d$ are free};
+          \node at (0,-2) {Point $c$ and $d$ are free};
         \end{tikzpicture}
       \end{minipage}
 
-      \begin{minipage}{0.48\hsize}
+      \begin{minipage}{0.48\linewidth}
+      \centering
         \begin{tikzpicture}
-          \draw[thick, rounded corners = 10pt]
-          (0,0)--(4,0)--(4,4)--(0,4)-- cycle;
 
-          \begin{scope}[xshift=2cm, yshift=2cm]
             \fill(0,0) circle [radius=0.1];
             \node[above] at (0,0) {$p^\prime$};
             
             \foreach \theta in {120,-120,180,60}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.5)}](0.1,-0.1)--(-0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
 
             \foreach \theta in {0,-60}{
-              \draw[transform canvas={shift=(\theta:1.5)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
             }
 
-            \draw[->] (180:1.4)--(180:0.1);
+            \draw[->] (180:1.1)--(180:0.1);
 
-            \node[transform canvas={shift=(120:1.5)},right] {A};
-            \node[transform canvas={shift=(-120:1.5)},right] {B};
-            \node[transform canvas={shift=(180:1.5)},left] {P};
+            \node[transform canvas={shift=(120:1.2)},right] {A};
+            \node[transform canvas={shift=(-120:1.2)},right] {B};
+            \node[transform canvas={shift=(180:1.2)},left] {P};
 
-            \node[transform canvas={shift=(-60:1.5)},right] {d};
-            \node[transform canvas={shift=(60:1.5)},right] {c};
-            \node[transform canvas={shift=(0:1.5)},right] {e};
-          \end{scope}
+            \node[transform canvas={shift=(-60:1.2)},right] {d};
+            \node[transform canvas={shift=(60:1.2)},right] {c};
+            \node[transform canvas={shift=(0:1.2)},right] {e};
+
           
-          \node at (2,-0.5) {Point $c$ is occupied};
+          \node at (0,-2) {Point $c$ is occupied};
         \end{tikzpicture}
       \end{minipage}
 
@@ -672,7 +643,6 @@ Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into 
     \end{tabular}
     \caption{Exit of Tunnel}
     \label{TTT_tunnel_exit}
-  \end{center}
 \end{figure}
 
 
