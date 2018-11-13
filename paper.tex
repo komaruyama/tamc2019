@@ -46,7 +46,9 @@ We investigate simple oritatami systems in an attempt to establish lower bounds 
 In particular, we look at oritatami systems, where the folding sequence consists of a number of beads of the same type and show that under reasonable assumptions, these systems are not universal.
 \end{abstract}
 
-\section{Introduction}
+%------------------------------------------------------
+	\section{Introduction}
+%------------------------------------------------------
 
 Transcription is the first essential step of gene expression, when a DNA template sequence is copied into a complementary single stranded RNA sequence by a `copy machine' called RNA polymerase. 
 The RNA strand is synthesized letter by letter according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$ and folds up during a process called co-transcriptional folding.
@@ -71,7 +73,36 @@ In search for simple oritatami systems, there are a number of restrictions one c
 
 In this paper we start a new line of study which concerns the alphabet size for the primary structure, i.e., the number of bead types.
 
-\section{Preliminaries}
+\begin{figure}[tb]
+\begin{tikzpicture}
+
+\node (origin) at (0, 0) {};
+
+\draw[-latex] (origin) -- ++(0:3) node[below] {$\delta$}; 
+\node at (1, -0.2) {1};
+\node at (2, -0.2) {2};
+\draw[-latex] (origin) -- ++(90:5) node[left] {$\alpha$}; 
+\node at (-0.2, 1) {1};
+\node at (-0.2, 2) {2};
+\node at (-0.2, 3) {3};
+\node at (-0.2, 4) {4};
+
+%Results
+\node at (1, 4) {$O(n^2)$};
+\node at (1, 3) {$O(n)$};
+\node at (1, 2) {$O(n^2)$};
+\node at (1, 1) {$O(n)$ \cite{DemaineDNA24}};
+
+\node at (2, 1) {$O(n^2)$};
+
+\end{tikzpicture}
+\caption{Summary of the results.}
+\label{fig:summary}
+\end{figure}
+
+%------------------------------------------------------
+	\section{Preliminaries}
+%------------------------------------------------------
 \input{uos_preliminaries.tex}
 
 
@@ -117,6 +148,14 @@ In this paper we start a new line of study which concerns the alphabet size for 
 %If the transcript length is polynomially bounded by the seed length, than the accepted language is in $\mathrm{P}$. 
 
 Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \mathrm{EXP}$, so we can conclude that OS which cannot deterministically fold transcripts of length exponential in the length of the seed are not computationally universal.
+
+\section{Problem description}
+
+In \cite{DemaineDNA24}, Demaine et al. proved that at delay 1 and arity 1, an oritatami system can fold upon the seed of size $n$ only the first $9n$ beads of a transcript deterministically. 
+We consider this finiteness problem under various settings of the values of delay and arity. 
+Results on this problem are summarized in Fig.~\ref{fig:summary}. 
+
+
 
 \section{Case of $\delta = 1$}
 
