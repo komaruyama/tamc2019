@@ -20,8 +20,7 @@
 
 
 
-\title{On finiteness of structures produced deterministically by oritatami co-transcriptional folding
-\thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~S.}
+\title{On the power of oritatami cotranscriptional folding with unary bead sequence\thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~Z.~F. and S.~S.}
 }
 \author{
 Szil\'{a}rd Zsolt Fazekas\inst{1} \and
@@ -43,11 +42,34 @@ Graduate School of Informatics and Engineering,
 \maketitle
 
 \begin{abstract}
-
+We investigate simple oritatami systems in an attempt to establish lower bounds on the size and complexity of computationally universal systems. 
+In particular, we look at oritatami systems, where the folding sequence consists of a number of beads of the same type and show that under reasonable assumptions, these systems are not universal.
 \end{abstract}
 
 \section{Introduction}
 
+Transcription is the first essential step of gene expression, when a DNA template sequence is copied into a complementary single stranded RNA sequence by a `copy machine' called RNA polymerase. 
+The RNA strand is synthesized letter by letter according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$ and folds up during a process called co-transcriptional folding.
+
+In a recent breakthrough in molecular engineering by Geary, Rothemund and Andersen~\cite{RNAorigami} the co-transcriptional folding of RNA is controlled by careful design of the DNA template. As demonstrated in laboratory, this method, called RNA Origami, makes it possible to build rectangles out of RNA strands. 
+Geary et al.~\cite{Oritatami} proposed a mathematical model for this process, called oritatami system.
+It has been shown~\cite{Simulator} that the model is computationally universal by simulating cyclic tag systems introduced by Cook~\cite{Cook110}. 
+The simulation involves a very large and complex oritatami system. 
+One future direction of research is to find smaller universal oritatami system.
+
+Closely related is the question of where not to look for universal systems, i.e., what are the limitations of simple oritatami system. 
+In search for simple oritatami systems, there are a number of restrictions one can pose on them:
+\begin{itemize}
+\item bounds on the delay, the number of bead types or the arity;
+\item bounds on the size of the primary structure or of the attraction rule set;
+\item structural conditions on the primary structure or the attraction rule set.
+\end{itemize}
+
+%Rogers and Seki~\cite{SimpleSim} showed that certain OS with small delays are not universal.
+
+%Han, Kim, Rogers and Seki\cite{SelfRemove} proved that it is possible to avoid self-attraction rules without changing the behavior of OS.
+
+In this paper we start a new line of study which concerns the alphabet size for the primary structure, i.e., the number of bead types.
 
 \section{Preliminaries}
 \input{uos_preliminaries.tex}
