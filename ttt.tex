@@ -69,7 +69,8 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$ that 
 
 
 Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w[i+1],w[i+2],\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupy four neighbors of a point (Fig.\ref{TTT_tunnel_intro}). 
-How they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
+Accordingly, how they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
+
 Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a bead $p$ as $inside\ of\ a\ tunnel$ and such beads $p^\prime$ as $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
 
@@ -142,21 +143,33 @@ If a bead is stabilized through a tunnel section, then it can provide some bonds
 
 
 \begin{theorem}[Tunnel Troll Theorem]
-  Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there is a part of transcript $w[i-1..j+1] = btt...tb$, then $C_i$'s binding capabilities is more than $C_j$'s binding capabilities.
+  Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there is a part of transcript $w[i..j+1] = bttt...tb$, then $C_i$'s binding capabilities is more than $C_j$'s binding capabilities.
 \end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \subsection{Proof of Tunnel Troll Theorem}
 Assume $\Xi$ is deterministic. %How they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
-Each of beads in transcript are bound either inside of tunnel or outside (Fig. \ref{TTT_position1}). If a bead is stabilized at inside of tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized at outside of a tunnel, then its position is an entrance of a tunnel or otherwise.
+Each of beads in transcript are bound either inside of tunnel or outside (Fig. \ref{TTT_position}). If a bead is stabilized at inside of tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized at outside of a tunnel, then its position is an entrance of a tunnel or otherwise.
 
+Tunnel sections have three possible shape with considering symmetry such as straight, acute turn and obtuse turn (Fig. \ref{TTT_tunnel}). %Let us focus entrances of a tunnel such as $p^\prime$, then Entrances have two possible shape (Fig. \ref{TTT_enterpoint}).
 
-Tunnel sections have three possible shape with considering symmetry such as straight, acute turn and obtuse turn (Fig. \ref{TTT_tunnel}). Let us focus entrances of a tunnel such as $p^\prime$, then Entrances have two possible shape (Fig. \ref{TTT_enterpoint}).
+Let us consider each of cases of tunnel A, B, and C. Accordingly, We use lemma \ref{TTT_neighbor_lemma}
 
+\begin{lemma}
+\label{TTT_neighbor_lemma}
+If a bead does not have any bond, then neighbors of it must be occupied by $\alpha + 2$ beads at $\delta = 1$ and unary except first and last beads.
+\end{lemma}
 
-Let us consider tunnel sections only tunnel A and B. See Fig. \ref{TTT_position2}. From appendix (Entrance of Tunnel A, B and Exit of Tunnel), we add maximum number which each transitions provide binding capabilities for each edge where $a$ is number of consuming binding capabilities when the bead is stabilized at position of $successer\ in\ outside$.
+A bead in transcript needs predecessor and successor except first and last beads. If the bead does not have ant bond, then it use hand with $\alpha$ neighbors. Thus, lemma \ref{TTT_neighbor_lemma} is clearly true.
 
+\paragraph{}
+Let us consider tunnel sections only tunnel A and B. See Fig. \ref{TTT_position}. From appendix (Entrance of Tunnel A, B and Exit of Tunnel), we add maximum number which each transitions provide binding capabilities for each edge where $a$ is number of consuming binding capabilities when the bead is stabilized at position of $successor\ in\ outside$.
 
-Next, we consider on tunnel C section. If $w[i]$ is stabilized by tunnel C and $S[i+1]$ is $t$, then $w[i+1]$ is stabilized by tunnel A or B because if $w[i+1]$ is stabilized by tunnel C, then $C_{i+1}$ is a terminal. Hence, tunnel C section is devided cases sush as Figure \ref{TTT_tunnelC_graph}. Cases of $S[i...] = bt^l (l \geq 2)$ are already considered (Upper). According to appendix (Tunnel C), cases of $S[i..i+2] = btb$ also consume some binding capabilities (Lower).
+%The sequence $S$ can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+ \cup bt^+bt^+$. 
+
+Next, we consider on tunnel C section. If $w[i]$ is stabilized by tunnel C and $S[i+1]$ is $t$, then $w[i+1]$ is stabilized by tunnel A or B because if $w[i+1]$ is stabilized by tunnel C, then $C_{i+1}$ is a terminal. Hence, tunnel C section is divided cases such as Figure \ref{TTT_tunnelC_graph}. Cases of $S[i...] = bt^l (l \geq 2)$ are already considered (Upper). According to appendix (Tunnel C), cases of $S[i..i+2] = btb$ also consume some binding capabilities (Lower).
 
 
 Thus, if a bead is stabilized through a tunnel section, then it consume some binging capabilities.
@@ -233,137 +246,136 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
       \end{minipage}
       
     \end{tabular}
-    \caption{All possible tunnel sections}
+    \caption{All possible tunnel sections: straight, acute turn, and obtuse turn}
     \label{TTT_tunnel}
   \end{center}
 \end{figure}
 
-\begin{figure}
-  \begin{center}
-    \begin{tabular}{cc}
-      
-      \begin{minipage}{0.2\hsize}
-      \centering
-        \begin{tikzpicture}
+%\begin{figure}
+%  \begin{center}
+%    \begin{tabular}{cc}
+%      
+%      \begin{minipage}{0.2\hsize}
+%      \centering
+%        \begin{tikzpicture}
+%
+%          \begin{scope}[xshift=1cm, yshift=2cm]
+%            \fill(0,0) circle [radius=0.1];
+%            \node[above] at (180:1.2) {$p^\prime$};
+%            
+%            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
+%            
+%            
+%            \foreach \theta in {120,-120}{
+%              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+%              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+%            }
+%
+%            \draw[->] (-1.1,0) -- (-0.1,0);
+%          \end{scope}
+%
+%          \node at (0.25,0) {Tunnel A,B};
+%        \end{tikzpicture}
+%      \end{minipage}
+%
+%      \begin{minipage}{0.2\hsize}
+%      \centering
+%        \begin{tikzpicture}
+%
+%          \begin{scope}[xshift=1cm, yshift=2cm]
+%            \fill(0,0) circle [radius=0.1];
+%            \node[above] at (180:1.2) {$p^\prime$};
+%
+%            \draw[transform canvas={shift=(-120:1.2)}](0,0) circle [radius=0.1];
+%            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
+%            
+%            
+%            \foreach \theta in {120}{
+%              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
+%              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+%            }
+%
+%            \draw[->] (-1.1,0) -- (-0.1,0);
+%          \end{scope}
+%
+%          \node at (0.25,0) {Tunnel C};
+%        \end{tikzpicture}
+%      \end{minipage}
+%
+%    \end{tabular}
+%    \caption{Entrance of a tunnel}
+%    \label{TTT_enterpoint}
+%  \end{center}
+%\end{figure}
 
-          \begin{scope}[xshift=1cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.1];
-            \node[above] at (180:1.2) {$p^\prime$};
-            
-            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
-            
-            
-            \foreach \theta in {120,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \draw[->] (-1.1,0) -- (-0.1,0);
-          \end{scope}
-
-          \node at (0.25,0) {Tunnel A,B};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.2\hsize}
-      \centering
-        \begin{tikzpicture}
-
-          \begin{scope}[xshift=1cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.1];
-            \node[above] at (180:1.2) {$p^\prime$};
-
-            \draw[transform canvas={shift=(-120:1.2)}](0,0) circle [radius=0.1];
-            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
-            
-            
-            \foreach \theta in {120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \draw[->] (-1.1,0) -- (-0.1,0);
-          \end{scope}
-
-          \node at (0.25,0) {Tunnel C};
-        \end{tikzpicture}
-      \end{minipage}
-
-    \end{tabular}
-    \caption{Entrance of a tunnel}
-    \label{TTT_enterpoint}
-  \end{center}
-\end{figure}
-
+%\begin{figure}
+%  \begin{center}
+%    \begin{tikzpicture}
+%      \draw[thick]
+%      (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
+%      \node at(2.5,1) {Outside};
+%      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
+%      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Otherwise};
+%
+%      
+%      
+%      \draw[thick]
+%      (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
+%      \node at(10.5,1) {Inside of a tunnel};
+%      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Successor in inside};
+%      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Successor in outside};
+%
+%      \draw[->]
+%      (outside) edge [bend left] node[left] {$b$} (enter)
+%                edge [loop left] node[left] {$b$} (outside)
+%      (enter)   edge [bend left] node[above] {$b$} (next-tunnel)
+%                edge [bend left] node[above] {$b$} (next-outside)
+%                edge [bend left] node[right] {$b$}  (outside)
+%      (next-tunnel) edge         node[right] {$t$} (next-outside)
+%                edge [loop right]node[below] {$t$}    (next-tunnel)
+%      (next-outside) edge[bend left] node[above] {$t$}  (outside)
+%                edge [bend left]     node[above] {$t$}(enter)
+%      ;
+%      
+%    \end{tikzpicture}
+%    \caption{Cases on position of a bead}
+%    \label{TTT_position1}
+%  \end{center}
+%\end{figure}
 
 
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
-      \draw[thick]
-      (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
-      \node at(2.5,1) {Outside};
-      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
-      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Otherwise};
+      \draw[thick, gray]
+      (0.5,1)--(0,1)--(0,4)--(4,4)--(4,1)--(3.5,1);
+      \node at(2,1) {Outside};
+      \node at (2,3.2) [rectangle, draw, rounded corners] (enter) {Entrance of a tunnel};
+      \node at(2,1.8) [rectangle, draw, rounded corners] (outside) {Otherwise};
 
       
       
-      \draw[thick]
-      (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
-      \node at(10.5,1) {Inside of a tunnel};
-      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Successor in inside};
-      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Successor in outside};
-
-      \draw[->]
-      (outside) edge [bend left] node[left] {$b$} (enter)
-                edge [loop left] node[left] {$b$} (outside)
-      (enter)   edge [bend left] node[above] {$b$} (next-tunnel)
-                edge [bend left] node[above] {$b$} (next-outside)
-                edge [bend left] node[right] {$b$}  (outside)
-      (next-tunnel) edge         node[right] {$t$} (next-outside)
-                edge [loop right]node[below] {$t$}    (next-tunnel)
-      (next-outside) edge[bend left] node[above] {$t$}  (outside)
-                edge [bend left]     node[above] {$t$}(enter)
-      ;
-      
-    \end{tikzpicture}
-    \caption{Cases on position of a bead}
-    \label{TTT_position1}
-  \end{center}
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \draw[thick]
-      (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
-      \node at(2.5,1) {Outside};
-      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
-      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Otherwise};
-
-      
-      
-      \draw[thick]
-      (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
-      \node at(10.5,1) {Inside of a tunnel};
-      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Successer in inside};
-      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Successer in outside};
+      \draw[thick, gray]
+      (7.5,1)--(7,1)--(7,4)--(11,4)--(11,1)--(10.5,1);
+      \node at(9,1) {Inside of a tunnel};
+      \node at(9,3.2) [rectangle, draw, rounded corners] (next-tunnel) {Successor in inside};
+      \node at(9,1.8) [rectangle, draw, rounded corners] (next-outside) {Successor in outside};
 
       \draw[->]
-      (outside) edge [bend left] node[left] {$-1$} (enter)
-                edge [loop left] node[left] {$\pm 0$} (outside)
-      (enter)   edge [bend left] node[above] {$-1$} (next-tunnel)
-                edge [bend left] node[above] {$-a$} (next-outside)
-                edge [bend left] node[right] {$\pm 0$}  (outside)
-      (next-tunnel) edge         node[right] {$-a$} (next-outside)
-                edge [loop right]node[below] {$\pm 0$}    (next-tunnel)
-      (next-outside) edge[bend left] node[above] {$+a$}  (outside)
-                edge [bend left]     node[above] {$+(a-1)$}(enter)
+      (outside) edge [bend left, blue] node[left] {$s=b,\Delta=-1$} (enter)
+                   edge [loop left, blue] node[below left] {$s=b,\Delta=\pm 0$} (outside)
+      (enter)   edge [bend left, blue] node[above] {$s=b,\Delta=-1$} (next-tunnel)
+                edge [bend left, blue] node[above] {$s=b,\Delta=-a$} (next-outside)
+                edge [bend left, blue] node[right] {$s=b,\Delta=\pm 0$}  (outside)
+      (next-tunnel) edge[teal]         node[right] {$s=t,\Delta=-a$} (next-outside)
+                edge [loop right, teal]node[right] {$s=t,\Delta=\pm 0$}    (next-tunnel)
+      (next-outside) edge[bend left, teal] node[above] {$s=t,\Delta=+a$}  (outside)
+                edge [bend left, teal]     node[above] {$s=t,\Delta=+(a-1)$}(enter)
       ;
       
     \end{tikzpicture}
     \caption{Increment on Tunnel A,B}
-    \label{TTT_position2}
+    \label{TTT_position}
   \end{center}
 \end{figure}
 
@@ -408,6 +420,10 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
   \end{center}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%/////////////////////////////////////////////////
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \subsection{Appendix of Tunnel Troll Theorem}
 \subsubsection{Entrance of TunnelA,B}
@@ -418,16 +434,16 @@ Any cases in $\delta = 1, \alpha = 2$ consume some binding capabilities into the
 
 \begin{itemize}
 \item{Case of $t_0$}\\
-  Let us consider points of $c,d$ either occupied or not. A point $c$ or $d$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $c$ is free, then $p^\prime$ has to be bound to a bead except $A$ due to deterministically stabilize. In this situation, at least three neighbors of A are free that is at most three neighbors of A are occupied. A leave at least one binging capability because beads of beighbors are predecessor and successor in addition A is able to consume itself binging capabilities only one-time. Hence, $p^\prime$ must be bound to A. Thus, a case of $t_0$ consumes some binding capabilities.
+  Let us consider points of $n_3,n_4$ either occupied or not. A point $n_3$ or $n_4$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $n_3$ is free, then $p^\prime$ has to be bound to a bead except $n_1$ due to deterministically stabilize. In this situation, at least three neighbors of $n_1$ are free that is $n_1$ leave at least one bond from lemma \ref{TTT_neighbor_lemma}. Hence, $p^\prime$ must be bound to $n_1$. Thus, a case of $t_0$ consumes two binding capabilities and it does not supply any binding capabilities.
 
 \item{Case of $t_{\pm 60}$}\\
-  In this case, a point $c$ or $d$ is free, too. If $c$ is free, $p^\prime$ has to be bound to A or B. If $c$ is occupied, then $d$ is free. This time, B has some binding capabilitie so $p^\prime$ has to be bound to B.
+  In this case, a point $n_4$ or $n_5$ is free, too. If $n_5$ is free, $p^\prime$ has to be bound to $n_1$ or $n_2$. If $n_5$ is occupied, then $n_4$ is free. This time, $n_2$ has some binding capabilities so $p^\prime$ has to be bound to $n_2$.
   
 
-  In this situation, $p^\prime$ is able to supply a binding capability. if this capability is active, $p^\prime$ bind a bead into $c$ or $d$. However, B and P are exist in back bone. According to Jordan curve theorem, any successors of $p^\prime$ cannot reach a point $c$ or $d$ so this capability is inactive. Thus, a case of $t_{\pm 60}$ consumes some binding capabilities.
+  In this situation, $p^\prime$ is able to supply a binding capability. if this capability is active, $p^\prime$ bind a bead into $n_4$ or $n_5$. However, $n_2$ and $n_3$ are exist in back bone. According to Jordan curve theorem, any successors of $p^\prime$ cannot reach a point $n_4$ or $n_5$ so this capability is inactive. Thus, a case of $t_{\pm 60}$ consumes some binding capabilities.
 
 \item{Case of $t_{\pm 120}$}\\
-  Binding capabilities that $p^\prime$ supply are inactive according to Jordan curve theorem on A and P. Moreover, $p^\prime$ has to be bound to one of $c$, $d$,$e$ in order to deterministically stabilize.
+  Binding capabilities that $p^\prime$ supply are inactive according to Jordan curve theorem on $n_1$ and $n_2$. Moreover, $p^\prime$ has to be bound to one of $n_3, n_4, n_5$ in order to deterministically stabilize.
 Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
   
 \end{itemize}
@@ -461,10 +477,10 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
             \draw[->] (180:1.1)--(180:0.1);
             \draw[->] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(60:1.2)},right] {A};
-            \node[transform canvas={shift=(-60:1.2)},right] {B};
-            \node[transform canvas={shift=(120:1.2)},left] {c};
-            \node[transform canvas={shift=(-120:1.2)},left] {d};
+            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
 
 
           \node at (0,-2) {$t_{0}$};
@@ -496,12 +512,11 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
             \draw[->] (120:1.1)--(120:0.1);
             \draw[->] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(60:1.2)},right] {A};
-            \node[transform canvas={shift=(-60:1.2)},right] {B};
-            \node[transform canvas={shift=(120:1.2)},left] {P};
-
-            \node[transform canvas={shift=(180:1.2)},left] {c};
-            \node[transform canvas={shift=(-120:1.2)},left] {d};
+            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
 
           \node at (0,-2) {$t_{\pm 60}$};
         \end{tikzpicture}
@@ -529,13 +544,12 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
             \draw[->] (60:1.1)--(60:0.1);
             \draw[->] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(-60:1.2)},right] {A};
-            \node[transform canvas={shift=(60:1.2)},right] {P};
-
-            \node[transform canvas={shift=(120:1.2)},left] {c};
-            \node[transform canvas={shift=(180:1.2)},left] {d};
-            \node[transform canvas={shift=(-120:1.2)},left] {e};
-            \node[transform canvas={shift=(0:1.2)},below] {n};
+            \node[transform canvas={shift=(0:1.2)},below] {$n_0$};
+            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
 
           \node at (0,-2) {$t_{\pm 120}$};
         \end{tikzpicture}
@@ -552,17 +566,17 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
 
 
 Fig.\ref{TTT_tunnel_exit} exhibits all the two kings of exit of tunnel. 
-At least one of point $c$ or $d$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
+At least one of point $n_1$ or $n_2$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
 
 \paragraph{$\delta = 1, \alpha = 2$}
  Any cases of $\delta = 1, \alpha = 2$ supply at most $a$ binding capabilities into follows where $a$ is number of predecessor of $p^\prime$ consumes binging capabilities.
 
 \begin{itemize}
-\item{Case of $c$ and $d$ are free}\\
-  This case can be regarded same situation as entrance. See Fig.\ref{TTT_tunnel_exit} (Left). Predecessor P has to be bound A and B because each of A and B leave binding capabilities. Hence, at least $a=2$. This time, $\alpha = 2$ that is this case supply at most only $a$ binding capabilities.
+\item{Case of $n_1$ and $n_2$ are free}\\
+  This case can be regarded same situation as entrance. See Fig.\ref{TTT_tunnel_exit} (Left). Predecessor $n_5$ has to be bound $n_4$ and $n_5$ because each of $n_3$ and $n_4$ leave binding capabilities. Hence, at least $a=2$. This time, $\alpha = 2$ that is this case supply at most only $a$ binding capabilities.
   
 \item{Case of $c$ is occupied}\\
-  See Fig.\ref{TTT_tunnel_exit} (Right). If $c$ is pccupied, then $d$ is free so that P has to be bound B. Hence, at least $a=1$. This case can supply two binding capabilities but $p^\prime$ can bind to only one of $e$ or $d$ because $e$ or $d$ will be occupied a successor of $p^\prime$. Therefore, this case supply at most only $a=1$ active binding capabiliry.
+  See Fig.\ref{TTT_tunnel_exit} (Right). If $n_1$ is occupied, then $n_2$ is free so that $n_5$ has to be bound $n_4$. Hence, at least $a=1$. This case can supply two binding capabilities but $p^\prime$ can bind to only one of $n_0$ or $n_2$ because $n_0$ or $n_2$ will be occupied a successor of $p^\prime$. Therefore, this case supply at most only $a=1$ active binding capability.
   
 \end{itemize}
 
@@ -570,11 +584,11 @@ At least one of point $c$ or $d$ is free because if both of them are occupied, $
 Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into follows.
 
 \begin{itemize}
-\item{Case of $c$ and $d$ are free}\\
-  In $\alpha \geq 3$, if three neighbors of a bead leave, then it can supply two binding capabilities. Therefore Predecessor P has to be bound A and B, and $p^\prime$, too. In this case, at least consumes four bindings and supplies at most two bindings. Thus, it consumes some binding capabilities, totally.
+\item{Case of $n_1$ and $n_2$ are free}\\
+  In $\alpha \geq 3$, if three neighbors of a bead leave, then it can supply two binding capabilities. Therefore Predecessor $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$, too. In this case, at least consumes four bindings and supplies at most two bindings. Thus, it consumes some binding capabilities, totally.
   
 \item{Case of $c$ is occupied}\\
-  In this case, B leave at least two bindings and A, $c$ also leave at least one binding. Therefore P has to be bound A and B, and $p^\prime$ also has to be bound B and $c$. In this case, at least consumes four bindings and supplies at most one binding. Thus, it consumes some binding capabiliries, totally.
+  In this case, $n_4$ leave at least two bindings and $n_3$, $n_1$ also leave at least one binding. Therefore $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$ also has to be bound $n_1$ and $n_4$. In this case, at least consumes four bindings and supplies at most one binding. Thus, it consumes some binding capabilities, totally.
 \end{itemize}
 
 
@@ -601,14 +615,15 @@ Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into 
 
             \draw[->] (180:1.1)--(180:0.1);
 
-            \node[transform canvas={shift=(120:1.2)},right] {A};
-            \node[transform canvas={shift=(-120:1.2)},right] {B};
-            \node[transform canvas={shift=(180:1.2)},left] {P};
 
-            \node[transform canvas={shift=(60:1.2)},left] {c};
-            \node[transform canvas={shift=(-60:1.2)},left] {d};
 
-          \node at (0,-2) {Point $c$ and $d$ are free};
+            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
+
+          \node at (0,-2) {Point $n_1$ and $n_2$ are free};
         \end{tikzpicture}
       \end{minipage}
 
@@ -630,16 +645,16 @@ Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into 
 
             \draw[->] (180:1.1)--(180:0.1);
 
-            \node[transform canvas={shift=(120:1.2)},right] {A};
-            \node[transform canvas={shift=(-120:1.2)},right] {B};
-            \node[transform canvas={shift=(180:1.2)},left] {P};
+            \node[transform canvas={shift=(0:1.2)},right] {$n_0$};
+            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
 
-            \node[transform canvas={shift=(-60:1.2)},right] {d};
-            \node[transform canvas={shift=(60:1.2)},right] {c};
-            \node[transform canvas={shift=(0:1.2)},right] {e};
 
           
-          \node at (0,-2) {Point $c$ is occupied};
+          \node at (0,-2) {Point $n_1$ is occupied};
         \end{tikzpicture}
       \end{minipage}
 
@@ -660,18 +675,18 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
 
 \begin{itemize}
 \item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
-  In this figure, Bead A has at least one binding so that $w_{i-2}$ has to bound A. Moreover, $w_{i-1}$ has to bound one of B, C, D in order to stabilize deterministically. On the other hand, $w_i$ can supply two bindings but free neighbors of $w_i$ are two points. One of them is occupied a successor. Therefore $w_i$ can only bind one of $e,f$ that is $w_i$ supplies at most one binding. Thus, this case consumes some binding capabilities.
+  In this figure, Bead $n_4$ has at least one binding so that $w[i-2]$ has to bound $n_4$. Moreover, $w[i-1]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically. On the other hand, $w[i]$ can supply two bindings but free neighbors of $w[i]$ are two points. One of them is occupied by a successor. Therefore $w[i]$ can only bind one of $n_5, n_6$ that is $w[i]$ supplies at most one binding. Thus, this case consumes some binding capabilities.
 
 \item{Right of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
-  This cases are divided on number of capabilities that $w_{i-2}$ consumes.
+  This cases are divided on number of capabilities that $w[i-2]$ consumes.
   \begin{itemize}
-  \item[-]{$w_i$ does not consume any bindings}\\
-    $w_{i-1}$ has to bound one of B, C, D in order to stabilize deterministically. $w_i$ has to be bound to $w_{i-2}$ because $w_{i-2}$ has bindings. This time, let us consider either $e$ is occupied or not. If $e$ is occupied, then $w_{i-2}$ has no active bindings that is this situation consumes some binding capabilities. If $e$ is free and $w_{i+1}$ is stabilized in $e$, then $w_{i-2}$ has to bind $w_{i+1}$. Therefore, In this case, stabilization of $w[i-2..i+1]$ consumes some bindings. If $e$ is free and $w_{i+1}$ is stabilized except $e$, then this oritatami system has to use two binding capabilities in order to bind $w_{i+1}$. Therefore, in this case consumes some bindings. Thus in this cases consume some binding capabilities.
+  \item[-]{$w[i]$ does not consume any bindings}\\
+    $w[i-1]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically. $w[i]$ has to be bound to $w[i-2]$ because $w[i-2]$ has bindings. This time, let us consider either $n_4$ is occupied or not. If $n_4$ is occupied, then $w[i-2]$ has no active bindings that is this situation consumes some binding capabilities. If $n_4$ is free and $w[i+1]$ is stabilized in $n_4$, then $w[i-2]$ has to bind $w[i+1]$. Therefore, In this case, stabilization of $w[i-2..i+1]$ consumes some bindings. If $n_4$ is free and $w[i+1]$ is stabilized except $n_4$, then this oritatami system has to use two binding capabilities in order to bind $w[i+1]$. Therefore, in this case consumes some bindings. Thus in this cases consume some binding capabilities.
 
   \item[-]{$w_i$ consumes one binding}\\
-    In this case, $w_{i-1}$ has to be bound one of B, C, D. In addition, $w_{i-2}$ and $w_i$ are not supply any bindings. Thus, in this cases consume some binding capabilities.。
+    In this case, $w_{i-1}$ has to be bound one of $n_1, n_2, n_3$. In addition, $w[i-2]$ and $w[i]$ are not supply any bindings. Thus, in this cases consume some binding capabilities.
   \item[-]{$w_i$ consumes two bindings}\\
-    In this case, $w_{i-2}$ already consumes two binding. $w_{i-1}$ has to be bound. $w_i$ supplies two bindings. Thus, in this cases consume some binding capabilities.
+    In this case, $w[i-2]$ already consumes two binding. $w[i-1]$ has to be bound. $w[i]$ supplies two bindings. Thus, in this cases consume some binding capabilities.
    
   \end{itemize}
 \end{itemize}
@@ -694,13 +709,13 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
           \fill(0:1.2) circle [radius=0.1];
           \draw[->] (0:0.1)--(0:1.1);
 
-          \node[left] at (-60:1.2) {A};
+          \node[left] at (-60:1.2) {$n_4$};
 
           \begin{scope}[shift=(0:2.4)]
             \fill(0,0) circle [radius=0.1];
 
             
-            \foreach \theta in {120,60,-60}{
+            \foreach \theta in {120,60,-60,0}{
               \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
               \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
             }
@@ -708,13 +723,13 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
             \draw[->] (180:1.1)--(180:0.1);
             \draw[->] (-120:0.1)--(-120:1.1);
 
-            \node[below] at (180:1.2) {$w_{i-2}$};
-            \node[right] at (0:0) {$w_{i-1}$};
-            \node[right] at (-120:1.2) {$w_i$};
+            \node[below] at (180:1.2) {$w[i-2]$};
+            \node[above] at (0:0) {$w[i-1]$};
+            \node[right] at (-120:1.2) {$w[i]$};
 
-            \node[left] at (120:1.2) {B};
-            \node[left] at (60:1.2) {C};
-            \node[left] at (0:1.2) {D};
+            \node[left] at (120:1.2) {$n_3$};
+            \node[left] at (60:1.2) {$n_2$};
+            \node[left] at (0:1.2) {$n_1$};
 
             \begin{scope}[shift=(-120:1.2)]
               \draw(0,0) circle [radius=0.1];
@@ -722,8 +737,8 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
                 \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
               }
 
-              \node[right] at (-120:1.2) {e};
-              \node[right] at (-60:1.2) {f};
+              \node[right] at (-120:1.2) {$n_5$};
+              \node[right] at (-60:1.2) {$n_6$};
             \end{scope}
             
           \end{scope}
@@ -760,13 +775,13 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
             \draw[->] (180:1.1)--(180:0.1);
             \draw[->] (-120:0.1)--(-120:1.1);
 
-            \node[below] at (180:1.2) {$w_{i-2}$};
-            \node[right] at (0:0) {$w_{i-1}$};
-            \node[right] at (-120:1.2) {$w_i$};
+            \node[below] at (180:1.2) {$w[i-2]$};
+            \node[above] at (0:0) {$w[i-1]$};
+            \node[right] at (-120:1.2) {$w[i]$};
 
-            \node[left] at (120:1.2) {A};
-            \node[left] at (60:1.2) {B};
-            \node[left] at (0:1.2) {C};
+            \node[left] at (120:1.2) {$n_3$};
+            \node[left] at (60:1.2) {$n_2$};
+            \node[left] at (0:1.2) {$n_1$};
 
             \begin{scope}[shift=(-120:1.2)]
               \draw(0,0) circle [radius=0.1];
@@ -774,9 +789,9 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
                 \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
               }
 
-              \node[right] at (180:1.2) {e};
-              \node[right] at (-120:1.2) {f};
-              \node[right] at (-60:1.2) {g};
+              \node[right] at (180:1.2) {$n_4$};
+              \node[right] at (-120:1.2) {$n_5$};
+              \node[right] at (-60:1.2) {$n_6$};
             \end{scope}
             
           \end{scope}
@@ -794,15 +809,15 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
 
 
 \subsubsection{Case of $S[i-2..i] = bbt$}
-Let us consider number of consumed by $w_{i-2}$ (Fig.\ref{TTT_tunnelC_enter_usingBond}).
+Let us consider number of consumed by $w[i-2]$ (Fig.\ref{TTT_tunnelC_enter_usingBond}).
 
 \begin{itemize}
-\item{$w_{i-2}$ consumes one binding}\\
-  In this situation, $w_{i-2}$ supplies one active binding whereas $w_{i}$ consumes this binding. In addtion, $w_{i-1}$ has to bound to one of A, B, C.
+\item{$w[i-2]$ consumes one binding}\\
+  In this situation, $w[i-2]$ supplies one active binding whereas $w[i]$ consumes this binding. In addition, $w[i-1]$ has to bound to one of $n_1, n_2, n_3$.
   Thus, in this cases consume some binding capabilities.
 
-\item{$w_{i-2}$ consumes two bindings}\\
-  In this case, $w_{i-2}$ already consumes two binding. $w_{i-1}$ has to be bound. $w_i$ supplies at most two bindings. Thus, in this cases consume some binding capabilities.
+\item{$w[i-2]$ consumes two bindings}\\
+  In this case, $w[i-2]$ already consumes two binding. $w[i-1]$ has to be bound. $w[i]$ supplies at most two bindings. Thus, in this cases consume some binding capabilities.
 \end{itemize}
 
 
@@ -823,13 +838,13 @@ Let us consider number of consumed by $w_{i-2}$ (Fig.\ref{TTT_tunnelC_enter_usin
           \draw[->] (180:1.1) -- (180:0.1);
           \draw[->] (-120:0.1) -- (-120:1.1);
 
-          \node[below] at (180:1.2) {$t_1$};
-          \node[right] at (0:0) {$t_2$};
-          \node[left] at (-120:1.2) {$t_3$};
+          \node[below] at (180:1.2) {$w[i-2]$};
+          \node[above] at (0:0) {$w[i-1]$};
+          \node[left] at (-120:1.2) {$w[i]$};
 
-          \node[right] at (120:1.2) {A};
-          \node[right] at (60:1.2) {B};
-          \node[right] at (0:1.2) {C};
+          \node[right] at (120:1.2) {$n_3$};
+          \node[right] at (60:1.2) {$n_2$};
+          \node[right] at (0:1.2) {$n_1$};
 
           \begin{scope}[shift=(-120:1.2)]
             \draw(0,0) circle [radius=0.1];
@@ -845,7 +860,7 @@ Let us consider number of consumed by $w_{i-2}$ (Fig.\ref{TTT_tunnelC_enter_usin
 \end{figure}
 
 
-By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities. If the sequence $S$ is free from any subsequence of the form $bt^+bt^+$, then it can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+$. Assume the length of $\sigma$ is $n$, seed supplies at most $2n$ binding capabilities. Therefore formula \ref{TTT_only_hold} hold.
+By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities. If the sequence $S$ is free from any subsequence of the form $bt^+bt^+$, then it can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+$. Assume the length of $\sigma$ is $n$, seed supplies at most $2n$ binding capabilities. Therefore formula \ref{TTT_only_bond} hold.
 
 \begin{eqnarray}
   \exists i \in \mathbb{N} \quad s.t. \quad u_{i-1} , u_i , u_{i+1} , u_{i+2} , \cdots \in \{ b \}
