@@ -6,7 +6,9 @@
 \usepackage{amsmath,amssymb}
 \usetikzlibrary{automata}
 
+\DeclareMathOperator*{\argmin}{arg\,min}
 
+\usepackage{wasysym}
 
 
 
@@ -15,7 +17,7 @@
 
 \title{On finiteness of structures produced deterministically by co-transcriptional folding}
 
-\section{Infiniteness of delay-1, arity-2 unary deterministic oritatami system}
+\section{Infiniteness of delay-1 unary deterministic oritatami system}
 
 \begin{figure}
   \begin{center}
@@ -75,7 +77,12 @@ Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j
 
 
 
-If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider on bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
+If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
+
+\begin{definition}[binding capability]
+We say that $p$ is $reachable$ if there exists directed path $P^\prime$ from $q$ to $p$ such that the path of $P^\prime$ does not cross the path of $P$ where $q_0$ is a bead which is latest stabilized, and $q_m$ is a reachable point. Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of inside $\hexagon_{w_i}^1$ that are free and reachable.
+ We represent the number of binding capabilities of a conformation $C_j$ as $\#bc(C_j)$. $\#bc(C_j)$ is defined by $\sum^{j}_{k=-n+1} \min \{ |B_k|, |R_k|  \}$.
+\end{definition}
 
 
 \begin{figure}
@@ -143,13 +150,13 @@ If a bead is stabilized through a tunnel section, then it can provide some bonds
 
 
 \begin{theorem}[Tunnel Troll Theorem]
-  Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there is a part of transcript $w[i..j+1] = bttt...tb$, then $C_i$'s binding capabilities is more than $C_j$'s binding capabilities.
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there is a part of transcript $w[i..j+1] = bttt...tb$, then $\#bc(C_i)$ is more than $\#bc(C_j)$.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{Proof of Tunnel Troll Theorem}
+\proof%{Proof of Tunnel Troll Theorem}
 Assume $\Xi$ is deterministic. %How they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
 Each of beads in transcript are bound either inside of tunnel or outside (Fig. \ref{TTT_position}). If a bead is stabilized at inside of tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized at outside of a tunnel, then its position is an entrance of a tunnel or otherwise.
 
@@ -162,9 +169,10 @@ Let us consider each of cases of tunnel A, B, and C. Accordingly, We use lemma \
 If a bead does not have any bond, then neighbors of it must be occupied by $\alpha + 2$ beads at $\delta = 1$ and unary except first and last beads.
 \end{lemma}
 
+\begin{proof}[lemma \ref{TTT_neighbor_lemma}]
 A bead in transcript needs predecessor and successor except first and last beads. If the bead does not have ant bond, then it use hand with $\alpha$ neighbors. Thus, lemma \ref{TTT_neighbor_lemma} is clearly true.
+\end{proof}
 
-\paragraph{}
 Let us consider tunnel sections only tunnel A and B. See Fig. \ref{TTT_position}. From appendix (Entrance of Tunnel A, B and Exit of Tunnel), we add maximum number which each transitions provide binding capabilities for each edge where $a$ is number of consuming binding capabilities when the bead is stabilized at position of $successor\ in\ outside$.
 
 %The sequence $S$ can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+ \cup bt^+bt^+$. 
@@ -871,7 +879,7 @@ By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt
 Let us represent $S$ as $S[i.i+1...] = v_i v_{i+1} v_{i+2} \cdots$ for some $v_i, v_{i+1}, v_{i+2}, \cdots \in \{ a, o\}$ where if $v_k$ is $a$, then $v_{k+1}$ is bound to $v_{k-1}$, if $v_k$ is $o$, then $v_{k+1}$ is NOT bound to $v_{k-1}$.
 
 
-Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $v_{i-1}$ consumes some binding capabilities because $S[i-1]$ is $b$. If the number of $v_{i-1}$'s bindings is one binding, then $v_{i+1}$ has to be bound except A or B so that $v_{i+1}$ must consumes two bindings except the case of A and B are occupied and $v_i$ consumes at least one binding. If A and B are occupied, then $v_{i-1}$'s binginds are inactive that is $v_{i-1}$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $v_{i-1}$ dose Not have any bindings, then $v_{i-1}$ already consumes two bindings. In addition, $v_i$ and $v_{i+1}$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold.
+Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ consumes some binding capabilities because $v_{i-1}$ is $b$. If the number of $w[i-1]$'s bindings is one binding, then $w[i+1]$ has to be bound except $n_1$ or $n_2$ so that $w[i+1]$ must consumes two bindings except the case of $n_1$ and $n_2$ are occupied and $w[i]$ consumes at least one binding. If $n_1$ and $n_2$ are occupied, then $w[i-1]$'s binginds are inactive that is $w[i-1]$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $w[i-1]$ dose Not have any bindings, then $w[i-1]$ already consumes two bindings. In addition, $w[i]$ and $w[i+1]$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold.
 
 \begin{eqnarray}
   \exists j \in \mathbb{N} \quad s.t. \quad u_j , u_{j+1} , u_{j+2} , \cdots \in \{ a \}
@@ -901,13 +909,13 @@ Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $v_{i-1}$
       \draw [shift=(60:1.2)] (-0.1,-0.1) rectangle (0.1,0.1);
       \draw [shift=(-60:1.2)] (-0.1,-0.1) rectangle (0.1,0.1);
       
-      \node[below] at (-120:1.2) {$v_{i-2}$};
-      \node[above] at (0:0) {$v_{i-1}$};
-      \node[above] at (0:1.2) {$v_i$};
-      \node[left, shift=(0:1.2)] at (40:1.2) {$v_{i+1}$};
+      \node[below] at (-120:1.2) {$w[i-2]$};
+      \node[above] at (0:0) {$w[i-1]$};
+      \node[below] at (0:1.2) {$w[i]$};
+      \node[right, shift=(0:1.2)] at (40:1.2) {$w[i+1]$};
 
-      \node[right] at (60:1.2) {A};
-      \node[right] at (-60:1.2) {B};
+      \node[right] at (60:1.2) {$n_1$};
+      \node[right] at (-60:1.2) {$n_2$};
         
     \end{tikzpicture}
     \caption{Case of $S[i]$}
