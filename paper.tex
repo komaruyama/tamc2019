@@ -158,6 +158,16 @@ Results on this problem are summarized in Fig.~\ref{fig:summary}.
 
 
 \section{Case of $\delta = 1$}
+
+
+
+%//////////////////////////////////////////////////////%
+%//////////////////////////////////////////////////////%
+%Kohei
+%//////////////////////////////////////////////////////%
+%//////////////////////////////////////////////////////%
+
+
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
@@ -214,12 +224,12 @@ Accordingly, how they are stabilized can be described by a binary sequence $S$ o
 
 Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a bead $p$ as $inside\ of\ a\ tunnel$ and such beads $p^\prime$ as $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
+%If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
 
-
-If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
+We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. We define $binding\ capability$ with reachable.
 
 \begin{definition}[binding capability]
-We say that $p$ is $reachable$ if there exists directed path $P^\prime$ from $q$ to $p$ such that the path of $P^\prime$ does not cross the path of $P$ where $q_0$ is a bead which is latest stabilized, and $q_m$ is a reachable point. Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of inside $\hexagon_{w_i}^1$ that are free and reachable.
+Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of neighbors of $w[i]$ that are free and reachable from $C_j$ where $C_j$ is a conformation which stabilized until $w[j]$.
  We represent the number of binding capabilities of a conformation $C_j$ as $\#bc(C_j)$. $\#bc(C_j)$ is defined by $\sum^{j}_{k=-n+1} \min \{ |B_k|, |R_k|  \}$.
 \end{definition}
 
@@ -289,7 +299,7 @@ We say that $p$ is $reachable$ if there exists directed path $P^\prime$ from $q$
 
 
 \begin{theorem}[Tunnel Troll Theorem]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there is a part of transcript $w[i..j+1] = bttt...tb$, then $\#bc(C_i)$ is more than $\#bc(C_j)$.
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there are indices $i$ and $j$ such that $S[i..j+1] = bt^{j-i}b$, then $\#bc(C_i)$ > $\#bc(C_j)$.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1062,6 +1072,12 @@ Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ 
   \end{center}
 \end{figure}
 
+
+
+
+%end of d = 1
+%//////////////////////////////////////////////////////%
+%//////////////////////////////////////////////////////%
 
 \section{Case of $\delta \geq 2$}
 
