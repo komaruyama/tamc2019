@@ -32,10 +32,14 @@
       \draw[dashed] (1.5,0)--(3,0);
       \draw[dashed] (3,0)--(4.5,0);
       \draw[dashed] (4.5,0)--(6,0);
-      \draw[->] (0,0)--(60:1.3);
-      \draw[->] (1.5,0)--++(60:1.3);
-      \draw[->] (3,0)--++(60:1.3);
-      \draw[->] (4.5,0)--++(60:1.3);
+      \draw[->] (0,0)--(60:0.75);
+      \draw[->] (1.5,0)--++(60:0.75);
+      \draw[->] (3,0)--++(60:0.75);
+      \draw[->] (4.5,0)--++(60:0.75);
+      \draw (0,0)--(60:1.5);
+      \draw (1.5,0)--++(60:1.5);
+      \draw (3,0)--++(60:1.5);
+      \draw (4.5,0)--++(60:1.5);
       
       \begin{scope}[shift=(60:1.5)]
         \fill (0,0) circle[radius = 0.1];
@@ -45,10 +49,15 @@
         \draw[dashed] (0,0)--(1.5,0);
         \draw[dashed] (1.5,0)--(3,0);
         \draw[dashed] (3,0)--(4.5,0);
-        \draw[->] (0,0)--(-60:1.3);
-        \draw[->] (1.5,0)--++(-60:1.3);
-        \draw[->] (3,0)--++(-60:1.3);
-        \draw[->] (4.5,0)--++(-60:1.3);
+        \draw[->] (0,0)--(-60:0.75);
+        \draw[->] (1.5,0)--++(-60:0.75);
+        \draw[->] (3,0)--++(-60:0.75);
+        \draw[->] (4.5,0)--++(-60:0.75);
+        
+        \draw (0,0)--(-60:1.5);
+        \draw (1.5,0)--++(-60:1.5);
+        \draw (3,0)--++(-60:1.5);
+        \draw (4.5,0)--++(-60:1.5);
       \end{scope}
       
     \end{tikzpicture}
@@ -75,12 +84,12 @@ Accordingly, how they are stabilized can be described by a binary sequence $S$ o
 
 Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a bead $p$ as $inside\ of\ a\ tunnel$ and such beads $p^\prime$ as $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
+%If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
 
-
-If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
+We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. We define $binding\ capability$ with reachable.
 
 \begin{definition}[binding capability]
-We say that $p$ is $reachable$ if there exists directed path $P^\prime$ from $q$ to $p$ such that the path of $P^\prime$ does not cross the path of $P$ where $q_0$ is a bead which is latest stabilized, and $q_m$ is a reachable point. Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of inside $\hexagon_{w_i}^1$ that are free and reachable.
+Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of neighbors of $w[i]$ that are free and reachable from $C_j$ where $C_j$ is a conformation which stabilized until $w[j]$.
  We represent the number of binding capabilities of a conformation $C_j$ as $\#bc(C_j)$. $\#bc(C_j)$ is defined by $\sum^{j}_{k=-n+1} \min \{ |B_k|, |R_k|  \}$.
 \end{definition}
 
@@ -88,57 +97,57 @@ We say that $p$ is $reachable$ if there exists directed path $P^\prime$ from $q$
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
-      \fill (0:0) circle [radius=0.05];
-      \fill (0:1.2) circle [radius=0.05];
-      \fill (180:1.2) circle [radius=0.05];
-      \node[above] at (0:1.2) { $p^\prime$ };
+      \draw (0:0) circle [radius=0.05];
+      \draw (0:1) circle [radius=0.05];
+      \draw (180:1) circle [radius=0.05];
+      \node[above] at (0:1) { $p^\prime$ };
       \node[above] at (0:0) { $p$ };
-      \node[above] at (180:1.2) { $p^\prime$ };
+      \node[above] at (180:1) { $p^\prime$ };
       
-      \fill (60 : 1.2) circle [radius=0.1];
-      \fill (-60 : 1.2) circle [radius=0.1];
-      \fill (120 : 1.2) circle [radius=0.1];
-      \fill (-120 : 1.2) circle [radius=0.1];
-      \node[above] at (60 :1.2) { $a_{j_1}$ };
-      \node[above] at (-60 :1.2) { $a_{j_2}$ };
-      \node[above] at (120 :1.2) { $a_{j_3}$ };
-      \node[above] at (-120 :1.2) { $a_{j_4}$ };
+      \fill (60 : 1) circle [radius=0.1];
+      \fill (-60 : 1) circle [radius=0.1];
+      \fill (120 : 1) circle [radius=0.1];
+      \fill (-120 : 1) circle [radius=0.1];
+      \node[above] at (60 :1) { $a_{j_1}$ };
+      \node[above] at (-60 :1) { $a_{j_2}$ };
+      \node[above] at (120 :1) { $a_{j_3}$ };
+      \node[above] at (-120 :1) { $a_{j_4}$ };
       
       \begin{scope}[shift=(0:5)]
-        \fill (0:0) circle [radius=0.1];
-        \fill (0:1.2) circle [radius=0.05];
-        \fill (180:1.2) circle [radius=0.1];
+        \fill[blue] (0:0) circle [radius=0.1];
+        \draw (0:1) circle [radius=0.05];
+        \fill (180:1) circle [radius=0.1];
         \node[above] at (180:1.2) { $a_{i-2}$ };
         \node[above] at (0:0) { $a_{i-1}$ };
-        \draw[->] (180:1.1) -- (180:0.1);
+        \draw[->, blue] (180:0.9) -- (180:0.1);
         
-        \fill (60 : 1.2) circle [radius=0.1];
-        \fill (-60 : 1.2) circle [radius=0.1];
-        \fill (120 : 1.2) circle [radius=0.1];
-        \fill (-120 : 1.2) circle [radius=0.1];
-        \node[above] at (60 :1.2) { $a_{j_1}$ };
-        \node[above] at (-60 :1.2) { $a_{j_2}$ };
-        \node[above] at (120 :1.2) { $a_{j_3}$ };
-        \node[above] at (-120 :1.2) { $a_{j_4}$ };
+        \fill (60 : 1) circle [radius=0.1];
+        \fill (-60 : 1) circle [radius=0.1];
+        \fill (120 : 1) circle [radius=0.1];
+        \fill (-120 : 1) circle [radius=0.1];
+        \node[above] at (60 :1) { $a_{j_1}$ };
+        \node[above] at (-60 :1) { $a_{j_2}$ };
+        \node[above] at (120 :1) { $a_{j_3}$ };
+        \node[above] at (-120 :1) { $a_{j_4}$ };
       \end{scope}
       \begin{scope}[shift=(0:10)]
         \fill (0:0) circle [radius=0.1];
-        \fill (0:1.2) circle [radius=0.1];
-        \fill (180:1.2) circle [radius=0.1];
-        \node[above] at (180:1.2) { $a_{i-2}$ };
+        \fill[blue] (0:1) circle [radius=0.1];
+        \fill (180:1) circle [radius=0.1];
+        \node[above] at (180:1) { $a_{i-2}$ };
         \node[above] at (0:0) { $a_{i-1}$ };
-        \node[above] at (0:1.2) { $a_i$ };
-        \draw[->] (180:1.1) -- (180:0.1);
-        \draw[->] (0:0.1) -- (0:1.1);
+        \node[above] at (0:1) { $a_i$ };
+        \draw[->] (180:0.9) -- (180:0.1);
+        \draw[->,blue] (0:0.1) -- (0:0.9);
         
-        \fill (60 : 1.2) circle [radius=0.1];
-        \fill (-60 : 1.2) circle [radius=0.1];
-        \fill (120 : 1.2) circle [radius=0.1];
-        \fill (-120 : 1.2) circle [radius=0.1];
-        \node[above] at (60 :1.2) { $a_{j_1}$ };
-        \node[above] at (-60 :1.2) { $a_{j_2}$ };
-        \node[above] at (120 :1.2) { $a_{j_3}$ };
-        \node[above] at (-120 :1.2) { $a_{j_4}$ };
+        \fill (60 : 1) circle [radius=0.1];
+        \fill (-60 : 1) circle [radius=0.1];
+        \fill (120 : 1) circle [radius=0.1];
+        \fill (-120 : 1) circle [radius=0.1];
+        \node[above] at (60 :1) { $a_{j_1}$ };
+        \node[above] at (-60 :1) { $a_{j_2}$ };
+        \node[above] at (120 :1) { $a_{j_3}$ };
+        \node[above] at (-120 :1) { $a_{j_4}$ };
       \end{scope}
     \end{tikzpicture} 
     \caption{Through a tunnel section}
@@ -150,7 +159,7 @@ We say that $p$ is $reachable$ if there exists directed path $P^\prime$ from $q$
 
 
 \begin{theorem}[Tunnel Troll Theorem]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there is a part of transcript $w[i..j+1] = bttt...tb$, then $\#bc(C_i)$ is more than $\#bc(C_j)$.
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there are indices $i$ and $j$ such that $S[i..j+1] = bt^{j-i}b$, then $\#bc(C_i)$ > $\#bc(C_j)$.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -191,17 +200,16 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
       \begin{minipage}{0.3\hsize}
         \begin{tikzpicture}
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.2) {$p^\prime$};
-            \node[above] at (0:1.2) {$p^\prime$};
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (0:1) {$p^\prime$};
 
             \foreach \theta in {0,180}{
-              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {60,-60,120,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
           \end{scope}
 
@@ -213,17 +221,16 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
         \begin{tikzpicture}
 
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.2) {$p^\prime$};
-            \node[above] at (-60:1.2) {$p^\prime$};
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (-60:1) {$p^\prime$};
 
             \foreach \theta in {-60,180}{
-              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {0,60,120,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+ 	            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
           \end{scope}
 
@@ -235,17 +242,16 @@ Thus, if a bead is stabilized through a tunnel section, then it consume some bin
         \begin{tikzpicture}
 
           \begin{scope}[xshift=2cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.2) {$p^\prime$};
-            \node[above] at (-1200:1.2) {$p^\prime$};
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (-1200:1) {$p^\prime$};
 
             \foreach \theta in {-120,180}{
-              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {0,60,-60,120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
           \end{scope}
 
@@ -464,31 +470,30 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
       \begin{minipage}{0.3\hsize}
       \centering
         \begin{tikzpicture}
-	 \draw[->,white] (120:1.1)--(120:0.1);%for adjustment
+	 \draw[->,white] (120:0.8)--(120:0.1);%for adjustment
           
-            \fill(0,0) circle [radius=0.1];
+            \fill[blue] (0,0) circle [radius=0.05];
             \node[below] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
+              \fill[transform canvas={shift=(\theta:1)},blue](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {60,-60,180}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
 
             \foreach \theta in {120,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
             }
             
-            \draw[->] (180:1.1)--(180:0.1);
-            \draw[->] (0:0.1)--(0:1.1);
+            \draw[->, blue] (180:0.9)--(180:0.1);
+            \draw[->, blue] (0:0.1)--(0:0.9);
 
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
+            \node[transform canvas={shift=(60:1)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1)},left] {$n_4$};
 
 
           \node at (0,-2) {$t_{0}$};
@@ -501,30 +506,29 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
       \centering
         \begin{tikzpicture}
 
-            \fill(0,0) circle [radius=0.1];
+            \fill(0,0) circle [radius=0.05];
             \node[below] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
+              \fill[transform canvas={shift=(\theta:1)},blue](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {60,-60,120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
 
             \foreach \theta in {180,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
             }
             
-            \draw[->] (120:1.1)--(120:0.1);
-            \draw[->] (0:0.1)--(0:1.1);
+            \draw[->, blue] (120:0.9)--(120:0.1);
+            \draw[->, blue] (0:0.1)--(0:0.9);
 
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
+            \node[transform canvas={shift=(60:1)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1)},left] {$n_5$};
 
           \node at (0,-2) {$t_{\pm 60}$};
         \end{tikzpicture}
@@ -533,31 +537,30 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
       \begin{minipage}{0.3\hsize}
       \centering
         \begin{tikzpicture}
-            \fill(0,0) circle [radius=0.1];
+            \fill[blue](0,0) circle [radius=0.05];
             \node[above] at (0,0) {$p^\prime$};
 
             \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
+              \fill[transform canvas={shift=(\theta:1)}, blue](0,0) circle [radius=0.05];
             }
             
             \foreach \theta in {60,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
 
             \foreach \theta in {180,-120,120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
             }
             
-            \draw[->] (60:1.1)--(60:0.1);
-            \draw[->] (0:0.1)--(0:1.1);
+            \draw[->, blue] (60:1.1)--(60:0.1);
+            \draw[->, blue] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(0:1.2)},below] {$n_0$};
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
+            \node[transform canvas={shift=(0:1)},below] {$n_0$};
+            \node[transform canvas={shift=(60:1)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1)},left] {$n_5$};
 
           \node at (0,-2) {$t_{\pm 120}$};
         \end{tikzpicture}
@@ -573,7 +576,7 @@ Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
 \subsubsection{Exit of Tunnel}
 
 
-Fig.\ref{TTT_tunnel_exit} exhibits all the two kings of exit of tunnel. 
+Fig.\ref{TTT_tunnel_exit} exhibits all the two kinds of exit of tunnel. 
 At least one of point $n_1$ or $n_2$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
 
 \paragraph{$\delta = 1, \alpha = 2$}
@@ -608,28 +611,29 @@ Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into 
       \centering
         \begin{tikzpicture}
 
-            \fill(0,0) circle [radius=0.1];
+            \fill[blue](0,0) circle [radius=0.05];
             \node[above] at (0,0) {$p^\prime$};
 
             
             \foreach \theta in {120,-120,180}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
 
-            \foreach \theta in {0,60,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+            \foreach \theta in {0}{
+              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
             }
+            \draw (-60:1) circle [radius=0.05];
+            \draw (60:1) circle [radius=0.05];
 
-            \draw[->] (180:1.1)--(180:0.1);
+            \draw[->, blue] (180:0.9)--(180:0.1);
 
 
 
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
+            \node[transform canvas={shift=(60:1)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1)},left] {$n_5$};
 
           \node at (0,-2) {Point $n_1$ and $n_2$ are free};
         \end{tikzpicture}
@@ -639,26 +643,26 @@ Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into 
       \centering
         \begin{tikzpicture}
 
-            \fill(0,0) circle [radius=0.1];
+            \fill[blue](0,0) circle [radius=0.05];
             \node[above] at (0,0) {$p^\prime$};
             
             \foreach \theta in {120,-120,180,60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
 
-            \foreach \theta in {0,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+            \foreach \theta in {0}{
+              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
             }
+            \draw (-60:1) circle [radius=0.05];
 
-            \draw[->] (180:1.1)--(180:0.1);
+            \draw[->, blue] (180:0.9)--(180:0.1);
 
-            \node[transform canvas={shift=(0:1.2)},right] {$n_0$};
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
+            \node[transform canvas={shift=(0:1)},right] {$n_0$};
+            \node[transform canvas={shift=(60:1)},right] {$n_1$};
+            \node[transform canvas={shift=(-60:1)},right] {$n_2$};
+            \node[transform canvas={shift=(120:1)},left] {$n_3$};
+            \node[transform canvas={shift=(-120:1)},left] {$n_4$};
+            \node[transform canvas={shift=(180:1)},left] {$n_5$};
 
 
           
@@ -706,47 +710,44 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
       \centering
         \begin{tikzpicture}
 
-          \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
-          \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
+          \fill[transform canvas={shift=(0:0)}](0,0) circle [radius=0.1];
           
           \foreach \theta in {60,-60,120,-120,180}{
-            \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-            \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
           }
 
-          \fill(0:1.2) circle [radius=0.1];
-          \draw[->] (0:0.1)--(0:1.1);
+          \fill[blue](0:1) circle [radius=0.05];
+          \draw[->, blue] (0:0.1)--(0:0.9);
 
-          \node[left] at (-60:1.2) {$n_4$};
+          \node[below] at (-60:1) {$n_4$};
 
-          \begin{scope}[shift=(0:2.4)]
-            \fill(0,0) circle [radius=0.1];
+          \begin{scope}[shift=(0:2)]
+            \fill[blue](0,0) circle [radius=0.05];
 
             
             \foreach \theta in {120,60,-60,0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+             \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
 
-            \draw[->] (180:1.1)--(180:0.1);
-            \draw[->] (-120:0.1)--(-120:1.1);
+            \draw[->, blue] (180:0.9)--(180:0.1);
+            \draw[->, blue] (-120:0.1)--(-120:0.9);
 
-            \node[below] at (180:1.2) {$w[i-2]$};
+            \node[below] at (180:1) {$w[i-2]$};
             \node[above] at (0:0) {$w[i-1]$};
-            \node[right] at (-120:1.2) {$w[i]$};
+            \node[right] at (-120:1) {$w[i]$};
 
-            \node[left] at (120:1.2) {$n_3$};
-            \node[left] at (60:1.2) {$n_2$};
-            \node[left] at (0:1.2) {$n_1$};
+            \node[above] at (120:1) {$n_3$};
+            \node[above] at (60:1) {$n_2$};
+            \node[right] at (0:1) {$n_1$};
 
-            \begin{scope}[shift=(-120:1.2)]
-              \draw(0,0) circle [radius=0.1];
+            \begin{scope}[shift=(-120:1)]
+              \fill[blue](0,0) circle [radius=0.05];
               \foreach \theta in {-120,-60}{
-                \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+                \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
               }
 
-              \node[right] at (-120:1.2) {$n_5$};
-              \node[right] at (-60:1.2) {$n_6$};
+              \node[right] at (-120:1) {$n_5$};
+              \node[right] at (-60:1) {$n_6$};
             \end{scope}
             
           \end{scope}
@@ -759,47 +760,44 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
       \centering
         \begin{tikzpicture}
 
-          \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
-          \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
+          \fill(0,0) circle [radius=0.1];
           
           \foreach \theta in {60,0,120,-120,180}{
-            \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-            \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
           }
 
-          \draw[->] (-60:0.1)--(-60:1.1);
+          \draw[->, blue] (-60:0.1)--(-60:0.9);
 
 
-          \begin{scope}[shift=(-60:1.2),shift=(0:1.2)]
-            \fill(0,0) circle [radius=0.1];
-            \fill(180:1.2) circle [radius=0.1];
+          \begin{scope}[shift=(-60:1),shift=(0:1)]
+            \fill[blue](0,0) circle [radius=0.05];
+            \fill[blue](180:1) circle [radius=0.05];
 
             
             \foreach \theta in {120,60,0,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
 
-            \draw[->] (180:1.1)--(180:0.1);
-            \draw[->] (-120:0.1)--(-120:1.1);
+            \draw[->, blue] (180:0.9)--(180:0.1);
+            \draw[->, blue] (-120:0.1)--(-120:0.9);
 
-            \node[below] at (180:1.2) {$w[i-2]$};
+            \node[below] at (180:1) {$w[i-2]$};
             \node[above] at (0:0) {$w[i-1]$};
-            \node[right] at (-120:1.2) {$w[i]$};
+            \node[right] at (-120:1) {$w[i]$};
 
-            \node[left] at (120:1.2) {$n_3$};
-            \node[left] at (60:1.2) {$n_2$};
-            \node[left] at (0:1.2) {$n_1$};
+            \node[above right] at (120:1) {$n_3$};
+            \node[right] at (60:1) {$n_2$};
+            \node[right] at (0:1) {$n_1$};
 
-            \begin{scope}[shift=(-120:1.2)]
-              \draw(0,0) circle [radius=0.1];
+            \begin{scope}[shift=(-120:1)]
+              \fill(0,0) circle [radius=0.05];
               \foreach \theta in {180,-120,-60}{
-                \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+                \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
               }
 
-              \node[right] at (180:1.2) {$n_4$};
-              \node[right] at (-120:1.2) {$n_5$};
-              \node[right] at (-60:1.2) {$n_6$};
+              \node[right] at (180:1) {$n_4$};
+              \node[right] at (-120:1) {$n_5$};
+              \node[right] at (-60:1) {$n_6$};
             \end{scope}
             
           \end{scope}
@@ -835,29 +833,28 @@ Let us consider number of consumed by $w[i-2]$ (Fig.\ref{TTT_tunnelC_enter_using
         \begin{tikzpicture}
         \draw[->,white] (-70:0.1) -- (-70:3);
           \foreach \theta in {60,-60,120,0}{
-            \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-            \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
+            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
           }
 
-          \fill(180:1.2) circle [radius=0.1];
-          \fill(0:0) circle [radius=0.1];
+          \fill[blue](180:1) circle [radius=0.05];
+          \fill[blue](0:0) circle [radius=0.05];
 
-          \draw[transform canvas={shift=(180:1.2)}] (105:1.1) edge[bend right] (105:0.1);
-          \draw[->] (180:1.1) -- (180:0.1);
-          \draw[->] (-120:0.1) -- (-120:1.1);
+          \draw[transform canvas={shift=(180:1)}, blue] (105:1) edge[bend right] (105:0);
+          \draw[->, blue] (180:0.9) -- (180:0.1);
+          \draw[->, blue] (-120:0.1) -- (-120:0.9);
 
-          \node[below] at (180:1.2) {$w[i-2]$};
+          \node[below left] at (180:1) {$w[i-2]$};
           \node[above] at (0:0) {$w[i-1]$};
-          \node[left] at (-120:1.2) {$w[i]$};
+          \node[below] at (-120:1) {$w[i]$};
 
-          \node[right] at (120:1.2) {$n_3$};
-          \node[right] at (60:1.2) {$n_2$};
-          \node[right] at (0:1.2) {$n_1$};
+          \node[right] at (120:1) {$n_3$};
+          \node[right] at (60:1) {$n_2$};
+          \node[right] at (0:1) {$n_1$};
 
-          \begin{scope}[shift=(-120:1.2)]
-            \draw(0,0) circle [radius=0.1];
+          \begin{scope}[shift=(-120:1)]
+            \fill[blue](0,0) circle [radius=0.05];
             \foreach \theta in {-120,-60,180}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
+              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
             }
             
           \end{scope}
@@ -879,7 +876,7 @@ By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt
 Let us represent $S$ as $S[i.i+1...] = v_i v_{i+1} v_{i+2} \cdots$ for some $v_i, v_{i+1}, v_{i+2}, \cdots \in \{ a, o\}$ where if $v_k$ is $a$, then $v_{k+1}$ is bound to $v_{k-1}$, if $v_k$ is $o$, then $v_{k+1}$ is NOT bound to $v_{k-1}$.
 
 
-Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ consumes some binding capabilities because $v_{i-1}$ is $b$. If the number of $w[i-1]$'s bindings is one binding, then $w[i+1]$ has to be bound except $n_1$ or $n_2$ so that $w[i+1]$ must consumes two bindings except the case of $n_1$ and $n_2$ are occupied and $w[i]$ consumes at least one binding. If $n_1$ and $n_2$ are occupied, then $w[i-1]$'s binginds are inactive that is $w[i-1]$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $w[i-1]$ dose Not have any bindings, then $w[i-1]$ already consumes two bindings. In addition, $w[i]$ and $w[i+1]$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold.
+Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ consumes some binding capabilities because $v_{i-1}$ is $b$. If the number of $w[i-1]$'s bindings is one binding, then $w[i+1]$ has to be bound except $n_1$ or $n_2$ so that $w[i+1]$ must consumes two bindings except the case of $n_1$ and $n_2$ are occupied and $w[i]$ consumes at least one binding. If $n_1$ and $n_2$ are occupied, then $w[i-1]$'s bindings are inactive that is $w[i-1]$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $w[i-1]$ dose Not have any bindings, then $w[i-1]$ already consumes two bindings. In addition, $w[i]$ and $w[i+1]$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold.
 
 \begin{eqnarray}
   \exists j \in \mathbb{N} \quad s.t. \quad u_j , u_{j+1} , u_{j+2} , \cdots \in \{ a \}
@@ -895,32 +892,282 @@ Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ 
   \begin{center}
     \begin{tikzpicture}
       
-      \draw[transform canvas={shift=(-120:1.2)}](-0.1,-0.1)--(0.1,0.1);
-      \draw[transform canvas={shift=(-120:1.2)}](0.1,-0.1)--(-0.1,0.1);
+      \fill[transform canvas={shift=(-120:1)}](0,0) circle [radius=0.1];
       
-      \fill(0:0) circle [radius=0.1];
-      \fill(0:1.5) circle [radius=0.1];
-      \fill[shift=(0:1.2)](40:1.2) circle [radius=0.1];
+      \fill[blue](0:0) circle [radius=0.05];
+      \fill[blue](0:1) circle [radius=0.05];
+      \fill[shift=(0:1), blue](40:1) circle [radius=0.05];
 
-      \draw[->] (-120:1.1) edge[bend left] (-120:0.1);
-      \draw[->] (0:0) -- (0:1.3);
-      \draw[->,transform canvas={shift=(0:1.2)}] (0:0.1) edge[bend right] (40:1.3);
-
-      \draw [shift=(60:1.2)] (-0.1,-0.1) rectangle (0.1,0.1);
-      \draw [shift=(-60:1.2)] (-0.1,-0.1) rectangle (0.1,0.1);
+      \draw[->, blue] (-120:1) edge[bend left] (-120:0.1);
+      \draw[->, blue] (0:0.1) -- (0:0.9);
+      \draw[->,transform canvas={shift=(0:1.2)}, blue] (50:0) -- (47:0.8);
       
-      \node[below] at (-120:1.2) {$w[i-2]$};
+      \draw[shift=(60:1)](-0.05,-0.05) rectangle (0.05,0.05);
+      \draw[shift=(-60:1)](-0.05,-0.05) rectangle (0.05,0.05);
+      
+      \node[below] at (-120:1) {$w[i-2]$};
       \node[above] at (0:0) {$w[i-1]$};
-      \node[below] at (0:1.2) {$w[i]$};
-      \node[right, shift=(0:1.2)] at (40:1.2) {$w[i+1]$};
+      \node[below] at (0:1) {$w[i]$};
+      \node[right, shift=(0:1)] at (40:1) {$w[i+1]$};
 
-      \node[right] at (60:1.2) {$n_1$};
-      \node[right] at (-60:1.2) {$n_2$};
+      \node[above] at (60:1) {$n_1$};
+      \node[below] at (-60:1) {$n_2$};
         
     \end{tikzpicture}
     \caption{Case of $S[i]$}
     \label{TTT_case_of_o}
   \end{center}
+\end{figure}
+
+\subsubsection{$\alpha = 3$}
+
+\begin{theorem}[$\delta = 1, \alpha = 3$]
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only a finite structure whose size is $\mathcal{O}(n)$.
+\end{theorem}
+
+\begin{lemma}
+\label{TTT_a3_2b_lemma}
+ Let $p$ be a point whose neighbors is occupied at least two point. If $w[i]$ is not stabilized and $w[i-1]$ includes neighbors of $p$, then $w[i]$ is stabilized at $p$ with at least one bond, $w[i]$ is stabilized at another point of $p$ otherwise with at least two bond except any neighbors of $p$ is occupied.
+\end{lemma}
+
+\begin{proof}[proof of lemma]
+Assume the transcript is stabilized until $w[i-1]$. One of neighbors of $p$ is not $w[i-1]$ where this bead regards $n_1$. If $w[i-1]$ include neighbors of $p$ and $w[i]$ is stabilized at another point of $p$ with one bond. Then, any neighbors do not have bond without $w[i-1]$. Neighbors of $n_1$ have to be occupied at least five according to lemma \ref{TTT_neighbor_lemma} and two of them include neighbors of $p$ where each of them regards $n_2, n_3$. In the same way, five neighbors of $n_2$ and $n_3$ are occupied and each of one of them includes neighbors of $p$ where they regard $n_4, n_5$. one of $n_5$'s neighbors includes neighbors of $p$ where it regards $n_6$. Then, any neighbors of $p$ are occupied. That is if some neighbors of $p$ are free, then there exists a bead which has bonds in neighbors.
+\end{proof}
+
+\begin{proof}
+Let us show that $\#bc(C_{i-1}) > \#bc(C_i)$, that is when $w[i]$ is stabilized, $w[i]$ uses at least two hands.
+Let us assume $w[i]$ is able to be stabilized with using one hand. Fig.\ref{TTT_a3_w} exhibits all the three kinds of possibility of stabilized $w[i]$. Then, $w[i]$ can be also stabilized at $n_3$. 
+
+\begin{paragraph}{Case of straight}
+\begin{itemize}
+\item[-] Case of $n_3$ is free\\
+According to assumption, $w[i]$ uses only one hand. Therefore, any neighbors of $n_3$ are occupied according to the lemma\ref{TTT_a3_2b_lemma}. $n_3$ and the point which is stabilized $w[i]$ are free so that $n_1$ has some bond by lemma\ref{TTT_neighbor_lemma}. Accordingly, this situation is non-deterministic. Thus, $n_3$ and $n_4$ have to be occupied because of symmetry.
+
+\item[-] Otherwise\\
+Because of  $S[i] = b$, at least one of $n_1$ and $n_2$ have to be free. Let us regard that $n_1$ is free. Neighbors of $n_1$ have to be occupied and at least two neighbors of $n_{-1}$ have to be free for $n_1$ and $w[i]$. According to lemma\ref{TTT_neighbor_lemma}, $n_{-1}$ have some hand. Therefore $w[i]$ can be also stabilized $n_1$ that is this situation is non-deterministic. Thus, one of $n_3$ and $n_4$ has to be free.
+\end{itemize}
+
+Therefore, this case is false.
+\end{paragraph}
+
+\begin{paragraph}{Case of obtuse}
+\begin{itemize}
+\item[-] Case of $n_3$ is free\\
+Any neighbors of $n_3$ have to be occupied but the point which is stabilized $w[i]$ is free. Thus $n_3$ has to be occupied.
+\item[-] Case of $n_4$ is free\\
+%n4??????????lemma2??n2???????lemma???n0??????????????w[i]???????????????????????bead?????????????1?????
+%??n0?????????????n3???????????lemma1??n-3????????n-3???????????n-2??????????n-1???????????????w[i]???????????????????w[i]????????????
+%??n3?????????????n0????????????lemma1??n-1???????????n-2?n-3???????w[i]?????????????
+%???n0 n3???beead???????????n0 n3 ????????????lemma1??n-1 n-3????????n-1,n-3????????????n-3???????????
+%???n-4????????????in order to provide inifinite structures?
+\item[-] Case of $n_2$ is free\\
+Any neighbors of $n_2$ have to be occupied so that $n_0$ is occupied. Any neighbors of $n_0$ except $n_2$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_2$ has to be occupied.
+\item[-] Case of $n_0$ is free\\
+Any neighbors of $n_0$ have to be occupied so that $n_{-1}$ is occupied. Any neighbors of $n_{-1}$ except $n_0$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_0$ has to be occupied. 
+\end{itemize}
+
+Therefore, any situations contradict $S[i] = b$.
+
+\end{paragraph}
+
+
+
+\begin{paragraph}{Case of acute}
+\begin{itemize}
+\item[-] Case of $n_4$ is free\\
+$n_4$ and a point which is stabilized $w[i]$ are free so that  $w[i-2]$ has some hands according to lemma\ref{TTT_neighbor_lemma}.
+However, $w[i]$ can be also stabilized $n_4$ in this case. Thus, $n_4$ has to be occupied.
+\item[-] Case of $n_2$ is free\\
+According to lemma\ref{TTT_a3_2b_lemma}, $n_0$ has to be occupied. $n_1$ has to be also occupied because of lemma\ref{TTT_neighbor_lemma}.
+We consider this case just like case of obtuse and that $n_4$ is free. Then if $w[i-2]$ binds $w[i]$, any $n_{-1}, n_{-2}, n_{-3}$ are occupied. If $n_1$ binds $w[i]$, this case is same. Also if $n_1$ and $w[i-2]$ do not have any hand, any $n_{-1}, n_{-2}, n_{-3}$ are occupied. Therefore, $w[i+1]$ cannot be provided.
+\item[-] Case of $n_0$ is free\\
+Any neighbors of $n_0$ have to be occupied so that $n_{1}$ is occupied. Any neighbors of $n_{1}$ except $n_0$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_0$ has to be occupied. 
+\item[-] Case of $n_1$ is free\\
+Any neighbors of $n_1$ have to be occupied so that $n_{-1}$ is occupied. Any neighbors of $n_{-1}$ except $n_1$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_1$ has to be occupied. 
+\end{itemize}
+
+Therefore, any situations contradict $S[i] = b$.
+\end{paragraph}\\
+
+
+Hence, assumption that w[i] is able to be stabilized with using one hand is false.
+Therefore, when w[i] is stabilized, w[i] uses at least two hands.
+\end{proof}
+
+\begin{figure}
+  \begin{center}
+  \begin{tabular}{c c c}
+ \begin{minipage}{0.3\hsize}
+ \centering
+    \begin{tikzpicture}
+      
+      \fill[shift=(180:1)] (0,0) circle [radius=0.1];
+      \fill[shift=(180:0)] (0,0) circle [radius=0.1];
+      
+      \fill[blue](0:1) circle [radius=0.05];
+      
+      \draw[->] (180:0.9) -- (180:0.1);
+      \draw[->, blue] (0:0.1) -- (0:0.9);
+
+	\node[above] at (180:1) {$w_{[i-2]}$};
+	\node[below] at (180:0) {$w_{[i-1]}$};
+	\node[above] at (0:1) {$w_{[i]}$};
+
+	\foreach \theta in {60,-60,120,-120}{
+   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+  	}
+	 \draw [shift=(60:1)] (0.95,-0.05) rectangle (1.05,0.05);
+ 	\node[above] at (60:1) {$n_1$};
+	\node[below] at (-60:1) {$n_2$};
+	\node[above] at (120:1) {$n_3$};
+	\node[below] at (-120:1) {$n_4$};
+	\node[above, shift=(0:1)] at (60:1) {$n_{-1}$};
+    \end{tikzpicture}
+    \end{minipage}
+    
+    \begin{minipage}{0.3\hsize}
+    \centering
+     \begin{tikzpicture}
+      
+      \fill[shift=(180:1)] (0,0) circle [radius=0.1];
+      \fill[shift=(180:0)] (0,0) circle [radius=0.1];
+      
+      \fill[blue](60:1) circle [radius=0.05];
+      
+      \draw[->] (180:0.9) -- (180:0.1);
+      \draw[->, blue] (60:0.1) -- (60:0.9);
+
+	\node[above] at (180:1) {$w_{[i-2]}$};
+	\node[below] at (180:0) {$w_{[i-1]}$};
+	\node[above] at (60:1) {$w_{[i]}$};
+
+
+	\foreach \theta in {0,-60,120,-120}{
+   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+  	}
+	\draw [shift=(60:1)] (0.95,-0.05) rectangle (1.05,0.05);
+	\draw [shift=(60:1), shift=(60:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+	\draw [shift=(60:1), shift=(120:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+	
+ 	\node[right] at (0:1) {$n_0$};
+	\node[below] at (-60:1) {$n_2$};
+	\node[above] at (120:1) {$n_3$};
+	\node[below] at (-120:1) {$n_4$};
+	\node[above, shift=(0:1)] at (60:1) {$n_{-1}$};
+	\node[above, shift=(60:1)] at (60:1) {$n_{-2}$};
+	\node[above, shift=(60:1)] at (120:1) {$n_{-3}$};
+    \end{tikzpicture}
+    \end{minipage}
+    
+    \begin{minipage}{0.3\hsize}
+        \centering
+     \begin{tikzpicture}
+      
+      \fill[shift=(180:1)] (0,0) circle [radius=0.1];
+      \fill[shift=(180:0)] (0,0) circle [radius=0.1];
+      
+      \fill[blue](120:1) circle [radius=0.05];
+      
+      \draw[->] (180:0.9) -- (180:0.1);
+      \draw[->, blue] (120:0.1) -- (120:0.9);
+
+	\node[above] at (180:1) {$w_{[i-2]}$};
+	\node[below] at (180:0) {$w_{[i-1]}$};
+	\node[above] at (120:1) {$w_{[i]}$};
+
+
+	\foreach \theta in {0,60,-60,-120}{
+   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+  	}
+	\draw [shift=(120:1), shift=(60:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+	\draw [shift=(120:1), shift=(120:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+	\draw [shift=(120:1), shift=(180:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+	
+ 	\node[right] at (0:1) {$n_0$};
+	\node[above] at (60:1) {$n_1$};
+	\node[below] at (-60:1) {$n_2$};
+	\node[below] at (-120:1) {$n_4$};
+	\node[above, shift=(120:1)] at (60:1) {$n_{-1}$};
+	\node[above, shift=(120:1)] at (120:1) {$n_{-2}$};
+	\node[above, shift=(120:1)] at (180:1) {$n_{-3}$};
+    \end{tikzpicture}
+    \end{minipage}
+    \end{tabular}
+    \caption{All possible directions of $w[i]$: straight, obtuse, acute.}
+    \label{TTT_a3_w}
+  \end{center}
+\end{figure}
+
+\subsubsection{$\alpha = 4$}
+\begin{theorem}[$\delta = 1, \alpha = 4$]
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only a finite structure whose size is $\mathcal{O}(n^2)$.
+\end{theorem}
+
+\begin{lemma}
+\label{TTT_a4_2b_lemma}
+Any beads which are already stabilized by some bonds use at least two bonds.
+\end{lemma}
+
+\begin{proof}[proof of lemma]
+Let us consider when $w[i]$ is stabilized by only one bond. See Fig.\ref{TTT_a4_lemma_fig}. According to lemma\ref{TTT_neighbor_lemma}, if $n_3$ is free, $w[i-2]$ has some hands. Thus, $n_4$ has to be occupied in order to stabilize deterministically. Moreover, also $n_2$ has to be occupied for deterministic and also $n_0, n_1$. $n_1$ has some hands because $n_3$ is free. Therefore, $w[i]$ is stabilized at $n_3$ and it has to use at least two hands. It contradict assumption.
+\end{proof}
+
+\begin{proof}
+According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $\mathcal{O}(n^2)$ in $\delta =1, \alpha = 4$.
+%lemma???a=4??#bc(C_i) >= #bc(C_{i+1})? ?upper?left
+\end{proof}
+
+
+\begin{figure}
+ \centering
+    \begin{tikzpicture}
+	\fill[shift=(180:1)] (0,0) circle [radius=0.1];
+      \fill[shift=(180:0)] (0,0) circle [radius=0.1];
+      
+      \draw[->] (180:0.9) -- (180:0.1);
+
+	\node[above] at (180:1) {$w_{[i-2]}$};
+	\node[below] at (180:0) {$w_{[i-1]}$};
+	\node[above] at (0:1) {$n_0$};
+
+	\foreach \theta in {0,60,-60,120,-120}{
+   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+  	}
+ 	\node[above] at (60:1) {$n_1$};
+	\node[below] at (-60:1) {$n_2$};
+	\node[above] at (120:1) {$n_3$};
+	\node[below] at (-120:1) {$n_4$};
+    \end{tikzpicture}
+    \caption{$\alpha = 4$: when $w[i]$ is stabilized}
+    \label{TTT_a4_lemma_fig}
+\end{figure}
+
+\begin{figure}
+ \centering
+    \begin{tikzpicture}
+	\fill[shift=(-120:1)] (0,0) circle [radius=0.1];
+      \fill[shift=(180:0), blue] (0,0) circle [radius=0.05];
+      
+      \draw[dashed] (180:2) -- (0:2);
+      \draw[->, blue] (-120:0.9) -- (-120:0.1);
+
+	\node[below] at (-120:1) {$w_{[i-1]}$};
+	\node[above] at (180:0) {$w_{[i]}$};
+	\node[above] at (0:1) {$n_0$};
+
+	\foreach \theta in {0,60,-60,120,180}{
+   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+  	}
+
+ 	\node[above] at (60:1) {$n_1$};
+	\node[below] at (-60:1) {$n_2$};
+	\node[above] at (120:1) {$n_3$};
+	\node[above] at (180:1) {$n_5$};
+	
+	\node at (0:2.5) {$n+1$};
+    \end{tikzpicture}
+    \caption{the first bead out of $\hexagon_{w[-n+1]}^n$}
+    \label{TTT_a4_first}
 \end{figure}
 
 \end{document}
