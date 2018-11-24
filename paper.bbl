@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{Cook2004}
+Cook, M.: Universality in elementary cellular automata. Complex Systems  15,
+  1--40 (2004)
+
+\bibitem{DHOPRSST2018}
+Demaine, E., Hendricks, J., Olsen, M., Patitz, M.J., Rogers, T.A., Schabanel,
+  N., Seki, S., Thomas, H.: Know when to fold 'em: Self-assembly of shapes by
+  folding in oritatami. In: Proc. DNA24. LNCS, vol. 11145, pp. 19--36. Springer
+  (2018), see its arXiv version for the finiteness considered in this paper:
+  https://arxiv.org/abs/1807.04682
+
+\bibitem{GeMeScSe2016}
+Geary, C., Meunier, P.E., Schabanel, N., Seki, S.: Programming biomolecules
+  that fold greedily during transcription. In: Proc. MFCS 2016. LIPIcs,
+  vol.~58, pp. 43:1--43:14 (2016)
+
+\bibitem{GeMeScSe2018}
+Geary, C., Meunier, P.E., Schabanel, N., Seki, S.: Proving the {T}uring
+  universality of oritatami cotranscriptional folding. In: Proc. ISAAC 2018
+  (2018), in press
+
+\bibitem{GearyRothemundAndersen2014}
+Geary, C., Rothemund, P.W.K., Andersen, E.S.: A single-stranded architecture
+  for cotranscriptional folding of {RNA} nanostructures. Science  345(6198),
+  799--804 (2014)
+
+\end{thebibliography}
