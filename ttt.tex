@@ -69,7 +69,7 @@
 \subsection{Introduction}
 
 
-In this section, we consider on finiteness of structures produced deterministically at delay 1. In result, cases of arity 1 and 3 can only yield finite structures which is size of $\mathcal{O} (n)$, and cases of arity 4 and more can only yield finite structures which is size of $mathcal{O} (n^2)$, and a case of arity 2 can yield infinite structures but they are only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
+In this section, we consider the finiteness of structures produced deterministically at delay 1. Our result, cases of arity 1 and 3 can only yield finite structures of size $\mathcal{O} (n)$, and cases of arity 4 and more can only yield finite structures which is size of $mathcal{O} (n^2)$, and a case of arity 2 can yield infinite structures but they are only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
 
 %In this section, we prove that unary oritatami system can form infinitely at delay 1 and arity 2 deterministically and moreover that the only infinite conformations which its oritatami system can yield is only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
 
@@ -82,7 +82,7 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
 Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w[i+1],w[i+2],\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupy four neighbors of a point (Fig.\ref{TTT_tunnel_intro}). 
 Accordingly, how they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
 
-Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a bead $p$ as $inside\ of\ a\ tunnel$ and such beads $p^\prime$ as $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
+Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a point $p$ the $inside\ of\ a\ tunnel$ and points $p^\prime$ the $entrance\ of\ a\ tunnel$ except when $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
 %If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
 
@@ -90,7 +90,7 @@ We say that point $p$ is reachable from a conformation $C$ if there exists a dir
 
 \begin{definition}[binding capability]
 Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of neighbors of $w[i]$ that are free and reachable from $C_j$ where $C_j$ is a conformation which stabilized until $w[j]$.
- We represent the number of binding capabilities of a conformation $C_j$ as $\#bc(C_j)$. $\#bc(C_j)$ is defined by $\sum^{j}_{k=-n+1} \min \{ |B_k|, |R_k|  \}$.
+ The number of binding capabilities of a conformation $C_j$ is denoted $\#bc(C_j)$ and is defined by $\sum^{j}_{k=-n+1} \min \{ |B_k|, |R_k|  \}$.
 \end{definition}
 
 
@@ -167,40 +167,40 @@ Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. If there are 
 
 \proof%{Proof of Tunnel Troll Theorem}
 Assume $\Xi$ is deterministic.
-Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized outside a tunnel, then its position is an entrance of a tunnel or otherwise.
+Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, then the position of successor is already decided either inside of a tunnel or outside. Moreover, if a bead is stabilized outside a tunnel, then its position is either an entrance of a tunnel or not.
 
 Tunnel sections have three possible shapes up to symmetry : straight($A$), obtuse($B$) and acute($C$) turn (Fig. \ref{TTT_tunnel}), and we will consider each of those. 
 
 \begin{lemma}
 \label{TTT_neighbor_lemma}
-For unary transcripts at $\delta = 1$, If a bead has no free hand, then at least $\alpha + 2$ of its neighbors have to be occpied.
+For unary transcripts at $\delta = 1$, if a bead has no free hand, then at least $\alpha + 2$ of its neighbors have to be occpied.
 \end{lemma}
 
 \begin{lemma}
 \label{TTT_entrance_Tab}
-Let $\Xi$ be an oritatami system at $\delta = 1, \alpha =2$ 
-Assume $\Xi$ stabilizes transcript until $w[i-1]$. If $w[i]$ is stabilized at an entrance point of tunnel $A$ or $B$, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
+Let $\Xi$ be an oritatami system at $\delta = 1, \alpha =2$. 
+Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $w[i]$ is stabilized at an entrance point of tunnel $A$ or $B$, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
 \end{lemma}
 
 \begin{lemma}
 \label{TTT_exit}
-Let $w[i]$ be a bead which is stabilized in exit of a tunnel.
-At $\delta = 1, \alpha =2$, If we assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$, then $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
+Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
+At $\delta = 1, \alpha =2$, if we assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$, then $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
 %if we assume $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
 On the other hand, if we assume $S[k] = t (k \leq i)$ at $\delta =1, \alpha \geq 3$, then $\#bc(C_{k-1}) > \#bc(C_{k})$.
 \end{lemma}
 
 \begin{lemma}
 \label{TTT_tunnelC_lemma}
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_i)$.
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_i)$.
 \end{lemma}
 
 
-Let us first consider cases of $\delta \geq 3, \alpha = 1$. These cases are clearly true because we use lemma\ref{TTT_exit}.
+Let us first consider cases of $\delta \geq 3, \alpha = 1$. These cases are clearly true because of lemma\ref{TTT_exit}.
 
 
-Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there is index $h$ such that $S[h-1..h+1] = bbt$ or $S[h-1..h+1] = tbt$. According to lemma\ref{TTT_entrance_Tab}, if $w[h+1]$ is stabilized by tunnel $A$ or $B$, then $\#bc(C_{h-1}) > \#bc(C_{h})$. Also,  According to lemma\ref{TTT_exit}, if $w[h+1]$ is stabilized by tunnel $C$, then $\#bc(C_{h-1}) > \#bc(C_{h})$, too.
-On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
+Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there is an index $h$ such that $S[h-1..h+1] = bbt$ or $S[h-1..h+1] = tbt$. According to lemma\ref{TTT_entrance_Tab}, if $w[h+1]$ is stabilized by tunnel $A$ or $B$, then $\#bc(C_{h-1}) > \#bc(C_{h})$. Also,  According to lemma\ref{TTT_tunnelC_lemma}, if $w[h+1]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
+On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$ because of lemma\ref{TTT_exit}. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
 
 \qed
 
@@ -361,7 +361,7 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
 
 
 \begin{proof}[lemma \ref{TTT_neighbor_lemma}]
-A transcript bead in has predecessor and successor except the first and last beads. If the bead does not have any free hand, then it uses hands with $\alpha$ neighbors. Thus, lemma \ref{TTT_neighbor_lemma} is clearly true.
+Any transcript bead has predecessor and successor except for the first and last beads. If the bead does not have any free hand, then it uses hands with $\alpha$ neighbors. Thus, lemma \ref{TTT_neighbor_lemma} is clearly true.
 \end{proof}
 
 \begin{proof}[lemma \ref{TTT_entrance_Tab}]
@@ -372,17 +372,17 @@ All cases are $\#bc(C_{i-1}) > \#bc(C_{i})$ as follows.
 
 \begin{itemize}
 \item{Case of $t_0$}\\
-  Let us consider points $n_3,n_4$. At least one of the points $n_3$ or $n_4$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $n_3$ is free, then $p^\prime$ has to be bound to a bead other than $n_1$ due to deterministically stabilize. In this situation, at least three neighbors of $n_1$ are free, that is, $n_1$ has at least one free hand from lemma \ref{TTT_neighbor_lemma}. Hence, $p^\prime$ must be bound to $n_1$. Thus, a case of $t_0$ consumes two hands and it does not supply any binding capabilities.
+  Let us consider points $n_3,n_4$. At least one of the points $n_3$ or $n_4$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $n_3$ is free, then $p^\prime$ has to be bound to a bead other than $n_1$ to deterministically stabilize. In this situation, at least three neighbors of $n_1$ are free, that is, $n_1$ has at least one free hand from lemma \ref{TTT_neighbor_lemma}. Hence, $p^\prime$ must be bound to $n_1$. Thus, a case of $t_0$ consumes two hands and it does not supply any binding capabilities.
 
 \item{Case of $t_{\pm 60}$}\\
-  In this case, a point $n_4$ or $n_5$ is free, too. If $n_5$ is free, $p^\prime$ has to be bound to $n_1$ or $n_2$. If $n_5$ is occupied, then $n_4$ is free. This time, $n_2$ has some free hands so $p^\prime$ has to be bound to $n_2$.
+  In this case, too, $n_4$ or $n_5$ is free. If $n_5$ is free, $p^\prime$ has to be bound to $n_1$ or $n_2$. If $n_5$ is occupied, then $n_4$ is free. This time, by $n_2$ has some free hands so $p^\prime$ has to be bound to $n_2$.
   
 
-  In this situation, $p^\prime$ is able to supply a binding capabilities which could $p^\prime$ bind a bead into $n_4$ or $n_5$. However, $n_2$ and $n_3$ are part of a contiguous conformation. According to Jordan curve theorem, any successors of $p^\prime$ cannot reach a point $n_4$ or $n_5$ so this capability is inactive. Thus, a case of $t_{\pm 60}$ is$\#bc(C_{i-1}) > \#bc(C_{i})$.
+  In this situation, $p^\prime$ is able to supply a binding capabilities which could bind a bead into $n_4$ or $n_5$. However, $n_2$ and $n_3$ are part of a contiguous conformation. According to Jordan curve theorem, any successors of $p^\prime$ cannot reach a point $n_4$ or $n_5$ so this capability is inactive. Thus, in the case of $t_{\pm 60}$ $\#bc(C_{i-1}) > \#bc(C_{i})$.
 
 \item{Case of $t_{\pm 120}$}\\
   Binding capabilities that $p^\prime$ supplies are inactive according to Jordan curve theorem on $n_1$ and $n_2$. Moreover, $p^\prime$ has to be bound to one of $n_3, n_4, n_5$ in order to deterministically stabilize.
-Thus, a case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
+Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
   
 \end{itemize}
 
@@ -505,11 +505,11 @@ At least one of points $n_1$ or $n_2$ is free because if both of them are occupi
 \begin{paragraph}{}
 $\delta = 1, \alpha = 2$\\
 Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$.
-If let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$ as follows. Also, if $h - i > 1$ and let $j$ be $h<j<i$, then $\#bc(C_{j-1}) \geq \#bc(C_{j})$ because any neighbors of $w[j]$ are occupied by beads of tunnel so that any $w[i+1..]$ cannot reach neighbors of $w[j]$. Thus, $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
+Let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$ as follows. Also, if $i - h > 1$ and $j$ is such that $h<j<i$, then $\#bc(C_{j-1}) \geq \#bc(C_{j})$ because all neighbors of $w[j]$ are occupied by beads forming the tunnel so that any $w[i+1..]$ cannot reach neighbors of $w[j]$. Thus, $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
 \end{paragraph}
 
 \begin{itemize}
-\item{Case of $n_1$ and $n_2$ being free}\\
+\item{Case of both $n_1$ and $n_2$ being free}\\
   This case can be regarded the same as entrance. See Fig.\ref{TTT_tunnel_exit} (Left). Predecessor $n_5$ has to be bound to $n_4$ and $n_5$ because both of $n_3$ and $n_4$ have binding capabilities. Hence, $a \geq 2$. This time, $\alpha = 2$, that is, this case $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
   
 \item{Case of $n_1$ is occupied}\\
@@ -520,15 +520,15 @@ If let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i
 \begin{paragraph}{}
 $\delta = 1, \alpha \geq 3$\\
 Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha \geq 3$. We assume $w[i]$ is stabilized at exit of tunnel.
-Any cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, then $\#bc(C_{k-1}) > \#bc(C_{k})$ because both of sides of the path $p$ in Fig.\ref{TTT_inside_tunnel} ($n_1, n_2$) have two free points and one of $n_1, n_2$ is not the predecessor so that it has hand and moreover that $w[k]$ supplies any binding capabilities because its neighbors are occupied by beads of tunnel.
+In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, then $\#bc(C_{k-1}) > \#bc(C_{k})$ because both sides of the path $p$ in Fig.\ref{TTT_inside_tunnel} ($n_1, n_2$) have two free points and one of $n_1, n_2$ is not the predecessor so that it has hand and moreover that $w[k]$ supplies any binding capabilities because its neighbors are occupied by beads of tunnel.
 \end{paragraph}
 
 \begin{itemize}
 \item{Case of $n_1$ and $n_2$ are free}\\
-  In $\alpha \geq 3$, if three neighbors of a bead leave, then it can supply two binding capabilities. Therefore Predecessor $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$, too. In this case, at least consumes four bindings and supplies at most two bindings. Thus, it consumes some binding capabilities, totally.
+  In $\alpha \geq 3$, if three neighbors of a bead leave, then it can supply two binding capabilities. Therefore predecessor $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$, too. In this case, at least four bindings are consumed and at most two are added. Thus, it consumes some binding capabilities, overall.
   
-\item{Case of $c$ is occupied}\\
-  In this case, $n_4$ leave at least two bindings and $n_3$, $n_1$ also leave at least one binding. Therefore $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$ also has to be bound $n_1$ and $n_4$. In this case, at least consumes four bindings and supplies at most one binding. Thus, it consumes some binding capabilities, totally.
+\item{Case of $n_1$ is occupied}\\
+  In this case, $n_4$ leave at least two bindings and $n_3$, $n_1$ also leave at least one binding. Therefore $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$ also has to be bound $n_1$ and $n_4$. In this case, at least four bindings are consumed and at most two are added. Thus, it consumes some binding capabilities, totally.
 \end{itemize}
 
 
@@ -637,10 +637,10 @@ Any cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, the
 
 \begin{proof}[lemma \ref{TTT_tunnelC_lemma}]
 Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$.
-Assume $S[h..i+1] = bt^{i-h}b (h<i)$. If at least one of $w[h+1..i]$ are stabilized by tunnel $C$, then only $w[h+1]$ can use tunnel $C$ because if $w[g]$ which is one of $w[h+2..i]$ is stabilized by tunnel $C$, $C_g$ is a terminal.
+Assume $S[h..i+1] = bt^{i-h}b (h<i)$. If at least one of $w[h+1..i]$ are stabilized by tunnel $C$, then only $w[h+1]$ can use tunnel $C$ because if $w[g]$ which is one of $w[h+2..i]$, with $h+2 \leq g \leq i$ is stabilized by tunnel $C$, $C_g$ is a terminal.
 
 
-Let us consider kinds of stabilization $S[h-1..h+1] = tbt$ or $S[h-1..h+1] = bbt$ into follows. In result, $\#bc(C_{h-3}) > \#bc(C_{h+1})$. In addition according to lemma\ref{TTT_exit} $\#bc(C_{h+1}) \geq \#bc(C_{i})$. Thus, $\#bc(C_{h-3}) > \#bc(C_{i})$.
+Let us consider stabilization $S[h-1..h+1] = tbt$ or $S[h-1..h+1] = bbt$ as follows. In result, $\#bc(C_{h-3}) > \#bc(C_{h+1})$. In addition according to lemma\ref{TTT_exit} $\#bc(C_{h+1}) \geq \#bc(C_{i})$. Thus, $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_{i})$.
 \\
 
 \subsubsection{Case of $S[h-1..h+1] = tbt$}
@@ -648,20 +648,20 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
 
 \begin{itemize}
 \item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
-  In this figure, Bead $n_4$ has at least one binding so that $w[h-1]$ has to bound $n_4$. Moreover, $w[h]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically. On the other hand, $w[h+1]$ can supply two bindings but free neighbors of $w[h+1]$ are two points. One of them is occupied by a successor. Therefore $w[h+1]$ can only bind one of $n_5, n_6$, that is, $w[h+1]$ supplies at most one binding. Thus, this case $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
+  In this figure, Bead $n_4$ has at least one binding so that $w[h-1]$ has to bound $n_4$. Moreover, $w[h]$ has to bind to one of $n_1, n_2, n_3$ in order to stabilize deterministically. On the other hand, $w[h+1]$ can supply two bindings but has only two free neighbors. One of them is occupied by a successor. Therefore $w[h+1]$ can only bind one of $n_5, n_6$, that is, $w[h+1]$ supplies at most one binding. Thus, this case $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
 
 \item{Right of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
-  This cases are divided on number of capabilities that $w[h-1]$ consumes.
+  These cases are divided on number of capabilities that $w[h-1]$ consumes.
   \begin{itemize}
-  \item[-]{$w[i]$ does not consume any bindings}\\
+  \item[-]{$w[h-1]$ does not consume any bindings}\\
   According to lemma\ref{TTT_exit}, $\#bc(C_{h-3}) \geq \#bc(C_{h-1})$ because of $S[h-1] = t$.
     $w[h]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically so that  $\#bc(C_{h-1}) > \#bc(C_{h})$.
     $w[h+1]$ has to be bound to $w[h-1]$ because $w[h-1]$ has bindings, that is, $w[h+1]$ consumes at least one hand and supplies at most one hand so that $\#bc(C_{h}) \geq \#bc(C_{h+1})$. Thus, in this cases $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
 %     This time, let us consider either $n_4$ is occupied or not. If $n_4$ is occupied, then $w[h-1]$ has no active bindings that is this situation consumes some binding capabilities. If $n_4$ is free and $w[h+2]$ is stabilized in $n_4$, then $w[h-1]$ has to bind $w[h+2]$. Therefore, In this case, stabilization of $w[h-1..h+2]$ consumes some bindings. If $n_4$ is free and $w[h+2]$ is stabilized except $n_4$, then this oritatami system has to use two binding capabilities in order to bind $w[h+2]$. Therefore, in this case consumes some bindings. Thus in this cases $\#bc(C_{h-1}) > \#bc(C_{h+2})$.
 
-  \item[-]{$w_{h+1}$ consumes one binding}\\
+  \item[-]{$w[h-1]$ consumes one binding}\\
     In this case, $w_{h}$ has to be bound one of $n_1, n_2, n_3$. In addition, $w[h-1]$ and $w[h+1]$ are not supply any bindings. Thus, in this cases consume some binding capabilities.
-  \item[-]{$w_i$ consumes two bindings}\\
+  \item[-]{$w[h-1]$ consumes two bindings}\\
     In this case, $w[h-1]$ already consumes two binding. $w[h]$ has to be bound. $w[h+1]$ supplies two bindings. Thus, in this cases $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
    
   \end{itemize}
@@ -696,9 +696,9 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
             \draw[->, blue] (180:0.9)--(180:0.1);
             \draw[->, blue] (-120:0.1)--(-120:0.9);
 
-            \node[below] at (180:1) {$w[h-1]$};
-            \node[above] at (0:0) {$w[h]$};
-            \node[right] at (-120:1) {$w[h+1]$};
+            \node[below] at (180:1) {$w_{[h-1]}$};
+            \node[above] at (0:0) {$w_{[h]}$};
+            \node[below] at (-120:1) {$w_{[h+1]}$};
 
             \node[above] at (120:1) {$n_3$};
             \node[above] at (60:1) {$n_2$};
@@ -745,9 +745,9 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
             \draw[->, blue] (180:0.9)--(180:0.1);
             \draw[->, blue] (-120:0.1)--(-120:0.9);
 
-            \node[below] at (180:1) {$w[h-1]$};
-            \node[above] at (0:0) {$w[h]$};
-            \node[right] at (-120:1) {$w[h+1]$};
+            \node[below] at (180:1) {$w_{[h-1]}$};
+            \node[above] at (0:0) {$w_{[h]}$};
+            \node[below] at (-120:1) {$w_{[h+1]}$};
 
             \node[above right] at (120:1) {$n_3$};
             \node[right] at (60:1) {$n_2$};
@@ -759,7 +759,7 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
                 \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
               }
 
-              \node[right] at (180:1) {$n_4$};
+              \node[left] at (180:1) {$n_4$};
               \node[right] at (-120:1) {$n_5$};
               \node[right] at (-60:1) {$n_6$};
             \end{scope}
@@ -779,7 +779,7 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
 
 
 \subsubsection{Case of $S[h-1..h+1] = bbt$}
-Let us consider number of consumed by $w[h-1]$ (Fig.\ref{TTT_tunnelC_enter_usingBond}).
+Let us consider number of consumed bindings by $w[h-1]$ (Fig.\ref{TTT_tunnelC_enter_usingBond}).
 
 \begin{itemize}
 \item{$w[h-1]$ consumes one binding}\\
