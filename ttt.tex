@@ -46,21 +46,19 @@
   \end{center}
 \end{figure}
 
-\subsection{Introduction}
 
-
-In this section, we consider the finiteness of structures produced deterministically at delay 1. Our result, cases of arity 1 and 3 can only yield finite structures of size $\mathcal{O} (n)$, and cases of arity 4 and more can only yield finite structures which is size of $mathcal{O} (n^2)$, and a case of arity 2 can yield infinite structures but they are only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
+In this section, we consider Problem~\ref{prob:det_unary_length} at delay 1. Our result, cases of arity 1 and 3 can only yield finite structures of size $O (n)$, and cases of arity 4 and more can only yield finite structures which is size of $O (n^2)$, and a case of arity 2 can yield infinite structures but they are only the zig-zag conformation shown in Fig.~\ref{TTT_zigzag}. 
 
 %In this section, we prove that unary oritatami system can form infinitely at delay 1 and arity 2 deterministically and moreover that the only infinite conformations which its oritatami system can yield is only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
 
 
-Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its seed $\sigma$ consists of $n$ beads.
-%Let us denote its transcript by $w = w_1 w_2 w_3 \cdots$ for some $w_1,w_2,w_3 \in \Sigma = \{e\}$.
+%Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its seed $\sigma$ consists of $n$ beads.
 For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that is, foldable by $\Xi$. Hence $C_0 = \sigma$.
 
 
 Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w[i+1],w[i+2],\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupy four neighbors of a point (Fig.\ref{TTT_tunnel_intro}). 
-Accordingly, how they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
+Accordingly, how they are stabilized can be described by a sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
+We let $S$ take the value $\blacksquare$ for halt.
 
 Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a point $p$ the $inside\ of\ a\ tunnel$ and points $p^\prime$ the $entrance\ of\ a\ tunnel$ except when $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
@@ -69,8 +67,9 @@ Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j
 We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. We define $binding\ capability$ with reachable.
 
 \begin{definition}[binding capability]
-Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of neighbors of $w[i]$ that are free and reachable from $C_j$ where $C_j$ is a conformation which stabilized until $w[j]$.
- The number of binding capabilities of a conformation $C_j$ is denoted $\#bc(C_j)$ and is defined by $\sum^{j}_{k=-n+1} \min \{ |B_k|, |R_k|  \}$.
+Let $C = (P,w,H)$ be a conformation.
+Let $B_k$ be $H \cap \{ (i,j) \mid \mbox{$i=k$ or $j=k$} \}$. Moreover, let $R_k$ be a set of neighbors of the point $P[k]$ that are free and reachable from $C$.
+ The binding capability of $C$, denoted by $\#bc(C)$, is defined by $\sum^{|w|}_{k=1} \min \{ |B_k|, |R_k|  \}$.
 \end{definition}
 
 
@@ -136,34 +135,39 @@ Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > 
 \end{figure}
 
 
-
+%remark 
 
 \begin{theorem}[Tunnel Troll Theorem]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. If there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$, then $\#bc(C_{i-1}) > \#bc(C_j)$ and if $S[i..j+1] = bt^lbt^mb \quad (l + m = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_j)$. On the other hand, at $\delta = 1$ and $\alpha \geq 3$, if S$[k] = t$, then $\#bc(C_{k-1}) > \#bc(C_k)$.
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$. 
+At arity $\alpha \geq 3$, if $S[k] = t$ and $S[k+1] \neq \blacksquare$, then $\#bc(C_{k-1}) > \#bc(C_k)$.
+On the other hand, at arity $\alpha = 2$, if there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ or $bt^\ell bt^{j-i-1-\ell}b$ for some $\ell$, then $\#bc(C_{i-1}) > \#bc(C_j)$.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \proof%{Proof of Tunnel Troll Theorem}
-Assume $\Xi$ is deterministic.
-Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, then the position of successor is already decided either inside of a tunnel or outside. Moreover, if a bead is stabilized outside a tunnel, then its position is either an entrance of a tunnel or not.
+Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, 
+then it has at most one free neighbor, and hence its successor it to be stabilized there.
+Moreover, if a bead is stabilized outside a tunnel, then its position is either an entrance of a tunnel or not.
 
-Tunnel sections have three possible shapes up to symmetry : straight($A$), obtuse($B$) and acute($C$) turn (Fig. \ref{TTT_tunnel}), and we will consider each of those. 
+Tunnel sections have three possible shapes up to symmetry : straight($S$), obtuse($O$) and acute($A$) turn (Fig. \ref{TTT_tunnel}), and we will consider each of those. 
 
-\begin{lemma}
-\label{TTT_neighbor_lemma}
-For unary transcripts at $\delta = 1$, if a bead has no free hand, then at least $\alpha + 2$ of its neighbors have to be occpied.
-\end{lemma}
+%\begin{lemma}
+%\label{TTT_neighbor_lemma}
+%For unary transcripts at $\delta = 1$, if a bead has no free hand, then at least $\alpha + 2$ of its neighbors have to be occpied.
+%\end{lemma}
+
 
 \begin{lemma}
 \label{TTT_entrance_Tab}
-Let $\Xi$ be an oritatami system at $\delta = 1, \alpha =2$. 
+Let $\Xi$ be a deterministic unary oritatami system at delay $\delta = 1$, arity $\alpha =2$. 
 Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $w[i]$ is stabilized at an entrance point of tunnel $A$ or $B$, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
 \end{lemma}
 
 \begin{lemma}
 \label{TTT_exit}
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$. 
 Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
 At $\delta = 1, \alpha =2$, if we assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$, then $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
 %if we assume $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
@@ -172,15 +176,15 @@ On the other hand, if we assume $S[k] = t (k \leq i)$ at $\delta =1, \alpha \geq
 
 \begin{lemma}
 \label{TTT_tunnelC_lemma}
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_i)$.
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_i)$.
 \end{lemma}
 
 
-Let us first consider cases of $\delta \geq 3, \alpha = 1$. These cases are clearly true because of lemma\ref{TTT_exit}.
+Let us first consider cases of $\delta \geq 3, \alpha = 1$. These cases are clearly true because of Lemma~\ref{TTT_exit}.
 
 
-Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there is an index $h$ such that $S[h-1..h+1] = bbt$ or $S[h-1..h+1] = tbt$. According to lemma\ref{TTT_entrance_Tab}, if $w[h+1]$ is stabilized by tunnel $A$ or $B$, then $\#bc(C_{h-1}) > \#bc(C_{h})$. Also,  According to lemma\ref{TTT_tunnelC_lemma}, if $w[h+1]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
-On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$ because of lemma\ref{TTT_exit}. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
+Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there is an index $h$ such that $S[h-1..h+1] = bbt$ or $S[h-1..h+1] = tbt$. According to Lemma~\ref{TTT_entrance_Tab}, if $w[h+1]$ is stabilized by tunnel $A$ or $B$, then $\#bc(C_{h-1}) > \#bc(C_{h})$. Also,  According to Lemma~\ref{TTT_tunnelC_lemma}, if $w[h+1]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
+On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$ because of Lemma~\ref{TTT_exit}. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
 
 \qed
 
@@ -204,7 +208,7 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
             }
           \end{scope}
 
-          \node at (2,0) {Tunnel A};
+          \node at (2,0) {Tunnel $S$};
         \end{tikzpicture}
       \end{minipage}
 
@@ -225,7 +229,7 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
             }
           \end{scope}
 
-          \node at (2,0) {Tunnel B};
+          \node at (2,0) {Tunnel $O$};
         \end{tikzpicture}
       \end{minipage}
 
@@ -246,7 +250,7 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
             }
           \end{scope}
 
-          \node at (2,0) {Tunnel C};
+          \node at (2,0) {Tunnel $A$};
         \end{tikzpicture}
       \end{minipage}
       
@@ -336,14 +340,6 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
 %\end{figure}
 
 
-
-
-
-
-\begin{proof}[lemma \ref{TTT_neighbor_lemma}]
-Any transcript bead has predecessor and successor except for the first and last beads. If the bead does not have any free hand, then it uses hands with $\alpha$ neighbors. Thus, lemma \ref{TTT_neighbor_lemma} is clearly true.
-\end{proof}
-
 \begin{proof}[lemma \ref{TTT_entrance_Tab}]
 Fig.\ref{TTT_tunnel_direction} exhibits all the three kinds of entrance of tunnel A, B.
 Let $w[i]$ be stabilized at an entrance point of Tunnel $A$ or $B$.
@@ -352,7 +348,7 @@ All cases are $\#bc(C_{i-1}) > \#bc(C_{i})$ as follows.
 
 \begin{itemize}
 \item{Case of $t_0$}\\
-  Let us consider points $n_3,n_4$. At least one of the points $n_3$ or $n_4$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $n_3$ is free, then $p^\prime$ has to be bound to a bead other than $n_1$ to deterministically stabilize. In this situation, at least three neighbors of $n_1$ are free, that is, $n_1$ has at least one free hand from lemma \ref{TTT_neighbor_lemma}. Hence, $p^\prime$ must be bound to $n_1$. Thus, a case of $t_0$ consumes two hands and it does not supply any binding capabilities.
+  Let us consider points $n_3,n_4$. At least one of the points $n_3$ or $n_4$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $n_3$ is free, then $p^\prime$ has to be bound to a bead other than $n_1$ to deterministically stabilize. In this situation, at least three neighbors of $n_1$ are free, that is, $n_1$ has at least one free hand from Lemma~ \ref{TTT_neighbor_lemma}. Hence, $p^\prime$ must be bound to $n_1$. Thus, a case of $t_0$ consumes two hands and it does not supply any binding capabilities.
 
 \item{Case of $t_{\pm 60}$}\\
   In this case, too, $n_4$ or $n_5$ is free. If $n_5$ is free, $p^\prime$ has to be bound to $n_1$ or $n_2$. If $n_5$ is occupied, then $n_4$ is free. This time, by $n_2$ has some free hands so $p^\prime$ has to be bound to $n_2$.
@@ -478,7 +474,7 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
 
 \end{proof}
 
-\begin{proof}[lemma \ref{TTT_exit}]
+\begin{proof}[Lemma~ \ref{TTT_exit}]
 Fig.\ref{TTT_tunnel_exit} exhibits all the two kinds of exit of tunnel. 
 At least one of points $n_1$ or $n_2$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
 
@@ -615,12 +611,12 @@ In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, 
 \end{figure}
 \end{proof}
 
-\begin{proof}[lemma \ref{TTT_tunnelC_lemma}]
+\begin{proof}[Lemma~ \ref{TTT_tunnelC_lemma}]
 Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$.
 Assume $S[h..i+1] = bt^{i-h}b (h<i)$. If at least one of $w[h+1..i]$ are stabilized by tunnel $C$, then only $w[h+1]$ can use tunnel $C$ because if $w[g]$ which is one of $w[h+2..i]$, with $h+2 \leq g \leq i$ is stabilized by tunnel $C$, $C_g$ is a terminal.
 
 
-Let us consider stabilization $S[h-1..h+1] = tbt$ or $S[h-1..h+1] = bbt$ as follows. In result, $\#bc(C_{h-3}) > \#bc(C_{h+1})$. In addition according to lemma\ref{TTT_exit} $\#bc(C_{h+1}) \geq \#bc(C_{i})$. Thus, $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_{i})$.
+Let us consider stabilization $S[h-1..h+1] = tbt$ or $S[h-1..h+1] = bbt$ as follows. In result, $\#bc(C_{h-3}) > \#bc(C_{h+1})$. In addition according to Lemma~\ref{TTT_exit} $\#bc(C_{h+1}) \geq \#bc(C_{i})$. Thus, $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_{i})$.
 \\
 
 \subsubsection{Case of $S[h-1..h+1] = tbt$}
@@ -634,7 +630,7 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
   These cases are divided on number of capabilities that $w[h-1]$ consumes.
   \begin{itemize}
   \item[-]{$w[h-1]$ does not consume any bindings}\\
-  According to lemma\ref{TTT_exit}, $\#bc(C_{h-3}) \geq \#bc(C_{h-1})$ because of $S[h-1] = t$.
+  According to Lemma~\ref{TTT_exit}, $\#bc(C_{h-3}) \geq \#bc(C_{h-1})$ because of $S[h-1] = t$.
     $w[h]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically so that  $\#bc(C_{h-1}) > \#bc(C_{h})$.
     $w[h+1]$ has to be bound to $w[h-1]$ because $w[h-1]$ has bindings, that is, $w[h+1]$ consumes at least one hand and supplies at most one hand so that $\#bc(C_{h}) \geq \#bc(C_{h+1})$. Thus, in this cases $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
 %     This time, let us consider either $n_4$ is occupied or not. If $n_4$ is occupied, then $w[h-1]$ has no active bindings that is this situation consumes some binding capabilities. If $n_4$ is free and $w[h+2]$ is stabilized in $n_4$, then $w[h-1]$ has to bind $w[h+2]$. Therefore, In this case, stabilization of $w[h-1..h+2]$ consumes some bindings. If $n_4$ is free and $w[h+2]$ is stabilized except $n_4$, then this oritatami system has to use two binding capabilities in order to bind $w[h+2]$. Therefore, in this case consumes some bindings. Thus in this cases $\#bc(C_{h-1}) > \#bc(C_{h+2})$.
