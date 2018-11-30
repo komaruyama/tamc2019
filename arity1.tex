@@ -1,17 +1,104 @@
+
+
+\subsection{$\alpha = 1$, arbitrary alphabets}
+
+At arity $1$, allowing delay $2$ increases the power of OS compared with $\delta=1$, if at least four bead types are allowed. We demonstrate this with an infinite family of OS, which fold deterministically a transcript of length $\frac{(n-1)^2}{4}$ when receiving a given seed of length $n$.
+
+Consider a delay $2$, arity $1$ system with bead types $B_0$ to $B_4$ and attraction rules $\{B_1-B_1,B_2-B_2, B_3-B_3,B_4-B_4\}$. Let the seed be a conformation of a $4k+1$ long bead sequence of the form $(B_1B_0B_2B_0)^kB_0$. Bead $i$ of the seed is fixed at point $(i,0)$, for all $1\leq i\leq 4k-1$. Bead $4k$ is at $(4k-1,-1)$ and bead $4k+1$ is at $(4k,0)$.
+
+\noindent The transcript is
+\begin{center}
+	\scriptsize
+	\begin{tabular}{llllll}
+		$p=$ & $(B_2B_4B_1B_3)^{k-1}$ & $B_2B_4(B_1B_4B_2B_3)^{k-1}$ & $B_1B_4(B_1B_3B_2B_4)^{k-2}$ & $B_1B_3(B_2B_3B_1B_4)^{k-2}$ & $B_2B_3$\\
+		& $(B_2B_4B_1B_3)^{k-3}$ & $B_2B_4(B_1B_4B_2B_3)^{k-3}$ & $B_1B_4(B_1B_3B_2B_4)^{k-4}$ & $B_1B_3(B_2B_3B_1B_4)^{k-4}$ & $B_2B_3$\\
+		& \vdots\\
+		& $(B_2B_4B_1B_3)^{2}$ & $B_2B_4(B_1B_4B_2B_3)^{2}$ & $B_1B_4(B_1B_3B_2B_4)^{1}$ & $B_1B_3(B_2B_3B_1B_4)^{1}$ & $B_2B_3$\\
+		& $B_2B_4B_1B_4$
+	\end{tabular}
+	
+\end{center}
+if $k$ is odd, and
+\begin{center}
+	\scriptsize
+	\begin{tabular}{llllll}
+		$p=$ & $(B_2B_4B_1B_3)^{k-1}$ & $B_2B_4(B_1B_4B_2B_3)^{k-1}$ & $B_1B_4(B_1B_3B_2B_4)^{k-2}$ & $B_1B_3(B_2B_3B_1B_4)^{k-2}$ & $B_2B_3$\\
+		& $(B_2B_4B_1B_3)^{k-3}$ & $B_2B_4(B_1B_4B_2B_3)^{k-3}$ & $B_1B_4(B_1B_3B_2B_4)^{k-4}$ & $B_1B_3(B_2B_3B_1B_4)^{k-4}$ & $B_2B_3$\\
+		& \vdots\\
+		& $(B_2B_4B_1B_3)^{2}$ & $B_2B_4(B_1B_4B_2B_3)^{2}$ & $B_1B_4$\\
+		& $B_1B_3B_2B_3$
+	\end{tabular}
+	
+\end{center}
+if $k$ is even. The length of the transcript is $4k^2$. One row of the formula above corresponds to four rows of the conformation (except for the last rows).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{./Fig/chichenBig}
+	\caption{Quadratic length transcript folding deterministically into pyramid shape. Seed: thick black path. Transcript: thin blue path. Bonds: dashed red lines. Beads: '$B_0$' black, '$B_1$' red, '$B_2$' red with black contour, '$B_3$' green, '$B_4$' green with black contour.}
+	\label{CI:big}
+\end{figure}
+
+The first bead of the transcript is type $B_2$ and it has to be fixed next to $(4k,0)$. The second bead is type $B_4$, which cannot form a bond with anything in the conformation so far. The only possibility of forming a bond is if $B_2$ is placed at $(4k,1)$ and it bonds with the $B_2$ at $(4k-1,0)$. The next bead to be fixed is $B_4$, and since it cannot form a bond, the conformation with the highest number of bonds is when the next bead, $B_1$ is at $(4k-2,1)$, which fixes the previous bead, $B_4$ at $(4k-1,1)$.
+
+
+
+\begin{figure}
+	\begin{minipage}{.35\textwidth}
+		\centering
+		\includegraphics[align=c,height=1in]{./Fig/CI_1}\\
+		\bigskip
+		
+		(a) First transcript bead
+	\end{minipage}%
+	\begin{minipage}{.2\textwidth}
+		\centering
+		\includegraphics[align=c,height=0.7in]{./Fig/CI_2}\\
+		\bigskip
+		
+		(b) Second bead
+	\end{minipage}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[align=c,height=0.5in]{./Fig/CI_3}
+		\bigskip
+		\vspace{0.1in}
+		\includegraphics[align=c,height=0.5in]{./Fig/CI_4}
+		\bigskip
+		
+		(c) Bead $i+1$, when bead $i$ is $B_{3,4}$ and $B_{1,2}$, respectively
+	\end{minipage}
+	\caption{Fixing transcript beads in odd rows}
+	\label{CI:1-4}
+\end{figure}
+
+
+Let the last bead fixed be the $i$th one.
+If it is $B_1$ or $B_2$ at some position $(4k+1-i,1)$, then the next two are $B_3B_2$ or $B_4B1$, respectively. The first beads in both cases cannot bind anywhere, whereas the second ones can bind with identical beads at $(4k+1-(i+3),0)$, fixing bead $i+1$ at $(4k+1-(i+1),1)$.
+If bead $i$ was $B_3$ or $B_4$ at position $(4k+1-i,1)$ then the next two are $B_2B_4$ or $B_1B_3$,respectively. The first bead of those sequences can bind only to its identical counterpart at $(4k+1-(i+2),0)$, whereas the second cannot bind anywhere, fixing bead $i+1$ at $(4k+1-(i+1))$. The above hold as long as there is a bead already at $(4k+1-(i+3),0)$ or at $(4k+1-(i+3),0)$, respectively, so for all $i\in \{1,\dots, 4k-2\}$.
+
+According to the above, bead $4k-1$ was fixed at $(4k+1-(4k-1),1)=(2,1)$. The next bead, $4k$ is of the same type as bead $4k-2$, so they can form a bond, and this is the only bond that can be formed by any conformation of beads $4k$ and $4k+1$ (see Fig.~\ref{CI:turn}). A similar situation occurs when trying to fix bead $8k-2$: it can only bond to bead $8k-4$, so it will turn the path around.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{./Fig/CI_turn}
+	\caption{Beads $4k, 8k-2, \dots$ stabilize at turning points because the bead two positions before is the same type and has a free hand.}
+	\label{CI:turn}
+\end{figure}
+
 \subsection{$\alpha = 1$, unary}
 
 Let the point where the first transcript bead was fixed be $p$ and let $n=|\mathrm{seed}|+1$. We will argue about the situation when the first bead is stabilized outside $\hexagon_p^n$ (a hexagon of radius $n$). Let this be the $i$th bead of the transcript. Without loss of generality, we can translate the origin $(0,0)$ to the coordinates of bead $i-1$ (which is still in $\hexagon_p^n$), and we can assume that the bead outside the hexagon is fixed at $(1,1)$ (see Fig.~\ref{fig:hexagonOut}).
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\linewidth]{./Fig/hexagonOut}
-	\caption{$N_p^n$ and the position $(1,1)$ of the first bead fixed outside of it.}
+	\caption{$\hexagon_p^n$ and the position $(1,1)$ of the first bead fixed outside of it.}
 	\label{fig:hexagonOut}
 \end{figure}
 
 In the elongation that places bead $i$ at $(1,1)$ there are two possibilities:
 \begin{itemize}
 	\item $i$ forms a bond with a bead at $(1,0)$.
-	\item  $i$ does not bond to anything and $i+1$ is at $(2,1)$ bonding with a bead at $(2,0)$. If there is no bead at $(1,0)$, then placing $i$ at $(1,0)$ instead of $(1,1)$ results in the same number of bonds, leading to nondeterminism. Therefore, there has to be a bead at $(1,0)$ and it is inert, otherwise it would bond to $i$. This is analogous to case 1. below.%as in Fig.~\ref{fig:hexagonOut1}.
+	\item  $i$ does not bond to anything and $i+1$ is at $(2,1)$ bonding with a bead at $(2,0)$. If there is no bead at $(1,0)$, then placing $i$ at $(1,0)$ instead of $(1,1)$ results in the same number of bonds, leading to nondeterminism. Therefore, there has to be a bead at $(1,0)$ and it is inactive, otherwise it would bond to $i$. This is analogous to case 1. below.%as in Fig.~\ref{fig:hexagonOut1}.
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.2\linewidth]{./Fig/hexagonOut1}
@@ -59,7 +146,9 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 
 \subsection{In the case of $\delta = 3$}
 
-We discuss when the length of seed is $n$. If the length of seed is $n$, the seed will be in an equilateral hexagon with a radius of $n$ when it is given. We will begin our disscussion by considering the moment when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$. Let us assume that a fixed bead on a side of an equilateral hexagon with a radius of $n$ is able to make a hydrogen bond. If it is able to make only two hydrogen bonds, it will be nondeterministic because there are two possibilities that it makes two structures in Fig.5. Therefore, it needs to make three hydrogen bonds to determine the only structure.\\
+As before, the length of seed is $n$ and the seed will be inside $\hexagon_p^n$, the equilateral hexagon with a radius of $n$ and center $p$, the point where the first bead of the seed is fixed. We will begin our discussion by considering the moment when the first bead is fixed outside $\hexagon_p^n$. Let this bead be the $i$th one. 
+
+\textbf{A.} First, let us assume that a fixed bead on a side of $\hexagon_p^n$ has a free hand, and bead $i$ binds to it. If the most stable conformation formed by beads $i, i+1, i+2$ has only two hydrogen bonds, it will be nondeterministic because there are at least two possibilities, see Fig.~\ref{fig:beadi}. Therefore, it needs to make three hydrogen bonds to deterministically stabilize $i$.\\
 
 \begin{figure}
   \begin{center}
@@ -119,10 +208,11 @@ We discuss when the length of seed is $n$. If the length of seed is $n$, the see
     \end{tikzpicture}
     \end{tabular}
     \caption{}
+    \label{fig:beadi}
   \end{center}
 \end{figure}
 
-There are the two cases in which a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$ and it makes three hydrogen bonds in Fig.6. If it makes three hydrogen bonds once such as Fig6., it will make three hyrogen bonds forever to be deterministic. This becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. Thus, the fixed bead on a side of an equilateral hexagon with a radius of $n$ has to make a hydrogen bond with a bead in an equilateral hexagon.
+There are the two cases in which beads $i, i+1, i+2$ can have three bonds, see Fig.~\ref{fig:3bonds}. However, if it makes three bonds once, such as in Fig.~\ref{fig:3bonds}, it will need to make three bonds forever to be deterministic. Similarly to case 1. in the previous section, this becomes nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a corner of $\hexagon_p^n$. Thus, the fixed bead on the side of an equilateral hexagon with a radius of $n$ has to make a hydrogen bond with a bead in an equilateral hexagon.
 
 \begin{figure}
   \begin{center}
@@ -188,7 +278,9 @@ There are the two cases in which a first bead is fixed on a side of an equilater
     \end{tikzpicture}
     \end{tabular}
     \caption{}
+    \label{fig:3bonds}
   \end{center}
+  	
 \end{figure}
 
 \begin{figure}
@@ -270,10 +362,11 @@ There are the two cases in which a first bead is fixed on a side of an equilater
     \end{tikzpicture}
     \end{tabular}
     \caption{}
+    \label{fig:hexcorner}
   \end{center}
 \end{figure}
 
-Then, we will discuss the moment after the first the is fixed on a side of an equilateral hexagon with a radius of $n+1$. Let us assume that the bead is able to make a hydrogen bond. If it is able to make only two hydrogen bonds, it will be nondeterministic because there are possibilities that it makes two structures in Fig.8. Hence, it needs to make three hydrogen bonds to determine the only structure. It needs to be a right or left figure in Fig.9. to make three hydrogen bonds.\\
+\textbf{B.} Next, assume that bead $i$ could not bind to anything and let us discuss the moment after bead $i$ is fixed outside $\hexagon_p^n$. Now bead $i$ has a free hand. If beads $i+1, i+2, i+3$ can form only two bonds, it will be nondeterministic because there are at least two possible such structures, as in Fig.~\ref{fig:afterzigzag}. Hence, they need to form three bonds to deterministically stabilize, such as in the right or left side of Fig.~\ref{fig:afterline}.\\
 
 \begin{figure}
   \begin{center}
@@ -343,10 +436,12 @@ Then, we will discuss the moment after the first the is fixed on a side of an eq
     \end{tikzpicture}
     \end{tabular}
     \caption{}
+    \label{fig:afterzigzag}
   \end{center}
 \end{figure}
 
- If it makes three hydrogen bonds once such as Fig.9., it will make three hyrogen bonds forever to be deterministic. This becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. Therefore, the first fixed bead on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a molecule on a side of an equilateral hexagon with a radius of $n$.
+ If they form three bonds once, such as Fig.~\ref{fig:afterline}, the system would need three bonds forever to be deterministic. This becomes nondeterministic finally, such as in Fig.~\ref{fig:hexcorner}, when it reaches a corner of $\hexagon_p^n$. 
+ %Therefore, the first fixed bead on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a molecule on a side of an equilateral hexagon with a radius of $n$.
 
 \begin{figure}
   \begin{center}
@@ -414,35 +509,37 @@ Then, we will discuss the moment after the first the is fixed on a side of an eq
     \end{tikzpicture}
     \end{tabular}
     \caption{}
+    \label{fig:afterline}
   \end{center}
 \end{figure}
 
-Accordingly, it is Fig.10. when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$.
+%Accordingly, it is Fig.~\ref{fig:firstout} when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$.
 
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \begin{scope}[shift=(0 : 0.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift=(60 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-      \end{scope}
-      \begin{scope}[shift=(0 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-    \caption{}
-  \end{center}
-\end{figure}
+%\begin{figure}
+%  \begin{center}
+%    \begin{tikzpicture}
+%      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
+%      \fill (2.0, 0.0) node [right] {$n$};
+%      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
+%      \fill (2.0, 0.866) node [right] {$n+1$};
+%      \begin{scope}[shift=(0 : 0.0)]
+%        \draw (-0.1,-0.1) -- (0.1,0.1);
+%        \draw (0.1,-0.1) -- (-0.1,0.1);
+%        \draw (0 : 0.0) -- (60 : 1.0);
+%      \end{scope}
+%      \begin{scope}[shift=(60 : 1.0)]
+%        \draw (-0.1,-0.1) -- (0.1,0.1);
+%        \draw (0.1,-0.1) -- (-0.1,0.1);
+%      \end{scope}
+%      \begin{scope}[shift=(0 : 1.0)]
+%        \draw (-0.1,-0.1) -- (0.1,0.1);
+%        \draw (0.1,-0.1) -- (-0.1,0.1);
+%        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
+%      \end{scope}
+%    \end{tikzpicture}
+%    \caption{}
+%    \label{fig:firstout}
+%  \end{center}
+%\end{figure}
 
-It has to be a right or left figure in Fig.6. when the first bead fixed on a side of an equilateral hexagon with a radius of $n+1$ make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$. Fig.6. becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. It is clear that all beads on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$.  It is impossible to fix molecules on a side of an equilateral hexagon with a radius of $n+2$ and determine the only structure when there are only beads which are able to make a hydrogen bond in an equilateral hexagon with a radius of $n$.
+%It has to be a right or left figure in Fig.6. when the first bead fixed on a side of an equilateral hexagon with a radius of $n+1$ make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$. Fig.6. becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. It is clear that all beads on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$.  It is impossible to fix molecules on a side of an equilateral hexagon with a radius of $n+2$ and determine the only structure when there are only beads which are able to make a hydrogen bond in an equilateral hexagon with a radius of $n$.
