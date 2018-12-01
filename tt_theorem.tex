@@ -15,9 +15,9 @@ Let $\Xi$ be a deterministic unary oritatami system at delay $\delta = 1$, arity
 Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $S[i+1] = b$ and $S[i+2] \in \{ t_s, t_o \} $, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
 \end{lemma}
 
-\begin{proof}[lemma \ref{TTT_entrance_Tab}]
+\begin{proof}%[lemma \ref{TTT_entrance_Tab}]
 See Fig.\ref{TTT_tunnel_direction}.
-$S[i+2] \in \{ t_s, t_o \} $ means that $w[i+2]$ is stabilized by a tunnel section type of $S$ or $O$.
+$S[i+2] \in \{ t_s, t_o \} $ means that $w[i+2]$ is stabilized by a tunnel section of type $S$ or $O$.
 Thus,  its predecessor $w[i+1]$ must be inside the tunnel section, that is, $n_1$ and $n_2$ must be occupied.
 Free bonds of $w[i]$, if any, cannot be used in future by another bead $w[j]$ because otherwise the part of transcript $w[i..j]$ and the bond between $w[i]$ and $w[j]$ would form a closed curve and the curve would cross the path of $C_{i-1}$ between $n_1$ and $n_2$, contradiction.
 %Binding capabilities that $w[i]$ supplies are inactive according to Jordan curve theorem on $n_1$, $n_2$, and $w[i]$.
@@ -268,7 +268,7 @@ If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#b
 
 \begin{lemma}
 \label{TTT_tunnelC_lemma}
-Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. If there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ or $bt^\ell bt^{j-i-1-\ell}b$ for some $\ell$ and $t_a \in S[h+1..i]$, then $\#bc(C_{i-1}) > \#bc(C_j)$.
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. If there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ and $S[i+2] = t_a$ or $bt^\ell bt^{j-i-1-\ell}b$ for some $\ell$ and $S[i+l+2] = t_a$, then $\#bc(C_{i-1}) > \#bc(C_j)$.
 \end{lemma}
 
 %\begin{lemma}
@@ -284,6 +284,55 @@ Assume $S[h..i+1] = bt^{i-h}b (h<i)$. If at least one of $w[h+1..i]$ are stabili
 
 Let us consider stabilization $S[h-1..h+1] = tbt$ or $S[h-1..h+1] = bbt$ as follows. In result, $\#bc(C_{h-3}) > \#bc(C_{h+1})$. In addition according to Lemma~\ref{TTT_exit} $\#bc(C_{h+1}) \geq \#bc(C_{i})$. Thus, $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_{i})$.
 \\
+
+\subsubsection{Case of $S[h-1..h+1] = bbt$}
+See Fig.~\ref{TTT_tunnelC_enter_usingBond}.
+If $w[h-1]$ forms one bond, then it leaves one free bond, but it is consumed by $w[h+1]$.
+In addition, $w[h]$ has to bound.
+Thus, in this cases, binding capability decreases by 1.
+If $w[h-1]$ forms two bonds, then it does not leave any bond.
+In addition, $w[h]$ has to be bound.
+Thus, in this case, even if $w[h+1]$ supplies two free bonds, binding capability decreases by 1.
+
+
+
+
+\begin{figure}
+  \begin{center}
+        \begin{tikzpicture}
+        \draw[->,white] (-70:0.1) -- (-70:3);
+          \foreach \theta in {60,-60,120,0}{
+            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+          }
+
+          \fill[blue](180:1) circle [radius=0.05];
+          \fill[blue](0:0) circle [radius=0.05];
+
+          \draw[transform canvas={shift=(180:1)}, blue] (105:1) edge[bend right] (105:0);
+          \draw[->, blue] (180:0.9) -- (180:0.1);
+          \draw[->, blue] (-120:0.1) -- (-120:0.9);
+
+          \node[below left] at (180:1) {$w[h-1]$};
+          \node[above] at (0:0) {$w[h]$};
+          \node[below] at (-120:1) {$w[h+1]$};
+
+          \node[right] at (120:1) {$n_3$};
+          \node[right] at (60:1) {$n_2$};
+          \node[right] at (0:1) {$n_1$};
+
+          \begin{scope}[shift=(-120:1)]
+            \fill[blue](0,0) circle [radius=0.05];
+            \foreach \theta in {-120,-60,180}{
+              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
+            }
+            
+          \end{scope}
+        \end{tikzpicture}
+    \caption{Case of $S[h-1..h+1] = bbt$}
+    \label{TTT_tunnelC_enter_usingBond}
+  \end{center}
+\end{figure}
+
 
 \subsubsection{Case of $S[h-1..h+1] = tbt$}
 Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilization depending on structures of tunnel C.
@@ -420,55 +469,6 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
 \end{figure}
 
 
-\subsubsection{Case of $S[h-1..h+1] = bbt$}
-Let us consider number of consumed bindings by $w[h-1]$ (Fig.\ref{TTT_tunnelC_enter_usingBond}).
-
-\begin{itemize}
-\item{$w[h-1]$ consumes one binding}\\
-  In this situation, $w[h-1]$ supplies one active binding whereas $w[h+1]$ consumes this binding. In addition, $w[h]$ has to bound to one of $n_1, n_2, n_3$.
-  Thus, in this cases consume some binding capabilities.
-
-\item{$w[h-1]$ consumes two bindings}\\
-  In this case, $w[h-1]$ already consumes two binding. $w[h]$ has to be bound. $w[h+1]$ supplies at most two bindings. Thus, in this cases consume some binding capabilities.
-\end{itemize}
-
-
-
-\begin{figure}
-  \begin{center}
-        \begin{tikzpicture}
-        \draw[->,white] (-70:0.1) -- (-70:3);
-          \foreach \theta in {60,-60,120,0}{
-            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-          }
-
-          \fill[blue](180:1) circle [radius=0.05];
-          \fill[blue](0:0) circle [radius=0.05];
-
-          \draw[transform canvas={shift=(180:1)}, blue] (105:1) edge[bend right] (105:0);
-          \draw[->, blue] (180:0.9) -- (180:0.1);
-          \draw[->, blue] (-120:0.1) -- (-120:0.9);
-
-          \node[below left] at (180:1) {$w[h-1]$};
-          \node[above] at (0:0) {$w[h]$};
-          \node[below] at (-120:1) {$w[h+1]$};
-
-          \node[right] at (120:1) {$n_3$};
-          \node[right] at (60:1) {$n_2$};
-          \node[right] at (0:1) {$n_1$};
-
-          \begin{scope}[shift=(-120:1)]
-            \fill[blue](0,0) circle [radius=0.05];
-            \foreach \theta in {-120,-60,180}{
-              \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
-            }
-            
-          \end{scope}
-        \end{tikzpicture}
-    \caption{Case of $S[h-1..h+1] = bbt$}
-    \label{TTT_tunnelC_enter_usingBond}
-  \end{center}
-\end{figure}
 
 \end{proof}
 
