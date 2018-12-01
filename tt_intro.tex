@@ -1,0 +1,135 @@
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \fill (0,0) circle[radius = 0.1];
+      \fill (1.5,0) circle[radius = 0.1];
+      \fill (3,0) circle[radius = 0.1];
+      \fill (4.5,0) circle[radius = 0.1];
+      \fill (6,0) circle[radius = 0.1];
+
+      \draw[dashed] (0,0)--(1.5,0);
+      \draw[dashed] (1.5,0)--(3,0);
+      \draw[dashed] (3,0)--(4.5,0);
+      \draw[dashed] (4.5,0)--(6,0);
+      \draw[->] (0,0)--(60:0.75);
+      \draw[->] (1.5,0)--++(60:0.75);
+      \draw[->] (3,0)--++(60:0.75);
+      \draw[->] (4.5,0)--++(60:0.75);
+      \draw (0,0)--(60:1.5);
+      \draw (1.5,0)--++(60:1.5);
+      \draw (3,0)--++(60:1.5);
+      \draw (4.5,0)--++(60:1.5);
+      
+      \begin{scope}[shift=(60:1.5)]
+        \fill (0,0) circle[radius = 0.1];
+        \fill (1.5,0) circle[radius = 0.1];
+        \fill (3,0) circle[radius = 0.1];
+        \fill (4.5,0) circle[radius = 0.1];
+        \draw[dashed] (0,0)--(1.5,0);
+        \draw[dashed] (1.5,0)--(3,0);
+        \draw[dashed] (3,0)--(4.5,0);
+        \draw[->] (0,0)--(-60:0.75);
+        \draw[->] (1.5,0)--++(-60:0.75);
+        \draw[->] (3,0)--++(-60:0.75);
+        \draw[->] (4.5,0)--++(-60:0.75);
+        
+        \draw (0,0)--(-60:1.5);
+        \draw (1.5,0)--++(-60:1.5);
+        \draw (3,0)--++(-60:1.5);
+        \draw (4.5,0)--++(-60:1.5);
+      \end{scope}
+      
+    \end{tikzpicture}
+    \caption{zig-zag conformation}
+    \label{TTT_zigzag}
+  \end{center}
+\end{figure}
+
+
+In this section, we consider Problem~\ref{prob:det_unary_length} at delay 1. Our result, cases of arity 1 and 3 can only yield finite structures of size $O (n)$, and cases of arity 4 and more can only yield finite structures which is size of $O (n^2)$, and a case of arity 2 can yield infinite structures but they are only the zig-zag conformation shown in Fig.~\ref{TTT_zigzag}. 
+
+%In this section, we prove that unary oritatami system can form infinitely at delay 1 and arity 2 deterministically and moreover that the only infinite conformations which its oritatami system can yield is only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
+
+
+%Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its seed $\sigma$ consists of $n$ beads.
+For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that is, foldable by $\Xi$. Hence $C_0 = \sigma$.
+
+
+Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w[i+1],w[i+2],\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupy four neighbors of a point (Fig.\ref{TTT_tunnel_intro}). 
+Accordingly, how they are stabilized can be described by a sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
+We let $S$ take the value $\blacksquare$ for halt.
+
+Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a point $p$ the $inside\ of\ a\ tunnel$ and points $p^\prime$ the $entrance\ of\ a\ tunnel$ except when $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
+
+%If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
+
+We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. We define $binding\ capability$ with reachable.
+
+\begin{definition}[binding capability]
+Let $C = (P,w,H)$ be a conformation.
+Let $B_k$ be $H \cap \{ (i,j) \mid \mbox{$i=k$ or $j=k$} \}$. Moreover, let $R_k$ be a set of neighbors of the point $P[k]$ that are free and reachable from $C$.
+ The binding capability of $C$, denoted by $\#bc(C)$, is defined by $\sum^{|w|}_{k=1} \min \{ |B_k|, |R_k|  \}$.
+\end{definition}
+
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0:0) circle [radius=0.05];
+      \draw (0:1) circle [radius=0.05];
+      \draw (180:1) circle [radius=0.05];
+      \node[above] at (0:1) { $p^\prime$ };
+      \node[above] at (0:0) { $p$ };
+      \node[above] at (180:1) { $p^\prime$ };
+      
+      \fill (60 : 1) circle [radius=0.1];
+      \fill (-60 : 1) circle [radius=0.1];
+      \fill (120 : 1) circle [radius=0.1];
+      \fill (-120 : 1) circle [radius=0.1];
+      \node[above] at (60 :1) { $a_{j_1}$ };
+      \node[above] at (-60 :1) { $a_{j_2}$ };
+      \node[above] at (120 :1) { $a_{j_3}$ };
+      \node[above] at (-120 :1) { $a_{j_4}$ };
+      
+      \begin{scope}[shift=(0:5)]
+        \fill[blue] (0:0) circle [radius=0.1];
+        \draw (0:1) circle [radius=0.05];
+        \fill (180:1) circle [radius=0.1];
+        \node[above] at (180:1.2) { $a_{i-2}$ };
+        \node[above] at (0:0) { $a_{i-1}$ };
+        \draw[->, blue] (180:0.9) -- (180:0.1);
+        
+        \fill (60 : 1) circle [radius=0.1];
+        \fill (-60 : 1) circle [radius=0.1];
+        \fill (120 : 1) circle [radius=0.1];
+        \fill (-120 : 1) circle [radius=0.1];
+        \node[above] at (60 :1) { $a_{j_1}$ };
+        \node[above] at (-60 :1) { $a_{j_2}$ };
+        \node[above] at (120 :1) { $a_{j_3}$ };
+        \node[above] at (-120 :1) { $a_{j_4}$ };
+      \end{scope}
+      \begin{scope}[shift=(0:10)]
+        \fill (0:0) circle [radius=0.1];
+        \fill[blue] (0:1) circle [radius=0.1];
+        \fill (180:1) circle [radius=0.1];
+        \node[above] at (180:1) { $a_{i-2}$ };
+        \node[above] at (0:0) { $a_{i-1}$ };
+        \node[above] at (0:1) { $a_i$ };
+        \draw[->] (180:0.9) -- (180:0.1);
+        \draw[->,blue] (0:0.1) -- (0:0.9);
+        
+        \fill (60 : 1) circle [radius=0.1];
+        \fill (-60 : 1) circle [radius=0.1];
+        \fill (120 : 1) circle [radius=0.1];
+        \fill (-120 : 1) circle [radius=0.1];
+        \node[above] at (60 :1) { $a_{j_1}$ };
+        \node[above] at (-60 :1) { $a_{j_2}$ };
+        \node[above] at (120 :1) { $a_{j_3}$ };
+        \node[above] at (-120 :1) { $a_{j_4}$ };
+      \end{scope}
+    \end{tikzpicture} 
+    \caption{Through a tunnel section}
+    \label{TTT_tunnel_intro}
+  \end{center}
+\end{figure}
