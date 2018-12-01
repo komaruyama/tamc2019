@@ -9,200 +9,11 @@ On the other hand, at arity $\alpha = 2$, if there are indices $i,j$ such that $
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\proof%{Proof of Tunnel Troll Theorem}
-Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, 
-then it has at most one free neighbor, and hence its successor it to be stabilized there.
-Moreover, if a bead is stabilized outside a tunnel, then its position is either an entrance of a tunnel or not.
-
-Tunnel sections have three possible shapes up to symmetry : straight($S$), obtuse($O$) and acute($A$) turn (Fig. \ref{TTT_tunnel}), and we will consider each of those. 
-
-%\begin{lemma}
-%\label{TTT_neighbor_lemma}
-%For unary transcripts at $\delta = 1$, if a bead has no free hand, then at least $\alpha + 2$ of its neighbors have to be occpied.
-%\end{lemma}
-
-
 \begin{lemma}
 \label{TTT_entrance_Tab}
 Let $\Xi$ be a deterministic unary oritatami system at delay $\delta = 1$, arity $\alpha =2$. 
-Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $w[i]$ is stabilized at an entrance point of tunnel $A$ or $B$, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
+Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $S[i] = b$ and $S[i+1] \in \{ t_s, t_o \} $, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
 \end{lemma}
-
-\begin{lemma}
-\label{TTT_exit}
-Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$. 
-Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
-At $\delta = 1, \alpha =2$, if we assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$, then $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
-%if we assume $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
-On the other hand, if we assume $S[k] = t (k \leq i)$ at $\delta =1, \alpha \geq 3$, then $\#bc(C_{k-1}) > \#bc(C_{k})$.
-\end{lemma}
-
-\begin{lemma}
-\label{TTT_tunnelC_lemma}
-Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_i)$.
-\end{lemma}
-
-
-Let us first consider cases of $\delta \geq 3, \alpha = 1$. These cases are clearly true because of Lemma~\ref{TTT_exit}.
-
-
-Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there is an index $h$ such that $S[h-1..h+1] = bbt$ or $S[h-1..h+1] = tbt$. According to Lemma~\ref{TTT_entrance_Tab}, if $w[h+1]$ is stabilized by tunnel $A$ or $B$, then $\#bc(C_{h-1}) > \#bc(C_{h})$. Also,  According to Lemma~\ref{TTT_tunnelC_lemma}, if $w[h+1]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
-On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$ because of Lemma~\ref{TTT_exit}. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
-
-\qed
-
-\begin{figure}
-  \begin{center}
-    \begin{tabular}{ccc}
-      
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (0:1) {$p^\prime$};
-
-            \foreach \theta in {0,180}{
-              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {60,-60,120,-120}{
-              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel $S$};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (-60:1) {$p^\prime$};
-
-            \foreach \theta in {-60,180}{
-              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {0,60,120,-120}{
- 	            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel $O$};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (-120:1) {$p^\prime$};
-
-            \foreach \theta in {-120,180}{
-              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {0,60,-60,120}{
-              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel $A$};
-        \end{tikzpicture}
-      \end{minipage}
-      
-    \end{tabular}
-    \caption{All possible tunnel sections: straight, obtuse turn, and acute turn}
-    \label{TTT_tunnel}
-  \end{center}
-\end{figure}
-
-
-
-%\begin{figure}
-%  \begin{center}
-%    \begin{tikzpicture}
-%      \draw[thick, gray]
-%      (0.5,1)--(0,1)--(0,4)--(4,4)--(4,1)--(3.5,1);
-%      \node at(2,1) {Outside};
-%      \node at (2,3.2) [rectangle, draw, rounded corners] (enter) {Entrance of a tunnel};
-%      \node at(2,1.8) [rectangle, draw, rounded corners] (outside) {Otherwise};
-%
-%      
-%      
-%      \draw[thick, gray]
-%      (7.5,1)--(7,1)--(7,4)--(11,4)--(11,1)--(10.5,1);
-%      \node at(9,1) {Inside of a tunnel};
-%      \node at(9,3.2) [rectangle, draw, rounded corners] (next-tunnel) {Successor in inside};
-%      \node at(9,1.8) [rectangle, draw, rounded corners] (next-outside) {Successor in outside};
-%
-%      \draw[->]
-%      (outside) edge [bend left, blue] node[left] {$s=b,\Delta=-1$} (enter)
-%                   edge [loop left, blue] node[below left] {$s=b,\Delta=\pm 0$} (outside)
-%      (enter)   edge [bend left, blue] node[above] {$s=b,\Delta=-1$} (next-tunnel)
-%                edge [bend left, blue] node[above] {$s=b,\Delta=-a$} (next-outside)
-%                edge [bend left, blue] node[right] {$s=b,\Delta=\pm 0$}  (outside)
-%      (next-tunnel) edge[teal]         node[right] {$s=t,\Delta=-a$} (next-outside)
-%                edge [loop right, teal]node[right] {$s=t,\Delta=\pm 0$}    (next-tunnel)
-%      (next-outside) edge[bend left, teal] node[above] {$s=t,\Delta=+a$}  (outside)
-%                edge [bend left, teal]     node[above] {$s=t,\Delta=+(a-1)$}(enter)
-%      ;
-%      
-%    \end{tikzpicture}
-%    \caption{Increment on Tunnel A,B}
-%    \label{TTT_position}
-%  \end{center}
-%\end{figure}
-
-
-%\begin{figure}
-%  \begin{center}
-%    \begin{tikzpicture}
-%      \node at (0,4)   [rectangle, draw,rounded corners] (outside1) {Outside of tunnels};
-%      \node at (3.5,4) [rectangle, draw,rounded corners] (enter1)   {Entrance of a tunnel};
-%      \node at (7,4)   [rectangle, draw, rounded corners] (inside1) {Inside of a tunnel C};
-%      \node at (11,4)  [rectangle, draw, rounded corners] (exit1)   {Inside of a tunnel A or B};
-%      \draw[->] (outside1)--(enter1);
-%      \draw[->] (enter1)  --(inside1);
-%      \draw[->] (inside1) --(exit1);
-%      
-%      
-%      \node at (0,3)   [rectangle, draw,rounded corners] (outside2) {Inside of a tunnel};
-%      \node at (3.5,3) [rectangle, draw,rounded corners] (enter2)   {Entrance of a tunnel};
-%      \node at (7,3)   [rectangle, draw, rounded corners] (inside2) {Inside of a tunnel C};
-%      \node at (11,3)  [rectangle, draw, rounded corners] (exit2)   {Inside of a tunnel A or B};     
-%      \draw[->] (outside2)--(enter2);
-%      \draw[->] (enter2)  --(inside2);
-%      \draw[->] (inside2) --(exit2);
-%
-%      \node at (0,1)   [rectangle, draw,rounded corners] (outside3) {Outside of tunnels};
-%      \node at (3.5,1) [rectangle, draw,rounded corners] (enter3)   {Entrance of a tunnel};
-%      \node at (7,1)   [rectangle, draw, rounded corners] (inside3) {Inside of a tunnel C};
-%      \node at (11,1)  [rectangle, draw, rounded corners] (exit3)   {Outside of tunnels};     
-%      \draw[->] (outside3)--(enter3);
-%      \draw[->] (enter3)  --(inside3);
-%      \draw[->] (inside3) --(exit3);
-%
-%      \node at (0,0)   [rectangle, draw,rounded corners] (outside4) {Inside of atunnel};
-%      \node at (3.5,0) [rectangle, draw,rounded corners] (enter4)   {Entrance of a tunnel};
-%      \node at (7,0)   [rectangle, draw, rounded corners] (inside4) {Inside of a tunnel C};
-%      \node at (11,0)  [rectangle, draw, rounded corners] (exit4)   {Outside of tunnels};     
-%      \draw[->] (outside4)--(enter4);
-%      \draw[->] (enter4)  --(inside4);
-%      \draw[->] (inside4) --(exit4);
-%    \end{tikzpicture}
-%    \caption{Case of Tunnel C}
-%    \label{TTT_tunnelC_graph}
-%  \end{center}
-%\end{figure}
-
 
 \begin{proof}[lemma \ref{TTT_entrance_Tab}]
 Fig.\ref{TTT_tunnel_direction} exhibits all the three kinds of entrance of tunnel A, B.
@@ -237,7 +48,7 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
 	 \draw[->,white] (120:0.8)--(120:0.1);%for adjustment
           
             \fill[blue] (0,0) circle [radius=0.05];
-            \node[below] at (0,0) {$p^\prime$};
+            \node[below] at (0,0) {$w[i]$};
 
             \foreach \theta in {0}{
               \fill[transform canvas={shift=(\theta:1)},blue](0,0) circle [radius=0.05];
@@ -271,7 +82,7 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
         \begin{tikzpicture}
 
             \fill(0,0) circle [radius=0.05];
-            \node[below] at (0,0) {$p^\prime$};
+            \node[below] at (0,0) {$w[i]$};
 
             \foreach \theta in {0}{
               \fill[transform canvas={shift=(\theta:1)},blue](0,0) circle [radius=0.05];
@@ -302,7 +113,7 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
       \centering
         \begin{tikzpicture}
             \fill[blue](0,0) circle [radius=0.05];
-            \node[above] at (0,0) {$p^\prime$};
+            \node[below] at (0,0) {$w[i]$};
 
             \foreach \theta in {0}{
               \fill[transform canvas={shift=(\theta:1)}, blue](0,0) circle [radius=0.05];
@@ -338,15 +149,24 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
 
 \end{proof}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lemma}
+\label{TTT_exit}
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$. 
+Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
+At $\delta = 1, \alpha =2$, if we assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$, then $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
+%if we assume $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
+On the other hand, if we assume $S[k] = t (k \leq i)$ at $\delta =1, \alpha \geq 3$, then $\#bc(C_{k-1}) > \#bc(C_{k})$.
+\end{lemma}
+
 \begin{proof}[Lemma~ \ref{TTT_exit}]
 Fig.\ref{TTT_tunnel_exit} exhibits all the two kinds of exit of tunnel. 
 At least one of points $n_1$ or $n_2$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
 
-\begin{paragraph}{}
-$\delta = 1, \alpha = 2$\\
 Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$ and
 let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$ as follows. Also, if $i - h > 1$ and $j$ is such that $h<j<i$, then $\#bc(C_{j-1}) \geq \#bc(C_{j})$ because all neighbors of $w[j]$ are occupied by beads forming the tunnel so that any $w[i+1..]$ cannot reach neighbors of $w[j]$. Thus, $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
-\end{paragraph}
 
 \begin{itemize}
 \item{Case of both $n_1$ and $n_2$ being free}\\
@@ -357,27 +177,10 @@ let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1
   
 \end{itemize}
 
-\begin{paragraph}{}
-$\delta = 1, \alpha \geq 3$\\
-Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha \geq 3$. We assume $w[i]$ is stabilized at exit of tunnel.
-In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, then $\#bc(C_{k-1}) > \#bc(C_{k})$ because both sides of the path $p$ in Fig.\ref{TTT_inside_tunnel} ($n_1, n_2$) have two free points and one of $n_1, n_2$ is not the predecessor so that it has hand and moreover that $w[k]$ supplies any binding capabilities because its neighbors are occupied by beads of tunnel.
-\end{paragraph}
-
-\begin{itemize}
-\item{Case of $n_1$ and $n_2$ are free}\\
-  In $\alpha \geq 3$, if three neighbors of a bead leave, then it can supply two binding capabilities. Therefore predecessor $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$, too. In this case, at least four bindings are consumed and at most two are added. Thus, it consumes some binding capabilities, overall.
-  
-\item{Case of $n_1$ is occupied}\\
-  In this case, $n_4$ leave at least two bindings and $n_3$, $n_1$ also leave at least one binding. Therefore $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$ also has to be bound $n_1$ and $n_4$. In this case, at least four bindings are consumed and at most two are added. Thus, it consumes some binding capabilities, totally.
-\end{itemize}
-
-
 \begin{figure}
   \centering
     \begin{tabular}{cc}
-    \begin{minipage}{0.66\hsize}
     \centering
-      \begin{tabular}{cc}
       \begin{minipage}{0.45\linewidth}
       \centering
         \begin{tikzpicture}
@@ -386,7 +189,7 @@ In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, 
 	\draw[white] (0:0) -- (0:1);
 
             \fill[blue](0,0) circle [radius=0.05];
-            \node[above] at (0,0) {$p^\prime$};
+            \node[above] at (0,0) {$w[i]$};
 
             
             \foreach \theta in {120,-120,180}{
@@ -407,7 +210,7 @@ In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, 
             \node[transform canvas={shift=(-60:1)},right] {$n_2$};
             \node[transform canvas={shift=(120:1)},left] {$n_3$};
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1)},left] {$n_5$};
+            \node[transform canvas={shift=(180:1)},left] {$w[i-1]$};
 
           \node at (0,-2) {Point $n_1$ and $n_2$ are free};
         \end{tikzpicture}
@@ -421,7 +224,7 @@ In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, 
 	\draw[white] (0:0) -- (-90:2);
 
             \fill[blue](0,0) circle [radius=0.05];
-            \node[above] at (0,0) {$p^\prime$};
+            \node[above] at (0,0) {$w[i]$};
             
             \foreach \theta in {120,-120,180,60}{
               \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
@@ -439,7 +242,7 @@ In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, 
             \node[transform canvas={shift=(-60:1)},right] {$n_2$};
             \node[transform canvas={shift=(120:1)},left] {$n_3$};
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1)},left] {$n_5$};
+            \node[transform canvas={shift=(180:1)},above] {$w[i-1]$};
 
 
           
@@ -449,31 +252,15 @@ In all cases $\#bc(C_{i-1}) > \#bc(C_{i})$. Moreover, if $S[k] = t (k \leq i)$, 
     \end{tabular}
     \caption{Exit of Tunnel}
     \label{TTT_tunnel_exit}
-    \end{minipage}
-    
-    \begin{minipage}{0.33\hsize}
-    \centering
-     \begin{tikzpicture}
-	\draw[white] (0:0) -- (120:1);
-	\draw[white] (0:0) -- (-60:1);
-            \fill[blue](0,0) circle [radius=0.05];
-            \draw[blue] (0:1) circle [radius = 0.05];
-            \draw[->] (0:0.1) -- node[above]{$p$} (0:0.9);
-            
-            \foreach \theta in {60, -60, 120,-120,180}{
-              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-            \node[transform canvas={shift=(60:1)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1)},right] {$n_2$};
-                \end{tikzpicture}
-                
-    \caption{Inside tunnel}
-    \label{TTT_inside_tunnel}
-    \end{minipage}
- 
-    \end{tabular}
 \end{figure}
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lemma}
+\label{TTT_tunnelC_lemma}
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_i)$.
+\end{lemma}
 
 \begin{proof}[Lemma~ \ref{TTT_tunnelC_lemma}]
 Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$.
@@ -669,6 +456,116 @@ Let us consider number of consumed bindings by $w[h-1]$ (Fig.\ref{TTT_tunnelC_en
 \end{figure}
 
 \end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%
+%%%%%%
+%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\proof%{Proof of Tunnel Troll Theorem}
+Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, 
+then it has at most one free neighbor, and hence its successor it to be stabilized there.
+Moreover, if a bead is stabilized outside a tunnel, then its position is either an entrance of a tunnel or not.
+
+Tunnel sections have three possible shapes up to symmetry : straight($S$), obtuse($O$) and acute($A$) turn (Fig. \ref{TTT_tunnel}), and we will consider each of those. 
+
+%\begin{lemma}
+%\label{TTT_neighbor_lemma}
+%For unary transcripts at $\delta = 1$, if a bead has no free hand, then at least $\alpha + 2$ of its neighbors have to be occpied.
+%\end{lemma}
+
+Let us first consider cases of $\delta \geq 3, \alpha = 1$. 
+See Fig.~\ref{TTT_tunnel_exit}. Consider the stabilization of $w[i]$. 
+This bead $w[i]$, once stabilized, shares two neighbors with its predecessor $w[i-1]$, which are denoted by $n_3, n_4$. 
+Both of them have been already occupied because $S[i] = t$. 
+
+Since $S[i+1] \neq \blacksquare$, at least one of the other three neighbors, denoted by $n_0, n_1, n_2$, must be free. 
+Assume that in the neighborhood of $w[i]$, there are two beads with one free neighbor even after $w[i]$ is stabilized. 
+Before the stabilization of $w[i]$, such a bead had two free neighbors, and hence, is provided with at least one free bond. 
+Thus, $w[i]$ is to be bonded to these two beads, and it decreases the binding capability by at least 1. 
+It now suffices to check that this assumption holds no matter how $n_0, n_1, n_2$ are occupied as long as at least one of them is left free. 
+
+Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there is an index $h$ such that $S[h-1..h+1] = bbt$ or $S[h-1..h+1] = tbt$. According to Lemma~\ref{TTT_entrance_Tab}, if $w[h+1]$ is stabilized by tunnel $A$ or $B$, then $\#bc(C_{h-1}) > \#bc(C_{h})$. Also,  According to Lemma~\ref{TTT_tunnelC_lemma}, if $w[h+1]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
+On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$ because of Lemma~\ref{TTT_exit}. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
+
+\qed
+
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{ccc}
+      
+      \begin{minipage}{0.3\hsize}
+        \begin{tikzpicture}
+          \begin{scope}[xshift=2cm, yshift=2cm]
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (0:1) {$p^\prime$};
+
+            \foreach \theta in {0,180}{
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
+            }
+            
+            \foreach \theta in {60,-60,120,-120}{
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+            }
+          \end{scope}
+
+          \node at (2,0) {Tunnel $S$};
+        \end{tikzpicture}
+      \end{minipage}
+
+      \begin{minipage}{0.3\hsize}
+        \begin{tikzpicture}
+
+          \begin{scope}[xshift=2cm, yshift=2cm]
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (-60:1) {$p^\prime$};
+
+            \foreach \theta in {-60,180}{
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
+            }
+            
+            \foreach \theta in {0,60,120,-120}{
+ 	            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+            }
+          \end{scope}
+
+          \node at (2,0) {Tunnel $O$};
+        \end{tikzpicture}
+      \end{minipage}
+
+      \begin{minipage}{0.3\hsize}
+        \begin{tikzpicture}
+
+          \begin{scope}[xshift=2cm, yshift=2cm]
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (-120:1) {$p^\prime$};
+
+            \foreach \theta in {-120,180}{
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
+            }
+            
+            \foreach \theta in {0,60,-60,120}{
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+            }
+          \end{scope}
+
+          \node at (2,0) {Tunnel $A$};
+        \end{tikzpicture}
+      \end{minipage}
+      
+    \end{tabular}
+    \caption{All possible tunnel sections: straight, obtuse turn, and acute turn}
+    \label{TTT_tunnel}
+  \end{center}
+\end{figure}
+
 
 
 
