@@ -22,22 +22,14 @@ Thus,  its predecessor $w[i+1]$ must be inside the tunnel section, that is, $n_1
 Free bonds of $w[i]$, if any, cannot be used in future by another bead $w[j]$ because otherwise the part of transcript $w[i..j]$ and the bond between $w[i]$ and $w[j]$ would form a closed curve and the curve would cross the path of $C_{i-1}$ between $n_1$ and $n_2$, contradiction.
 %Binding capabilities that $w[i]$ supplies are inactive according to Jordan curve theorem on $n_1$, $n_2$, and $w[i]$.
 Therefore, if $w[i]$ forms a bond at its stabilization $\#bc(C_{i-1}) > \#bc(C_{i})$ holds.
-Hence, assume $w[i]$ does not form any bond at stabilization.
-Then $w[i-1]$ is not on $n_1$ or $n_2$.
+We now prove that $w[i]$ must form a bond.
 
-On the other hand, let us consider $S[i] = t$.
-Beads which are shared by neighbors of $w[i-1]$ and $w[i]$ are occupied so that we consider only Fig.~\ref{TTT_tunnel_direction} (Left) and (Middle) case because (Right) case is not occupied them.
-In the (Left) case, if $S[i] = t$, points $n_3$ and $n_4$ are occupied. Then, $S[i+1] = t$, contradiction.
-In the (Middle) case, if $S[i] = t$, $n_4$ is free and $n_5$ is occupied because of $S[i+1] = b$.
-This time, by $n_4$ has some free hands because at least three neighbors of $n_4$ are free so $w[i]$ has to be bound to $n_2$. Thus, $\#bc(C_{i-1}) > \#bc(C_{i})$.
 
-%In the case of $t_0$, one of $n_3$ and $n_4$ is free because of $S[i+1] = b$. Thus, this case is only $S[i] = b$.
-%
-%
-%In the case of $t_{\pm 60}$, if $S[i] = t$, the point $n_4$ is free and $n_5$ is occupied. This time, by $n_2$ has some free hands because at least three neighbors of $n_2$ are free so $w[i]$ has to be bound to $n_2$. Thus, $\#bc(C_{i-1}) > \#bc(C_{i})$.
-%
-%In the case of $t_{\pm120}$, the point of $w[i+1]$ is free before $w[i+1]$ is stabilized. Thus, this case is only $S[i] = b$.
-%
+Suppose $w[i]$ ware stabilized without any bond, that is, by a tunnel.
+For that the two points that are a neighbor of both $w[i-1]$ and $w[i]$ must be occupied already.
+In addition, at least one of the neighbors of $w[i]$ must be free because $S[i+1] = b$.
+Thus, only the case to be considered is Fig.~\ref{TTT_tunnel_direction} (middle) with $n_5$ being occupied (that is, $n_4$ is free).
+In this case, before $w[i]$ is stabilized, at lest three neighbors of $n_2$ ware free and hence, a bead at $n_2$ was provided with one free bond and could form a bond with $w[i]$. \qed
 
 
 \begin{figure}
@@ -162,19 +154,23 @@ This time, by $n_4$ has some free hands because at least three neighbors of $n_4
 
 \begin{lemma}
 \label{TTT_exit}
-Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$. 
-Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
-At $\delta = 1, \alpha =2$, if we assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$, then $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$ and arity $\alpha =2$.
+%Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
+If $S[h..i+1] = bt^{(i-h)}b$ for some $h<i-1$, then $\#bc(C_{i-2}) \geq \#bc(C_i)$, and hence, $\#bc(C_{h-1}) \geq \#bc(C_i)$.
+If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#bc(C_{i})$.
 %if we assume $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
-On the other hand, if we assume $S[k] = t (k \leq i)$ at $\delta =1, \alpha \geq 3$, then $\#bc(C_{k-1}) > \#bc(C_{k})$.
 \end{lemma}
 
-\begin{proof}[Lemma~ \ref{TTT_exit}]
-Fig.\ref{TTT_tunnel_exit} exhibits all the two kinds of exit of tunnel. 
-At least one of points $n_1$ or $n_2$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
+\begin{proof}%[Lemma~ \ref{TTT_exit}]
+Since the binding capability never increases inside a tunnel, we just need to consider the exit of a tunnel.
+See Fig.\ref{TTT_tunnel_exit}. 
+At least one of points $n_1$ or $n_2$ must be free because otherwise $w[i]$ would be inside of a tunnel, that is, $S[i+1]$ would not be $b$.
 
-Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (h<i)$ and
-let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$ as follows. Also, if $i - h > 1$ and $j$ is such that $h<j<i$, then $\#bc(C_{j-1}) \geq \#bc(C_{j})$ because all neighbors of $w[j]$ are occupied by beads forming the tunnel so that any $w[i+1..]$ cannot reach neighbors of $w[j]$. Thus, $\#bc(C_{h-1}) \geq \#bc(C_i)$ and $\#bc(C_{i-2}) \geq \#bc(C_i)$.
+%If $i - h > 1$ and $j$ is such that $h \leq j<i$, then $\#bc(C_{j-1}) \geq \#bc(C_{j})$ because all neighbors of $w[j]$ are occupied by beads forming the tunnel so that any $w[i+1..]$ cannot reach neighbors of $w[j]$. 
+%Thus, inside this tunnel, binding capabilities never increased.
+
+
+Let $a$ be the number of bonds $w[i-1]$ forms, that is, $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$ as follows.
 
 \begin{itemize}
 \item{Case of both $n_1$ and $n_2$ being free}\\
@@ -184,6 +180,9 @@ let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1
   See Fig.\ref{TTT_tunnel_exit} (Right). If $n_1$ is occupied, then $n_2$ is free so that $n_5$ has to be bound $n_4$. Hence,  $a \geq 1$. This case can supply two binding capabilities but $p^\prime$ can bind to only one of $n_0$ or $n_2$ because $n_0$ or $n_2$ will be occupied by the successor of $p^\prime$. Therefore, this case $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
   
 \end{itemize}
+
+Thus,$\#bc(C_{i-2}) \geq \#bc(C_i)$ , and hence, $\#bc(C_{h-1}) \geq \#bc(C_i)$.
+If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#bc(C_{i})$ because $S[h] = b$, that is, $\#bc(C_{h-1}) > \#bc(C_h)$ and $\#bc(C_{h}) \geq \#bc(C_i)$. \qed
 
 \begin{figure}
   \centering
@@ -265,10 +264,18 @@ let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \begin{lemma}
 \label{TTT_tunnelC_lemma}
-Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_i)$.
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. If there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ or $bt^\ell bt^{j-i-1-\ell}b$ for some $\ell$ and $t_a \in S[h+1..i]$, then $\#bc(C_{i-1}) > \#bc(C_j)$.
 \end{lemma}
+
+%\begin{lemma}
+%\label{TTT_tunnelC_lemma}
+%Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$. We assume $S[h..i+1] = bt^{(i-h)}b \quad (1<h<i)$. If at least one of $w[h+1..i]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_i)$.
+%\end{lemma}
+
 
 \begin{proof}[Lemma~ \ref{TTT_tunnelC_lemma}]
 Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$.
