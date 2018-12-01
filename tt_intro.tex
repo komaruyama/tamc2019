@@ -133,3 +133,75 @@ Let $B_k$ be $H \cap \{ (i,j) \mid \mbox{$i=k$ or $j=k$} \}$. Moreover, let $R_k
     \label{TTT_tunnel_intro}
   \end{center}
 \end{figure}
+
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{ccc}
+      
+      \begin{minipage}{0.3\hsize}
+        \begin{tikzpicture}
+          \begin{scope}[xshift=2cm, yshift=2cm]
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (0:1) {$p^\prime$};
+
+            \foreach \theta in {0,180}{
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
+            }
+            
+            \foreach \theta in {60,-60,120,-120}{
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+            }
+          \end{scope}
+
+          \node at (2,0) {Tunnel $S$};
+        \end{tikzpicture}
+      \end{minipage}
+
+      \begin{minipage}{0.3\hsize}
+        \begin{tikzpicture}
+
+          \begin{scope}[xshift=2cm, yshift=2cm]
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (-60:1) {$p^\prime$};
+
+            \foreach \theta in {-60,180}{
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
+            }
+            
+            \foreach \theta in {0,60,120,-120}{
+ 	            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+            }
+          \end{scope}
+
+          \node at (2,0) {Tunnel $O$};
+        \end{tikzpicture}
+      \end{minipage}
+
+      \begin{minipage}{0.3\hsize}
+        \begin{tikzpicture}
+
+          \begin{scope}[xshift=2cm, yshift=2cm]
+            \draw(0,0) circle [radius=0.05];
+            \node[above] at (180:1) {$p^\prime$};
+            \node[above] at (-120:1) {$p^\prime$};
+
+            \foreach \theta in {-120,180}{
+              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
+            }
+            
+            \foreach \theta in {0,60,-60,120}{
+              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+            }
+          \end{scope}
+
+          \node at (2,0) {Tunnel $A$};
+        \end{tikzpicture}
+      \end{minipage}
+      
+    \end{tabular}
+    \caption{All possible tunnel sections: straight, obtuse turn, and acute turn}
+    \label{TTT_tunnel}
+  \end{center}
+\end{figure}
