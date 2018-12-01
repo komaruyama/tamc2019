@@ -192,18 +192,17 @@ At delay 1, a bead cannot collaborate with its successors in order to stabilize 
 In fact, there are just two ways for a bead to get stabilized at delay 1 (or the bead has no place to be stabilized around so that the system halts). 
 One is to be bound and the other is through a 1-in-1-out structure called the tunnel section. 
 See Fig.~\ref{fig:TTT_tunnel}. 
-A \textit{tunnel section} consists of four beads that occupy four neighbors of one point. 
-
-Let us consider the stabilization of the $i$-th bead $w[i]$ of the transcript $w$ upon $C_{i-1}$. 
-The bead cannot collaborate with any succeeding bead $w[i+1],w[i+2],\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupy four neighbors of a point (Fig.\ref{TTT_tunnel_intro}). 
-Accordingly, how they are stabilized can be described by a sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
-We let $S$ take the value $\blacksquare$ for halt.
+A \textit{tunnel section} consists of four beads that occupy four neighbors of one free point. 
+The behavior of a deterministic oritatami system at delay 1 can be described by a sequence of $S$ of $b$ (bound), $t_s$ (straight tunnel section), $t_o$ (obtuse-turn tunnel section), and $t_a$ (acute-turn tunnel section); priority is given to tunnel, that is, $S[i]$ is $t_s$ (resp.~$t_o$, $t_a$) if the $i$-th bead of the system is stabilized not only by being bonded but also through a straight (resp. obtuse-turn, acute-turn) tunnel section. 
+We let $S$ take the value $\blacksquare$ for halt (due to the lack of free neighbors). 
 
 Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a point $p$ the $inside\ of\ a\ tunnel$ and points $p^\prime$ the $entrance\ of\ a\ tunnel$ except when $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
 %If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
 
-We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. We define $binding\ capability$ with reachable.
+We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. 
+Taking this reachability into account, we define the \textit{binding capability} of a conformation as the number of free bonds of its beads available geometrically for elongations of $C$.
+It is defined formally as follows: 
 
 \begin{definition}[binding capability]
 Let $C = (P,w,H)$ be a conformation.
