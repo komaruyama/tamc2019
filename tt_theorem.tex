@@ -12,30 +12,33 @@ On the other hand, at arity $\alpha = 2$, if there are indices $i,j$ such that $
 \begin{lemma}
 \label{TTT_entrance_Tab}
 Let $\Xi$ be a deterministic unary oritatami system at delay $\delta = 1$, arity $\alpha =2$. 
-Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $S[i] = b$ and $S[i+1] \in \{ t_s, t_o \} $, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
+Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $S[i+1] = b$ and $S[i+2] \in \{ t_s, t_o \} $, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
 \end{lemma}
 
 \begin{proof}[lemma \ref{TTT_entrance_Tab}]
-Fig.\ref{TTT_tunnel_direction} exhibits all the three kinds of entrance of tunnel A, B.
-Let $w[i]$ be stabilized at an entrance point of Tunnel $A$ or $B$.
-All cases are $\#bc(C_{i-1}) > \#bc(C_{i})$ as follows.
+See Fig.\ref{TTT_tunnel_direction}.
+$S[i+2] \in \{ t_s, t_o \} $ means that $w[i+2]$ is stabilized by a tunnel section type of $S$ or $O$.
+Thus,  its predecessor $w[i+1]$ must be inside the tunnel section, that is, $n_1$ and $n_2$ must be occupied.
+Free bonds of $w[i]$, if any, cannot be used in future by another bead $w[j]$ because otherwise the part of transcript $w[i..j]$ and the bond between $w[i]$ and $w[j]$ would form a closed curve and the curve would cross the path of $C_{i-1}$ between $n_1$ and $n_2$, contradiction.
+%Binding capabilities that $w[i]$ supplies are inactive according to Jordan curve theorem on $n_1$, $n_2$, and $w[i]$.
+Therefore, if $w[i]$ forms a bond at its stabilization $\#bc(C_{i-1}) > \#bc(C_{i})$ holds.
+Hence, assume $w[i]$ does not form any bond at stabilization.
+Then $w[i-1]$ is not on $n_1$ or $n_2$.
 
+On the other hand, let us consider $S[i] = t$.
+Beads which are shared by neighbors of $w[i-1]$ and $w[i]$ are occupied so that we consider only Fig.~\ref{TTT_tunnel_direction} (Left) and (Middle) case because (Right) case is not occupied them.
+In the (Left) case, if $S[i] = t$, points $n_3$ and $n_4$ are occupied. Then, $S[i+1] = t$, contradiction.
+In the (Middle) case, if $S[i] = t$, $n_4$ is free and $n_5$ is occupied because of $S[i+1] = b$.
+This time, by $n_4$ has some free hands because at least three neighbors of $n_4$ are free so $w[i]$ has to be bound to $n_2$. Thus, $\#bc(C_{i-1}) > \#bc(C_{i})$.
 
-\begin{itemize}
-\item{Case of $t_0$}\\
-  Let us consider points $n_3,n_4$. At least one of the points $n_3$ or $n_4$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $n_3$ is free, then $p^\prime$ has to be bound to a bead other than $n_1$ to deterministically stabilize. In this situation, at least three neighbors of $n_1$ are free, that is, $n_1$ has at least one free hand from Lemma~ \ref{TTT_neighbor_lemma}. Hence, $p^\prime$ must be bound to $n_1$. Thus, a case of $t_0$ consumes two hands and it does not supply any binding capabilities.
+%In the case of $t_0$, one of $n_3$ and $n_4$ is free because of $S[i+1] = b$. Thus, this case is only $S[i] = b$.
+%
+%
+%In the case of $t_{\pm 60}$, if $S[i] = t$, the point $n_4$ is free and $n_5$ is occupied. This time, by $n_2$ has some free hands because at least three neighbors of $n_2$ are free so $w[i]$ has to be bound to $n_2$. Thus, $\#bc(C_{i-1}) > \#bc(C_{i})$.
+%
+%In the case of $t_{\pm120}$, the point of $w[i+1]$ is free before $w[i+1]$ is stabilized. Thus, this case is only $S[i] = b$.
+%
 
-\item{Case of $t_{\pm 60}$}\\
-  In this case, too, $n_4$ or $n_5$ is free. If $n_5$ is free, $p^\prime$ has to be bound to $n_1$ or $n_2$. If $n_5$ is occupied, then $n_4$ is free. This time, by $n_2$ has some free hands so $p^\prime$ has to be bound to $n_2$.
-  
-
-  In this situation, $p^\prime$ is able to supply a binding capabilities which could bind a bead into $n_4$ or $n_5$. However, $n_2$ and $n_3$ are part of a contiguous conformation. According to Jordan curve theorem, any successors of $p^\prime$ cannot reach a point $n_4$ or $n_5$ so this capability is inactive. Thus, in the case of $t_{\pm 60}$ $\#bc(C_{i-1}) > \#bc(C_{i})$.
-
-\item{Case of $t_{\pm 120}$}\\
-  Binding capabilities that $p^\prime$ supplies are inactive according to Jordan curve theorem on $n_1$ and $n_2$. Moreover, $p^\prime$ has to be bound to one of $n_3, n_4, n_5$ in order to deterministically stabilize.
-Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
-  
-\end{itemize}
 
 \begin{figure}
   \begin{center}
@@ -45,10 +48,12 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
       \begin{minipage}{0.3\hsize}
       \centering
         \begin{tikzpicture}
+        \draw[->, white] (0:0)--(-120:1);
 	 \draw[->,white] (120:0.8)--(120:0.1);%for adjustment
           
             \fill[blue] (0,0) circle [radius=0.05];
             \node[below] at (0,0) {$w[i]$};
+            \node[below] at (0:1) {$w[i+1]$};
 
             \foreach \theta in {0}{
               \fill[transform canvas={shift=(\theta:1)},blue](0,0) circle [radius=0.05];
@@ -71,7 +76,7 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
 
 
-          \node at (0,-2) {$t_{0}$};
+         % \node at (0,-2) {$t_{0}$};
         \end{tikzpicture}
       \end{minipage}
 
@@ -80,9 +85,10 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
       \begin{minipage}{0.3\hsize}
       \centering
         \begin{tikzpicture}
-
+	\draw[->, white] (0:0)--(-120:1);
             \fill(0,0) circle [radius=0.05];
             \node[below] at (0,0) {$w[i]$};
+            \node[below] at (0:1) {$w[i+1]$};
 
             \foreach \theta in {0}{
               \fill[transform canvas={shift=(\theta:1)},blue](0,0) circle [radius=0.05];
@@ -105,15 +111,17 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
             \node[transform canvas={shift=(180:1)},left] {$n_5$};
 
-          \node at (0,-2) {$t_{\pm 60}$};
+          %\node at (0,-2) {$t_{\pm 60}$};
         \end{tikzpicture}
       \end{minipage}
 
       \begin{minipage}{0.3\hsize}
       \centering
         \begin{tikzpicture}
+        \draw[->, white] (0:0)--(-120:1);
             \fill[blue](0,0) circle [radius=0.05];
             \node[below] at (0,0) {$w[i]$};
+            \node[below] at (0:1) {$w[i+1]$};
 
             \foreach \theta in {0}{
               \fill[transform canvas={shift=(\theta:1)}, blue](0,0) circle [radius=0.05];
@@ -130,14 +138,14 @@ Thus, in the case of $t_{\pm 120}$ is $\#bc(C_{i-1}) > \#bc(C_{i})$.
             \draw[->, blue] (60:1.1)--(60:0.1);
             \draw[->, blue] (0:0.1)--(0:1.1);
 
-            \node[transform canvas={shift=(0:1)},below] {$n_0$};
+            %\node[transform canvas={shift=(0:1)},below] {$n_0$};
             \node[transform canvas={shift=(60:1)},right] {$n_1$};
             \node[transform canvas={shift=(-60:1)},right] {$n_2$};
             \node[transform canvas={shift=(120:1)},left] {$n_3$};
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
             \node[transform canvas={shift=(180:1)},left] {$n_5$};
 
-          \node at (0,-2) {$t_{\pm 120}$};
+         % \node at (0,-2) {$t_{\pm 120}$};
         \end{tikzpicture}
       \end{minipage}
       
@@ -210,7 +218,7 @@ let $a$ be $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1
             \node[transform canvas={shift=(-60:1)},right] {$n_2$};
             \node[transform canvas={shift=(120:1)},left] {$n_3$};
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1)},left] {$w[i-1]$};
+            \node[transform canvas={shift=(180:1)},above] {$w[i-1]$};
 
           \node at (0,-2) {Point $n_1$ and $n_2$ are free};
         \end{tikzpicture}
@@ -494,77 +502,6 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
 
 \qed
 
-\begin{figure}
-  \begin{center}
-    \begin{tabular}{ccc}
-      
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (0:1) {$p^\prime$};
-
-            \foreach \theta in {0,180}{
-              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {60,-60,120,-120}{
-              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel $S$};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (-60:1) {$p^\prime$};
-
-            \foreach \theta in {-60,180}{
-              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {0,60,120,-120}{
- 	            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel $O$};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (-120:1) {$p^\prime$};
-
-            \foreach \theta in {-120,180}{
-              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {0,60,-60,120}{
-              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel $A$};
-        \end{tikzpicture}
-      \end{minipage}
-      
-    \end{tabular}
-    \caption{All possible tunnel sections: straight, obtuse turn, and acute turn}
-    \label{TTT_tunnel}
-  \end{center}
-\end{figure}
 
 
 
@@ -638,7 +575,7 @@ Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ 
 \end{figure}
 
 \begin{theorem}[$\delta = 1, \alpha = 3$]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite structures whose size is $\mathcal{O}(n)$.
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite structures whose size is $O(n)$.
 \end{theorem}
 
 \begin{lemma}
@@ -815,7 +752,7 @@ Therefore, when w[i] is stabilized, w[i] uses at least two hands.
 \end{figure}
 
 \begin{theorem}[$\delta = 1, \alpha = 4$]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite structures whose size is $\mathcal{O}(n^2)$.
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite structures whose size is $O(n^2)$.
 \end{theorem}
 
 \begin{lemma}
@@ -828,7 +765,7 @@ Let us consider when $w[i]$ is stabilized by only one bond. See Fig.\ref{TTT_a4_
 \end{proof}
 
 \begin{proof}
-According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $\mathcal{O}(n^2)$ in $\delta =1, \alpha = 4$.
+According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $O(n^2)$ in $\delta =1, \alpha = 4$.
 %lemma???a=4??#bc(C_i) >= #bc(C_{i+1})? ?upper?left
 \end{proof}
 
