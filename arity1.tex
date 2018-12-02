@@ -1,45 +1,79 @@
 
 
 \subsection{$\alpha = 1$, arbitrary alphabets}
+First we present a lower bound construction for arity $\alpha=1$ systems. At $\alpha=1$, allowing delay $\delta=2$ increases the power of OS compared with $\delta=1$, if at least four bead types are allowed. We demonstrate this with an infinite family of OS, which fold deterministically a transcript of length $\frac{(n-1)^2}{4}$ starting from a given seed of length $n$.
 
-At arity $1$, allowing delay $2$ increases the power of OS compared with $\delta=1$, if at least four bead types are allowed. We demonstrate this with an infinite family of OS, which fold deterministically a transcript of length $\frac{(n-1)^2}{4}$ when receiving a given seed of length $n$.
-
-Consider a delay $2$, arity $1$ system with bead types $B_0$ to $B_4$ and attraction rules $\{B_1-B_1,B_2-B_2, B_3-B_3,B_4-B_4\}$. Let the seed be a conformation of a $4k+1$ long bead sequence of the form $(B_1B_0B_2B_0)^kB_0$. Bead $i$ of the seed is fixed at point $(i,0)$, for all $1\leq i\leq 4k-1$. Bead $4k$ is at $(4k-1,-1)$ and bead $4k+1$ is at $(4k,0)$.
+Consider the following $\delta=2$, $\alpha=1$ system with bead types $\{0,1,2,3,4\}$ and attraction rules $\{(1,1),(2,2), (3,3),(4,4)\}$. Let the seed $\sigma$ be a conformation of a $4k+1$ long bead sequence of the form $(1020)^k0$, such that bead $\sigma[i]$ of the seed is stabilized at point $(i,0)$, for all $1\leq i\leq 4k-1$. Bead $4k$ is at $(4k-1,-1)$ and bead $4k+1$ is at $(4k,0)$.
 
 \noindent The transcript is
 \begin{center}
-	\scriptsize
-	\begin{tabular}{llllll}
-		$p=$ & $(B_2B_4B_1B_3)^{k-1}$ & $B_2B_4(B_1B_4B_2B_3)^{k-1}$ & $B_1B_4(B_1B_3B_2B_4)^{k-2}$ & $B_1B_3(B_2B_3B_1B_4)^{k-2}$ & $B_2B_3$\\
-		& $(B_2B_4B_1B_3)^{k-3}$ & $B_2B_4(B_1B_4B_2B_3)^{k-3}$ & $B_1B_4(B_1B_3B_2B_4)^{k-4}$ & $B_1B_3(B_2B_3B_1B_4)^{k-4}$ & $B_2B_3$\\
-		& \vdots\\
-		& $(B_2B_4B_1B_3)^{2}$ & $B_2B_4(B_1B_4B_2B_3)^{2}$ & $B_1B_4(B_1B_3B_2B_4)^{1}$ & $B_1B_3(B_2B_3B_1B_4)^{1}$ & $B_2B_3$\\
-		& $B_2B_4B_1B_4$
+	
+	%\scriptsize
+	\begin{tabular}{llll}
+		& $k$ odd &  & $k$ even\\
+		$w=$\hspace{1cm} & $(2413)^{k-1}241$ & \hspace{1cm} &  $(2413)^{k-1}241$\\
+		     & $(4231)^{k-1}4$   & &  $(4231)^{k-1}4$  \\
+		     & $(1324)^{k-2}132$ & &  $(1324)^{k-2}132$\\
+		     & $(3142)^{k-2}3$   & &  $(3142)^{k-2}3$ \vspace{5pt}\\
+		     
+		     & $(2413)^{k-3}241$ & &  $(2413)^{k-3}241$\\
+		     & $(4231)^{k-3}4$   & &  $(4231)^{k-3}4$  \\
+		     & $(1324)^{k-4}132$ & &  $(1324)^{k-4}132$\\
+		     & $(3142)^{k-4}3$   & &  $(3142)^{k-4}3$\\
+			 & \vdots			 & &  \vdots\\
+			 & $(2413)^{2} 241$	 & &  $(2413)^{1} 241$\\
+			 & $(4231)^2 4$		 & &  $(4231)^1 4$\\
+			 & $(1324)^1 132$	 & &  $(1324)^0 132$\\
+			 & $(3142)^1 3$		 & &  $(3142)^0 3$\\
+			 & $(2413)^0 241$	 & & \\
+			 & $(4231)^0 4$  	 & 
 	\end{tabular}
 	
 \end{center}
-if $k$ is odd, and
+The transcript above is written in rows which correspond to beads in the conformation stabilized along the same row on the grid. To simplify the argument we will use \textit{row} both for the transcript above and for the conformation it stabilizes in. In line with this, row $\ell\in \{1,\dots, 2k\}$ is as follows:  
 \begin{center}
-	\scriptsize
-	\begin{tabular}{llllll}
-		$p=$ & $(B_2B_4B_1B_3)^{k-1}$ & $B_2B_4(B_1B_4B_2B_3)^{k-1}$ & $B_1B_4(B_1B_3B_2B_4)^{k-2}$ & $B_1B_3(B_2B_3B_1B_4)^{k-2}$ & $B_2B_3$\\
-		& $(B_2B_4B_1B_3)^{k-3}$ & $B_2B_4(B_1B_4B_2B_3)^{k-3}$ & $B_1B_4(B_1B_3B_2B_4)^{k-4}$ & $B_1B_3(B_2B_3B_1B_4)^{k-4}$ & $B_2B_3$\\
-		& \vdots\\
-		& $(B_2B_4B_1B_3)^{2}$ & $B_2B_4(B_1B_4B_2B_3)^{2}$ & $B_1B_4$\\
-		& $B_1B_3B_2B_3$
+	\begin{tabular}{llll}
+							& row $\ell$ & 			& $\ell\mod 4$ \\
+			& $(2413)^{k-\lfloor (\ell+1)/2\rfloor}241$ & \hspace{1cm} &  $\ell\equiv 1\mod 4$\\
+							& $(4231)^{k-\lfloor (\ell+1)/2\rfloor}4$   & &  $\ell\equiv 2 \mod 4$ \\
+							& $(1324)^{k-\lfloor (\ell+1)/2\rfloor}132$ & &  $\ell\equiv 3 \mod 4$\\
+							& $(3142)^{k-\lfloor (\ell+1)/2\rfloor}3$   & &  $\ell\equiv 4 \mod 4$ 
 	\end{tabular}
-	
 \end{center}
-if $k$ is even. The length of the transcript is $4k^2$. One row of the formula above corresponds to four rows of the conformation (except for the last rows).
+so $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$. Row $1$ is of length $4k-1$ and row $\ell+1$ is two beads shorter than row $\ell$, so the length of the whole transcript is $|w|=4k^2=\frac{(4k+1-1)^2}{4}=\frac{(|\sigma|-1)^2}{4}$. As an example, see Fig.~\ref{CI:big}, where $k=5$, so the length of the seed is $4k+1=21$ and the transcript is $4k^2 = 100$ beads long.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\linewidth]{./Fig/chichenBig}
-	\caption{Quadratic length transcript folding deterministically into pyramid shape. Seed: thick black path. Transcript: thin blue path. Bonds: dashed red lines. Beads: '$B_0$' black, '$B_1$' red, '$B_2$' red with black contour, '$B_3$' green, '$B_4$' green with black contour.}
+	\caption{Quadratic length transcript folding deterministically into pyramid shape. Seed: thick black path. Transcript: thin blue path. Bonds: dashed red lines. Beads: '$0$' black, '$1$' red, '$2$' red with black contour, '$3$' green, '$4$' green with black contour.}
 	\label{CI:big}
 \end{figure}
 
-The first bead of the transcript is type $B_2$ and it has to be fixed next to $(4k,0)$. The second bead is type $B_4$, which cannot form a bond with anything in the conformation so far. The only possibility of forming a bond is if $B_2$ is placed at $(4k,1)$ and it bonds with the $B_2$ at $(4k-1,0)$. The next bead to be fixed is $B_4$, and since it cannot form a bond, the conformation with the highest number of bonds is when the next bead, $B_1$ is at $(4k-2,1)$, which fixes the previous bead, $B_4$ at $(4k-1,1)$.
+
+Stabilizing the first bead of row $j$ goes as follows (see Fig.~\ref{CI:turn}):
+%\begin{itemize}
+%	\item $\bf j\equiv 1\mod 4$: the first two beads are $24$, and the preceding bead is stabilized at $(4k-\frac{j-1}{2}, j-1)$. The $2$ can only bind to the $2$ which occurred two beads before at $(4k-\frac{j+1}{2}, j-1)$, and $4$ cannot bind anywhere, so the $2$ is stabilized at $(4k-\frac{j-1}{2},j)$.
+%\end{itemize}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|@{}m{0pt}@{}}
+		%\renewcommand{\arraystretch}{2}
+	$j\mod 4$					& first bead 	& predecessor at		& first bead binds to		& first stabilizes at\\
+						\hline
+	$\equiv 1$	& 2		& $(4k-\frac{j-1}{2}, j-1)$		& $(4k-\frac{j+1}{2}, j-1)$	& $(4k-\frac{j+1}{2}, j)$& $\mathrm{ }$\newline $\mathrm{ }$\\
+	\hline
+	$\equiv 2$	& 4				& $(\frac{3j}{2}-1,j-1)$		& $(\frac{3j}{2},j-1)$		& $(\frac{3j}{2},j)$ & $\mathrm{ }$\newline $\mathrm{ }$\\
+	\hline
+	$\equiv 3$	& 1				& $(4k-\frac{j-1}{2}, j-1)$		& $(4k-\frac{j+1}{2}, j-1)$	& $(4k-\frac{j+1}{2}, j)$ & $\mathrm{ }$\newline $\mathrm{ }$ \\
+	\hline
+	$\equiv 4$	& 3				& $(\frac{3j}{2}-1,j-1)$		& $(\frac{3j}{2},j-1)$		& $(\frac{3j}{2},j)$ & $\mathrm{ }$\newline $\mathrm{ }$ \\
+	\hline		
+	\end{tabular}
+\end{center}
+
+
+
+%The first bead of the transcript is type $2$ and it has to be fixed next to $(4k,0)$. The second bead is type $4$, which cannot form a bond with anything in the conformation so far. The only possibility of forming a bond is if the $2$-bead is placed at $(4k,1)$ and it bonds with the $2$-bead of the seed at $(4k-1,0)$. The next to be stabilized is a $4$-bead, and since it cannot form any bond, the conformation with the highest number of bonds is when the one after, a $1$-bead, is at $(4k-2,1)$ bonding with $(4k-3,0)$, which stabilizes the preceding $4$-bead at $(4k-1,1)$ (see Fig.~\ref{CI:1-4}, (a)-(b)).
 
 
 
@@ -73,17 +107,22 @@ The first bead of the transcript is type $B_2$ and it has to be fixed next to $(
 \end{figure}
 
 
-Let the last bead fixed be the $i$th one.
-If it is $B_1$ or $B_2$ at some position $(4k+1-i,1)$, then the next two are $B_3B_2$ or $B_4B1$, respectively. The first beads in both cases cannot bind anywhere, whereas the second ones can bind with identical beads at $(4k+1-(i+3),0)$, fixing bead $i+1$ at $(4k+1-(i+1),1)$.
-If bead $i$ was $B_3$ or $B_4$ at position $(4k+1-i,1)$ then the next two are $B_2B_4$ or $B_1B_3$,respectively. The first bead of those sequences can bind only to its identical counterpart at $(4k+1-(i+2),0)$, whereas the second cannot bind anywhere, fixing bead $i+1$ at $(4k+1-(i+1))$. The above hold as long as there is a bead already at $(4k+1-(i+3),0)$ or at $(4k+1-(i+3),0)$, respectively, so for all $i\in \{1,\dots, 4k-2\}$.
+As for the other beads, in rows $j\equiv 1,3\mod 4$, beads of type $1$ and $3$ bind to a bead in row $j-1$. In rows $j\equiv 2,4\mod 4$ beads of type $2$ and $4$ can bind to a bead in row $j-1$.  This is true for row $1$, because beads of type $1$ and $3$ from row $1$ can only bind to every second bead of the seed, whereas beads of type $2$ and $4$ from row $1$ cannot bind to anything (Fig.~\ref{CI:1-4}, (c)). Once this dynamic holds for a row, it holds inductively for the next, as a bead that binds to another loses its only free hand at arity $1$.
 
-According to the above, bead $4k-1$ was fixed at $(4k+1-(4k-1),1)=(2,1)$. The next bead, $4k$ is of the same type as bead $4k-2$, so they can form a bond, and this is the only bond that can be formed by any conformation of beads $4k$ and $4k+1$ (see Fig.~\ref{CI:turn}). A similar situation occurs when trying to fix bead $8k-2$: it can only bond to bead $8k-4$, so it will turn the path around.
+Within one row of the transcript, no bead can bind to a preceding bead, because if there is a previous bead of the same type in that row, it is stabilized at a distance of four and the system has delay $2$.
+
+By the arguments above, the beads in row $i$ of the transcript are stabilized along row $i$ on the grid, forming the pyramid-like conformation from Fig.~\ref{CI:big}.
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{./Fig/CI_turn}
 	\caption{Beads $4k, 8k-2, \dots$ stabilize at turning points because the bead two positions before is the same type and has a free hand.}
 	\label{CI:turn}
 \end{figure}
+
+
+
 
 \subsection{$\alpha = 1$, unary}
 
@@ -513,33 +552,33 @@ There are the two cases in which beads $i, i+1, i+2$ can have three bonds, see F
   \end{center}
 \end{figure}
 
-%Accordingly, it is Fig.~\ref{fig:firstout} when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$.
+Accordingly, it is Fig.~\ref{fig:firstout} when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$.
 
-%\begin{figure}
-%  \begin{center}
-%    \begin{tikzpicture}
-%      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-%      \fill (2.0, 0.0) node [right] {$n$};
-%      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-%      \fill (2.0, 0.866) node [right] {$n+1$};
-%      \begin{scope}[shift=(0 : 0.0)]
-%        \draw (-0.1,-0.1) -- (0.1,0.1);
-%        \draw (0.1,-0.1) -- (-0.1,0.1);
-%        \draw (0 : 0.0) -- (60 : 1.0);
-%      \end{scope}
-%      \begin{scope}[shift=(60 : 1.0)]
-%        \draw (-0.1,-0.1) -- (0.1,0.1);
-%        \draw (0.1,-0.1) -- (-0.1,0.1);
-%      \end{scope}
-%      \begin{scope}[shift=(0 : 1.0)]
-%        \draw (-0.1,-0.1) -- (0.1,0.1);
-%        \draw (0.1,-0.1) -- (-0.1,0.1);
-%        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-%      \end{scope}
-%    \end{tikzpicture}
-%    \caption{}
-%    \label{fig:firstout}
-%  \end{center}
-%\end{figure}
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
+      \fill (2.0, 0.0) node [right] {$n$};
+      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
+      \fill (2.0, 0.866) node [right] {$n+1$};
+      \begin{scope}[shift=(0 : 0.0)]
+        \draw (-0.1,-0.1) -- (0.1,0.1);
+        \draw (0.1,-0.1) -- (-0.1,0.1);
+        \draw (0 : 0.0) -- (60 : 1.0);
+      \end{scope}
+      \begin{scope}[shift=(60 : 1.0)]
+        \draw (-0.1,-0.1) -- (0.1,0.1);
+        \draw (0.1,-0.1) -- (-0.1,0.1);
+      \end{scope}
+      \begin{scope}[shift=(0 : 1.0)]
+        \draw (-0.1,-0.1) -- (0.1,0.1);
+        \draw (0.1,-0.1) -- (-0.1,0.1);
+        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
+      \end{scope}
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:firstout}
+  \end{center}
+\end{figure}
 
 %It has to be a right or left figure in Fig.6. when the first bead fixed on a side of an equilateral hexagon with a radius of $n+1$ make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$. Fig.6. becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. It is clear that all beads on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$.  It is impossible to fix molecules on a side of an equilateral hexagon with a radius of $n+2$ and determine the only structure when there are only beads which are able to make a hydrogen bond in an equilateral hexagon with a radius of $n$.
