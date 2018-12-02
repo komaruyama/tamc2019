@@ -55,6 +55,7 @@ In this section, we consider Problem~\ref{prob:det_unary_length} at delay 1. Our
 Let $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ be a deterministic oritatami system of delay 1. 
 For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that is, foldable by $\Xi$. Hence $C_0 = \sigma$.
 
+\begin{comment}
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
@@ -115,6 +116,7 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
     \label{TTT_tunnel_intro}
   \end{center}
 \end{figure}
+\end{comment}
 
 \begin{figure}
   \begin{center}
@@ -189,25 +191,32 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
 \end{figure}
 
 At delay 1, a bead cannot collaborate with its successors in order to stabilize itself. 
-In fact, there are just two ways for a bead to get stabilized at delay 1 (or the bead has no place to be stabilized around so that the system halts). 
+In fact, there are just two ways for a bead to get stabilized at delay 1 (or the bead has no place to be stabilized around so that the system halts), as observed in \cite{DHOPRSST2018}. 
 One is to be bound and the other is through a 1-in-1-out structure called the tunnel section. 
 See Fig.~\ref{fig:TTT_tunnel}. 
 A \textit{tunnel section} consists of four beads that occupy four neighbors of one free point. 
-The behavior of a deterministic oritatami system at delay 1 can be described by a sequence of $S$ of $b$ (bound), $t_s$ (straight tunnel section), $t_o$ (obtuse-turn tunnel section), and $t_a$ (acute-turn tunnel section); priority is given to tunnel, that is, $S[i]$ is $t_s$ (resp.~$t_o$, $t_a$) if the $i$-th bead of the system is stabilized not only by being bonded but also through a straight (resp. obtuse-turn, acute-turn) tunnel section. 
+In order for an oritatam system to stabilize the bead $w[i]$ at the central point $p$ of a tunnel section, its predecessor $w[i-1]$ must be put at one of the two free neighbors of $p$. 
+Thus, at the stabilization of $w[i]$, only one neighbor of $p$ is left free so that the successor $w[i+1]$ is to be stabilized there, even without being bound. 
+In this case, the point where $w[i-1]$ is stabilized is considered to be an \textit{entrance of the tunnel} and the point where $w[i+1]$ is stabilized is considered as an \textit{exit of the tunnel}. 
+
+The behavior of an oritatami system at delay 1 can be described by a sequence of $S$ of $b$ (bound), $t_s$ (straight tunnel section), $t_o$ (obtuse-turn tunnel section), and $t_a$ (acute-turn tunnel section); priority is given to tunnel, that is, $S[i]$ is $t_s$ (resp.~$t_o$, $t_a$) if the $i$-th bead of the system is stabilized not only by being bonded but also through a straight (resp. obtuse-turn, acute-turn) tunnel section. 
 We let $S$ take the value $\blacksquare$ for halt (due to the lack of free neighbors). 
 
-Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a point $p$ the $inside\ of\ a\ tunnel$ and points $p^\prime$ the $entrance\ of\ a\ tunnel$ except when $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
+%Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a point $p$ the $inside\ of\ a\ tunnel$ and points $p^\prime$ the $entrance\ of\ a\ tunnel$ except when $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
 
 %If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
 
-We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. 
+%We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. 
+We say that a neighbor of a point $p$ is reachable from a conformation $C$ if there exists an elongation of $C$ in which a bead occupies the neighbor and it binds with a bead at $p$. 
 Taking this reachability into account, we define the \textit{binding capability} of a conformation as the number of free bonds of its beads available geometrically for elongations of $C$.
 It is defined formally as follows: 
 
-\begin{definition}[binding capability]
-Let $C = (P,w,H)$ be a conformation.
-Let $B_k$ be $H \cap \{ (i,j) \mid \mbox{$i=k$ or $j=k$} \}$. Moreover, let $R_k$ be a set of neighbors of the point $P[k]$ that are free and reachable from $C$.
- The binding capability of $C$, denoted by $\#bc(C)$, is defined by $\sum^{|w|}_{k=1} \min \{ |B_k|, |R_k|  \}$.
+\begin{definition}[Binding Capability]
+Let $\alpha$ be an arity and $C = (P,w,H)$ be a conformation of arity at most $\alpha$.
+Let $H_k = H \cap \{ (i,j) \mid \mbox{$i=k$ or $j=k$} \}$. 
+Moreover, let $R_k$ be a set of neighbors of the point $P[k]$ that are free and reachable from $C$.
+The binding capability of $C$ at arity $\alpha$, denoted by $\#bc_\alpha(C)$, is defined by $\sum^{|w|}_{k=1} \min \{\alpha-|H_k|, |R_k|\}$.
+Whenever the arity is clear from context, we omit the subscript $\alpha$. 
 \end{definition}
 
 
