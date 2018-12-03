@@ -545,15 +545,16 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
     \label{TTT_a4_lemma_fig}
 \end{figure}
 
-\begin{lemma}
-\label{TTT_a4_2b_lemma}
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$.
-When a bead is stabilized by bond, it forms at least two bonds.
-\end{lemma}
+%\begin{lemma}
+%\label{TTT_a4_2b_lemma}
+%Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$.
+%When a bead is stabilized by bond, it forms at least two bonds.
+%\end{lemma}
+%
+%\begin{proof}%[proof of lemma]
+%Suppose $w[i]$ were stabilized by only one bond. See Fig.~\ref{TTT_a4_lemma_fig}. If $n_3$ is free, $w[i-2]$ still has some bonds because of arity $\alpha = 4$. Thus, $n_4$ must be occupied; otherwise, $w[i]$ would be stabilized nondeterministically at $n_3$ and $n_4$. Moreover, also $n_2$ has to be occupied for deterministic and also $n_0, n_1$. $n_1$ has some hands because $n_3$ is free. Therefore, $w[i]$ is stabilized at $n_3$ and it has to use at least two hands. It contradict assumption.
+%\end{proof}
 
-\begin{proof}%[proof of lemma]
-Suppose $w[i]$ were stabilized by only one bond. See Fig.~\ref{TTT_a4_lemma_fig}. If $n_3$ is free, $w[i-2]$ still has some bonds because of arity $\alpha = 4$. Thus, $n_4$ must be occupied; otherwise, $w[i]$ would be stabilized nondeterministically at $n_3$ and $n_4$. Moreover, also $n_2$ has to be occupied for deterministic and also $n_0, n_1$. $n_1$ has some hands because $n_3$ is free. Therefore, $w[i]$ is stabilized at $n_3$ and it has to use at least two hands. It contradict assumption.
-\end{proof}
 
 \begin{theorem}[$\delta = 1, \alpha = 4$]
 Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite conformation of length is $3n^2  + 3n + 1$.
@@ -564,8 +565,9 @@ Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$.
 
 
 \begin{proof}
-According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $O(n^2)$ in $\delta =1, \alpha = 4$.
-%lemma???a=4??#bc(C_i) >= #bc(C_{i+1})? ?upper?left
+%According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $O(n^2)$ in $\delta =1, \alpha = 4$.
+%%lemma???a=4??#bc(C_i) >= #bc(C_{i+1})? ?upper?left
+seki sensei.
 \end{proof}
 
 
@@ -601,81 +603,29 @@ According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to us
     \label{TTT_a4_first}
 \end{figure}
 
+\begin{lemma}
+\label{TTT_a3_2b_lemma}
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. 
+If $S[i] = t$ or $t^\times$ and $S[i+1] \neq \blacksquare$, then the bead $w[i]$ consumes also at least one bond. 
+% Let $p$ be a point whose neighbors is occupied at least two point. If $w[i]$ is not stabilized and $w[i-1]$ includes neighbors of $p$, then $w[i]$ is stabilized at $p$ with at least one bond, $w[i]$ is stabilized at another point of $p$ otherwise with at least two bond except any neighbors of $p$ is occupied.
+\end{lemma}
 
+\begin{proof}%[proof of lemma]
+Both $n_3$ and $n_4$ are occupied because $S[i] = t$ or $t^\times$.
+Suppose $w[i]$ were stabilized without any bond.
+Then, all neighbors of $n_3$ must be occupied as long as the bead at $n_3$ is not singular; otherwise, a bead at $n_3$ would be capable of forming a bond with $w[i]$.
+That is, $n_1$ is occupied.
+We can continue this argument in clockwise manner to fill the neighbors of $w[i]$ until a singular bead is encountered, if any.
+If needed, the same argument is applied starting from $n_4$ in counter-clockwise manner.
+Thus, all neighbors of $w[i]$ must be occupied but then $S[i+1] = \blacksquare$, contradiction. \qed
 
-\begin{theorem}[$\delta= 1, \alpha=2$]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield infinite structures but they are only zig-zag conformation.
-\end{theorem}
-
-\begin{proof}
-By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities. If the sequence $S$ is free from any subsequence of the form $bt^+bt^+$, then it can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+$. Assume the length of $\sigma$ is $n$, seed supplies at most $2n$ binding capabilities. Therefore formula \ref{TTT_only_bond} hold.
-
-\begin{eqnarray}
-  \exists i \in \mathbb{N} \quad s.t. \quad u_{i-1} , u_i , u_{i+1} , u_{i+2} , \cdots \in \{ b \}
-  \label{TTT_only_bond}
-\end{eqnarray}
-
-
-Let us represent $S$ as $S[i.i+1...] = v_i v_{i+1} v_{i+2} \cdots$ for some $v_i, v_{i+1}, v_{i+2}, \cdots \in \{ a, o\}$ where if $v_k$ is $a$, then $v_{k+1}$ is bound to $v_{k-1}$, if $v_k$ is $o$, then $v_{k+1}$ is NOT bound to $v_{k-1}$.
-
-
-Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ consumes some binding capabilities because $v_{i-1}$ is $b$. If the number of $w[i-1]$'s bindings is one binding, then $w[i+1]$ has to be bound except $n_1$ or $n_2$ so that $w[i+1]$ must consumes two bindings except the case of $n_1$ and $n_2$ are occupied and $w[i]$ consumes at least one binding. If $n_1$ and $n_2$ are occupied, then $w[i-1]$'s bindings are inactive, that is, $w[i-1]$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $w[i-1]$ dose Not have any bindings, then $w[i-1]$ already consumes two bindings. In addition, $w[i]$ and $w[i+1]$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold. Thus, in this case, oritatami system can yield infinite structures but they are only zig-zag conformation.
-
+%One of neighbors of $p$ is not $w[i-1]$ where this bead regards $n_1$. If $w[i-1]$ include neighbors of $p$ and $w[i]$ is stabilized at another point of $p$ with one bond. Then, any neighbors do not have bond without $w[i-1]$. Neighbors of $n_1$ have to be occupied at least five according to lemma \ref{TTT_neighbor_lemma} and two of them include neighbors of $p$ where each of them regards $n_2, n_3$. In the same way, five neighbors of $n_2$ and $n_3$ are occupied and each of one of them includes neighbors of $p$ where they regard $n_4, n_5$. one of $n_5$'s neighbors includes neighbors of $p$ where it regards $n_6$. Then, any neighbors of $p$ are occupied. That is, if some neighbors of $p$ are free, then there exists a bead which has bonds in neighbors.
 \end{proof}
-
-\begin{eqnarray}
-  \exists j \in \mathbb{N} \quad s.t. \quad u_j , u_{j+1} , u_{j+2} , \cdots \in \{ a \}
-  \label{TTT_only_a}
-\end{eqnarray}
-
-\begin{eqnarray}
-  | S | > \forall m \in \mathbb{N} \quad \to \quad \exists n \in \mathbb{N} \quad s.t. \quad S[n], S[n+1], \cdots \in \{ a \}
-  \label{TTT_structure}
-\end{eqnarray}
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      
-      \fill[transform canvas={shift=(-120:1)}](0,0) circle [radius=0.1];
-      
-      \fill[blue](0:0) circle [radius=0.05];
-      \fill[blue](0:1) circle [radius=0.05];
-      \fill[shift=(0:1), blue](40:1) circle [radius=0.05];
-
-      \draw[->, blue] (-120:1) edge[bend left] (-120:0.1);
-      \draw[->, blue] (0:0.1) -- (0:0.9);
-      \draw[->,transform canvas={shift=(0:1.2)}, blue] (50:0) -- (47:0.8);
-      
-      \draw[shift=(60:1)](-0.05,-0.05) rectangle (0.05,0.05);
-      \draw[shift=(-60:1)](-0.05,-0.05) rectangle (0.05,0.05);
-      
-      \node[below] at (-120:1) {$w[i-2]$};
-      \node[above] at (0:0) {$w[i-1]$};
-      \node[below] at (0:1) {$w[i]$};
-      \node[right, shift=(0:1)] at (40:1) {$w[i+1]$};
-
-      \node[above] at (60:1) {$n_1$};
-      \node[below] at (-60:1) {$n_2$};
-        
-    \end{tikzpicture}
-    \caption{Case of $S[i]$}
-    \label{TTT_case_of_o}
-  \end{center}
-\end{figure}
 
 \begin{theorem}[$\delta = 1, \alpha = 3$]
 Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length is $O(n)$.
 \end{theorem}
 
-\begin{lemma}
-\label{TTT_a3_2b_lemma}
- Let $p$ be a point whose neighbors is occupied at least two point. If $w[i]$ is not stabilized and $w[i-1]$ includes neighbors of $p$, then $w[i]$ is stabilized at $p$ with at least one bond, $w[i]$ is stabilized at another point of $p$ otherwise with at least two bond except any neighbors of $p$ is occupied.
-\end{lemma}
-
-\begin{proof}[proof of lemma]
-Assume the transcript is stabilized until $w[i-1]$. One of neighbors of $p$ is not $w[i-1]$ where this bead regards $n_1$. If $w[i-1]$ include neighbors of $p$ and $w[i]$ is stabilized at another point of $p$ with one bond. Then, any neighbors do not have bond without $w[i-1]$. Neighbors of $n_1$ have to be occupied at least five according to lemma \ref{TTT_neighbor_lemma} and two of them include neighbors of $p$ where each of them regards $n_2, n_3$. In the same way, five neighbors of $n_2$ and $n_3$ are occupied and each of one of them includes neighbors of $p$ where they regard $n_4, n_5$. one of $n_5$'s neighbors includes neighbors of $p$ where it regards $n_6$. Then, any neighbors of $p$ are occupied. That is, if some neighbors of $p$ are free, then there exists a bead which has bonds in neighbors.
-\end{proof}
 
 \begin{proof}
 Let us show that $\#bc(C_{i-1}) > \#bc(C_i)$, that is, when $w[i]$ is stabilized, $w[i]$ uses at least two hands.
@@ -840,5 +790,69 @@ Therefore, when w[i] is stabilized, w[i] uses at least two hands.
     \label{TTT_a3_w}
   \end{center}
 \end{figure}
+
+
+\begin{theorem}[$\delta= 1, \alpha=2$]
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield infinite structures but they are only zig-zag conformation.
+\end{theorem}
+
+\begin{proof}
+By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities. If the sequence $S$ is free from any subsequence of the form $bt^+bt^+$, then it can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+$. Assume the length of $\sigma$ is $n$, seed supplies at most $2n$ binding capabilities. Therefore formula \ref{TTT_only_bond} hold.
+
+\begin{eqnarray}
+  \exists i \in \mathbb{N} \quad s.t. \quad u_{i-1} , u_i , u_{i+1} , u_{i+2} , \cdots \in \{ b \}
+  \label{TTT_only_bond}
+\end{eqnarray}
+
+
+Let us represent $S$ as $S[i.i+1...] = v_i v_{i+1} v_{i+2} \cdots$ for some $v_i, v_{i+1}, v_{i+2}, \cdots \in \{ a, o\}$ where if $v_k$ is $a$, then $v_{k+1}$ is bound to $v_{k-1}$, if $v_k$ is $o$, then $v_{k+1}$ is NOT bound to $v_{k-1}$.
+
+
+Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ consumes some binding capabilities because $v_{i-1}$ is $b$. If the number of $w[i-1]$'s bindings is one binding, then $w[i+1]$ has to be bound except $n_1$ or $n_2$ so that $w[i+1]$ must consumes two bindings except the case of $n_1$ and $n_2$ are occupied and $w[i]$ consumes at least one binding. If $n_1$ and $n_2$ are occupied, then $w[i-1]$'s bindings are inactive, that is, $w[i-1]$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $w[i-1]$ dose Not have any bindings, then $w[i-1]$ already consumes two bindings. In addition, $w[i]$ and $w[i+1]$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold. Thus, in this case, oritatami system can yield infinite structures but they are only zig-zag conformation.
+
+\end{proof}
+
+\begin{eqnarray}
+  \exists j \in \mathbb{N} \quad s.t. \quad u_j , u_{j+1} , u_{j+2} , \cdots \in \{ a \}
+  \label{TTT_only_a}
+\end{eqnarray}
+
+\begin{eqnarray}
+  | S | > \forall m \in \mathbb{N} \quad \to \quad \exists n \in \mathbb{N} \quad s.t. \quad S[n], S[n+1], \cdots \in \{ a \}
+  \label{TTT_structure}
+\end{eqnarray}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      
+      \fill[transform canvas={shift=(-120:1)}](0,0) circle [radius=0.1];
+      
+      \fill[blue](0:0) circle [radius=0.05];
+      \fill[blue](0:1) circle [radius=0.05];
+      \fill[shift=(0:1), blue](40:1) circle [radius=0.05];
+
+      \draw[->, blue] (-120:1) edge[bend left] (-120:0.1);
+      \draw[->, blue] (0:0.1) -- (0:0.9);
+      \draw[->,transform canvas={shift=(0:1.2)}, blue] (50:0) -- (47:0.8);
+      
+      \draw[shift=(60:1)](-0.05,-0.05) rectangle (0.05,0.05);
+      \draw[shift=(-60:1)](-0.05,-0.05) rectangle (0.05,0.05);
+      
+      \node[below] at (-120:1) {$w[i-2]$};
+      \node[above] at (0:0) {$w[i-1]$};
+      \node[below] at (0:1) {$w[i]$};
+      \node[right, shift=(0:1)] at (40:1) {$w[i+1]$};
+
+      \node[above] at (60:1) {$n_1$};
+      \node[below] at (-60:1) {$n_2$};
+        
+    \end{tikzpicture}
+    \caption{Case of $S[i]$}
+    \label{TTT_case_of_o}
+  \end{center}
+\end{figure}
+
+
 
 
