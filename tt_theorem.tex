@@ -336,14 +336,12 @@ Thus, in this case, even if $w[h+1]$ supplies two free bonds, binding capability
 \end{figure}
 
 
-\subsubsection{Case of $S[h-1..h+1] = tbt$}
+\subsubsection{Case of $S[h-1..h+1] = tbt_a$}
 Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilization depending on structures of tunnel C.
 
-\begin{itemize}
-\item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
+%\item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
   In this figure, Bead $n_4$ has at least one binding so that $w[h-1]$ has to bound $n_4$. Moreover, $w[h]$ has to bind to one of $n_1, n_2, n_3$ in order to stabilize deterministically. On the other hand, $w[h+1]$ can supply two bindings but has only two free neighbors. One of them is occupied by a successor. Therefore $w[h+1]$ can only bind one of $n_5, n_6$, that is, $w[h+1]$ supplies at most one binding. Thus, this case $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
 
-\item{Right of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
   These cases are divided on number of capabilities that $w[h-1]$ consumes.
   \begin{itemize}
   \item[-]{$w[h-1]$ does not consume any bindings}\\
@@ -358,7 +356,7 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
     In this case, $w[h-1]$ already consumes two binding. $w[h]$ has to be bound. $w[h+1]$ supplies two bindings. Thus, in this cases $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
    
   \end{itemize}
-\end{itemize}
+
 \begin{figure}
   \centering
     \begin{tabular}{cc}
@@ -522,6 +520,89 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
 
 
 \subsection{On structures provided by a unary and $\delta = 1$ oritatami system}
+
+\begin{figure}[tb]
+ \centering
+    \begin{tikzpicture}
+	\fill[shift=(180:1)] (0,0) circle [radius=0.1];
+      \fill[shift=(180:0)] (0,0) circle [radius=0.1];
+      
+      \draw[->] (180:0.9) -- (180:0.1);
+
+	\node[above] at (180:1) {$w_{[i-2]}$};
+	\node[below] at (180:0) {$w_{[i-1]}$};
+	\node[above] at (0:1) {$n_0$};
+
+	\foreach \theta in {0,60,-60,120,-120}{
+   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+  	}
+ 	\node[above] at (60:1) {$n_1$};
+	\node[below] at (-60:1) {$n_2$};
+	\node[above] at (120:1) {$n_3$};
+	\node[below] at (-120:1) {$n_4$};
+    \end{tikzpicture}
+    \caption{$\alpha = 4$: when $w[i]$ is stabilized}
+    \label{TTT_a4_lemma_fig}
+\end{figure}
+
+\begin{lemma}
+\label{TTT_a4_2b_lemma}
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$.
+When a bead is stabilized by bond, it forms at least two bonds.
+\end{lemma}
+
+\begin{proof}%[proof of lemma]
+Suppose $w[i]$ were stabilized by only one bond. See Fig.~\ref{TTT_a4_lemma_fig}. If $n_3$ is free, $w[i-2]$ still has some bonds because of arity $\alpha = 4$. Thus, $n_4$ must be occupied; otherwise, $w[i]$ would be stabilized nondeterministically at $n_3$ and $n_4$. Moreover, also $n_2$ has to be occupied for deterministic and also $n_0, n_1$. $n_1$ has some hands because $n_3$ is free. Therefore, $w[i]$ is stabilized at $n_3$ and it has to use at least two hands. It contradict assumption.
+\end{proof}
+
+\begin{theorem}[$\delta = 1, \alpha = 4$]
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite conformation of length is $3n^2  + 3n + 1$.
+\end{theorem}
+
+
+
+
+
+\begin{proof}
+According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $O(n^2)$ in $\delta =1, \alpha = 4$.
+%lemma???a=4??#bc(C_i) >= #bc(C_{i+1})? ?upper?left
+\end{proof}
+
+
+
+
+\begin{figure}
+ \centering
+    \begin{tikzpicture}
+	\fill[shift=(-120:1)] (0,0) circle [radius=0.1];
+      \fill[shift=(180:0), blue] (0,0) circle [radius=0.05];
+      
+      \draw[dashed] (180:2) -- (0:2);
+      \draw[dashed, shift=(-60:1)] (180:2.5) -- (0:1.5);
+      \draw[->, blue] (-120:0.9) -- (-120:0.1);
+
+	\node[below] at (-120:1) {$w_{[i-1]}$};
+	\node[above] at (180:0) {$w_{[i]}$};
+	\node[above] at (0:1) {$n_0$};
+
+	\foreach \theta in {0,60,-60,120,180}{
+   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
+  	}
+
+ 	\node[above] at (60:1) {$n_1$};
+	\node[below] at (-60:1) {$n_2$};
+	\node[above] at (120:1) {$n_3$};
+	\node[above] at (180:1) {$n_5$};
+	
+	\node at (0:2.5) {$n+1$};
+	\node[shift=(-60:1)] at (0:2) {$n$};
+    \end{tikzpicture}
+    \caption{the first bead out of $\hexagon_{w[-n+1]}^n$}
+    \label{TTT_a4_first}
+\end{figure}
+
+
+
 \begin{theorem}[$\delta= 1, \alpha=2$]
 Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield infinite structures but they are only zig-zag conformation.
 \end{theorem}
@@ -584,7 +665,7 @@ Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ 
 \end{figure}
 
 \begin{theorem}[$\delta = 1, \alpha = 3$]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite structures whose size is $O(n)$.
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length is $O(n)$.
 \end{theorem}
 
 \begin{lemma}
@@ -760,76 +841,4 @@ Therefore, when w[i] is stabilized, w[i] uses at least two hands.
   \end{center}
 \end{figure}
 
-\begin{theorem}[$\delta = 1, \alpha = 4$]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite structures whose size is $O(n^2)$.
-\end{theorem}
-
-\begin{lemma}
-\label{TTT_a4_2b_lemma}
-Any beads which are already stabilized by some bonds use at least two bonds.
-\end{lemma}
-
-\begin{proof}[proof of lemma]
-Let us consider when $w[i]$ is stabilized by only one bond. See Fig.\ref{TTT_a4_lemma_fig}. According to lemma\ref{TTT_neighbor_lemma}, if $n_3$ is free, $w[i-2]$ has some hands. Thus, $n_4$ has to be occupied in order to stabilize deterministically. Moreover, also $n_2$ has to be occupied for deterministic and also $n_0, n_1$. $n_1$ has some hands because $n_3$ is free. Therefore, $w[i]$ is stabilized at $n_3$ and it has to use at least two hands. It contradict assumption.
-\end{proof}
-
-\begin{proof}
-According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $O(n^2)$ in $\delta =1, \alpha = 4$.
-%lemma???a=4??#bc(C_i) >= #bc(C_{i+1})? ?upper?left
-\end{proof}
-
-
-\begin{figure}
- \centering
-    \begin{tikzpicture}
-	\fill[shift=(180:1)] (0,0) circle [radius=0.1];
-      \fill[shift=(180:0)] (0,0) circle [radius=0.1];
-      
-      \draw[->] (180:0.9) -- (180:0.1);
-
-	\node[above] at (180:1) {$w_{[i-2]}$};
-	\node[below] at (180:0) {$w_{[i-1]}$};
-	\node[above] at (0:1) {$n_0$};
-
-	\foreach \theta in {0,60,-60,120,-120}{
-   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
-  	}
- 	\node[above] at (60:1) {$n_1$};
-	\node[below] at (-60:1) {$n_2$};
-	\node[above] at (120:1) {$n_3$};
-	\node[below] at (-120:1) {$n_4$};
-    \end{tikzpicture}
-    \caption{$\alpha = 4$: when $w[i]$ is stabilized}
-    \label{TTT_a4_lemma_fig}
-\end{figure}
-
-\begin{figure}
- \centering
-    \begin{tikzpicture}
-	\fill[shift=(-120:1)] (0,0) circle [radius=0.1];
-      \fill[shift=(180:0), blue] (0,0) circle [radius=0.05];
-      
-      \draw[dashed] (180:2) -- (0:2);
-      \draw[dashed, shift=(-60:1)] (180:2.5) -- (0:1.5);
-      \draw[->, blue] (-120:0.9) -- (-120:0.1);
-
-	\node[below] at (-120:1) {$w_{[i-1]}$};
-	\node[above] at (180:0) {$w_{[i]}$};
-	\node[above] at (0:1) {$n_0$};
-
-	\foreach \theta in {0,60,-60,120,180}{
-   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
-  	}
-
- 	\node[above] at (60:1) {$n_1$};
-	\node[below] at (-60:1) {$n_2$};
-	\node[above] at (120:1) {$n_3$};
-	\node[above] at (180:1) {$n_5$};
-	
-	\node at (0:2.5) {$n+1$};
-	\node[shift=(-60:1)] at (0:2) {$n$};
-    \end{tikzpicture}
-    \caption{the first bead out of $\hexagon_{w[-n+1]}^n$}
-    \label{TTT_a4_first}
-\end{figure}
 
