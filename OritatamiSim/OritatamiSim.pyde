@@ -4,7 +4,7 @@ add_library('svg')
 
 import time
 
-input = "test.oriconf"
+input = "CI.oriconf.txt"
 
 cam = 0.0
 defaultCam = 0.0
@@ -31,9 +31,9 @@ gridBorder = 1
 beadTypes = []
 
 tColor = color(0, 0, 255)
-bContour = [color(0, 0, 255), color(0, 0, 255), color(0, 0, 255), color(0, 0, 255), color(0,0,0)]
-bFill = [color(255, 255, 255), color(255, 255, 255), color(255, 255, 255), color(255, 255, 255), color(0,0,0)]
-bName = ["X1", "B1", "13", "L", ""]
+bContour = [color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0,0,0)]
+bFill = [color(255, 255, 255), color(255, 255, 255), color(255, 255, 255), color(255, 255, 255), color(255,255,255)]
+bName = ["0", "1", "2", "3", "4"]
 bondColor = color(255, 0, 0)
 
 
@@ -47,17 +47,17 @@ def setup():
     defaultCam = (height/2.0) / tan(PI*30.0 / 180.0)
     cam = defaultCam
     
-    for i in range(0,10,2):
-        confo.update({(i+0,0):1})
-        path.append((i+0,0))
-        confo.update({(i+0,1):3})
-        path.append((i+0,1))
-        confo.update({(i+1,1):0})
-        path.append((i+1,1))
-        confo.update({(i+1,0):2})
-        path.append((i+1,0))
-    
-    confo.update({(9, -1): 2})
+#    for i in range(0,10,2):
+#        confo.update({(i+0,0):1})
+#        path.append((i+0,0))
+#        confo.update({(i+0,1):3})
+#        path.append((i+0,1))
+#        confo.update({(i+1,1):0})
+#        path.append((i+1,1))
+#        confo.update({(i+1,0):2})
+#        path.append((i+1,0))
+#    
+#    confo.update({(9, -1): 2})
     
     if input != "":
         f = open(input, "r")
@@ -118,8 +118,8 @@ def draw():
             
     for i in path:
         drawBead(i[0], i[1], confo[(i[0],i[1])])
-    if firstSelected:
-        drawBead(last[0], last[1], len(beadTypes))
+    #if firstSelected:
+        #drawBead(last[0], last[1], len(beadTypes))
     
    
     if highlight:
