@@ -24,8 +24,11 @@
 
 \title{On the power of oritatami cotranscriptional folding with unary bead sequence\thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 granted to S.~Z.~F. and S.~S. and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~S.}
 }
+\titlerunning{Power of unary oritatami cotranscriptional folding}
 \author{
-Szil\'{a}rd Zsolt Fazekas\inst{1} \and
+Szil\'{a}rd Zsolt Fazekas\inst{1} \and 
+Kohei Maruyama \and
+Reoto Morita \and \\
 Shinnosuke Seki\inst{2}\thanks{Corresponding author (\email{s.seki@uec.ac.jp})}}
 \institute{
 Akita University, 
@@ -51,7 +54,7 @@ In particular, we look at oritatami systems, where the folding sequence consists
 	\section{Introduction}
 %------------------------------------------------------
 
-Transcription is the first essential step of gene expression, when a DNA template sequence is copied into a complementary single stranded RNA sequence by a `copy machine' called RNA polymerase. 
+Transcription is the first essential step of gene expression, in which a DNA template sequence is copied into a complementary single stranded RNA sequence by a `copy machine' called RNA polymerase. 
 The RNA strand is synthesized letter by letter according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$ and folds up during a process called co-transcriptional folding.
 
 In a recent breakthrough in molecular engineering by Geary, Rothemund and Andersen~\cite{GearyRothemundAndersen2014} the co-transcriptional folding of RNA is controlled by careful design of the DNA template. As demonstrated in laboratory, this method, called RNA Origami, makes it possible to build rectangles out of RNA strands. 
@@ -79,9 +82,9 @@ In this paper we start a new line of study which concerns the alphabet size for 
 
 \node (origin) at (0, 0) {};
 
-\draw[-latex] (origin) -- ++(0:3) node[below] {$\delta$}; 
-\node at (1, -0.2) {1};
-\node at (2, -0.2) {2};
+\draw[-latex] (origin) -- ++(0:5) node[below] {$\delta$}; 
+\node at (2, -0.2) {1};
+\node at (4, -0.2) {2 and 3};
 \draw[-latex] (origin) -- ++(90:5) node[left] {$\alpha$}; 
 \node at (-0.2, 1) {1};
 \node at (-0.2, 2) {2};
@@ -89,12 +92,12 @@ In this paper we start a new line of study which concerns the alphabet size for 
 \node at (-0.2, 4) {4};
 
 %Results
-\node at (1, 4) {$O(n^2)$};
-\node at (1, 3) {$O(n)$};
-\node at (1, 2) {$O(n^2)$};
-\node at (1, 1) {$9n$ \cite{DHOPRSST2018}};
+\node at (2, 4) {$3n(n+1)+1$};
+\node at (2, 3) {$O(n)$};
+\node at (2, 2) {$O(n^2)$};
+\node at (2, 1) {$10n$ \cite{DHOPRSST2018}};
 
-\node at (2, 1) {$O(n^2)$};
+\node at (4, 1) {$O(n^2)$};
 
 \end{tikzpicture}
 \caption{Summary of the results.}
@@ -224,7 +227,7 @@ Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \math
 	\section{Problem description}
 %-------------------------------------------------------
 
-In \cite{DHOPRSST2018}, Demaine et al. proved that at delay 1 and arity 1, an oritatami system can fold upon the seed of size $n$ only the first $9n$ beads of a transcript deterministically. 
+In \cite{DHOPRSST2018}, Demaine et al. proved that at delay 1 and arity 1, upon the seed of length $n$, a deterministic oritatami system cannot fold into any conformation strictly longer than $10n$. 
 We consider this finiteness problem for unary oritatami systems under various settings of the values of delay and arity, which is formalized as follows. 
 
 \begin{problem}\label{prob:det_unary_length}
