@@ -126,8 +126,9 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
         \begin{tikzpicture}
           \begin{scope}[xshift=2cm, yshift=2cm]
             \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (0:1) {$p^\prime$};
+            \node[above] at (0,0) {$p_c$};
+            \node[above] at (180:1) {$p_e$};
+            \node[above] at (0:1) {$p_s$};
 
             \foreach \theta in {0,180}{
               \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
@@ -136,7 +137,10 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
             \foreach \theta in {60,-60,120,-120}{
               \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
+          \draw[->, blue] (-0.9, 0) -- (-0.1, 0);
+          \draw[->, blue] (0.1, 0) -- (0.9, 0);
           \end{scope}
+          
 
           \node at (2,0) {Type S};
         \end{tikzpicture}
@@ -147,8 +151,9 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (-60:1) {$p^\prime$};
+            \node[above] at (0,0) {$p_c$};
+            \node[above] at (180:1) {$p_e$};
+            \node[right] at (-60:1) {$p_s$};
 
             \foreach \theta in {-60,180}{
               \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
@@ -157,6 +162,8 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
             \foreach \theta in {0,60,120,-120}{
  	            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
+          \draw[->, blue] (-0.9, 0) -- (-0.1, 0);
+          \draw[->, blue] (0,0)++(300:0.1) -- (300:0.8);
           \end{scope}
 
           \node at (2,0) {Type O};
@@ -168,8 +175,9 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
 
           \begin{scope}[xshift=2cm, yshift=2cm]
             \draw(0,0) circle [radius=0.05];
-            \node[above] at (180:1) {$p^\prime$};
-            \node[above] at (-120:1) {$p^\prime$};
+            \node[above] at (0,0) {$p_c$};
+            \node[above] at (180:1) {$p_e$};
+            \node[left] at (-120:1) {$p_s$};
 
             \foreach \theta in {-120,180}{
               \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
@@ -178,6 +186,8 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
             \foreach \theta in {0,60,-60,120}{
               \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
             }
+          \draw[->, blue] (-0.9, 0) -- (-0.1, 0);
+          \draw[->, blue] (0,0)++(240:0.1) -- (240:0.8);
           \end{scope}
 
           \node at (2,0) {Type A};
@@ -192,12 +202,13 @@ For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that
 
 At delay 1, a bead cannot collaborate with its successors in order to stabilize itself. 
 In fact, there are just two ways for a bead to get stabilized at delay 1 (or the bead has no place to be stabilized around so that the system halts), as observed in \cite{DHOPRSST2018}. 
-One is to be bound and the other is through a 1-in-1-out structure called the tunnel section. 
+One is to be bound to another bead and the other is through a 1-in-1-out structure called the tunnel section. 
 See Fig.~\ref{fig:TTT_tunnel}. 
-A \textit{tunnel section} consists of four beads that occupy four neighbors of one free point. 
-In order for an oritatam system to stabilize the bead $w[i]$ at the central point $p$ of a tunnel section, its predecessor $w[i-1]$ must be put at one of the two free neighbors of $p$. 
+A \textit{tunnel section} consists of one free point $p_c$ and four beads that occupy four neighbors of $p_c$. 
+In order for an oritatami system to stabilize the bead $w[i]$ at the central point $p_c$, its predecessor $w[i-1]$ must be put at one of the two free neighbors of $p$. 
 Thus, at the stabilization of $w[i]$, only one neighbor of $p$ is left free so that the successor $w[i+1]$ is to be stabilized there, even without being bound. 
-In this case, the point where $w[i-1]$ is stabilized is considered to be an \textit{entrance of the tunnel section} and the point where $w[i+1]$ is stabilized is considered as its \textit{exit}. 
+In this case, the point $p_e$ where $w[i-1]$ is stabilized is considered to be an \textit{entrance of the tunnel section} and the point $p_s$ where $w[i+1]$ is stabilized is considered as its \textit{exit}. 
+A \textit{tunnel} is a maximal set of tunnel sections whose central points form a path. 
 
 The behavior of an oritatami system at delay 1 can be described by a sequence of $S$ of $b$ (bound), $t_s$ (straight tunnel section), $t_o$ (obtuse-turn tunnel section), and $t_a$ (acute-turn tunnel section); priority is given to tunnel, that is, $S[i]$ is $t_s$ (resp.~$t_o$, $t_a$) if the $i$-th bead of the system is stabilized not only by being bonded but also through a straight (resp. obtuse-turn, acute-turn) tunnel section. 
 Let us introduce $t$ as a wildcard for $t_s$, $t_o$, and $t_a$. 
@@ -218,6 +229,9 @@ Moreover, let $R_k$ be a set of neighbors of the point $P[k]$ that are free and 
 The binding capability of $C$ at arity $\alpha$, denoted by $\#bc_\alpha(C)$, is defined by $\sum^{|w|}_{k=1} \min \{\alpha-|H_k|, |R_k|\}$.
 The subscript $\alpha$ is omitted whenever it is clear from context. 
 \end{definition}
+%
+Observe one almost-trivial but important fact that a bead inside a tunnel does not increase the binding capability. 
+This is because for such a bead $w[k]$, $|R_k| = 0$. 
 
 We now prove that in ``almost all'' tunnels is a troll domiciled and robs the transcript of binding capability (the original story is from \cite{Pratchett1992}). 
 Originally, we tried to find a troll in every tunnel but failed; a troll seems to dislike the very first bead $w[1]$, or its property that only $\alpha$+1 beads around may take all hands of $w[1]$ thanks to the absence of its predecessor; any other bead must be surrounded by at least $\alpha+2$ beads in order to be free from free hand because a bead cannot bind with its predecessor or successor. 
