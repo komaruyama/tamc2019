@@ -165,6 +165,8 @@ Let the point where the first transcript bead was fixed be $p$ and let $n=|\math
 	\label{fig:hexagonOut}
 \end{figure}
 
+\subsubsection{$\delta = 2$\\}
+
 In the elongation that places bead $i$ at $(1,1)$ there are two possibilities:
 \begin{itemize}
 	\item $i$ forms a bond with a bead at $(1,0)$.
@@ -186,7 +188,7 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 	\item bead $i+1$ is fixed at $(2,1)$ and can bond with a bead at $(2,0)$. Now consider bead $i+2$. For $i+1$ to be fixed at $(2,1)$, $i+2$ needs to form a bond somewhere, otherwise $i+2$ could go to $(2,1)$ forming the bond with the bead at $(2,0)$ and there would be two conformations with the maximal $1$ bond. The only possibility is that there is a bead at $(3,0)$ and $i+2$ can bond with it when placed at $(3,1)$. We can apply the same argument inductively: there is some $m\geq 0$ such that grid points $(\ell,0)$ are occupied by active beads, for all $\ell\in \{2,\dots,2+m\}$, and there is no bead at $(3+m,0)$. Such an $m$ exists, and it is not greater than $n$. Then, bead $i+\ell$ is fixed at $(\ell+1,1)$ and bonds with $(\ell+1,0)$. However, bead $i+2+m$ cannot be fixed anywhere, because $i+2+m$ and $i+3+m$ can only add one bond to the conformation, and that is possible either with $i+2+m \rightarrow (2+m,1)$, $i+3+m \rightarrow (3+m,1)$ or with $i+2+m \rightarrow (2+m,2)$, $i+3+m \rightarrow (2+m,1)$. 
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.6\linewidth]{./Fig/hexagonOut2}
+		\includegraphics[width=0.9\linewidth]{./Fig/hexagonOut2}
 		\caption{}
 		\label{fig:hexagonout2}
 	\end{figure}
@@ -207,409 +209,340 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 	\centering
 	%\includegraphics[width=0.3\linewidth]{./hexagonOut1}
 	%\hspace{10mm} %
-	\includegraphics[width=0.6\linewidth]{./Fig/hexagonOut3n}
+	\includegraphics[width=0.8\linewidth]{./Fig/hexagonOut3n}
 	
 	\caption{}
 	\label{fig:hexagonOut2}
 \end{figure}
 
 
-\subsection{In the case of $\delta = 3$}
-
-As before, the length of seed is $n$ and the seed will be inside $\hexagon_p^n$, the equilateral hexagon with a radius of $n$ and center $p$, the point where the first bead of the seed is fixed. We will begin our discussion by considering the moment when the first bead is fixed outside $\hexagon_p^n$. Let this bead be the $i$th one. 
+\subsubsection{$\delta = 3$\\}
 
 \textbf{A.} First, let us assume that a fixed bead on a side of $\hexagon_p^n$ has a free hand, and bead $i$ binds to it. If the most stable conformation formed by beads $i, i+1, i+2$ has only two hydrogen bonds, it will be nondeterministic because there are at least two possibilities, see Fig.~\ref{fig:beadi}. Therefore, it needs to make three hydrogen bonds to deterministically stabilize $i$.\\
 
 \begin{figure}
   \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {60, 120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (60 : 1.0);
-        \draw (60 : 1.0) -- (120 : 1.0);
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \foreach \theta in {60}{
-        \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
+    \begin{tabular}{cc}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 1.732) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (-0.5, 0.866);
+      \end{tikzpicture}
 
-    \begin{tikzpicture}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {60, 120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-        \draw (60 : 1.0) -- (120 : 1.0);
-        \draw (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \draw (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \foreach \theta in {60}{
-        \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted](0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 1.732) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \draw (0.0, 0.0) -- (-0.5, 0.866);
+        \draw (-0.5, 0.866) -- (0.5, 0.866);
+        \draw (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
+      \end{tikzpicture}
+
     \end{tabular}
-    \caption{}
+    \caption{Two conformations when a bead $i-1$ at (0,0) has a free hand}
     \label{fig:beadi}
   \end{center}
 \end{figure}
 
-There are the two cases in which beads $i, i+1, i+2$ can have three bonds, see Fig.~\ref{fig:3bonds}. However, if it makes three bonds once, such as in Fig.~\ref{fig:3bonds}, it will need to make three bonds forever to be deterministic. Similarly to case 1. in the previous section, this becomes nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a corner of $\hexagon_p^n$. Thus, the fixed bead on the side of an equilateral hexagon with a radius of $n$ has to make a hydrogen bond with a bead in an equilateral hexagon.
+
+
+There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see Fig.~\ref{fig:3bonds}. However, if it makes three bonds once, such as in Fig.~\ref{fig:3bonds}, it will need to make three bonds forever to be deterministic. Similarly to case 1. in the previous section, (a), (b) and (c)in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a first corner of $\hexagon_p^n$ and  (e) in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a second corner of $\hexagon_p^n$. (d) in Fig.~\ref{fig:3bonds} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (-1,0) and bond with (-2,0), bead $i+1$ can be placed (0,1) and bond with (0,0) and bead $i+2$ can be placed (1,1) and bond with (0,1).
+
+
 
 \begin{figure}
   \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \draw [dashed] (-0.5, 0.0) -- (3.5, 0.0);
-      \fill (3.5, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (3.5, 0.866);
-      \fill (3.5, 0.866) node [right] {$n+1$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {0, 60}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \fill (0,0) circle [radius = 0.05];
-        \foreach \theta in {0, 60, 120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-          \draw (0 : 0.0) -- (0 : 2.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-          \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 3.0)]
-          \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
+    \begin{tabular}{ccc}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (2.0, 0.0) circle [radius = 0.1];
+        \fill (3.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (1.5, 0.866) circle [radius = 0.1];
+        \fill (2.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (1.5, 0.866);
+        \draw (1.5, 0.866) -- (2.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \fill (1.5, -0.5) node [below] {(a)};
+      \end{tikzpicture}
 
-    \begin{tikzpicture}
-      \draw [dashed] (-1.5, 0.0) -- (2.5, 0.0);
-      \fill (2.5, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.5, 0.866) -- (2.5, 0.866);
-      \fill (2.5, 0.866) node [right] {$n+1$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {0, 60, 120, 180}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \fill (0,0) circle [radius = 0.05];
-        \foreach \theta in {120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-          \draw (0 : 0.0) -- (0 : 2.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-          \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (180 : 1.0)]
-          \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-1.0, 0.0) circle [radius = 0.1];
+        \fill (-2.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (-1.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw (-0.5, 0.866) -- (-1.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (-1.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \fill (-0.5, -0.5) node [below] {(b)};
+      \end{tikzpicture}\\
+
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-1.0, 0.0) circle [radius = 0.1];
+        \fill (-2.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (-1.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw (-0.5, 0.866) -- (-1.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \fill (-0.5, -0.5) node [below] {(c)};
+      \end{tikzpicture}
+
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-2.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (-1.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw (-0.5, 0.866) -- (-1.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \fill (-0.5, -0.5) node [below] {(d)};
+      \end{tikzpicture}
+
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-1.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (-1.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw (-0.5, 0.866) -- (-1.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-1.0, 0.0);
+        \fill (-0.5, -0.5) node [below] {(e)};
+      \end{tikzpicture}\\
+
     \end{tabular}
-    \caption{}
+    \caption{When beads $i, i+1, i+2$ make three hydrogen bonds \newline (c) there is an inactive bead at (-1,0). \newline (d) there is no bead at (-1,0).}
     \label{fig:3bonds}
   \end{center}
-  	
 \end{figure}
+
+
 
 \begin{figure}
   \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \draw [dashed] (-0.5, 0.0) -- (2.0, 0.0);
-      \fill (3.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (2.5, 0.866);
-      \fill (3.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-0.5, 1.732) -- (3.0, 1.732);
-      \fill (3.0, 1.732) node [right] {$n+2$};
-      \fill (60 : 1.0) circle [radius = 0.05];
-      \draw (-0.1,-0.1) -- (0.1,0.1);
-      \draw (0.1,-0.1) -- (-0.1,0.1);
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw [dotted] (0 : 0.0) -- (300 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \draw (0.0, 0.0) -- (2.0, 0.0);
-        \fill (2.0, 0.0) circle [radius = 0.05];
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dashed] (0 : 0.0) -- (300 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-      \fill (0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {0, 60}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \begin{scope}[shift = (120 : 1.0)]
-          \fill (0.0, 0.0) circle [radius = 0.05];
-          \draw (0 : 0.0) -- (240 : 1.0);
-          \draw (0 : 0.0) -- (300 : 1.0);
-        \end{scope}
-      \end{scope}
-    \end{tikzpicture}
+    \begin{tabular}{ccc}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (2.0, 0.0) circle [radius = 0.1];
+        \fill (3.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill [blue] (1.5, 0.866) circle [radius = 0.1];
+        \fill [blue] (2.5, 0.866) circle [radius = 0.1];
+        \fill [blue] (3.5, 0.866) circle [radius = 0.1];
+        \draw [blue] (0.5, 0.866) -- (1.5, 0.866);
+        \draw [blue] (1.5, 0.866) -- (2.5, 0.866);
+        \draw [blue] (2.5, 0.866) -- (3.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dashed] (3.5, -0.866) -- (3.0, 0.0);
+        \draw [dashed] (0.5, 0.0) -- (3.0, 0.0);
+      \end{tikzpicture}
 
-    \begin{tikzpicture}
-      \draw [dashed] (-0.5, 0.0) -- (2.0, 0.0);
-      \fill (3.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (2.5, 0.866);
-      \fill (3.0, 0.866) node [right] {$n+1$};
-      \draw (-0.1,-0.1) -- (0.1,0.1);
-      \draw (0.1,-0.1) -- (-0.1,0.1);
-      \fill (60 : 1.0) circle [radius = 0.05];
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw [dotted] (0 : 0.0) -- (300 : 1.0);
-        \draw (0.0, 0.0) -- (3.0, 0.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dashed] (0 : 0.0) -- (300 : 1.0);
-        \fill (60 : 1.0) circle [radius = 0.05];
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-        \fill (0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {0, 60}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (2.0, 0.0) circle [radius = 0.1];
+        \fill (3.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill [blue] (1.5, 0.866) circle [radius = 0.1];
+        \fill [blue] (2.5, 0.866) circle [radius = 0.1];
+        \fill [blue] (1.0, 1.732) circle [radius = 0.1];
+        \draw [blue] (0.5, 0.866) -- (1.0, 1.732);
+        \draw [blue] (1.5, 0.866) -- (1.0, 1.732);
+        \draw [blue] (1.5, 0.866) -- (2.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dashed] (3.5, -0.866) -- (3.0, 0.0);
+        \draw [dashed] (0.5, 0.0) -- (3.0, 0.0);
+      \end{tikzpicture}
+
     \end{tabular}
-    \caption{}
+    \caption{Being nondeterministic when reaching a corner of $\hexagon_p^n$}
     \label{fig:hexcorner}
   \end{center}
 \end{figure}
 
-\textbf{B.} Next, assume that bead $i$ could not bind to anything and let us discuss the moment after bead $i$ is fixed outside $\hexagon_p^n$. Now bead $i$ has a free hand. If beads $i+1, i+2, i+3$ can form only two bonds, it will be nondeterministic because there are at least two possible such structures, as in Fig.~\ref{fig:afterzigzag}. Hence, they need to form three bonds to deterministically stabilize, such as in the right or left side of Fig.~\ref{fig:afterline}.\\
+
+
+\textbf{B.} Next, let us assume that bead $i$'s predecessor at (0,0) has no free hand and that there is a bead at (1,0) which has a free hand. If there is a bead at (1,0) and beads $i, i+1, i+2$ make only two hydrogen bonds, it will become nondeterministic as in Fig.~\ref{fig:beadat(1,0)}. That is, beads $i, i+1, i+2$ need to make three bonds to stabilize $i$. If they make three hydrogen bonds, the situation is analogous to \textbf{A}. There should not be any bead having a free hand at (1,0) or (-1,0) to prevent from becoming \textbf{A}. Let us discuss the moment after bead $i$ is fixed outside $\hexagon_p^n$. Now bead $i$ has a free hand. If beads $i+1, i+2, i+3$ can form only two bonds, it will be nondeterministic because there are at least two possible such structures, as in Fig.~\ref{fig:beadi2}. Hence, they need to form three bonds to deterministically stabilize, such as in Fig.~\ref{fig:3bonds2}. (a) in Fig~\ref{fig:3bonds2} becomes \textbf{A} because it makes three hydrogen bonds. (b) in Fig.~\ref{fig:3bonds2} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (1,0).\\
+
+
 
 \begin{figure}
   \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-        \begin{scope}[shift=(0 : 0.0)]
-          \draw (-0.1,-0.1) -- (0.1,0.1);
-          \draw (0.1,-0.1) -- (-0.1,0.1);
-          \draw (0 : 0.0) -- (60 : 1.0);
-        \end{scope}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \draw [dashed] (-1.0, 2.598) -- (2.0, 2.598);
-      \fill (2.0, 2.598) node [right] {$n+3$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 2.0)]
-        \fill(0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {120, 180, 240}{
-          \fill (0.0, 0.0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-        \draw (0 : 0.0) -- (180 : 1.0);
-        \draw (0 : 0.0) -- (240 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \begin{scope}[shift = (120 : 1.0)]
-          \draw (0.0, 0.0) -- (60 : 1.0);
-          \draw [dotted] (0.0, 0.0) -- (300 : 1.0);
-        \end{scope}
-      \end{scope}
-    \end{tikzpicture}
+    \begin{tabular}{cc}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (1.5, 0.866) circle [radius = 0.1];
+        \fill (1.0, 1.732) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [left] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (1.5, 0.866);
+        \draw (1.0, 1.732) -- (1.5, 0.866);
+        \draw [dotted] [red] (1.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (1.0, 1.732) -- (0.5, 0.866);
+      \end{tikzpicture}
 
-    \begin{tikzpicture}
-        \begin{scope}[shift=(0 : 0.0)]
-          \draw (-0.1,-0.1) -- (0.1,0.1);
-          \draw (0.1,-0.1) -- (-0.1,0.1);
-          \draw (0 : 0.0) -- (60 : 1.0);
-        \end{scope}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \draw [dashed] (-1.0, 2.598) -- (2.0, 2.598);
-      \fill (2.0, 2.598) node [right] {$n+3$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 2.0)]
-        \fill(0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {120, 180, 240}{
-          \fill (0.0, 0.0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (120 : 1.0);
-        \draw (0 : 0.0) -- (180 : 1.0);
-        \draw [dotted] (0 : 0.0) -- (240 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \begin{scope}[shift = (120 : 1.0)]
-          \draw [dotted] (0.0, 0.0) -- (60 : 1.0);
-          \draw (0.0, 0.0) -- (300 : 1.0);
-        \end{scope}
-      \end{scope}
-    \end{tikzpicture}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 1.732) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (-0.5, 0.866) node [left] {$(0, 1)$};
+        \draw (0.0, 0.0) -- (-0.5, 0.866);
+        \draw (-0.5, 0.866) -- (0.5, 0.866);
+        \draw (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
+      \end{tikzpicture}
+
     \end{tabular}
-    \caption{}
-    \label{fig:afterzigzag}
+    \caption{Two conformations when a bead at (1,0) has a free hand}
+    \label{fig:beadat(1,0)}
   \end{center}
 \end{figure}
 
- If they form three bonds once, such as Fig.~\ref{fig:afterline}, the system would need three bonds forever to be deterministic. This becomes nondeterministic finally, such as in Fig.~\ref{fig:hexcorner}, when it reaches a corner of $\hexagon_p^n$. 
- %Therefore, the first fixed bead on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a molecule on a side of an equilateral hexagon with a radius of $n$.
 
 \begin{figure}
   \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \begin{scope}[shift=(0 : 0.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \draw [dashed] (-0.5, 0.0) -- (4.5, 0.0);
-      \fill (4.5, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (4.5, 0.866);
-      \fill (4.5, 0.866) node [right] {$n+1$};
-      \fill (2.0, 0.0) circle [radius = 0.05];
-      \fill (3.0, 0.0) circle [radius = 0.05];
-      \fill (4.0, 0.0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 1.0)]
-        \fill (0.0, 0.0) circle [radius = 0.05];
-        \fill (1.0, 0.0) circle [radius = 0.05];
-        \fill (2.0, 0.0) circle [radius = 0.05];
-        \fill (3.0, 0.0) circle [radius = 0.05];
-        \draw (0.0, 0.0) -- (3.0, 0.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 3.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 4.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
+    \begin{tabular}{cc}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 1.732) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (-0.5, 0.866);
+      \end{tikzpicture}
 
-    \begin{tikzpicture}
-      \begin{scope}[shift=(0 : 0.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \draw [dashed] (-3.5, 0.0) -- (1.0, 0.0);
-      \fill (1.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-3.5, 0.866) -- (1.0, 0.866);
-      \fill (1.0, 0.866) node [right] {$n+1$};
-      \fill (-1.0, 0.0) circle [radius = 0.05];
-      \fill (-2.0, 0.0) circle [radius = 0.05];
-      \fill (-3.0, 0.0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 1.0)]
-        \fill (0.0, 0.0) circle [radius = 0.05];
-        \fill (-1.0, 0.0) circle [radius = 0.05];
-        \fill (-2.0, 0.0) circle [radius = 0.05];
-        \fill (-3.0, 0.0) circle [radius = 0.05];
-        \draw (0.0, 0.0) -- (-3.0, 0.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : -1.0)]
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : -2.0)]
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : -3.0)]
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 1.732) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (-0.5, 0.866);
+        \draw (-0.5, 0.866) -- (0.5, 0.866);
+        \draw (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
+      \end{tikzpicture}
+
     \end{tabular}
-    \caption{}
-    \label{fig:afterline}
+    \caption{Two conformations when a bead $i$ at (1,1) has a free hand}
+    \label{fig:beadi2}
   \end{center}
 \end{figure}
 
-Accordingly, it is Fig.~\ref{fig:firstout} when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$.
+
 
 \begin{figure}
   \begin{center}
-    \begin{tikzpicture}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \begin{scope}[shift=(0 : 0.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift=(60 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-      \end{scope}
-      \begin{scope}[shift=(0 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-    \caption{}
-    \label{fig:firstout}
+    \begin{tabular}{ccc}
+
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (1.0, 0.0) circle [radius = 0.1];
+        \fill (2.0, 0.0) circle [radius = 0.1];
+        \fill (3.0, 0.0) circle [radius = 0.1];
+        \fill (4.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (1.5, 0.866) circle [radius = 0.1];
+        \fill (2.5, 0.866) circle [radius = 0.1];
+        \fill (3.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (1.5, 0.866);
+        \draw (1.5, 0.866) -- (2.5, 0.866);
+        \draw (2.5, 0.866) -- (3.5, 0.866);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dotted] [red] (3.5, 0.866) -- (4.0, 0.0);
+        \fill (1.5, -0.5) node [below] {(a)};
+      \end{tikzpicture}
+      
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (2.0, 0.0) circle [radius = 0.1];
+        \fill (3.0, 0.0) circle [radius = 0.1];
+        \fill (4.0, 0.0) circle [radius = 0.1];
+        \fill (0.5, 0.866) circle [radius = 0.1];
+        \fill (1.5, 0.866) circle [radius = 0.1];
+        \fill (2.5, 0.866) circle [radius = 0.1];
+        \fill (3.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (1.5, 0.866);
+        \draw (1.5, 0.866) -- (2.5, 0.866);
+        \draw (2.5, 0.866) -- (3.5, 0.866);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dotted] [red] (3.5, 0.866) -- (4.0, 0.0);
+        \fill (1.5, -0.5) node [below] {(b)};
+      \end{tikzpicture}\\
+
+    \end{tabular}
+    \caption{When beads $i+1, i+2, i+3$ make three hydrogen bonds \newline (a) there is an inactive bead at (1,0). \newline (b) there is no bead at (1,0).}
+    \label{fig:3bonds2}
   \end{center}
 \end{figure}
-
-%It has to be a right or left figure in Fig.6. when the first bead fixed on a side of an equilateral hexagon with a radius of $n+1$ make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$. Fig.6. becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. It is clear that all beads on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$.  It is impossible to fix molecules on a side of an equilateral hexagon with a radius of $n+2$ and determine the only structure when there are only beads which are able to make a hydrogen bond in an equilateral hexagon with a radius of $n$.
