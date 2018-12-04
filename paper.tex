@@ -9,32 +9,36 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{calc}
+\usepackage{array}
 
 \usepackage{amsmath, amssymb}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
+\usepackage{graphbox}
 \usepackage{wasysym}
 
 \usetikzlibrary{automata}
 
+\usepackage{comment}
 
 
-
-\title{On the power of oritatami cotranscriptional folding with unary bead sequence\thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~Z.~F. and S.~S.}
+\title{On the power of oritatami cotranscriptional folding with unary bead sequence\thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 granted to S.~Z.~F. and S.~S. and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~S.}
 }
+\titlerunning{Power of unary oritatami cotranscriptional folding}
 \author{
-Szil\'{a}rd Zsolt Fazekas\inst{1} \and
-Shinnosuke Seki\inst{2}\thanks{Corresponding author}}
+Szil\'{a}rd Zsolt Fazekas\inst{1} \and 
+Kohei Maruyama \and
+Reoto Morita \and \\
+Shinnosuke Seki\inst{2}\thanks{Corresponding author (\email{s.seki@uec.ac.jp})}}
 \institute{
 Akita University, 
 Graduate School of Engineering Science, 
 1-1 Tegate Gakuen-machi, Akita, 0108502, Japan \\
-\email{szilard.fazekas@ie.akita-u.ac.jp}
+%\email{szilard.fazekas@ie.akita-u.ac.jp}
 \and
 The University of Electro-Communications, 
 Graduate School of Informatics and Engineering, 
 1-5-1 Chofugaoka, Chofu, Tokyo, 1828585, Japan \\
-\email{s.seki@uec.ac.jp}
 }
 
 \begin{document}
@@ -50,12 +54,12 @@ In particular, we look at oritatami systems, where the folding sequence consists
 	\section{Introduction}
 %------------------------------------------------------
 
-Transcription is the first essential step of gene expression, when a DNA template sequence is copied into a complementary single stranded RNA sequence by a `copy machine' called RNA polymerase. 
+Transcription is the first essential step of gene expression, in which a DNA template sequence is copied into a complementary single stranded RNA sequence by a `copy machine' called RNA polymerase. 
 The RNA strand is synthesized letter by letter according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$ and folds up during a process called co-transcriptional folding.
 
-In a recent breakthrough in molecular engineering by Geary, Rothemund and Andersen~\cite{RNAorigami} the co-transcriptional folding of RNA is controlled by careful design of the DNA template. As demonstrated in laboratory, this method, called RNA Origami, makes it possible to build rectangles out of RNA strands. 
-Geary et al.~\cite{Oritatami} proposed a mathematical model for this process, called oritatami system.
-It has been shown~\cite{Simulator} that the model is computationally universal by simulating cyclic tag systems introduced by Cook~\cite{Cook110}. 
+In a recent breakthrough in molecular engineering by Geary, Rothemund and Andersen~\cite{GearyRothemundAndersen2014} the co-transcriptional folding of RNA is controlled by careful design of the DNA template. As demonstrated in laboratory, this method, called RNA Origami, makes it possible to build rectangles out of RNA strands. 
+Geary et al.~\cite{GeMeScSe2016} proposed a mathematical model for this process, called oritatami system.
+It has been just shown in \cite{GeMeScSe2018} that the model is efficiently Turing universal by simulating cyclic tag systems introduced by Cook~\cite{Cook2004}. 
 The simulation involves a very large and complex oritatami system. 
 One future direction of research is to find smaller universal oritatami system.
 
@@ -78,9 +82,9 @@ In this paper we start a new line of study which concerns the alphabet size for 
 
 \node (origin) at (0, 0) {};
 
-\draw[-latex] (origin) -- ++(0:3) node[below] {$\delta$}; 
-\node at (1, -0.2) {1};
-\node at (2, -0.2) {2};
+\draw[-latex] (origin) -- ++(0:5) node[below] {$\delta$}; 
+\node at (2, -0.2) {1};
+\node at (4, -0.2) {2 and 3};
 \draw[-latex] (origin) -- ++(90:5) node[left] {$\alpha$}; 
 \node at (-0.2, 1) {1};
 \node at (-0.2, 2) {2};
@@ -88,22 +92,104 @@ In this paper we start a new line of study which concerns the alphabet size for 
 \node at (-0.2, 4) {4};
 
 %Results
-\node at (1, 4) {$O(n^2)$};
-\node at (1, 3) {$O(n)$};
-\node at (1, 2) {$O(n^2)$};
-\node at (1, 1) {$O(n)$ \cite{DemaineDNA24}};
+\node at (2, 4) {$3n(n+1)+1$};
+\node at (2, 3) {$O(n)$};
+\node at (2, 2) {$O(n^2)$};
+\node at (2, 1) {$10n$ \cite{DHOPRSST2018}};
 
-\node at (2, 1) {$O(n^2)$};
+\node at (4, 1) {$O(n^2)$};
 
 \end{tikzpicture}
 \caption{Summary of the results.}
 \label{fig:summary}
 \end{figure}
 
+In \cite{DHOPRSST2018}, Demaine et al. proved that at delay 1 and arity 1, upon the seed of length $n$, a deterministic oritatami system cannot fold into any conformation strictly longer than $10n$. 
+We consider this finiteness problem for unary oritatami systems under various settings of the values of delay and arity, which is formalized as follows. 
+
+\begin{problem}\label{prob:det_unary_length}
+Give an upper bound on the length of a transcript of a delay-$\delta$, arity-$\alpha$ deterministic unary oritatami system whose seed is of length $n$ by a function in $\delta$, $\alpha$, and $n$. 
+\end{problem}
+
+
+
+Results on this problem are summarized in Fig.~\ref{fig:summary}. 
+
+
 %------------------------------------------------------
 	\section{Preliminaries}
 %------------------------------------------------------
-\input{uos_preliminaries.tex}
+Let $\Sigma$ be a set of types of abstract molecules, or \textit{beads}. 
+A bead of type $a \in \Sigma$ is called an $a$-bead. 
+By $\Sigma^*$ and $\Sigma^\omega$, we denote the set of finite sequences of beads and that of one-way infinite sequences of beads, respectively. 
+The empty sequence is denoted by $\lambda$. 
+Let $w = b_1 b_2 \cdots b_n \in \Sigma^*$ be a sequence of length $n$ for some integer $n$ and bead types $b_1, \ldots, b_n \in \Sigma$. 
+The \textit{length} of $w$ is denoted by $|w|$, that is, $|w| = n$. 
+For two indices $i, j$ with $1 \le i \le j \le n$, we let $w[i..j]$ refer to the subsequence $b_i b_{i+1} \cdots b_{j-1}b_j$; if $i = j$, then $w[i..i]$ is simplified as $w[i]$. 
+For $k \ge 1$, $w[1..k]$ is called a \textit{prefix} of $w$. 
+
+Oritatami systems fold their transcript, which is a sequence of beads, over the triangular grid graph $\mathbb{T} = (V, E)$ cotranscriptionally. 
+We designate one point in $V$ as the origin $O$ of $\mathbb{T}$. 
+For a point $p \in V$, let $\hexagon_p^d$ denote the set of points which lie in the regular hexagon of radius $d$ centered at the point $p$. 
+Note that $\hexagon_p^d$ consists of $3d(d+1)+1$ points. 
+A directed path $P = p_1 p_2 \cdots p_n$ in $\mathbb{T}$ is a sequence of \textit{pairwise-distinct} points $p_1, p_2, \ldots, p_n \in V$ such that $\{p_i, p_{i+1}\} \in E$ for all $1 \le i < n$. 
+Its $i$-th point is referred to as $P[i]$. 
+Now we are ready to abstract RNA single-stranded structures in the name of conformation. 
+A \textit{conformation} $C$ (over $\Sigma$) is a triple $(P, w, H)$ of a directed path $P$ in $\mathbb{T}$, $w \in \Sigma^*$ of the same length as $P$, and a set of h-interactions $H \subseteq \bigl\{\{i, j\} \bigm| 1 \le i, i+2 \le j, \{P[i], P[j]\} \in E \bigr\}$. 
+This is to be interpreted as the sequence $w$ being folded along the path $P$ in such a manner that its $i$-th bead $w[i]$ is placed at the $i$-th point $P[i]$ and the $i$-th and $j$-th beads are bound (by a hydrogen-bond-based interaction) if and only if $\{i, j\} \in H$. 
+The condition $i+2 \le j$ represents the topological restriction that two consecutive beads along the path cannot be bound. 
+The \textit{length} of $C$ is defined to be the length of its transcript $w$ (that is, equal to the length of the path $P$). 
+A \textit{rule set} $R \subseteq \Sigma \times \Sigma$ is a symmetric relation over $\Sigma$, that is, for all bead types $a, b \in \Sigma$, $(a, b) \in R$ implies $(b, a) \in R$. 
+A bond $\{i, j\} \in H$ is \textit{valid with respect to $R$}, or simply $R$-valid, if $(w[i], w[j]) \in R$. 
+This conformation $C$ is \textit{$R$-valid} if all of its bonds are $R$-valid. 
+For an integer $\alpha \ge 1$, $C$ is \textit{of arity $\alpha$} if it contains a bead that forms $\alpha$ bonds but none of its bead forms more. 
+By $\mathcal{C}_{\le \alpha}(\Sigma)$, we denote the set of all conformations over $\Sigma$ whose arity is at most $\alpha$; its argument $\Sigma$ is omitted whenever $\Sigma$ is clear from the context. 
+
+The oritatami system grows conformations by an operation called elongation. 
+Given a rule set $R$ and an $R$-valid conformation $C_1 = (P, w, H)$, we say that another conformation $C_2$ is an elongation of $C_1$ by a bead $b \in \Sigma$, written as $C_1 \xrightarrow{R}_b C_2$, if $C_2 = (P p, wb, H \cup H')$ for some point $p \in V$ not along the path $P$ and set $H' \subseteq \bigl\{ \{i, |w|+1\} \bigm| 1 \le i < |w|, \{P[i], p\} \in E, (w[i], b) \in R \bigr\}$ of bonds formed by the $b$-bead; this set $H'$ can be empty. 
+Note that $C_2$ is also $R$-valid. 
+This operation is recursively extended to the elongation by a finite sequence of beads as: for any conformation $C$, $C \xrightarrow{R}_\lambda^* C$; and for a finite sequence of beads $w \in \Sigma^*$ and a bead $b \in \Sigma$, a conformation $C_1$ is elongated to a conformation $C_2$ by $wb$, written as $C_1 \xrightarrow{R}_{wb}^* C_2$, if there is a conformation $C'$ that satisfies $C_1 \xrightarrow{R}_w^* C'$ and $C' \xrightarrow{R}_b C_2$. 
+
+An \textit{oritatami system} (OS) $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ is composed of
+\begin{itemize}
+\item a set $\Sigma$ of bead types, 
+\item a rule set $R \subseteq \Sigma \times \Sigma$, 
+\item a positive integer $\delta$ called the \textit{delay}, 
+\item a positive integer $\alpha$ called the \textit{arity}, 
+\item an initial $R$-valid conformation $\sigma \in C_{\le \alpha}(\Sigma)$ called the \textit{seed}, upon which 
+\item its (possibly infinite) \textit{transcript} $w \in \Sigma^* \cup \Sigma^\omega$ is to be folded by stabilizing beads of $w$ one at a time so as to minimize energy collaboratively with the succeeding $\delta{-}1$ nascent beads. 
+\end{itemize}
+The energy of a conformation $C = (P, w, H)$, denoted by $\Delta G(C)$, is defined to be ${-}|H|$; the more bonds a conformation has, the more stable it gets. 
+The set $\mathcal{F}(\Xi)$ of conformations \textit{foldable} by the system $\Xi$ is recursively defined as: the seed $\sigma$ is in $\mathcal{F}(\Xi)$; and provided that an elongation $C_i$ of $\sigma$ by the prefix $w[1..i]$ be foldable (i.e., $C_0 = \sigma$), its further elongation $C_{i+1}$ by the next bead $w[i+1]$ is foldable if 
+\begin{equation}\label{eq:OS_CF}
+C_{i+1} \in \argmin_{
+\substack{
+C \in \mathcal{C}_{\le \alpha} s.t. \\
+C_i \xrightarrow{R}_{w[i+1]}C \\
+}
+}
+\min \Bigl\{ \Delta G(C') \Bigm|
+C \xrightarrow{R}^*_{w[i+2...i+k]}C', k\le \delta, C' \in \mathcal{C}_{\le \alpha}
+\Bigr\}.
+\end{equation}
+%
+Then we say that the bead $w[i+1]$ and the bonds it forms are \textit{stabilized} according to $C_{i+1}$. 
+Note that an arity-$\alpha$ oritatami system cannot fold any conformation of arity larger than $\alpha$. 
+A conformation foldable by $\Xi$ is \textit{terminal} if none of its elongations is foldable by $\Xi$. 
+The oritatami system $\Xi$ is \textit{deterministic} if for all $i \ge 0$, there exists at most one $C_{i+1}$ that satisfies \eqref{eq:OS_CF}. 
+A deterministic oritatami system folds into a unique terminal conformation. 
+An oritatami system with the empty rule set just folds into an arbitrary elongation of its seed nondeterministically. 
+Thus, the rule set is always assumed to be non-empty. 
+
+In this paper, we considerably focus on the unary oritatami system. 
+An oritatami system is \textit{unary} if its bead type set $\Sigma$ is of size 1. 
+Its sole bead type is denoted by $a$, that is, $\Sigma = \{a\}$. 
+Its only possible rule is $(a, a)$ so that the non-empty rule set assumption implies that its rule set is $R = \{(a, a)\}$. 
+Its transcript is a sequence of $a$-beads. 
+That is to say, the behavior of a unary oritatami system is fully determined by the delay, arity, and seed. 
+
+
+
 
 
 \begin{proposition}\label{prop:check_validity}
@@ -149,1388 +235,21 @@ In this paper we start a new line of study which concerns the alphabet size for 
 
 Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \mathrm{EXP}$, so we can conclude that OS which cannot deterministically fold transcripts of length exponential in the length of the seed are not computationally universal.
 
-\section{Problem description}
 
-In \cite{DemaineDNA24}, Demaine et al. proved that at delay 1 and arity 1, an oritatami system can fold upon the seed of size $n$ only the first $9n$ beads of a transcript deterministically. 
-We consider this finiteness problem under various settings of the values of delay and arity. 
-Results on this problem are summarized in Fig.~\ref{fig:summary}. 
+\section{Case of arity $1$}
 
 
+\input{arity1}
 
-\section{Case of $\delta = 1$}
 
+\section{Case of delay $1$}
+\input{tt_intro}
+\input{tt_theorem}
 
 
-%//////////////////////////////////////////////////////%
-%//////////////////////////////////////////////////////%
-%Kohei
-%//////////////////////////////////////////////////////%
-%//////////////////////////////////////////////////////%
 
 
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \fill (0,0) circle[radius = 0.1];
-      \fill (1.5,0) circle[radius = 0.1];
-      \fill (3,0) circle[radius = 0.1];
-      \fill (4.5,0) circle[radius = 0.1];
-      \fill (6,0) circle[radius = 0.1];
-
-      \draw[dashed] (0,0)--(1.5,0);
-      \draw[dashed] (1.5,0)--(3,0);
-      \draw[dashed] (3,0)--(4.5,0);
-      \draw[dashed] (4.5,0)--(6,0);
-      \draw[->] (0,0)--(60:1.3);
-      \draw[->] (1.5,0)--++(60:1.3);
-      \draw[->] (3,0)--++(60:1.3);
-      \draw[->] (4.5,0)--++(60:1.3);
-      
-      \begin{scope}[shift=(60:1.5)]
-        \fill (0,0) circle[radius = 0.1];
-        \fill (1.5,0) circle[radius = 0.1];
-        \fill (3,0) circle[radius = 0.1];
-        \fill (4.5,0) circle[radius = 0.1];
-        \draw[dashed] (0,0)--(1.5,0);
-        \draw[dashed] (1.5,0)--(3,0);
-        \draw[dashed] (3,0)--(4.5,0);
-        \draw[->] (0,0)--(-60:1.3);
-        \draw[->] (1.5,0)--++(-60:1.3);
-        \draw[->] (3,0)--++(-60:1.3);
-        \draw[->] (4.5,0)--++(-60:1.3);
-      \end{scope}
-      
-    \end{tikzpicture}
-    \caption{zig-zag conformation}
-    \label{TTT_zigzag}
-  \end{center}
-\end{figure}
-
-\subsection{Introduction}
-
-
-In this section, we consider on finiteness of structures produced deterministically at delay 1. In result, cases of arity 1 and 3 can only yield finite structures which is size of $\mathcal{O} (n)$, and cases of arity 4 and more can only yield finite structures which is size of $mathcal{O} (n^2)$, and a case of arity 2 can yield infinite structures but they are only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
-
-%In this section, we prove that unary oritatami system can form infinitely at delay 1 and arity 2 deterministically and moreover that the only infinite conformations which its oritatami system can yield is only the zig-zag conformation shown in Fig.\ref{TTT_zigzag}. 
-
-
-Let $\Xi$ be a deterministic oritatami system of delay 1 and arity 2. Assume its seed $\sigma$ consists of $n$ beads.
-%Let us denote its transcript by $w = w_1 w_2 w_3 \cdots$ for some $w_1,w_2,w_3 \in \Sigma = \{e\}$.
-For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$ that is foldable by $\Xi$. Hence $C_0 = \sigma$.
-
-
-Let us consider the stabilization of the $i$-th bead $a_i$ upon $C_{i-1}$. The bead cannot collaborate with any succeeding bead $w[i+1],w[i+2],\cdots$ at delay 1. There are just two ways to get stabilized at delay 1. One way is to be bound to another bead. The other way is through a $tunnel\ section$. A tunnel section consists of four beads that occupy four neighbors of a point (Fig.\ref{TTT_tunnel_intro}). 
-Accordingly, how they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
-
-Assume that four of the six neighbors of a point $p$ are occupied by beads $a_{j_1},a_{j_2},a_{j_3},a_{j_4}$ while the other two are free. We call such a bead $p$ as $inside\ of\ a\ tunnel$ and such beads $p^\prime$ as $entrance\ of\ a\ tunnel$ without a case that $p^\prime$ is inside of a tunnel. If the beads $w[i-2]$ and $w[i-1]$ are stabilized respectively at one of the two free neighbors and at $p$ one after another, then the next bead $w[i]$ cannot help but be stabilized at the other free neighbor. In this way, $w[i]$ can get stabilized without being bound.
-
-%If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
-
-We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. We define $binding\ capability$ with reachable.
-
-\begin{definition}[binding capability]
-Let $B_i$ be $( \{ (h, i) | {}^\forall h < i \} \cup \{ (i, j) | {}^\forall j > i \}) \cap H$. Moreover, let $R_i$ be a set of neighbors of $w[i]$ that are free and reachable from $C_j$ where $C_j$ is a conformation which stabilized until $w[j]$.
- We represent the number of binding capabilities of a conformation $C_j$ as $\#bc(C_j)$. $\#bc(C_j)$ is defined by $\sum^{j}_{k=-n+1} \min \{ |B_k|, |R_k|  \}$.
-\end{definition}
-
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \fill (0:0) circle [radius=0.05];
-      \fill (0:1.2) circle [radius=0.05];
-      \fill (180:1.2) circle [radius=0.05];
-      \node[above] at (0:1.2) { $p^\prime$ };
-      \node[above] at (0:0) { $p$ };
-      \node[above] at (180:1.2) { $p^\prime$ };
-      
-      \fill (60 : 1.2) circle [radius=0.1];
-      \fill (-60 : 1.2) circle [radius=0.1];
-      \fill (120 : 1.2) circle [radius=0.1];
-      \fill (-120 : 1.2) circle [radius=0.1];
-      \node[above] at (60 :1.2) { $a_{j_1}$ };
-      \node[above] at (-60 :1.2) { $a_{j_2}$ };
-      \node[above] at (120 :1.2) { $a_{j_3}$ };
-      \node[above] at (-120 :1.2) { $a_{j_4}$ };
-      
-      \begin{scope}[shift=(0:5)]
-        \fill (0:0) circle [radius=0.1];
-        \fill (0:1.2) circle [radius=0.05];
-        \fill (180:1.2) circle [radius=0.1];
-        \node[above] at (180:1.2) { $a_{i-2}$ };
-        \node[above] at (0:0) { $a_{i-1}$ };
-        \draw[->] (180:1.1) -- (180:0.1);
-        
-        \fill (60 : 1.2) circle [radius=0.1];
-        \fill (-60 : 1.2) circle [radius=0.1];
-        \fill (120 : 1.2) circle [radius=0.1];
-        \fill (-120 : 1.2) circle [radius=0.1];
-        \node[above] at (60 :1.2) { $a_{j_1}$ };
-        \node[above] at (-60 :1.2) { $a_{j_2}$ };
-        \node[above] at (120 :1.2) { $a_{j_3}$ };
-        \node[above] at (-120 :1.2) { $a_{j_4}$ };
-      \end{scope}
-      \begin{scope}[shift=(0:10)]
-        \fill (0:0) circle [radius=0.1];
-        \fill (0:1.2) circle [radius=0.1];
-        \fill (180:1.2) circle [radius=0.1];
-        \node[above] at (180:1.2) { $a_{i-2}$ };
-        \node[above] at (0:0) { $a_{i-1}$ };
-        \node[above] at (0:1.2) { $a_i$ };
-        \draw[->] (180:1.1) -- (180:0.1);
-        \draw[->] (0:0.1) -- (0:1.1);
-        
-        \fill (60 : 1.2) circle [radius=0.1];
-        \fill (-60 : 1.2) circle [radius=0.1];
-        \fill (120 : 1.2) circle [radius=0.1];
-        \fill (-120 : 1.2) circle [radius=0.1];
-        \node[above] at (60 :1.2) { $a_{j_1}$ };
-        \node[above] at (-60 :1.2) { $a_{j_2}$ };
-        \node[above] at (120 :1.2) { $a_{j_3}$ };
-        \node[above] at (-120 :1.2) { $a_{j_4}$ };
-      \end{scope}
-    \end{tikzpicture} 
-    \caption{Through a tunnel section}
-    \label{TTT_tunnel_intro}
-  \end{center}
-\end{figure}
-
-
-
-
-\begin{theorem}[Tunnel Troll Theorem]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha \geq 2$. If there are indices $i$ and $j$ such that $S[i..j+1] = bt^{j-i}b$, then $\#bc(C_i)$ > $\#bc(C_j)$.
-\end{theorem}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\proof%{Proof of Tunnel Troll Theorem}
-Assume $\Xi$ is deterministic. %How they are stabilized can be described by a binary sequence $S$ of $b$'s (bound) and $t$'s (tunnel section); priority is given to $t$, that is, $S[i] = t$ if the $i$-th bead $w_i$ is stabilized not only by being bound but also through a tunnel section. 
-Each of beads in transcript are bound either inside of tunnel or outside (Fig. \ref{TTT_position}). If a bead is stabilized at inside of tunnel, then its successor is already decided the position either inside of a tunnel or outside. Moreover, If a bead is stabilized at outside of a tunnel, then its position is an entrance of a tunnel or otherwise.
-
-Tunnel sections have three possible shape with considering symmetry such as straight, acute turn and obtuse turn (Fig. \ref{TTT_tunnel}). %Let us focus entrances of a tunnel such as $p^\prime$, then Entrances have two possible shape (Fig. \ref{TTT_enterpoint}).
-
-Let us consider each of cases of tunnel A, B, and C. Accordingly, We use lemma \ref{TTT_neighbor_lemma}
-
-\begin{lemma}
-\label{TTT_neighbor_lemma}
-If a bead does not have any bond, then neighbors of it must be occupied by $\alpha + 2$ beads at $\delta = 1$ and unary except first and last beads.
-\end{lemma}
-
-\begin{proof}[lemma \ref{TTT_neighbor_lemma}]
-A bead in transcript needs predecessor and successor except first and last beads. If the bead does not have ant bond, then it use hand with $\alpha$ neighbors. Thus, lemma \ref{TTT_neighbor_lemma} is clearly true.
-\end{proof}
-
-Let us consider tunnel sections only tunnel A and B. See Fig. \ref{TTT_position}. From appendix (Entrance of Tunnel A, B and Exit of Tunnel), we add maximum number which each transitions provide binding capabilities for each edge where $a$ is number of consuming binding capabilities when the bead is stabilized at position of $successor\ in\ outside$.
-
-%The sequence $S$ can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+ \cup bt^+bt^+$. 
-
-Next, we consider on tunnel C section. If $w[i]$ is stabilized by tunnel C and $S[i+1]$ is $t$, then $w[i+1]$ is stabilized by tunnel A or B because if $w[i+1]$ is stabilized by tunnel C, then $C_{i+1}$ is a terminal. Hence, tunnel C section is divided cases such as Figure \ref{TTT_tunnelC_graph}. Cases of $S[i...] = bt^l (l \geq 2)$ are already considered (Upper). According to appendix (Tunnel C), cases of $S[i..i+2] = btb$ also consume some binding capabilities (Lower).
-
-
-Thus, if a bead is stabilized through a tunnel section, then it consume some binging capabilities.
-
-
-
-\begin{figure}
-  \begin{center}
-    \begin{tabular}{ccc}
-      
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.2) {$p^\prime$};
-            \node[above] at (0:1.2) {$p^\prime$};
-
-            \foreach \theta in {0,180}{
-              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {60,-60,120,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel A};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.2) {$p^\prime$};
-            \node[above] at (-60:1.2) {$p^\prime$};
-
-            \foreach \theta in {-60,180}{
-              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {0,60,120,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel B};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.3\hsize}
-        \begin{tikzpicture}
-
-          \begin{scope}[xshift=2cm, yshift=2cm]
-            \fill(0,0) circle [radius=0.05];
-            \node[above] at (180:1.2) {$p^\prime$};
-            \node[above] at (-1200:1.2) {$p^\prime$};
-
-            \foreach \theta in {-120,180}{
-              \fill[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.05];
-            }
-            
-            \foreach \theta in {0,60,-60,120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-          \end{scope}
-
-          \node at (2,0) {Tunnel C};
-        \end{tikzpicture}
-      \end{minipage}
-      
-    \end{tabular}
-    \caption{All possible tunnel sections: straight, acute turn, and obtuse turn}
-    \label{TTT_tunnel}
-  \end{center}
-\end{figure}
-
-%\begin{figure}
-%  \begin{center}
-%    \begin{tabular}{cc}
-%      
-%      \begin{minipage}{0.2\hsize}
-%      \centering
-%        \begin{tikzpicture}
-%
-%          \begin{scope}[xshift=1cm, yshift=2cm]
-%            \fill(0,0) circle [radius=0.1];
-%            \node[above] at (180:1.2) {$p^\prime$};
-%            
-%            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
-%            
-%            
-%            \foreach \theta in {120,-120}{
-%              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-%              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-%            }
-%
-%            \draw[->] (-1.1,0) -- (-0.1,0);
-%          \end{scope}
-%
-%          \node at (0.25,0) {Tunnel A,B};
-%        \end{tikzpicture}
-%      \end{minipage}
-%
-%      \begin{minipage}{0.2\hsize}
-%      \centering
-%        \begin{tikzpicture}
-%
-%          \begin{scope}[xshift=1cm, yshift=2cm]
-%            \fill(0,0) circle [radius=0.1];
-%            \node[above] at (180:1.2) {$p^\prime$};
-%
-%            \draw[transform canvas={shift=(-120:1.2)}](0,0) circle [radius=0.1];
-%            \fill[transform canvas={shift=(180:1.2)}](0,0) circle [radius=0.1];
-%            
-%            
-%            \foreach \theta in {120}{
-%              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-%              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-%            }
-%
-%            \draw[->] (-1.1,0) -- (-0.1,0);
-%          \end{scope}
-%
-%          \node at (0.25,0) {Tunnel C};
-%        \end{tikzpicture}
-%      \end{minipage}
-%
-%    \end{tabular}
-%    \caption{Entrance of a tunnel}
-%    \label{TTT_enterpoint}
-%  \end{center}
-%\end{figure}
-
-%\begin{figure}
-%  \begin{center}
-%    \begin{tikzpicture}
-%      \draw[thick]
-%      (1.3,1)--(0,1)--(0,5)--(5,5)--(5,1)--(3.7,1);
-%      \node at(2.5,1) {Outside};
-%      \node at (2.5,4) [rectangle, draw,rounded corners] (enter) {Entrance of a tunnel};
-%      \node at(2.5,2) [rectangle, draw, rounded corners] (outside) {Otherwise};
-%
-%      
-%      
-%      \draw[thick]
-%      (9.3,1)--(8,1)--(8,5)--(13,5)--(13,1)--(11.7,1);
-%      \node at(10.5,1) {Inside of a tunnel};
-%      \node at(10.5,4) [rectangle, draw, rounded corners] (next-tunnel) {Successor in inside};
-%      \node at(10.5,2) [rectangle, draw, rounded corners] (next-outside) {Successor in outside};
-%
-%      \draw[->]
-%      (outside) edge [bend left] node[left] {$b$} (enter)
-%                edge [loop left] node[left] {$b$} (outside)
-%      (enter)   edge [bend left] node[above] {$b$} (next-tunnel)
-%                edge [bend left] node[above] {$b$} (next-outside)
-%                edge [bend left] node[right] {$b$}  (outside)
-%      (next-tunnel) edge         node[right] {$t$} (next-outside)
-%                edge [loop right]node[below] {$t$}    (next-tunnel)
-%      (next-outside) edge[bend left] node[above] {$t$}  (outside)
-%                edge [bend left]     node[above] {$t$}(enter)
-%      ;
-%      
-%    \end{tikzpicture}
-%    \caption{Cases on position of a bead}
-%    \label{TTT_position1}
-%  \end{center}
-%\end{figure}
-
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \draw[thick, gray]
-      (0.5,1)--(0,1)--(0,4)--(4,4)--(4,1)--(3.5,1);
-      \node at(2,1) {Outside};
-      \node at (2,3.2) [rectangle, draw, rounded corners] (enter) {Entrance of a tunnel};
-      \node at(2,1.8) [rectangle, draw, rounded corners] (outside) {Otherwise};
-
-      
-      
-      \draw[thick, gray]
-      (7.5,1)--(7,1)--(7,4)--(11,4)--(11,1)--(10.5,1);
-      \node at(9,1) {Inside of a tunnel};
-      \node at(9,3.2) [rectangle, draw, rounded corners] (next-tunnel) {Successor in inside};
-      \node at(9,1.8) [rectangle, draw, rounded corners] (next-outside) {Successor in outside};
-
-      \draw[->]
-      (outside) edge [bend left, blue] node[left] {$s=b,\Delta=-1$} (enter)
-                   edge [loop left, blue] node[below left] {$s=b,\Delta=\pm 0$} (outside)
-      (enter)   edge [bend left, blue] node[above] {$s=b,\Delta=-1$} (next-tunnel)
-                edge [bend left, blue] node[above] {$s=b,\Delta=-a$} (next-outside)
-                edge [bend left, blue] node[right] {$s=b,\Delta=\pm 0$}  (outside)
-      (next-tunnel) edge[teal]         node[right] {$s=t,\Delta=-a$} (next-outside)
-                edge [loop right, teal]node[right] {$s=t,\Delta=\pm 0$}    (next-tunnel)
-      (next-outside) edge[bend left, teal] node[above] {$s=t,\Delta=+a$}  (outside)
-                edge [bend left, teal]     node[above] {$s=t,\Delta=+(a-1)$}(enter)
-      ;
-      
-    \end{tikzpicture}
-    \caption{Increment on Tunnel A,B}
-    \label{TTT_position}
-  \end{center}
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \node at (0,4)   [rectangle, draw,rounded corners] (outside1) {Outside of tunnels};
-      \node at (3.5,4) [rectangle, draw,rounded corners] (enter1)   {Entrance of a tunnel};
-      \node at (7,4)   [rectangle, draw, rounded corners] (inside1) {Inside of a tunnel C};
-      \node at (11,4)  [rectangle, draw, rounded corners] (exit1)   {Inside of a tunnel A or B};
-      \draw[->] (outside1)--(enter1);
-      \draw[->] (enter1)  --(inside1);
-      \draw[->] (inside1) --(exit1);
-      
-      
-      \node at (0,3)   [rectangle, draw,rounded corners] (outside2) {Inside of a tunnel};
-      \node at (3.5,3) [rectangle, draw,rounded corners] (enter2)   {Entrance of a tunnel};
-      \node at (7,3)   [rectangle, draw, rounded corners] (inside2) {Inside of a tunnel C};
-      \node at (11,3)  [rectangle, draw, rounded corners] (exit2)   {Inside of a tunnel A or B};     
-      \draw[->] (outside2)--(enter2);
-      \draw[->] (enter2)  --(inside2);
-      \draw[->] (inside2) --(exit2);
-
-      \node at (0,1)   [rectangle, draw,rounded corners] (outside3) {Outside of tunnels};
-      \node at (3.5,1) [rectangle, draw,rounded corners] (enter3)   {Entrance of a tunnel};
-      \node at (7,1)   [rectangle, draw, rounded corners] (inside3) {Inside of a tunnel C};
-      \node at (11,1)  [rectangle, draw, rounded corners] (exit3)   {Outside of tunnels};     
-      \draw[->] (outside3)--(enter3);
-      \draw[->] (enter3)  --(inside3);
-      \draw[->] (inside3) --(exit3);
-
-      \node at (0,0)   [rectangle, draw,rounded corners] (outside4) {Inside of atunnel};
-      \node at (3.5,0) [rectangle, draw,rounded corners] (enter4)   {Entrance of a tunnel};
-      \node at (7,0)   [rectangle, draw, rounded corners] (inside4) {Inside of a tunnel C};
-      \node at (11,0)  [rectangle, draw, rounded corners] (exit4)   {Outside of tunnels};     
-      \draw[->] (outside4)--(enter4);
-      \draw[->] (enter4)  --(inside4);
-      \draw[->] (inside4) --(exit4);
-    \end{tikzpicture}
-    \caption{Case of Tunnel C}
-    \label{TTT_tunnelC_graph}
-  \end{center}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%/////////////////////////////////////////////////
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\subsection{Appendix of Tunnel Troll Theorem}
-\subsubsection{Entrance of TunnelA,B}
-
-Fig.\ref{TTT_tunnel_direction} exhibits all the three kinds of entrance of tunnel A, B.
-Any cases in $\delta = 1, \alpha = 2$ consume some binding capabilities into the follows.
-
-
-\begin{itemize}
-\item{Case of $t_0$}\\
-  Let us consider points of $n_3,n_4$ either occupied or not. A point $n_3$ or $n_4$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel. If $n_3$ is free, then $p^\prime$ has to be bound to a bead except $n_1$ due to deterministically stabilize. In this situation, at least three neighbors of $n_1$ are free that is $n_1$ leave at least one bond from lemma \ref{TTT_neighbor_lemma}. Hence, $p^\prime$ must be bound to $n_1$. Thus, a case of $t_0$ consumes two binding capabilities and it does not supply any binding capabilities.
-
-\item{Case of $t_{\pm 60}$}\\
-  In this case, a point $n_4$ or $n_5$ is free, too. If $n_5$ is free, $p^\prime$ has to be bound to $n_1$ or $n_2$. If $n_5$ is occupied, then $n_4$ is free. This time, $n_2$ has some binding capabilities so $p^\prime$ has to be bound to $n_2$.
-  
-
-  In this situation, $p^\prime$ is able to supply a binding capability. if this capability is active, $p^\prime$ bind a bead into $n_4$ or $n_5$. However, $n_2$ and $n_3$ are exist in back bone. According to Jordan curve theorem, any successors of $p^\prime$ cannot reach a point $n_4$ or $n_5$ so this capability is inactive. Thus, a case of $t_{\pm 60}$ consumes some binding capabilities.
-
-\item{Case of $t_{\pm 120}$}\\
-  Binding capabilities that $p^\prime$ supply are inactive according to Jordan curve theorem on $n_1$ and $n_2$. Moreover, $p^\prime$ has to be bound to one of $n_3, n_4, n_5$ in order to deterministically stabilize.
-Thus, a case of $t_{\pm 120}$ consumes some binging capabilities.
-  
-\end{itemize}
-
-\begin{figure}
-  \begin{center}
-    \begin{tabular}{ccc}
-    
-    
-      \begin{minipage}{0.3\hsize}
-      \centering
-        \begin{tikzpicture}
-	 \draw[->,white] (120:1.1)--(120:0.1);%for adjustment
-          
-            \fill(0,0) circle [radius=0.1];
-            \node[below] at (0,0) {$p^\prime$};
-
-            \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
-            }
-            
-            \foreach \theta in {60,-60,180}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \foreach \theta in {120,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-            }
-            
-            \draw[->] (180:1.1)--(180:0.1);
-            \draw[->] (0:0.1)--(0:1.1);
-
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-
-
-          \node at (0,-2) {$t_{0}$};
-        \end{tikzpicture}
-      \end{minipage}
-
-      
-
-      \begin{minipage}{0.3\hsize}
-      \centering
-        \begin{tikzpicture}
-
-            \fill(0,0) circle [radius=0.1];
-            \node[below] at (0,0) {$p^\prime$};
-
-            \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
-            }
-            
-            \foreach \theta in {60,-60,120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \foreach \theta in {180,-120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-            }
-            
-            \draw[->] (120:1.1)--(120:0.1);
-            \draw[->] (0:0.1)--(0:1.1);
-
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
-
-          \node at (0,-2) {$t_{\pm 60}$};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.3\hsize}
-      \centering
-        \begin{tikzpicture}
-            \fill(0,0) circle [radius=0.1];
-            \node[above] at (0,0) {$p^\prime$};
-
-            \foreach \theta in {0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](0,0) circle [radius=0.1];
-            }
-            
-            \foreach \theta in {60,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \foreach \theta in {180,-120,120}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-            }
-            
-            \draw[->] (60:1.1)--(60:0.1);
-            \draw[->] (0:0.1)--(0:1.1);
-
-            \node[transform canvas={shift=(0:1.2)},below] {$n_0$};
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
-
-          \node at (0,-2) {$t_{\pm 120}$};
-        \end{tikzpicture}
-      \end{minipage}
-      
-    \end{tabular}
-    \caption{Direction into a entrance}
-    \label{TTT_tunnel_direction}
-  \end{center}
-\end{figure}
-
-
-\subsubsection{Exit of Tunnel}
-
-
-Fig.\ref{TTT_tunnel_exit} exhibits all the two kings of exit of tunnel. 
-At least one of point $n_1$ or $n_2$ is free because if both of them are occupied, $p^\prime$ is inside of tunnel.
-
-\paragraph{$\delta = 1, \alpha = 2$}
- Any cases of $\delta = 1, \alpha = 2$ supply at most $a$ binding capabilities into follows where $a$ is number of predecessor of $p^\prime$ consumes binging capabilities.
-
-\begin{itemize}
-\item{Case of $n_1$ and $n_2$ are free}\\
-  This case can be regarded same situation as entrance. See Fig.\ref{TTT_tunnel_exit} (Left). Predecessor $n_5$ has to be bound $n_4$ and $n_5$ because each of $n_3$ and $n_4$ leave binding capabilities. Hence, at least $a=2$. This time, $\alpha = 2$ that is this case supply at most only $a$ binding capabilities.
-  
-\item{Case of $c$ is occupied}\\
-  See Fig.\ref{TTT_tunnel_exit} (Right). If $n_1$ is occupied, then $n_2$ is free so that $n_5$ has to be bound $n_4$. Hence, at least $a=1$. This case can supply two binding capabilities but $p^\prime$ can bind to only one of $n_0$ or $n_2$ because $n_0$ or $n_2$ will be occupied a successor of $p^\prime$. Therefore, this case supply at most only $a=1$ active binding capability.
-  
-\end{itemize}
-
-\paragraph{$\delta = 1, \alpha \geq 3$}
-Any cases of $\delta = 1, \alpha \geq 3$ consume some binding capabilities into follows.
-
-\begin{itemize}
-\item{Case of $n_1$ and $n_2$ are free}\\
-  In $\alpha \geq 3$, if three neighbors of a bead leave, then it can supply two binding capabilities. Therefore Predecessor $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$, too. In this case, at least consumes four bindings and supplies at most two bindings. Thus, it consumes some binding capabilities, totally.
-  
-\item{Case of $c$ is occupied}\\
-  In this case, $n_4$ leave at least two bindings and $n_3$, $n_1$ also leave at least one binding. Therefore $n_5$ has to be bound $n_3$ and $n_4$, and $p^\prime$ also has to be bound $n_1$ and $n_4$. In this case, at least consumes four bindings and supplies at most one binding. Thus, it consumes some binding capabilities, totally.
-\end{itemize}
-
-
-\begin{figure}
-  \centering
-    \begin{tabular}{cc}
-      
-      \begin{minipage}{0.48\linewidth}
-      \centering
-        \begin{tikzpicture}
-
-            \fill(0,0) circle [radius=0.1];
-            \node[above] at (0,0) {$p^\prime$};
-
-            
-            \foreach \theta in {120,-120,180}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \foreach \theta in {0,60,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-            }
-
-            \draw[->] (180:1.1)--(180:0.1);
-
-
-
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
-
-          \node at (0,-2) {Point $n_1$ and $n_2$ are free};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.48\linewidth}
-      \centering
-        \begin{tikzpicture}
-
-            \fill(0,0) circle [radius=0.1];
-            \node[above] at (0,0) {$p^\prime$};
-            
-            \foreach \theta in {120,-120,180,60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \foreach \theta in {0,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-            }
-
-            \draw[->] (180:1.1)--(180:0.1);
-
-            \node[transform canvas={shift=(0:1.2)},right] {$n_0$};
-            \node[transform canvas={shift=(60:1.2)},right] {$n_1$};
-            \node[transform canvas={shift=(-60:1.2)},right] {$n_2$};
-            \node[transform canvas={shift=(120:1.2)},left] {$n_3$};
-            \node[transform canvas={shift=(-120:1.2)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1.2)},left] {$n_5$};
-
-
-          
-          \node at (0,-2) {Point $n_1$ is occupied};
-        \end{tikzpicture}
-      \end{minipage}
-
-      
-      
-    \end{tabular}
-    \caption{Exit of Tunnel}
-    \label{TTT_tunnel_exit}
-\end{figure}
-
-
-\subsubsection{Tunnel C}
-
-Assume $w[i]$ is a bead which stabilized by tunnel C. Let us consider kinds of stabilization $S[i-2..i] = tbt$ or $S[i-2..i] = bbt$ except cases of $w[i]$ is inside of tunnel A, B.
-
-\subsubsection{Case of $S[i-2..i] = tbt$}
-Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilization depending on structures of tunnel C.
-
-\begin{itemize}
-\item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
-  In this figure, Bead $n_4$ has at least one binding so that $w[i-2]$ has to bound $n_4$. Moreover, $w[i-1]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically. On the other hand, $w[i]$ can supply two bindings but free neighbors of $w[i]$ are two points. One of them is occupied by a successor. Therefore $w[i]$ can only bind one of $n_5, n_6$ that is $w[i]$ supplies at most one binding. Thus, this case consumes some binding capabilities.
-
-\item{Right of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
-  This cases are divided on number of capabilities that $w[i-2]$ consumes.
-  \begin{itemize}
-  \item[-]{$w[i]$ does not consume any bindings}\\
-    $w[i-1]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically. $w[i]$ has to be bound to $w[i-2]$ because $w[i-2]$ has bindings. This time, let us consider either $n_4$ is occupied or not. If $n_4$ is occupied, then $w[i-2]$ has no active bindings that is this situation consumes some binding capabilities. If $n_4$ is free and $w[i+1]$ is stabilized in $n_4$, then $w[i-2]$ has to bind $w[i+1]$. Therefore, In this case, stabilization of $w[i-2..i+1]$ consumes some bindings. If $n_4$ is free and $w[i+1]$ is stabilized except $n_4$, then this oritatami system has to use two binding capabilities in order to bind $w[i+1]$. Therefore, in this case consumes some bindings. Thus in this cases consume some binding capabilities.
-
-  \item[-]{$w_i$ consumes one binding}\\
-    In this case, $w_{i-1}$ has to be bound one of $n_1, n_2, n_3$. In addition, $w[i-2]$ and $w[i]$ are not supply any bindings. Thus, in this cases consume some binding capabilities.
-  \item[-]{$w_i$ consumes two bindings}\\
-    In this case, $w[i-2]$ already consumes two binding. $w[i-1]$ has to be bound. $w[i]$ supplies two bindings. Thus, in this cases consume some binding capabilities.
-   
-  \end{itemize}
-\end{itemize}
-\begin{figure}
-  \centering
-    \begin{tabular}{cc}
-      
-      \begin{minipage}{0.48\hsize}
-      \centering
-        \begin{tikzpicture}
-
-          \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
-          \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
-          
-          \foreach \theta in {60,-60,120,-120,180}{
-            \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-            \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-          }
-
-          \fill(0:1.2) circle [radius=0.1];
-          \draw[->] (0:0.1)--(0:1.1);
-
-          \node[left] at (-60:1.2) {$n_4$};
-
-          \begin{scope}[shift=(0:2.4)]
-            \fill(0,0) circle [radius=0.1];
-
-            
-            \foreach \theta in {120,60,-60,0}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \draw[->] (180:1.1)--(180:0.1);
-            \draw[->] (-120:0.1)--(-120:1.1);
-
-            \node[below] at (180:1.2) {$w[i-2]$};
-            \node[above] at (0:0) {$w[i-1]$};
-            \node[right] at (-120:1.2) {$w[i]$};
-
-            \node[left] at (120:1.2) {$n_3$};
-            \node[left] at (60:1.2) {$n_2$};
-            \node[left] at (0:1.2) {$n_1$};
-
-            \begin{scope}[shift=(-120:1.2)]
-              \draw(0,0) circle [radius=0.1];
-              \foreach \theta in {-120,-60}{
-                \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-              }
-
-              \node[right] at (-120:1.2) {$n_5$};
-              \node[right] at (-60:1.2) {$n_6$};
-            \end{scope}
-            
-          \end{scope}
-
-          \node at (1.2,-2.5) {Pattern 1};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.48\hsize}
-      \centering
-        \begin{tikzpicture}
-
-          \draw[transform canvas={shift=(0:0)}](-0.1,-0.1)--(0.1,0.1);
-          \draw[transform canvas={shift=(0:0)}](0.1,-0.1)--(-0.1,0.1);
-          
-          \foreach \theta in {60,0,120,-120,180}{
-            \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-            \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-          }
-
-          \draw[->] (-60:0.1)--(-60:1.1);
-
-
-          \begin{scope}[shift=(-60:1.2),shift=(0:1.2)]
-            \fill(0,0) circle [radius=0.1];
-            \fill(180:1.2) circle [radius=0.1];
-
-            
-            \foreach \theta in {120,60,0,-60}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-              \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-            }
-
-            \draw[->] (180:1.1)--(180:0.1);
-            \draw[->] (-120:0.1)--(-120:1.1);
-
-            \node[below] at (180:1.2) {$w[i-2]$};
-            \node[above] at (0:0) {$w[i-1]$};
-            \node[right] at (-120:1.2) {$w[i]$};
-
-            \node[left] at (120:1.2) {$n_3$};
-            \node[left] at (60:1.2) {$n_2$};
-            \node[left] at (0:1.2) {$n_1$};
-
-            \begin{scope}[shift=(-120:1.2)]
-              \draw(0,0) circle [radius=0.1];
-              \foreach \theta in {180,-120,-60}{
-                \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-              }
-
-              \node[right] at (180:1.2) {$n_4$};
-              \node[right] at (-120:1.2) {$n_5$};
-              \node[right] at (-60:1.2) {$n_6$};
-            \end{scope}
-            
-          \end{scope}
-
-          \node at (1.25,-4) {Pattern 2};
-        \end{tikzpicture}
-      \end{minipage}
-
-      
-      
-    \end{tabular}
-    \caption{Case of $S[i-2..i] = tbt$}
-    \label{TTT_tunnelC_enter_usingTunnel}
-\end{figure}
-
-
-\subsubsection{Case of $S[i-2..i] = bbt$}
-Let us consider number of consumed by $w[i-2]$ (Fig.\ref{TTT_tunnelC_enter_usingBond}).
-
-\begin{itemize}
-\item{$w[i-2]$ consumes one binding}\\
-  In this situation, $w[i-2]$ supplies one active binding whereas $w[i]$ consumes this binding. In addition, $w[i-1]$ has to bound to one of $n_1, n_2, n_3$.
-  Thus, in this cases consume some binding capabilities.
-
-\item{$w[i-2]$ consumes two bindings}\\
-  In this case, $w[i-2]$ already consumes two binding. $w[i-1]$ has to be bound. $w[i]$ supplies at most two bindings. Thus, in this cases consume some binding capabilities.
-\end{itemize}
-
-
-
-\begin{figure}
-  \begin{center}
-        \begin{tikzpicture}
-        \draw[->,white] (-70:0.1) -- (-70:3);
-          \foreach \theta in {60,-60,120,0}{
-            \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1)--(0.1,0.1);
-            \draw[transform canvas={shift=(\theta:1.2)}](0.1,-0.1)--(-0.1,0.1);
-          }
-
-          \fill(180:1.2) circle [radius=0.1];
-          \fill(0:0) circle [radius=0.1];
-
-          \draw[transform canvas={shift=(180:1.2)}] (105:1.1) edge[bend right] (105:0.1);
-          \draw[->] (180:1.1) -- (180:0.1);
-          \draw[->] (-120:0.1) -- (-120:1.1);
-
-          \node[below] at (180:1.2) {$w[i-2]$};
-          \node[above] at (0:0) {$w[i-1]$};
-          \node[left] at (-120:1.2) {$w[i]$};
-
-          \node[right] at (120:1.2) {$n_3$};
-          \node[right] at (60:1.2) {$n_2$};
-          \node[right] at (0:1.2) {$n_1$};
-
-          \begin{scope}[shift=(-120:1.2)]
-            \draw(0,0) circle [radius=0.1];
-            \foreach \theta in {-120,-60,180}{
-              \draw[transform canvas={shift=(\theta:1.2)}](-0.1,-0.1) rectangle (0.1,0.1);
-            }
-            
-          \end{scope}
-        \end{tikzpicture}
-    \caption{Case of $S[i-2..i] = bbt$}
-    \label{TTT_tunnelC_enter_usingBond}
-  \end{center}
-\end{figure}
-
-
-By Tunnel Troll Theorem, any tunnel sections which represented in $bbt^+$ or $bt^+bt^+$ consume binding capabilities. If the sequence $S$ is free from any subsequence of the form $bt^+bt^+$, then it can factorize as $S = u_1 u_2 u_3 \cdots$ for some $u_1 , u_2 , u_3 , \cdots \in \{b\} \cup bbt^+$. Assume the length of $\sigma$ is $n$, seed supplies at most $2n$ binding capabilities. Therefore formula \ref{TTT_only_bond} hold.
-
-\begin{eqnarray}
-  \exists i \in \mathbb{N} \quad s.t. \quad u_{i-1} , u_i , u_{i+1} , u_{i+2} , \cdots \in \{ b \}
-  \label{TTT_only_bond}
-\end{eqnarray}
-
-
-Let us represent $S$ as $S[i.i+1...] = v_i v_{i+1} v_{i+2} \cdots$ for some $v_i, v_{i+1}, v_{i+2}, \cdots \in \{ a, o\}$ where if $v_k$ is $a$, then $v_{k+1}$ is bound to $v_{k-1}$, if $v_k$ is $o$, then $v_{k+1}$ is NOT bound to $v_{k-1}$.
-
-
-Let us consider the case of $v_k$ is $o$. See Fig.\ref{TTT_case_of_o}. $w[i-1]$ consumes some binding capabilities because $v_{i-1}$ is $b$. If the number of $w[i-1]$'s bindings is one binding, then $w[i+1]$ has to be bound except $n_1$ or $n_2$ so that $w[i+1]$ must consumes two bindings except the case of $n_1$ and $n_2$ are occupied and $w[i]$ consumes at least one binding. If $n_1$ and $n_2$ are occupied, then $w[i-1]$'s binginds are inactive that is $w[i-1]$ consumes two binding capabilities. Therefore, this case consumes binding capabilities. If $w[i-1]$ dose Not have any bindings, then $w[i-1]$ already consumes two bindings. In addition, $w[i]$ and $w[i+1]$ consume at least one binding. Therefore this case consumes binding capabilities. Thus, the formula \ref{TTT_only_a} hold and according to the formula \ref{TTT_only_bond} and the formula \ref{TTT_only_a}, the formula \ref{TTT_structure} is hold.
-
-\begin{eqnarray}
-  \exists j \in \mathbb{N} \quad s.t. \quad u_j , u_{j+1} , u_{j+2} , \cdots \in \{ a \}
-  \label{TTT_only_a}
-\end{eqnarray}
-
-\begin{eqnarray}
-  | S | > \forall m \in \mathbb{N} \quad \to \quad \exists n \in \mathbb{N} \quad s.t. \quad S[n], S[n+1], \cdots \in \{ a \}
-  \label{TTT_structure}
-\end{eqnarray}
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      
-      \draw[transform canvas={shift=(-120:1.2)}](-0.1,-0.1)--(0.1,0.1);
-      \draw[transform canvas={shift=(-120:1.2)}](0.1,-0.1)--(-0.1,0.1);
-      
-      \fill(0:0) circle [radius=0.1];
-      \fill(0:1.5) circle [radius=0.1];
-      \fill[shift=(0:1.2)](40:1.2) circle [radius=0.1];
-
-      \draw[->] (-120:1.1) edge[bend left] (-120:0.1);
-      \draw[->] (0:0) -- (0:1.3);
-      \draw[->,transform canvas={shift=(0:1.2)}] (0:0.1) edge[bend right] (40:1.3);
-
-      \draw [shift=(60:1.2)] (-0.1,-0.1) rectangle (0.1,0.1);
-      \draw [shift=(-60:1.2)] (-0.1,-0.1) rectangle (0.1,0.1);
-      
-      \node[below] at (-120:1.2) {$w[i-2]$};
-      \node[above] at (0:0) {$w[i-1]$};
-      \node[below] at (0:1.2) {$w[i]$};
-      \node[right, shift=(0:1.2)] at (40:1.2) {$w[i+1]$};
-
-      \node[right] at (60:1.2) {$n_1$};
-      \node[right] at (-60:1.2) {$n_2$};
-        
-    \end{tikzpicture}
-    \caption{Case of $S[i]$}
-    \label{TTT_case_of_o}
-  \end{center}
-\end{figure}
-
-
-
-
-%end of d = 1
-%//////////////////////////////////////////////////////%
-%//////////////////////////////////////////////////////%
-
-\section{Case of $\delta \geq 2$}
-
-
-\subsection{$\alpha = 1$, unary}
-
-Let the point where the first transcript bead was fixed be $p$ and let $n=|\mathrm{seed}|+1$. We will argue about the situation when the first bead is stabilized outside $\hexagon_p^n$ (a hexagon of radius $n$). Let this be the $i$th bead of the transcript. Without loss of generality, we can translate the origin $(0,0)$ to the coordinates of bead $i-1$ (which is still in $\hexagon_p^n$), and we can assume that the bead outside the hexagon is fixed at $(1,1)$ (see Fig.~\ref{fig:hexagonOut}).
-\begin{figure}
-	\centering
-	\includegraphics[width=0.3\linewidth]{./Fig/hexagonOut}
-	\caption{$N_p^n$ and the position $(1,1)$ of the first bead fixed outside of it.}
-	\label{fig:hexagonOut}
-\end{figure}
-
-In the elongation that places bead $i$ at $(1,1)$ there are two possibilities:
-\begin{itemize}
-	\item $i$ forms a bond with a bead at $(1,0)$.
-	\item  $i$ does not bond to anything and $i+1$ is at $(2,1)$ bonding with a bead at $(2,0)$. If there is no bead at $(1,0)$, then placing $i$ at $(1,0)$ instead of $(1,1)$ results in the same number of bonds, leading to nondeterminism. Therefore, there has to be a bead at $(1,0)$ and it is inert, otherwise it would bond to $i$. This is analogous to case 1. below.%as in Fig.~\ref{fig:hexagonOut1}.
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.2\linewidth]{./Fig/hexagonOut1}
-		%\caption{}
-		\label{fig:hexagonOut1}
-	\end{figure}
-	
-\end{itemize}
- 
-%The only position with which $(1,1)$ can form a bond is $(1,0)$. This means that there is a bead at $(1,0)$, which bonds to bead $i$, otherwise there are other conformations in which beads $i$ and $i+1$ add one bond to the conformation, making the behavior nondeterministic.
-
-The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibilities result in nondeterministic behavior immediately, so we have two cases.
-
-\begin{enumerate}
-	\item bead $i+1$ is fixed at $(2,1)$ and can bond with a bead at $(2,0)$. Now consider bead $i+2$. For $i+1$ to be fixed at $(2,1)$, $i+2$ needs to form a bond somewhere, otherwise $i+2$ could go to $(2,1)$ forming the bond with the bead at $(2,0)$ and there would be two conformations with the maximal $1$ bond. The only possibility is that there is a bead at $(3,0)$ and $i+2$ can bond with it when placed at $(3,1)$. We can apply the same argument inductively: there is some $m\geq 0$ such that grid points $(\ell,0)$ are occupied by active beads, for all $\ell\in \{2,\dots,2+m\}$, and there is no bead at $(3+m,0)$. Such an $m$ exists, and it is not greater than $n$. Then, bead $i+\ell$ is fixed at $(\ell+1,1)$ and bonds with $(\ell+1,0)$. However, bead $i+2+m$ cannot be fixed anywhere, because $i+2+m$ and $i+3+m$ can only add one bond to the conformation, and that is possible either with $i+2+m \rightarrow (2+m,1)$, $i+3+m \rightarrow (3+m,1)$ or with $i+2+m \rightarrow (2+m,2)$, $i+3+m \rightarrow (2+m,1)$. 
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.6\linewidth]{./Fig/hexagonOut2}
-		\caption{}
-		\label{fig:hexagonout2}
-	\end{figure}
-	
-	\item bead $i+1$ is fixed at $(0,1)$. This is only possible if
-	\begin{enumerate}
-		\item there is an inactive bead at $(-1,0)$ and an active one at $(-2,0)$. This case is symmetrical to (1).
-		\item there is no bead at $(-1,0)$, bead $i+1$ can bond with bead $i-1$ at $(0,0)$ and the bead $i+2$ can be placed at $(-1,0)$ where it can bond with $(-2,0)$, $(-2,-1)$ or $(-1,-1)$. This leads to nondeterminism, because bead $i$ at $(-1,0)$ and bead $i+1$ at $(0,1)$ has two bonds, just as the original conformation.
-		\item there is a bead at $(-1,0)$ and bead $i+1$ can bond with that or with bead $i-1$ at $(0,0)$. However, this means that placing bead $i$ at $(0,1)$ at bead $i+1$ at $(1,1)$ creates the same number of hydrogen bonds, thus resulting in bead $i$ not being placed deterministically.
-		
-	\end{enumerate}
-\end{enumerate}
-
-
-
-
-\begin{figure}
-	\centering
-	%\includegraphics[width=0.3\linewidth]{./hexagonOut1}
-	%\hspace{10mm} %
-	\includegraphics[width=0.6\linewidth]{./Fig/hexagonOut3}
-	
-	\caption{}
-	\label{fig:hexagonOut2}
-\end{figure}
-
-
-\subsection{In the case of $\delta = 3$}
-
-We discuss when the length of seed is $n$. If the length of seed is $n$, the seed will be in an equilateral hexagon with a radius of $n$ when it is given. We will begin our disscussion by considering the moment when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$. Let us assume that a fixed bead on a side of an equilateral hexagon with a radius of $n$ is able to make a hydrogen bond. If it is able to make only two hydrogen bonds, it will be nondeterministic because there are two possibilities that it makes two structures in Fig.5. Therefore, it needs to make three hydrogen bonds to determine the only structure.\\
-
-\begin{figure}
-  \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {60, 120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (60 : 1.0);
-        \draw (60 : 1.0) -- (120 : 1.0);
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \foreach \theta in {60}{
-        \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {60, 120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-        \draw (60 : 1.0) -- (120 : 1.0);
-        \draw (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \draw (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \foreach \theta in {60}{
-        \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted](0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-    \end{tabular}
-    \caption{}
-  \end{center}
-\end{figure}
-
-There are the two cases in which a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$ and it makes three hydrogen bonds in Fig.6. If it makes three hydrogen bonds once such as Fig6., it will make three hyrogen bonds forever to be deterministic. This becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. Thus, the fixed bead on a side of an equilateral hexagon with a radius of $n$ has to make a hydrogen bond with a bead in an equilateral hexagon.
-
-\begin{figure}
-  \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \draw [dashed] (-0.5, 0.0) -- (3.5, 0.0);
-      \fill (3.5, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (3.5, 0.866);
-      \fill (3.5, 0.866) node [right] {$n+1$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {0, 60}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \fill (0,0) circle [radius = 0.05];
-        \foreach \theta in {0, 60, 120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-          \draw (0 : 0.0) -- (0 : 2.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-          \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 3.0)]
-          \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-      \draw [dashed] (-1.5, 0.0) -- (2.5, 0.0);
-      \fill (2.5, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.5, 0.866) -- (2.5, 0.866);
-      \fill (2.5, 0.866) node [right] {$n+1$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (0 : 0.0)]
-        \foreach \theta in {0, 60, 120, 180}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \fill (0,0) circle [radius = 0.05];
-        \foreach \theta in {120}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-          \draw (0 : 0.0) -- (0 : 2.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-          \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (180 : 1.0)]
-          \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-    \end{tabular}
-    \caption{}
-  \end{center}
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \draw [dashed] (-0.5, 0.0) -- (2.0, 0.0);
-      \fill (3.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (2.5, 0.866);
-      \fill (3.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-0.5, 1.732) -- (3.0, 1.732);
-      \fill (3.0, 1.732) node [right] {$n+2$};
-      \fill (60 : 1.0) circle [radius = 0.05];
-      \draw (-0.1,-0.1) -- (0.1,0.1);
-      \draw (0.1,-0.1) -- (-0.1,0.1);
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw [dotted] (0 : 0.0) -- (300 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \draw (0.0, 0.0) -- (2.0, 0.0);
-        \fill (2.0, 0.0) circle [radius = 0.05];
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dashed] (0 : 0.0) -- (300 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-      \fill (0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {0, 60}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \begin{scope}[shift = (120 : 1.0)]
-          \fill (0.0, 0.0) circle [radius = 0.05];
-          \draw (0 : 0.0) -- (240 : 1.0);
-          \draw (0 : 0.0) -- (300 : 1.0);
-        \end{scope}
-      \end{scope}
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-      \draw [dashed] (-0.5, 0.0) -- (2.0, 0.0);
-      \fill (3.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (2.5, 0.866);
-      \fill (3.0, 0.866) node [right] {$n+1$};
-      \draw (-0.1,-0.1) -- (0.1,0.1);
-      \draw (0.1,-0.1) -- (-0.1,0.1);
-      \fill (60 : 1.0) circle [radius = 0.05];
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-      \end{scope}
-      \begin{scope}[shift = (120 : 1.0)]
-        \draw [dotted] (0 : 0.0) -- (300 : 1.0);
-        \draw (0.0, 0.0) -- (3.0, 0.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dashed] (0 : 0.0) -- (300 : 1.0);
-        \fill (60 : 1.0) circle [radius = 0.05];
-      \end{scope}
-      \begin{scope}[shift = (0 : 1.0)]
-        \fill (0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {0, 60}{
-          \fill (0,0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-    \end{tabular}
-    \caption{}
-  \end{center}
-\end{figure}
-
-Then, we will discuss the moment after the first the is fixed on a side of an equilateral hexagon with a radius of $n+1$. Let us assume that the bead is able to make a hydrogen bond. If it is able to make only two hydrogen bonds, it will be nondeterministic because there are possibilities that it makes two structures in Fig.8. Hence, it needs to make three hydrogen bonds to determine the only structure. It needs to be a right or left figure in Fig.9. to make three hydrogen bonds.\\
-
-\begin{figure}
-  \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-        \begin{scope}[shift=(0 : 0.0)]
-          \draw (-0.1,-0.1) -- (0.1,0.1);
-          \draw (0.1,-0.1) -- (-0.1,0.1);
-          \draw (0 : 0.0) -- (60 : 1.0);
-        \end{scope}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \draw [dashed] (-1.0, 2.598) -- (2.0, 2.598);
-      \fill (2.0, 2.598) node [right] {$n+3$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 2.0)]
-        \fill(0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {120, 180, 240}{
-          \fill (0.0, 0.0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-        \draw (0 : 0.0) -- (180 : 1.0);
-        \draw (0 : 0.0) -- (240 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \begin{scope}[shift = (120 : 1.0)]
-          \draw (0.0, 0.0) -- (60 : 1.0);
-          \draw [dotted] (0.0, 0.0) -- (300 : 1.0);
-        \end{scope}
-      \end{scope}
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-        \begin{scope}[shift=(0 : 0.0)]
-          \draw (-0.1,-0.1) -- (0.1,0.1);
-          \draw (0.1,-0.1) -- (-0.1,0.1);
-          \draw (0 : 0.0) -- (60 : 1.0);
-        \end{scope}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \draw [dashed] (-1.0, 1.732) -- (2.0, 1.732);
-      \fill (2.0, 1.732) node [right] {$n+2$};
-      \draw [dashed] (-1.0, 2.598) -- (2.0, 2.598);
-      \fill (2.0, 2.598) node [right] {$n+3$};
-      \fill (0,0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 2.0)]
-        \fill(0.0, 0.0) circle [radius = 0.05];
-        \foreach \theta in {120, 180, 240}{
-          \fill (0.0, 0.0) [transform canvas = {shift = (\theta : 1.0)}] circle [radius = 0.05];
-        }
-        \draw (0 : 0.0) -- (120 : 1.0);
-        \draw (0 : 0.0) -- (180 : 1.0);
-        \draw [dotted] (0 : 0.0) -- (240 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (60 : 1.0)]
-        \begin{scope}[shift = (120 : 1.0)]
-          \draw [dotted] (0.0, 0.0) -- (60 : 1.0);
-          \draw (0.0, 0.0) -- (300 : 1.0);
-        \end{scope}
-      \end{scope}
-    \end{tikzpicture}
-    \end{tabular}
-    \caption{}
-  \end{center}
-\end{figure}
-
- If it makes three hydrogen bonds once such as Fig.9., it will make three hyrogen bonds forever to be deterministic. This becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. Therefore, the first fixed bead on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a molecule on a side of an equilateral hexagon with a radius of $n$.
-
-\begin{figure}
-  \begin{center}
-  \begin{tabular}{cc}
-    \begin{tikzpicture}
-      \begin{scope}[shift=(0 : 0.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \draw [dashed] (-0.5, 0.0) -- (4.5, 0.0);
-      \fill (4.5, 0.0) node [right] {$n$};
-      \draw [dashed] (-0.5, 0.866) -- (4.5, 0.866);
-      \fill (4.5, 0.866) node [right] {$n+1$};
-      \fill (2.0, 0.0) circle [radius = 0.05];
-      \fill (3.0, 0.0) circle [radius = 0.05];
-      \fill (4.0, 0.0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 1.0)]
-        \fill (0.0, 0.0) circle [radius = 0.05];
-        \fill (1.0, 0.0) circle [radius = 0.05];
-        \fill (2.0, 0.0) circle [radius = 0.05];
-        \fill (3.0, 0.0) circle [radius = 0.05];
-        \draw (0.0, 0.0) -- (3.0, 0.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 2.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 3.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : 4.0)]
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-      \begin{scope}[shift=(0 : 0.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \draw [dashed] (-3.5, 0.0) -- (1.0, 0.0);
-      \fill (1.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-3.5, 0.866) -- (1.0, 0.866);
-      \fill (1.0, 0.866) node [right] {$n+1$};
-      \fill (-1.0, 0.0) circle [radius = 0.05];
-      \fill (-2.0, 0.0) circle [radius = 0.05];
-      \fill (-3.0, 0.0) circle [radius = 0.05];
-      \begin{scope}[shift = (60 : 1.0)]
-        \fill (0.0, 0.0) circle [radius = 0.05];
-        \fill (-1.0, 0.0) circle [radius = 0.05];
-        \fill (-2.0, 0.0) circle [radius = 0.05];
-        \fill (-3.0, 0.0) circle [radius = 0.05];
-        \draw (0.0, 0.0) -- (-3.0, 0.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : -1.0)]
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : -2.0)]
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift = (0 : -3.0)]
-        \draw [dotted] (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-    \end{tabular}
-    \caption{}
-  \end{center}
-\end{figure}
-
-Accordingly, it is Fig.10. when a first bead is fixed on a side of an equilateral hexagon with a radius of $n+1$.
-
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \draw [dashed] (-1.0, 0.0) -- (2.0, 0.0);
-      \fill (2.0, 0.0) node [right] {$n$};
-      \draw [dashed] (-1.0, 0.866) -- (2.0, 0.866);
-      \fill (2.0, 0.866) node [right] {$n+1$};
-      \begin{scope}[shift=(0 : 0.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw (0 : 0.0) -- (60 : 1.0);
-      \end{scope}
-      \begin{scope}[shift=(60 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-      \end{scope}
-      \begin{scope}[shift=(0 : 1.0)]
-        \draw (-0.1,-0.1) -- (0.1,0.1);
-        \draw (0.1,-0.1) -- (-0.1,0.1);
-        \draw [dotted] (0 : 0.0) -- (120 : 1.0);
-      \end{scope}
-    \end{tikzpicture}
-    \caption{}
-  \end{center}
-\end{figure}
-
-It has to be a right or left figure in Fig.6. when the first bead fixed on a side of an equilateral hexagon with a radius of $n+1$ make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$. Fig.6. becomes nondeterministic finally, such as in Fig.7., when it reaches a corner of an equilateral hexagon. It is clear that all beads on a side of an equilateral hexagon with a radius of $n+1$ has to make a hydrogen bond with a bead on a side of an equilateral hexagon with a radius of $n$.  It is impossible to fix molecules on a side of an equilateral hexagon with a radius of $n+2$ and determine the only structure when there are only beads which are able to make a hydrogen bond in an equilateral hexagon with a radius of $n$.
-
-
+\bibliographystyle{splncs03}
+\bibliography{tamc2019}
   
 \end{document}
