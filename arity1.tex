@@ -165,7 +165,7 @@ Let the point where the first transcript bead was fixed be $p$ and let $n=|\math
 	\label{fig:hexagonOut}
 \end{figure}
 
-\subsubsection{3.2.1 \ \ $\delta = 2$\\}
+\subsubsection{$\delta = 2$\\}
 
 In the elongation that places bead $i$ at $(1,1)$ there are two possibilities:
 \begin{itemize}
@@ -216,9 +216,9 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 \end{figure}
 
 
-\subsubsection{3.2.2 \ \ $\delta = 3$\\}
+\subsubsection{$\delta = 3$\\}
 
-\textbf{A.} First, let us assume that a fixed bead on a side of $hexagon_p^n$ has a free hand, and bead $i$ binds to it. If the most stable conformation formed by beads $i, i+1, i+2$ has only two hydrogen bonds, it will be nondeterministic because there are at least two possibilities, see Fig.~\ref{fig:beadi}. Therefore, it needs to make three hydrogen bonds to deterministically stabilize $i$.\\
+\textbf{A.} First, let us assume that a fixed bead on a side of $\hexagon_p^n$ has a free hand, and bead $i$ binds to it. If the most stable conformation formed by beads $i, i+1, i+2$ has only two hydrogen bonds, it will be nondeterministic because there are at least two possibilities, see Fig.~\ref{fig:beadi}. Therefore, it needs to make three hydrogen bonds to deterministically stabilize $i$.\\
 
 \begin{figure}
   \begin{center}
@@ -257,7 +257,7 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 
 
 
-There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see Fig.~\ref{fig:3bonds}. However, if it makes three bonds once, such as in Fig.~\ref{fig:3bonds}, it will need to make three bonds forever to be deterministic. Similarly to case 1. in the previous section, (a), (b) and (c)in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a first corner of $hexagon_p^n$ and  (e) in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a second corner of $hexagon_p^n$. (d) in Fig.~\ref{fig:3bonds} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (-1,0) and bond with (-2,0), bead $i+1$ can be placed (0,1) and bond with (0,0) and bead $i+2$ can be placed (1,1) and bond with (0,1). Thus, the fixed bead on the side of an equilateral hexagon with a radius of $n$ has to make a hydrogen bond with a bead in an equilateral hexagon.
+There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see Fig.~\ref{fig:3bonds}. However, if it makes three bonds once, such as in Fig.~\ref{fig:3bonds}, it will need to make three bonds forever to be deterministic. Similarly to case 1. in the previous section, (a), (b) and (c)in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a first corner of $\hexagon_p^n$ and  (e) in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a second corner of $\hexagon_p^n$. (d) in Fig.~\ref{fig:3bonds} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (-1,0) and bond with (-2,0), bead $i+1$ can be placed (0,1) and bond with (0,0) and bead $i+2$ can be placed (1,1) and bond with (0,1).
 
 
 
@@ -415,7 +415,7 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
 
 
 
-\textbf{B.} Next, let us assume that a fixed bead on a side of $hexagon_p^n$ does not have any free hands. And then assume that there is a bead having a free hand at (1,0). If there is a bead at (1,0) and beads $i, i+1, i+2$ make only two hydrogen bonds, it will become nondeterministic such as in Fig.~\ref{fig:beadat(1,0)}. That is, bead $i, i+1, i+2$ need to make three bonds to place a bead. If they make three hydrogen bonds, it will become \textbf{A}. There should not be any bead having a free hand at (1,0) or (-1,0) to prevent from becoming \textbf{A}. Let us discuss the moment after bead $i$ is fixed outside $hexagon_p^n$. Now bead $i$ has a free hand. If beads $i+1, i+2, i+3$ can form only two bonds, it will be nondeterministic because there are at least two possible such structures, as in Fig.~\ref{fig:beadi2}. Hence, they need to form three bonds to deterministically stabilize, such as in Fig.~\ref{fig:3bonds2}. (a) in Fig~\ref{fig:3bonds2} becomes \textbf{A} because it makes three hydrogen bonds. (b) in Fig.~\ref{fig:3bonds2} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (1,0).\\
+\textbf{B.} Next, let us assume that bead $i$'s predecessor at (0,0) has no free hand and that there is a bead at (1,0) which has a free hand. If there is a bead at (1,0) and beads $i, i+1, i+2$ make only two hydrogen bonds, it will become nondeterministic as in Fig.~\ref{fig:beadat(1,0)}. That is, beads $i, i+1, i+2$ need to make three bonds to stabilize $i$. If they make three hydrogen bonds, the situation is analogous to \textbf{A}. There should not be any bead having a free hand at (1,0) or (-1,0) to prevent from becoming \textbf{A}. Let us discuss the moment after bead $i$ is fixed outside $\hexagon_p^n$. Now bead $i$ has a free hand. If beads $i+1, i+2, i+3$ can form only two bonds, it will be nondeterministic because there are at least two possible such structures, as in Fig.~\ref{fig:beadi2}. Hence, they need to form three bonds to deterministically stabilize, such as in Fig.~\ref{fig:3bonds2}. (a) in Fig~\ref{fig:3bonds2} becomes \textbf{A} because it makes three hydrogen bonds. (b) in Fig.~\ref{fig:3bonds2} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (1,0).\\
 
 
 
