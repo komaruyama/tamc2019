@@ -188,7 +188,7 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 	\item bead $i+1$ is fixed at $(2,1)$ and can bond with a bead at $(2,0)$. Now consider bead $i+2$. For $i+1$ to be fixed at $(2,1)$, $i+2$ needs to form a bond somewhere, otherwise $i+2$ could go to $(2,1)$ forming the bond with the bead at $(2,0)$ and there would be two conformations with the maximal $1$ bond. The only possibility is that there is a bead at $(3,0)$ and $i+2$ can bond with it when placed at $(3,1)$. We can apply the same argument inductively: there is some $m\geq 0$ such that grid points $(\ell,0)$ are occupied by active beads, for all $\ell\in \{2,\dots,2+m\}$, and there is no bead at $(3+m,0)$. Such an $m$ exists, and it is not greater than $n$. Then, bead $i+\ell$ is fixed at $(\ell+1,1)$ and bonds with $(\ell+1,0)$. However, bead $i+2+m$ cannot be fixed anywhere, because $i+2+m$ and $i+3+m$ can only add one bond to the conformation, and that is possible either with $i+2+m \rightarrow (2+m,1)$, $i+3+m \rightarrow (3+m,1)$ or with $i+2+m \rightarrow (2+m,2)$, $i+3+m \rightarrow (2+m,1)$. 
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.6\linewidth]{./Fig/hexagonOut2}
+		\includegraphics[width=0.9\linewidth]{./Fig/hexagonOut2}
 		\caption{}
 		\label{fig:hexagonout2}
 	\end{figure}
@@ -209,7 +209,7 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 	\centering
 	%\includegraphics[width=0.3\linewidth]{./hexagonOut1}
 	%\hspace{10mm} %
-	\includegraphics[width=0.6\linewidth]{./Fig/hexagonOut3n}
+	\includegraphics[width=0.8\linewidth]{./Fig/hexagonOut3n}
 	
 	\caption{}
 	\label{fig:hexagonOut2}
@@ -223,7 +223,7 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 \begin{figure}
   \begin{center}
     \begin{tabular}{cc}
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (0.5, 0.866) circle [radius = 0.1];
         \fill (-0.5, 0.866) circle [radius = 0.1];
@@ -232,11 +232,11 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (0.0, 1.732) -- (-0.5, 0.866);
-        \draw [dashed] [red] (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 0.0) -- (-0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (-0.5, 0.866);
       \end{tikzpicture}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (-0.5, 0.866) circle [radius = 0.1];
         \fill (0.5, 0.866) circle [radius = 0.1];
@@ -245,12 +245,12 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
         \draw (0.0, 0.0) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (0.5, 0.866);
         \draw (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 0.0) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
       \end{tikzpicture}
 
     \end{tabular}
-    \caption{}
+    \caption{Two conformations when a bead $i-1$ at (0,0) has a free hand}
     \label{fig:beadi}
   \end{center}
 \end{figure}
@@ -264,7 +264,7 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
 \begin{figure}
   \begin{center}
     \begin{tabular}{ccc}
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (2.0, 0.0) circle [radius = 0.1];
@@ -277,13 +277,13 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.5, 0.866) -- (2.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
         \fill (1.5, -0.5) node [below] {(a)};
       \end{tikzpicture}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (-1.0, 0.0) circle [radius = 0.1];
@@ -296,13 +296,13 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (-0.5, 0.866) -- (-1.0, 0.0);
-        \draw [dashed] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (-1.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(b)};
       \end{tikzpicture}\\
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (-1.0, 0.0) circle [radius = 0.1];
@@ -315,13 +315,13 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (-0.5, 0.866) -- (0.0, 0.0);
-        \draw [dashed] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(c)};
       \end{tikzpicture}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (-2.0, 0.0) circle [radius = 0.1];
@@ -333,13 +333,13 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (-0.5, 0.866) -- (0.0, 0.0);
-        \draw [dashed] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(d)};
       \end{tikzpicture}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (-1.0, 0.0) circle [radius = 0.1];
@@ -351,17 +351,14 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (-0.5, 0.866) -- (0.0, 0.0);
-        \draw [dashed] [red] (-1.5, 0.866) -- (-1.0, 0.0);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dotted] [red] (-1.5, 0.866) -- (-1.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(e)};
       \end{tikzpicture}\\
 
-      (c) there is an inactive bead at (-1,0).\\
-      (d) there is no bead at (-1,0).
-
     \end{tabular}
-    \caption{}
+    \caption{When beads $i, i+1, i+2$ make three hydrogen bonds \newline (c) there is an inactive bead at (-1,0). \newline (d) there is no bead at (-1,0).}
     \label{fig:3bonds}
   \end{center}
 \end{figure}
@@ -371,7 +368,7 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
 \begin{figure}
   \begin{center}
     \begin{tabular}{ccc}
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (2.0, 0.0) circle [radius = 0.1];
         \fill (3.0, 0.0) circle [radius = 0.1];
@@ -382,14 +379,14 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw [blue] (0.5, 0.866) -- (1.5, 0.866);
         \draw [blue] (1.5, 0.866) -- (2.5, 0.866);
         \draw [blue] (2.5, 0.866) -- (3.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
         \draw [dashed] (3.5, -0.866) -- (3.0, 0.0);
         \draw [dashed] (0.5, 0.0) -- (3.0, 0.0);
       \end{tikzpicture}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (2.0, 0.0) circle [radius = 0.1];
         \fill (3.0, 0.0) circle [radius = 0.1];
@@ -400,15 +397,15 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw [blue] (0.5, 0.866) -- (1.0, 1.732);
         \draw [blue] (1.5, 0.866) -- (1.0, 1.732);
         \draw [blue] (1.5, 0.866) -- (2.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
         \draw [dashed] (3.5, -0.866) -- (3.0, 0.0);
         \draw [dashed] (0.5, 0.0) -- (3.0, 0.0);
       \end{tikzpicture}
 
     \end{tabular}
-    \caption{}
+    \caption{Being nondeterministic when reaching a corner of $\hexagon_p^n$}
     \label{fig:hexcorner}
   \end{center}
 \end{figure}
@@ -422,7 +419,7 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
 \begin{figure}
   \begin{center}
     \begin{tabular}{cc}
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (0.5, 0.866) circle [radius = 0.1];
@@ -433,12 +430,12 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.0, 1.732) -- (1.5, 0.866);
-        \draw [dashed] [red] (1.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (1.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (1.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (1.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (1.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (1.0, 1.732) -- (0.5, 0.866);
       \end{tikzpicture}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (-0.5, 0.866) circle [radius = 0.1];
@@ -449,12 +446,12 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (0.5, 0.866);
         \draw (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
       \end{tikzpicture}
 
     \end{tabular}
-    \caption{}
+    \caption{Two conformations when a bead at (1,0) has a free hand}
     \label{fig:beadat(1,0)}
   \end{center}
 \end{figure}
@@ -463,7 +460,7 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
 \begin{figure}
   \begin{center}
     \begin{tabular}{cc}
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (0.5, 0.866) circle [radius = 0.1];
         \fill (-0.5, 0.866) circle [radius = 0.1];
@@ -472,11 +469,11 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (0.0, 1.732) -- (-0.5, 0.866);
-        \draw [dashed] [red] (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 0.0) -- (-0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (-0.5, 0.866);
       \end{tikzpicture}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (-0.5, 0.866) circle [radius = 0.1];
         \fill (0.5, 0.866) circle [radius = 0.1];
@@ -485,12 +482,12 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (0.5, 0.866);
         \draw (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 0.0) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dotted] [red] (0.0, 0.0) -- (0.5, 0.866);
+        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
       \end{tikzpicture}
 
     \end{tabular}
-    \caption{}
+    \caption{Two conformations when a bead $i$ at (1,1) has a free hand}
     \label{fig:beadi2}
   \end{center}
 \end{figure}
@@ -501,7 +498,7 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
   \begin{center}
     \begin{tabular}{ccc}
 
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (1.0, 0.0) circle [radius = 0.1];
         \fill (2.0, 0.0) circle [radius = 0.1];
@@ -517,13 +514,13 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.5, 0.866) -- (2.5, 0.866);
         \draw (2.5, 0.866) -- (3.5, 0.866);
-        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
-        \draw [dashed] [red] (3.5, 0.866) -- (4.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dotted] [red] (3.5, 0.866) -- (4.0, 0.0);
         \fill (1.5, -0.5) node [below] {(a)};
       \end{tikzpicture}
       
-      \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (2.0, 0.0) circle [radius = 0.1];
         \fill (3.0, 0.0) circle [radius = 0.1];
@@ -538,17 +535,14 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.5, 0.866) -- (2.5, 0.866);
         \draw (2.5, 0.866) -- (3.5, 0.866);
-        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
-        \draw [dashed] [red] (3.5, 0.866) -- (4.0, 0.0);
+        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dotted] [red] (3.5, 0.866) -- (4.0, 0.0);
         \fill (1.5, -0.5) node [below] {(b)};
       \end{tikzpicture}\\
 
-      (a) there is an inactive bead at (1,0).\\
-      (b) there is no bead at (1,0).
-      
     \end{tabular}
-    \caption{}
+    \caption{When beads $i+1, i+2, i+3$ make three hydrogen bonds \newline (a) there is an inactive bead at (1,0). \newline (b) there is no bead at (1,0).}
     \label{fig:3bonds2}
   \end{center}
 \end{figure}
