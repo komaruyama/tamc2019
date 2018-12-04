@@ -4,10 +4,10 @@
 First we present a lower bound construction for arity $1$ systems. At $\alpha=1$, having delay $\delta=2$ allows the deterministic folding of quadratic length transcripts compared with $\delta=1$, where, as stated before, the maximum length is linear in the length of the seed. We demonstrate this with an infinite family of OS, which fold deterministically a transcript of length $\frac{(n-1)^2}{4}$ starting from a given seed of length $n$.
 
 Consider the following $\delta=2$, $\alpha=1$ system with bead types $\{0,1,2,3,4\}$ and attraction rules $\{(1,1),(2,2), (3,3),(4,4)\}$. Let the seed $\sigma$ be a conformation of a $4k+1$ long bead sequence of the form $(1020)^k0$, such that bead $\sigma[i]$ of the seed is stabilized at point $(i,0)$, for all $1\leq i\leq 4k-1$. Bead $4k$ is at $(4k-1,-1)$ and bead $4k+1$ is at $(4k,0)$.
+\vspace{0.1cm}
 
-The transcript is $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$, where $\mathrm{row}_\ell$, for $\ell\in \{1,\dots, 2k\}$ is given in the table below.
-
-\begin{figure}
+The transcript is $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$, where $\mathrm{row}_\ell$, for $\ell\in \{1,\dots, 2k\}$ is given in the table of Fig.~\ref{table:transcript}.
+\begin{figure}[h]
 	\begin{minipage}{.49\textwidth}
 		%\centering
 		\begin{tabular}{l|l}
@@ -40,34 +40,9 @@ The transcript is $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$, where $\mathrm{row
 		\end{tabular}
 	
 	\end{minipage}
-	
-	
+	\caption{}
+	\label{table:transcript}
 \end{figure}
-
-%\begin{center}
-%	
-%	%\scriptsize
-%	\begin{tabular}{llll}
-%		& $k$ odd &  & $k$ even\\
-%		$w=$\hspace{1cm} & $(2413)^{k-1}241$ & \hspace{1cm} &  $(2413)^{k-1}241$\\
-%		     & $(4231)^{k-1}4$   & &  $(4231)^{k-1}4$  \\
-%		     & $(1324)^{k-2}132$ & &  $(1324)^{k-2}132$\\
-%		     & $(3142)^{k-2}3$   & &  $(3142)^{k-2}3$ \vspace{5pt}\\
-%		     
-%		     & $(2413)^{k-3}241$ & &  $(2413)^{k-3}241$\\
-%		     & $(4231)^{k-3}4$   & &  $(4231)^{k-3}4$  \\
-%		     & $(1324)^{k-4}132$ & &  $(1324)^{k-4}132$\\
-%		     & $(3142)^{k-4}3$   & &  $(3142)^{k-4}3$\\
-%			 & \vdots			 & &  \vdots\\
-%			 & $(2413)^{2} 241$	 & &  $(2413)^{1} 241$\\
-%			 & $(4231)^2 4$		 & &  $(4231)^1 4$\\
-%			 & $(1324)^1 132$	 & &  $(1324)^0 132$\\
-%			 & $(3142)^1 3$		 & &  $(3142)^0 3$\\
-%			 & $(2413)^0 241$	 & & \\
-%			 & $(4231)^0 4$  	 & 
-%	\end{tabular}
-%	
-%\end{center}
 
 The transcript above is written in rows which correspond to beads in the conformation stabilized along the same row on the grid. To simplify the argument we will use \textit{row} both for the transcript above and for the conformation it stabilizes in (note that in the figure the row index grows from bottom to top). 
 
