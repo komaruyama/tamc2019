@@ -604,24 +604,23 @@ seki sensei.
     \label{TTT_a4_first}
 \end{figure}
 
-\begin{lemma}
-\label{TTT_a3_2b_lemma}
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. 
-If $S[i] = t$ or $t^\times$ and $S[i+1] \neq \blacksquare$, then the bead $w[i]$ consumes also at least one bond. 
-% Let $p$ be a point whose neighbors is occupied at least two point. If $w[i]$ is not stabilized and $w[i-1]$ includes neighbors of $p$, then $w[i]$ is stabilized at $p$ with at least one bond, $w[i]$ is stabilized at another point of $p$ otherwise with at least two bond except any neighbors of $p$ is occupied.
-\end{lemma}
+%\begin{lemma}
+%\label{TTT_a3_2b_lemma}
+%Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. 
+%If $S[i] = t$ or $t^\times$ and $S[i+1] \neq \blacksquare$, then the bead $w[i]$ consumes also at least one bond. 
+%% Let $p$ be a point whose neighbors is occupied at least two point. If $w[i]$ is not stabilized and $w[i-1]$ includes neighbors of $p$, then $w[i]$ is stabilized at $p$ with at least one bond, $w[i]$ is stabilized at another point of $p$ otherwise with at least two bond except any neighbors of $p$ is occupied.
+%\end{lemma}
+%
+%\begin{proof}%[proof of lemma]
+%Both $n_3$ and $n_4$ are occupied because $S[i] = t$ or $t^\times$.
+%Suppose $w[i]$ were stabilized without any bond.
+%Then, all neighbors of $n_3$ must be occupied as long as the bead at $n_3$ is not singular; otherwise, a bead at $n_3$ would be capable of forming a bond with $w[i]$.
+%That is, $n_1$ is occupied.
+%We can continue this argument in clockwise manner to fill the neighbors of $w[i]$ until a singular bead is encountered, if any.
+%If needed, the same argument is applied starting from $n_4$ in counter-clockwise manner.
+%Thus, all neighbors of $w[i]$ must be occupied but then $S[i+1] = \blacksquare$, contradiction. \qed
+%\end{proof}
 
-\begin{proof}%[proof of lemma]
-Both $n_3$ and $n_4$ are occupied because $S[i] = t$ or $t^\times$.
-Suppose $w[i]$ were stabilized without any bond.
-Then, all neighbors of $n_3$ must be occupied as long as the bead at $n_3$ is not singular; otherwise, a bead at $n_3$ would be capable of forming a bond with $w[i]$.
-That is, $n_1$ is occupied.
-We can continue this argument in clockwise manner to fill the neighbors of $w[i]$ until a singular bead is encountered, if any.
-If needed, the same argument is applied starting from $n_4$ in counter-clockwise manner.
-Thus, all neighbors of $w[i]$ must be occupied but then $S[i+1] = \blacksquare$, contradiction. \qed
-
-%One of neighbors of $p$ is not $w[i-1]$ where this bead regards $n_1$. If $w[i-1]$ include neighbors of $p$ and $w[i]$ is stabilized at another point of $p$ with one bond. Then, any neighbors do not have bond without $w[i-1]$. Neighbors of $n_1$ have to be occupied at least five according to lemma \ref{TTT_neighbor_lemma} and two of them include neighbors of $p$ where each of them regards $n_2, n_3$. In the same way, five neighbors of $n_2$ and $n_3$ are occupied and each of one of them includes neighbors of $p$ where they regard $n_4, n_5$. one of $n_5$'s neighbors includes neighbors of $p$ where it regards $n_6$. Then, any neighbors of $p$ are occupied. That is, if some neighbors of $p$ are free, then there exists a bead which has bonds in neighbors.
-\end{proof}
 
 \begin{figure} [tb]
   \begin{center}
