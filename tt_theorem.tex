@@ -11,30 +11,7 @@ Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$. The f
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{lemma}
-\label{TTT_entrance_Tab}
-Let $\Xi$ be a deterministic unary oritatami system at delay $\delta = 1$, arity $\alpha =2$. 
-Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $S[i+1] = b$ and $S[i+2] \in \{ t_s, t_o \} $, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
-\end{lemma}
-
-\begin{proof}%[lemma \ref{TTT_entrance_Tab}]
-See Fig.\ref{TTT_tunnel_direction}.
-$S[i+2] \in \{ t_s, t_o \} $ means that $w[i+2]$ is stabilized by a tunnel section of type $S$ or $O$.
-Thus,  its predecessor $w[i+1]$ must be inside the tunnel section, that is, $n_1$ and $n_2$ must be occupied.
-Free bonds of $w[i]$, if any, cannot be used in future by another bead $w[j]$ because otherwise the part of transcript $w[i..j]$ and the bond between $w[i]$ and $w[j]$ would form a closed curve and the curve would cross the path of $C_{i-1}$ between $n_1$ and $n_2$, contradiction.
-%Binding capabilities that $w[i]$ supplies are inactive according to Jordan curve theorem on $n_1$, $n_2$, and $w[i]$.
-Therefore, if $w[i]$ forms a bond at its stabilization $\#bc(C_{i-1}) > \#bc(C_{i})$ holds.
-We now prove that $w[i]$ must form a bond.
-
-
-Suppose $w[i]$ ware stabilized without any bond, that is, by a tunnel.
-For that the two points that are a neighbor of both $w[i-1]$ and $w[i]$ must be occupied already.
-In addition, at least one of the neighbors of $w[i]$ must be free because $S[i+1] = b$.
-Thus, only the case to be considered is Fig.~\ref{TTT_tunnel_direction} (middle) with $n_5$ being occupied (that is, $n_4$ is free).
-In this case, before $w[i]$ is stabilized, at lest three neighbors of $n_2$ ware free and hence, a bead at $n_2$ was provided with one free bond and could form a bond with $w[i]$. \qed
-
-
-\begin{figure}
+\begin{figure}[tb]
   \begin{center}
     \begin{tabular}{ccc}
     
@@ -149,44 +126,36 @@ In this case, before $w[i]$ is stabilized, at lest three neighbors of $n_2$ ware
   \end{center}
 \end{figure}
 
+\begin{lemma}
+\label{TTT_entrance_Tab}
+Let $\Xi$ be a deterministic unary oritatami system at delay $\delta = 1$, arity $\alpha =2$. 
+Assume $\Xi$ stabilizes the transcript until $w[i-1]$. If $S[i+1] = b$ and $S[i+2] \in \{ t_s, t_o \} $, then $\#bc(C_{i-1}) > \#bc(C_{i})$.
+\end{lemma}
+
+\begin{proof}%[lemma \ref{TTT_entrance_Tab}]
+See Fig.\ref{TTT_tunnel_direction}.
+$S[i+2] \in \{ t_s, t_o \} $ means that $w[i+2]$ is stabilized by a tunnel section of type $S$ or $O$.
+Thus,  its predecessor $w[i+1]$ must be inside the tunnel section, that is, $n_1$ and $n_2$ must be occupied.
+Free bonds of $w[i]$, if any, cannot be used in future by another bead $w[j]$ because otherwise the part of transcript $w[i..j]$ and the bond between $w[i]$ and $w[j]$ would form a closed curve and the curve would cross the path of $C_{i-1}$ between $n_1$ and $n_2$, contradiction.
+%Binding capabilities that $w[i]$ supplies are inactive according to Jordan curve theorem on $n_1$, $n_2$, and $w[i]$.
+Therefore, if $w[i]$ forms a bond at its stabilization $\#bc(C_{i-1}) > \#bc(C_{i})$ holds.
+We now prove that $w[i]$ must form a bond.
+
+
+Suppose $w[i]$ were stabilized without any bond, that is, by a tunnel.
+For that the two points that are a neighbor of both $w[i-1]$ and $w[i]$ must be occupied already.
+In addition, at least one of the neighbors of $w[i]$ must be free because $S[i+1] = b$.
+Thus, only the case to be considered is Fig.~\ref{TTT_tunnel_direction} (middle) with $n_5$ being occupied (that is, $n_4$ is free).
+In this case, before $w[i]$ is stabilized, at lest three neighbors of $n_2$ were free and hence, a bead at $n_2$ was provided with one free bond and could form a bond with $w[i]$. \qed
+
+
+
+
 \end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{lemma}
-\label{TTT_exit}
-Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$ and arity $\alpha =2$.
-%Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
-If $S[h..i+1] = bt^{(i-h)}b$ for some $h<i-1$ and $S[i] = t_s$ or $t_o$, then $\#bc(C_{i-2}) \geq \#bc(C_i)$, and hence, $\#bc(C_{h-1}) \geq \#bc(C_i)$.
-If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#bc(C_{i})$.
-%if we assume $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
-\end{lemma}
-
-\begin{proof}%[Lemma~ \ref{TTT_exit}]
-Since the binding capability never increases inside a tunnel, we just need to consider the exit of a tunnel.
-See Fig.\ref{TTT_tunnel_exit}. 
-At least one of points $n_1$ or $n_2$ must be free because otherwise $w[i]$ would be inside of a tunnel, that is, $S[i+1]$ would not be $b$.
-
-%If $i - h > 1$ and $j$ is such that $h \leq j<i$, then $\#bc(C_{j-1}) \geq \#bc(C_{j})$ because all neighbors of $w[j]$ are occupied by beads forming the tunnel so that any $w[i+1..]$ cannot reach neighbors of $w[j]$. 
-%Thus, inside this tunnel, binding capabilities never increased.
-
-
-Let $a$ be the number of bonds $w[i-1]$ forms, that is, $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$. Then, $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$ as follows.
-
-\begin{itemize}
-\item{Case of both $n_1$ and $n_2$ being free}\\
-  This case can be regarded the same as entrance. See Fig.\ref{TTT_tunnel_exit} (Left). Predecessor $n_5$ has to be bound to $n_4$ and $n_5$ because both of $n_3$ and $n_4$ have binding capabilities. Hence, $a \geq 2$. This time, $\alpha = 2$, that is, this case $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
-  
-\item{Case of $n_1$ is occupied}\\
-  See Fig.\ref{TTT_tunnel_exit} (Right). If $n_1$ is occupied, then $n_2$ is free so that $n_5$ has to be bound $n_4$. Hence,  $a \geq 1$. This case can supply two binding capabilities but $p^\prime$ can bind to only one of $n_0$ or $n_2$ because $n_0$ or $n_2$ will be occupied by the successor of $p^\prime$. Therefore, this case $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
-  
-\end{itemize}
-
-Thus,$\#bc(C_{i-2}) \geq \#bc(C_i)$ , and hence, $\#bc(C_{h-1}) \geq \#bc(C_i)$.
-If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#bc(C_{i})$ because $S[h] = b$, that is, $\#bc(C_{h-1}) > \#bc(C_h)$ and $\#bc(C_{h}) \geq \#bc(C_i)$. \qed
-
-\begin{figure}
+\begin{figure}[tb]
   \centering
     \begin{tabular}{cc}
     \centering
@@ -198,7 +167,7 @@ If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#b
 	\draw[white] (0:0) -- (0:1);
 
             \fill[blue](0,0) circle [radius=0.05];
-            \node[above] at (0,0) {$w[i]$};
+            \node[above] at (0,0) {$w[j]$};
 
             
             \foreach \theta in {120,-120,180}{
@@ -219,7 +188,7 @@ If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#b
             \node[transform canvas={shift=(-60:1)},right] {$n_2$};
             \node[transform canvas={shift=(120:1)},left] {$n_3$};
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1)},above] {$w[i-1]$};
+            \node[transform canvas={shift=(180:1)},above] {$w[j-1]$};
 
           \node at (0,-2) {Point $n_1$ and $n_2$ are free};
         \end{tikzpicture}
@@ -233,7 +202,7 @@ If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#b
 	\draw[white] (0:0) -- (-90:2);
 
             \fill[blue](0,0) circle [radius=0.05];
-            \node[above] at (0,0) {$w[i]$};
+            \node[above] at (0,0) {$w[j]$};
             
             \foreach \theta in {120,-120,180,60}{
               \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
@@ -251,7 +220,7 @@ If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#b
             \node[transform canvas={shift=(-60:1)},right] {$n_2$};
             \node[transform canvas={shift=(120:1)},left] {$n_3$};
             \node[transform canvas={shift=(-120:1)},left] {$n_4$};
-            \node[transform canvas={shift=(180:1)},above] {$w[i-1]$};
+            \node[transform canvas={shift=(180:1)},above] {$w[j-1]$};
 
 
           
@@ -262,17 +231,61 @@ If $h < i-1$, then the second inequality is strengthened as $\#bc(C_{h-1}) > \#b
     \caption{Exit of Tunnel}
     \label{TTT_tunnel_exit}
 \end{figure}
+
+
+\begin{lemma}
+\label{TTT_exit}
+Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$ and arity $\alpha =2$.
+%Let $w[i]$ be a bead which is stabilized at the exit of a tunnel.
+If $S[i+1..j+1] = bt^{(j-i-1)}b$ for some $i,j$ with $i \leq j-2$ and $S[j] \in \{ t_s, t_o\}$, then $\#bc(C_{j-2}) \geq \#bc(C_j)$, and hence, $\#bc(C_{i}) \geq \#bc(C_j)$.
+If $i \leq j-3$, then the second inequality is strengthened as $\#bc(C_{i}) > \#bc(C_{j})$.
+%if we assume $\#bc(C_{i-2}) - \#bc(C_{i-1}) = a$, then $\#bc(C_{i}) - \#bc(C_{i-1}) \leq a$.
+\end{lemma}
+
+\begin{proof}%[Lemma~ \ref{TTT_exit}]
+Since the binding capability never increases inside a tunnel, we just need to consider the exit of a tunnel.
+See Fig.\ref{TTT_tunnel_exit}. 
+At least one of points $n_1$ or $n_2$ must be free because otherwise $w[j]$ would be inside of a tunnel, that is, $S[j+1]$ would not be $b$.
+
+%If $i - h > 1$ and $j$ is such that $h \leq j<i$, then $\#bc(C_{j-1}) \geq \#bc(C_{j})$ because all neighbors of $w[j]$ are occupied by beads forming the tunnel so that any $w[i+1..]$ cannot reach neighbors of $w[j]$. 
+%Thus, inside this tunnel, binding capabilities never increased.
+
+
+Let $m$ be the number of bonds $w[j-1]$ forms, that is, $\#bc(C_{j-2}) - \#bc(C_{j-1}) = m$.
+We claim $\#bc(C_{j}) - \#bc(C_{j-1}) \leq m$.
+Indeed, if both $n_1$ and $n_2$ are free (see Fig.~\ref{TTT_tunnel_exit}), the predecessor $w[j-1]$ must be bound to both beads at $n_3$ and at $n_4$ because both of them still have a free hand.
+Hence, $m \geq 2$.
+Since $\#bc(C_{j}) - \#bc(C_{j-1})$ is less than the arity, this difference is at most $m$.
+
+If $n_1$ is occupied, then $n_2$ is free.
+The predecessor $w[j-1]$ must be bound $n_4$.
+Hence,  $m \geq 1$.
+The bead $w[j]$ can increase the binding capability at most by 1 because one of its free neighbors would, $n_0$ or $n_2$, is to be occupied by the successor $w[j+1]$.
+Therefore, $\#bc(C_{j}) - \#bc(C_{j-1}) \leq m$.
+  
+
+
+Thus,$\#bc(C_{j-2}) \geq \#bc(C_j)$ , and hence, $\#bc(C_{i}) \geq \#bc(C_j)$.
+If $i \leq j-3$, then the second inequality is strengthened as $\#bc(C_{i}) > \#bc(C_{j})$ because $S[i+1] = b$, that is, $\#bc(C_{i}) > \#bc(C_{i+1})$ and $\#bc(C_{i+1}) \geq \#bc(C_j)$. \qed
+
+
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 \begin{lemma}
 \label{TTT_tunnelC_lemma}
 Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity $\alpha = 2$.
-If there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ and $S[i+2] = t_a$ or $bt^\ell bt^{j-i-1-\ell}b$ for some $\ell$ and $S[i+l+2] = t_a$, then $\#bc(C_{i-1}) > \#bc(C_j)$.
+If $S[i+2] = t_a$, the following statements hold.
+\begin{enumerate}
+\item If $S[i] = b$, $\#bc(C_{i-1}) > \#bc(C_{i+2})$.
+\item If $S[i] \in \{t_s, t_o \}$, $\#bc(C_{i-2}) > \#bc(C_{i+2})$.
+\item If $S[i] = t_a$, $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
+\end{enumerate}
+%If there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ and $S[i+2] = t_a$ or $bt^\ell bt^{j-i-1-\ell}b$ for some $\ell$ and $S[i+l+2] = t_a$, then $\#bc(C_{i-1}) > \#bc(C_j)$.
 \end{lemma}
+
 
 %\begin{lemma}
 %\label{TTT_tunnelC_lemma}
@@ -280,24 +293,22 @@ If there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ and 
 %\end{lemma}
 
 
-\begin{proof}[Lemma~ \ref{TTT_tunnelC_lemma}]
-Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$.
-Assume $S[h..i+1] = bt^{i-h}b (h<i)$. If at least one of $w[h+1..i]$ are stabilized by tunnel $C$, then only $w[h+1]$ can use tunnel $C$ because if $w[g]$ which is one of $w[h+2..i]$, with $h+2 \leq g \leq i$ is stabilized by tunnel $C$, $C_g$ is a terminal.
-
-
-Let us consider stabilization $S[h-1..h+1] = tbt$ or $S[h-1..h+1] = bbt$ as follows. In result, $\#bc(C_{h-3}) > \#bc(C_{h+1})$. In addition according to Lemma~\ref{TTT_exit} $\#bc(C_{h+1}) \geq \#bc(C_{i})$. Thus, $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_{i})$.
-\\
-
-\subsubsection{Case of $S[h-1..h+1] = bbt$}
-See Fig.~\ref{TTT_tunnelC_enter_usingBond}.
-If $w[h-1]$ forms one bond, then it leaves one free bond, but it is consumed by $w[h+1]$.
-In addition, $w[h]$ has to bound.
-Thus, in this cases, binding capability decreases by 1.
-If $w[h-1]$ forms two bonds, then it does not leave any bond.
-In addition, $w[h]$ has to be bound.
-Thus, in this case, even if $w[h+1]$ supplies two free bonds, binding capability decreases by 1.
-
-
+%\begin{proof}[Lemma~ \ref{TTT_tunnelC_lemma}]
+%Let $\Xi$ be a unary oritatami system at $\delta = 1, \alpha = 2$.
+%Assume $S[h..i+1] = bt^{i-h}b (h<i)$. If at least one of $w[h+1..i]$ are stabilized by tunnel $C$, then only $w[h+1]$ can use tunnel $C$ because if $w[g]$ which is one of $w[h+2..i]$, with $h+2 \leq g \leq i$ is stabilized by tunnel $C$, $C_g$ is a terminal.
+%
+%
+%Let us consider stabilization $S[h-1..h+1] = tbt$ or $S[h-1..h+1] = bbt$ as follows. In result, $\#bc(C_{h-3}) > \#bc(C_{h+1})$. In addition according to Lemma~\ref{TTT_exit} $\#bc(C_{h+1}) \geq \#bc(C_{i})$. Thus, $\#bc(C_{h-3}) > \#bc(C_{h+1})$ and $\#bc(C_{h-3}) > \#bc(C_{i})$.
+%\\
+%
+%\subsubsection{Case of $S[h-1..h+1] = bbt$}
+%See Fig.~\ref{TTT_tunnelC_enter_usingBond}.
+%If $w[h-1]$ forms one bond, then it leaves one free bond, but it is consumed by $w[h+1]$.
+%In addition, $w[h]$ has to bound.
+%Thus, in this cases, binding capability decreases by 1.
+%If $w[h-1]$ forms two bonds, then it does not leave any bond.
+%In addition, $w[h]$ has to be bound.
+%Thus, in this case, even if $w[h+1]$ supplies two free bonds, binding capability decreases by 1.
 
 
 \begin{figure}
@@ -336,142 +347,144 @@ Thus, in this case, even if $w[h+1]$ supplies two free bonds, binding capability
   \end{center}
 \end{figure}
 
-
-\subsubsection{Case of $S[h-1..h+1] = tbt_a$}
-Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilization depending on structures of tunnel C.
-
-%\item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
-  In this figure, Bead $n_4$ has at least one binding so that $w[h-1]$ has to bound $n_4$. Moreover, $w[h]$ has to bind to one of $n_1, n_2, n_3$ in order to stabilize deterministically. On the other hand, $w[h+1]$ can supply two bindings but has only two free neighbors. One of them is occupied by a successor. Therefore $w[h+1]$ can only bind one of $n_5, n_6$, that is, $w[h+1]$ supplies at most one binding. Thus, this case $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
-
-  These cases are divided on number of capabilities that $w[h-1]$ consumes.
-  \begin{itemize}
-  \item[-]{$w[h-1]$ does not consume any bindings}\\
-  According to Lemma~\ref{TTT_exit}, $\#bc(C_{h-3}) \geq \#bc(C_{h-1})$ because of $S[h-1] = t$.
-    $w[h]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically so that  $\#bc(C_{h-1}) > \#bc(C_{h})$.
-    $w[h+1]$ has to be bound to $w[h-1]$ because $w[h-1]$ has bindings, that is, $w[h+1]$ consumes at least one hand and supplies at most one hand so that $\#bc(C_{h}) \geq \#bc(C_{h+1})$. Thus, in this cases $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
-%     This time, let us consider either $n_4$ is occupied or not. If $n_4$ is occupied, then $w[h-1]$ has no active bindings that is this situation consumes some binding capabilities. If $n_4$ is free and $w[h+2]$ is stabilized in $n_4$, then $w[h-1]$ has to bind $w[h+2]$. Therefore, In this case, stabilization of $w[h-1..h+2]$ consumes some bindings. If $n_4$ is free and $w[h+2]$ is stabilized except $n_4$, then this oritatami system has to use two binding capabilities in order to bind $w[h+2]$. Therefore, in this case consumes some bindings. Thus in this cases $\#bc(C_{h-1}) > \#bc(C_{h+2})$.
-
-  \item[-]{$w[h-1]$ consumes one binding}\\
-    In this case, $w_{h}$ has to be bound one of $n_1, n_2, n_3$. In addition, $w[h-1]$ and $w[h+1]$ are not supply any bindings. Thus, in this cases consume some binding capabilities.
-  \item[-]{$w[h-1]$ consumes two bindings}\\
-    In this case, $w[h-1]$ already consumes two binding. $w[h]$ has to be bound. $w[h+1]$ supplies two bindings. Thus, in this cases $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
-   
-  \end{itemize}
-
-\begin{figure}
-  \centering
-    \begin{tabular}{cc}
-      
-      \begin{minipage}{0.48\hsize}
-      \centering
-        \begin{tikzpicture}
-
-          \fill[transform canvas={shift=(0:0)}](0,0) circle [radius=0.1];
-          
-          \foreach \theta in {60,-60,120,-120,180}{
-            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-          }
-
-          \fill[blue](0:1) circle [radius=0.05];
-          \draw[->, blue] (0:0.1)--(0:0.9);
-
-          \node[below] at (-60:1) {$n_4$};
-
-          \begin{scope}[shift=(0:2)]
-            \fill[blue](0,0) circle [radius=0.05];
-
-            
-            \foreach \theta in {120,60,-60,0}{
-             \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-
-            \draw[->, blue] (180:0.9)--(180:0.1);
-            \draw[->, blue] (-120:0.1)--(-120:0.9);
-
-            \node[below] at (180:1) {$w_{[h-1]}$};
-            \node[above] at (0:0) {$w_{[h]}$};
-            \node[below] at (-120:1) {$w_{[h+1]}$};
-
-            \node[above] at (120:1) {$n_3$};
-            \node[above] at (60:1) {$n_2$};
-            \node[right] at (0:1) {$n_1$};
-
-            \begin{scope}[shift=(-120:1)]
-              \fill[blue](0,0) circle [radius=0.05];
-              \foreach \theta in {-120,-60}{
-                \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
-              }
-
-              \node[right] at (-120:1) {$n_5$};
-              \node[right] at (-60:1) {$n_6$};
-            \end{scope}
-            
-          \end{scope}
-
-          \node at (1.2,-2.5) {Pattern 1};
-        \end{tikzpicture}
-      \end{minipage}
-
-      \begin{minipage}{0.48\hsize}
-      \centering
-        \begin{tikzpicture}
-
-          \fill(0,0) circle [radius=0.1];
-          
-          \foreach \theta in {60,0,120,-120,180}{
-            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-          }
-
-          \draw[->, blue] (-60:0.1)--(-60:0.9);
+%\subsubsection{Case of $S[h-1..h+1] = tbt_a$}
+%Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilization depending on structures of tunnel C.
+%
+%%\item{Left of Fig.\ref{TTT_tunnelC_enter_usingTunnel}}\\
+%  In this figure, Bead $n_4$ has at least one binding so that $w[h-1]$ has to bound $n_4$. Moreover, $w[h]$ has to bind to one of $n_1, n_2, n_3$ in order to stabilize deterministically. On the other hand, $w[h+1]$ can supply two bindings but has only two free neighbors. One of them is occupied by a successor. Therefore $w[h+1]$ can only bind one of $n_5, n_6$, that is, $w[h+1]$ supplies at most one binding. Thus, this case $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
+%
+%  These cases are divided on number of capabilities that $w[h-1]$ consumes.
+%  \begin{itemize}
+%  \item[-]{$w[h-1]$ does not consume any bindings}\\
+%  According to Lemma~\ref{TTT_exit}, $\#bc(C_{h-3}) \geq \#bc(C_{h-1})$ because of $S[h-1] = t$.
+%    $w[h]$ has to bound one of $n_1, n_2, n_3$ in order to stabilize deterministically so that  $\#bc(C_{h-1}) > \#bc(C_{h})$.
+%    $w[h+1]$ has to be bound to $w[h-1]$ because $w[h-1]$ has bindings, that is, $w[h+1]$ consumes at least one hand and supplies at most one hand so that $\#bc(C_{h}) \geq \#bc(C_{h+1})$. Thus, in this cases $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
+%%     This time, let us consider either $n_4$ is occupied or not. If $n_4$ is occupied, then $w[h-1]$ has no active bindings that is this situation consumes some binding capabilities. If $n_4$ is free and $w[h+2]$ is stabilized in $n_4$, then $w[h-1]$ has to bind $w[h+2]$. Therefore, In this case, stabilization of $w[h-1..h+2]$ consumes some bindings. If $n_4$ is free and $w[h+2]$ is stabilized except $n_4$, then this oritatami system has to use two binding capabilities in order to bind $w[h+2]$. Therefore, in this case consumes some bindings. Thus in this cases $\#bc(C_{h-1}) > \#bc(C_{h+2})$.
+%
+%  \item[-]{$w[h-1]$ consumes one binding}\\
+%    In this case, $w_{h}$ has to be bound one of $n_1, n_2, n_3$. In addition, $w[h-1]$ and $w[h+1]$ are not supply any bindings. Thus, in this cases consume some binding capabilities.
+%  \item[-]{$w[h-1]$ consumes two bindings}\\
+%    In this case, $w[h-1]$ already consumes two binding. $w[h]$ has to be bound. $w[h+1]$ supplies two bindings. Thus, in this cases $\#bc(C_{h-1}) > \#bc(C_{h+1})$.
+%   
+%  \end{itemize}
 
 
-          \begin{scope}[shift=(-60:1),shift=(0:1)]
-            \fill[blue](0,0) circle [radius=0.05];
-            \fill[blue](180:1) circle [radius=0.05];
+%\begin{figure}
+%  \centering
+%    \begin{tabular}{cc}
+%      
+%      \begin{minipage}{0.48\hsize}
+%      \centering
+%        \begin{tikzpicture}
+%
+%          \fill[transform canvas={shift=(0:0)}](0,0) circle [radius=0.1];
+%          
+%          \foreach \theta in {60,-60,120,-120,180}{
+%            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+%          }
+%
+%          \fill[blue](0:1) circle [radius=0.05];
+%          \draw[->, blue] (0:0.1)--(0:0.9);
+%
+%          \node[below] at (-60:1) {$n_4$};
+%
+%          \begin{scope}[shift=(0:2)]
+%            \fill[blue](0,0) circle [radius=0.05];
+%
+%            
+%            \foreach \theta in {120,60,-60,0}{
+%             \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+%            }
+%
+%            \draw[->, blue] (180:0.9)--(180:0.1);
+%            \draw[->, blue] (-120:0.1)--(-120:0.9);
+%
+%            \node[below] at (180:1) {$w_{[h-1]}$};
+%            \node[above] at (0:0) {$w_{[h]}$};
+%            \node[below] at (-120:1) {$w_{[h+1]}$};
+%
+%            \node[above] at (120:1) {$n_3$};
+%            \node[above] at (60:1) {$n_2$};
+%            \node[right] at (0:1) {$n_1$};
+%
+%            \begin{scope}[shift=(-120:1)]
+%              \fill[blue](0,0) circle [radius=0.05];
+%              \foreach \theta in {-120,-60}{
+%                \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
+%              }
+%
+%              \node[right] at (-120:1) {$n_5$};
+%              \node[right] at (-60:1) {$n_6$};
+%            \end{scope}
+%            
+%          \end{scope}
+%
+%          \node at (1.2,-2.5) {Pattern 1};
+%        \end{tikzpicture}
+%      \end{minipage}
+%
+%      \begin{minipage}{0.48\hsize}
+%      \centering
+%        \begin{tikzpicture}
+%
+%          \fill(0,0) circle [radius=0.1];
+%          
+%          \foreach \theta in {60,0,120,-120,180}{
+%            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+%          }
+%
+%          \draw[->, blue] (-60:0.1)--(-60:0.9);
+%
+%
+%          \begin{scope}[shift=(-60:1),shift=(0:1)]
+%            \fill[blue](0,0) circle [radius=0.05];
+%            \fill[blue](180:1) circle [radius=0.05];
+%
+%            
+%            \foreach \theta in {120,60,0,-60}{
+%              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+%            }
+%
+%            \draw[->, blue] (180:0.9)--(180:0.1);
+%            \draw[->, blue] (-120:0.1)--(-120:0.9);
+%
+%            \node[below] at (180:1) {$w_{[h-1]}$};
+%            \node[above] at (0:0) {$w_{[h]}$};
+%            \node[below] at (-120:1) {$w_{[h+1]}$};
+%
+%            \node[above right] at (120:1) {$n_3$};
+%            \node[right] at (60:1) {$n_2$};
+%            \node[right] at (0:1) {$n_1$};
+%
+%            \begin{scope}[shift=(-120:1)]
+%              \fill(0,0) circle [radius=0.05];
+%              \foreach \theta in {180,-120,-60}{
+%                \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
+%              }
+%
+%              \node[left] at (180:1) {$n_4$};
+%              \node[right] at (-120:1) {$n_5$};
+%              \node[right] at (-60:1) {$n_6$};
+%            \end{scope}
+%            
+%          \end{scope}
+%
+%          \node at (1.25,-4) {Pattern 2};
+%        \end{tikzpicture}
+%      \end{minipage}
+%
+%      
+%      
+%    \end{tabular}
+%    \caption{Case of $S[h-1..h+1] = tbt$}
+%    \label{TTT_tunnelC_enter_usingTunnel}
+%\end{figure}
 
-            
-            \foreach \theta in {120,60,0,-60}{
-              \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
-            }
-
-            \draw[->, blue] (180:0.9)--(180:0.1);
-            \draw[->, blue] (-120:0.1)--(-120:0.9);
-
-            \node[below] at (180:1) {$w_{[h-1]}$};
-            \node[above] at (0:0) {$w_{[h]}$};
-            \node[below] at (-120:1) {$w_{[h+1]}$};
-
-            \node[above right] at (120:1) {$n_3$};
-            \node[right] at (60:1) {$n_2$};
-            \node[right] at (0:1) {$n_1$};
-
-            \begin{scope}[shift=(-120:1)]
-              \fill(0,0) circle [radius=0.05];
-              \foreach \theta in {180,-120,-60}{
-                \draw[transform canvas={shift=(\theta:1)}](-0.05,-0.05) rectangle (0.05,0.05);
-              }
-
-              \node[left] at (180:1) {$n_4$};
-              \node[right] at (-120:1) {$n_5$};
-              \node[right] at (-60:1) {$n_6$};
-            \end{scope}
-            
-          \end{scope}
-
-          \node at (1.25,-4) {Pattern 2};
-        \end{tikzpicture}
-      \end{minipage}
-
-      
-      
-    \end{tabular}
-    \caption{Case of $S[h-1..h+1] = tbt$}
-    \label{TTT_tunnelC_enter_usingTunnel}
-\end{figure}
 
 
 
-\end{proof}
+
+%\end{proof}
 
 
 
@@ -482,12 +495,13 @@ Fig.\ref{TTT_tunnelC_enter_usingTunnel} exhibits all the two kinds of stabilizat
 %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\proof%{Proof of Tunnel Troll Theorem}
-Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, 
-then it has at most one free neighbor, and hence its successor it to be stabilized there.
-Moreover, if a bead is stabilized outside a tunnel, then its position is either an entrance of a tunnel or not.
+\proof{Proof of Tunnel Troll Theorem}
+%Each bead in the transcript is bound either inside a tunnel or outside. If a bead is stabilized inside a tunnel, 
+%then it has at most one free neighbor, and hence its successor it to be stabilized there.
+%Moreover, if a bead is stabilized outside a tunnel, then its position is either an entrance of a tunnel or not.
+%
+%Tunnel sections have three possible shapes up to symmetry : straight($S$), obtuse($O$) and acute($A$) turn (Fig. \ref{fig:TTT_tunnel}), and we will consider each of those. 
 
-Tunnel sections have three possible shapes up to symmetry : straight($S$), obtuse($O$) and acute($A$) turn (Fig. \ref{TTT_tunnel}), and we will consider each of those. 
 
 %\begin{lemma}
 %\label{TTT_neighbor_lemma}
@@ -505,8 +519,19 @@ Before the stabilization of $w[i]$, such a bead had two free neighbors, and henc
 Thus, $w[i]$ is to be bonded to these two beads, and it decreases the binding capability by at least 1. 
 It now suffices to check that this assumption holds no matter how $n_0, n_1, n_2$ are occupied as long as at least one of them is left free. 
 
-Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there is an index $h$ such that $S[h-1..h+1] = bbt$ or $S[h-1..h+1] = tbt$. According to Lemma~\ref{TTT_entrance_Tab}, if $w[h+1]$ is stabilized by tunnel $A$ or $B$, then $\#bc(C_{h-1}) > \#bc(C_{h})$. Also,  According to Lemma~\ref{TTT_tunnelC_lemma}, if $w[h+1]$ is stabilized by tunnel $C$, then $\#bc(C_{h-3}) > \#bc(C_{h+1})$.
-On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$ because of Lemma~\ref{TTT_exit}. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
+Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there are an indices $i$ ,$j$ such that $S[i+1..j+1] = bt^{(j-i-1)}b$ and $S[i+2] \in \{ t_s, t_o \} $.
+Then, all $S[i+1..j]$ do not contain $t_o$; otherwise $S[i+1..j]$ contain $\blacksquare$.
+Therefore according to Lemma~\ref{TTT_entrance_Tab}, $\#bc(C_{i-1}) > \#bc(C_{i})$ and moreover that, according to Lemma~\ref{TTT_exit}, $\#bc(C_{i}) \geq \#bc(C_{j})$.
+
+
+On the other hand, we assume there are an indices $i$ ,$j$ such that $S[i+1..j+1] = bt^{(j-i-1)}b$ and $S[i+2] = t_a$.
+
+
+Let us consider that $w[i]$ supplies two bonds (that is, $S[i] = t$).
+If $S[i] \in \{ t_s, t_o \}$, $\#bc(C_{i-2}) \geq \#bc(C_{i})$ because of Lemma~\ref{TTT_exit}.
+Therefore, 
+
+if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l})$ because of Lemma~\ref{TTT_exit}. Therefore, if there are indices $i$ and $j$ such that $S[i..j+1] = bbt^{(j-i-1)}b$ or $S[i..j+1] = bt^mbt^nb \quad (m + n = j-i-1)$, then $\#bc(C_{i-1}) > \#bc(C_{j})$.
 
 \qed
 
@@ -557,52 +582,60 @@ On the other hand, if $S[k..l] = bt^{l-k}b$, then $\#bc(C_{k-1}) \geq \#bc(C_{l}
 %\end{proof}
 
 
+
+\begin{figure}[tb]
+ \centering
+    \begin{tikzpicture}
+
+	\fill (0,0) circle [radius=0.1];
+        \fill[blue] (60:1) circle [radius=0.05];
+        \fill (0:1) circle [radius=0.1];
+      
+      \draw[dashed] (180:2) -- (0:2);
+      \draw[dashed, shift=(60:1)] (180:2.5) -- (0:1.5);
+      \draw[->, blue] (60:0.1) -- (60:0.9);
+
+	\node[above] at (180:1) {$p_1$};
+	\node[left] at (-120:1) {$p_2$};
+	\node[left] at (-60:1) {$p_3$};
+	\node[left, shift=(-120:1)] at (-60:1) {$p_3$};
+
+	\draw (180:1) circle [radius=0.05];
+	\draw (-120:1) circle [radius=0.05];
+	\draw (-60:1) circle [radius=0.05];
+	\draw[shift=(-120:1)] (-60:1) circle [radius=0.05];
+
+	\node at (0:2.5) {$n$};
+	\node[shift=(60:1)] at (0:2) {$n+1$};
+    \end{tikzpicture}
+    \caption{the first bead out of $\hexagon_{w[-n+1]}^n$}
+    \label{TTT_a4_first}
+\end{figure}
+
 \begin{theorem}[$\delta = 1, \alpha = 4$]
 Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite conformation of length is $3n^2  + 3n + 1$.
 \end{theorem}
 
-
-
-
-
 \begin{proof}
-%According to lemma\ref{TTT_a4_2b_lemma}, when $w[i]$ is stabilized, it has to use at least two bonds. Let us consider when a bead $w[i]$ which is the first bead out of $\hexagon_{w[-n+1]}^n$ is stabilized. See Fig.\ref{TTT_a4_first}. any $n_0, n_1, n_3, n_5$ is free because if some of them is occupied, $w[i]$ is not the first bead out of $\hexagon_{w[-n+1]}^n$. At least two neighbors of $w[i]$ except predecessor have to be occupied in order to bind. In this case, a point which is able to put a bead is only $n_2$. Therefore, any transcript cannot be stabilized in out of $\hexagon_{w[-n+1]}^n$. Hence oritatami system can yield only a finite structure whose size is $O(n^2)$ in $\delta =1, \alpha = 4$.
-%%lemma???a=4??#bc(C_i) >= #bc(C_{i+1})? ?upper?left
-seki sensei.
+Consider the moment when a bead $b$ is stabilized outside $\hexagon_O^n$ for the first time. 
+See Fig.~\ref{TTT_a4_first}.
+There is only one bead available to stabilize $b$ there, which is $b_1$. 
+In order for $b$ to avoid nondeterminism, hence, none of the beads around should not attract $b$. 
+
+The point $p_1$ must be empty because a bead there would have at least two free neighbors and hence is provided with a free hand. 
+If there is a bead at $p_2$, $n$ must be at least 2 so that the bead is not singular. 
+Since $p_1$ is empty, this bead has at least one free hand, a contradiction. 
+Thus, $p_2$ must be also empty. 
+In the same way, we can easily show that the point $p_3$ must not be occupied by a non-singular bead. 
+Suppose $p_3 = O$. 
+The point $p_4$ must not be empty; otherwise the singular bead, at $O$, would have a free hand. 
+However, then a bead at $p_4$ would be provided with a free hand, a contradiction. 
+\qed
 \end{proof}
 
 
 
 
-\begin{figure}
- \centering
-    \begin{tikzpicture}
-	\fill[shift=(-120:1)] (0,0) circle [radius=0.1];
-      \fill[shift=(180:0), blue] (0,0) circle [radius=0.05];
-      
-      \draw[dashed] (180:2) -- (0:2);
-      \draw[dashed, shift=(-60:1)] (180:2.5) -- (0:1.5);
-      \draw[->, blue] (-120:0.9) -- (-120:0.1);
-
-	\node[below] at (-120:1) {$w_{[i-1]}$};
-	\node[above] at (180:0) {$w_{[i]}$};
-	\node[above] at (0:1) {$n_0$};
-
-	\foreach \theta in {0,60,-60,120,180}{
-   	   \draw [shift=(\theta:1)] (-0.05,-0.05) rectangle (0.05,0.05);
-  	}
-
- 	\node[above] at (60:1) {$n_1$};
-	\node[below] at (-60:1) {$n_2$};
-	\node[above] at (120:1) {$n_3$};
-	\node[above] at (180:1) {$n_5$};
-	
-	\node at (0:2.5) {$n+1$};
-	\node[shift=(-60:1)] at (0:2) {$n$};
-    \end{tikzpicture}
-    \caption{the first bead out of $\hexagon_{w[-n+1]}^n$}
-    \label{TTT_a4_first}
-\end{figure}
 
 %\begin{lemma}
 %\label{TTT_a3_2b_lemma}
@@ -731,7 +764,7 @@ seki sensei.
 \end{figure}
 
 \begin{theorem}[$\delta = 1, \alpha = 3$]
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length is $O(n)$.
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length is $2n + 14$.
 \end{theorem}
 
 %Both $n_3$ and $n_4$ are occupied because $S[i] = t$ or $t^\times$.

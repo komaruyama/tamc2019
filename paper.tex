@@ -17,7 +17,7 @@
 \usepackage{graphbox}
 \usepackage{wasysym}
 
-\usetikzlibrary{automata}
+\usetikzlibrary{automata,arrows}
 
 \usepackage{comment}
 
@@ -54,28 +54,154 @@ In particular, we look at oritatami systems, where the folding sequence consists
 	\section{Introduction}
 %------------------------------------------------------
 
-Transcription is the first essential step of gene expression, in which a DNA template sequence is copied into a complementary single stranded RNA sequence by a `copy machine' called RNA polymerase. 
-The RNA strand is synthesized letter by letter according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$ and folds up during a process called co-transcriptional folding.
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.6\linewidth}
+\includegraphics[width=\linewidth]{Fig/rna_origami.pdf}
+\end{minipage}
+\begin{minipage}{0.05\linewidth}
+\centering
+{\Large $\Rightarrow$}
+\end{minipage}
+\begin{minipage}{0.3\linewidth}
+\scalebox{0.3}{\begin{tikzpicture}
+\tikzstyle{mol} = [fill,circle,inner sep=2pt]
 
-In a recent breakthrough in molecular engineering by Geary, Rothemund and Andersen~\cite{GearyRothemundAndersen2014} the co-transcriptional folding of RNA is controlled by careful design of the DNA template. As demonstrated in laboratory, this method, called RNA Origami, makes it possible to build rectangles out of RNA strands. 
-Geary et al.~\cite{GeMeScSe2016} proposed a mathematical model for this process, called oritatami system.
-It has been just shown in \cite{GeMeScSe2018} that the model is efficiently Turing universal by simulating cyclic tag systems introduced by Cook~\cite{Cook2004}. 
+\draw[-triangle 90, very thick] (3, 0) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(60:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(0:1) node[mol] {}
+-- ++(240:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1) node[mol] {}
+-- ++(180:1)
+;
+
+\draw[dashed, very thick]
+(-5, 0) -- ++(120:1)
+(-4, 0) -- ++(120:1)
+(-3, 0) -- ++(120:3)
+(-2, 0) -- ++(120:3)
+(-1, 0) -- ++(120:5)
+(0, 0) -- ++(120:1) ++(120:1) -- ++(120:3)
+(1, 0) -- ++(120:1) ++(120:1) -- ++(120:3)
+(2, 0) -- ++(120:1) ++(120:1) -- ++(120:1) ++(120:1) -- ++(120:1)
+(3, 0) -- ++(120:1) ++(120:3) -- ++(120:1)
+(4, 0) -- ++(120:1) ++(120:1) -- ++(120:1) ++(120:1) -- ++(120:1)
+(5, 0) -- ++(120:3)
+(6, 0) -- ++(120:3) ++(120:1) -- ++(120:1)
+(7, 0) -- ++(120:5)
+(8, 0) ++(120:2) -- ++(120:3)
+(9, 0) ++(120:2) -- ++(120:3)
+(10, 0) ++(120:4) -- ++(120:1)
+(11, 0) ++(120:4) -- ++(120:1)
+(3, 0) -- ++(0:1)
+;
+
+\foreach \y in {3, 5} {
+\draw[dashed,very thick] (0, 0)++(60:\y) -- ++(300:1);	
+}
+
+\end{tikzpicture}}
+
+\end{minipage}
+\caption{
+(Left) RNA origami. 
+(Right) an abstraction of its product, i.e., an RNA tile, as a configuration of an oritatami system. A dot $\bullet$ in the figure on the right represents a sequence of 3-4 nucleotides, and the solid arrow and dashed lines represent its RNA transcript and interactions (respectively) based on hydrogen bonds between nucleotides.
+}
+\label{fig:rna_origami}
+\end{figure}
+
+Transcription is the first essential step of gene expression, in which a DNA template sequence is copied into a single stranded RNA sequence by a `molecular Xerox' called RNA polymerase, letter by letter according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$. 
+The copied RNA sequence is called \textit{transcript}. 
+The transcript starts folding upon itself into intricate structures immediately after it emerges from the polymerase, as illustrated in Fig.~\ref{fig:rna_origami} (Left). 
+
+
+
+In a recent breakthrough in molecular engineering by Geary, Rothemund and Andersen~\cite{GearyRothemundAndersen2014} the co-transcriptional folding of RNA is controlled by careful design of the DNA template. As demonstrated in laboratory, this method, called RNA Origami, makes it possible to cotranscriptionally self-assemble a unique RNA rectangular tile highly probably (see Fig.~\ref{fig:rna_origami} (Left)). 
+Geary et al.~\cite{GeMeScSe2016} proposed a mathematical model for this process, called oritatami system. 
+In this model, an RNA structure is abstracted as a directed path with information on hydrogen-based interaction (bonds) over the triangular grid graph $\mathbb{T}$ as illustrated in Fig.~\ref{fig:rna_origami}. 
+An oritatami system folds a transcript of abstract molecules (beads) of finite number of types over $\mathbb{T}$. 
+This model has been just proved efficiently Turing universal in \cite{GeMeScSe2018} by simulating cyclic tag systems introduced by Cook~\cite{Cook2004}. 
 The simulation involves a very large and complex oritatami system. 
-One future direction of research is to find smaller universal oritatami system.
-
-Closely related is the question of where not to look for universal systems, i.e., what are the limitations of simple oritatami system. 
-In search for simple oritatami systems, there are a number of restrictions one can pose on them:
-\begin{itemize}
-\item bounds on the delay, the number of bead types or the arity;
-\item bounds on the size of the primary structure or of the attraction rule set;
-\item structural conditions on the primary structure or the attraction rule set.
-\end{itemize}
-
-%Rogers and Seki~\cite{SimpleSim} showed that certain OS with small delays are not universal.
-
-%Han, Kim, Rogers and Seki\cite{SelfRemove} proved that it is possible to avoid self-attraction rules without changing the behavior of OS.
-
-In this paper we start a new line of study which concerns the alphabet size for the primary structure, i.e., the number of bead types.
+This system is deterministic in the sense that every bead is stabilized uniquely point-wise as well as interaction-wise (for the formal definition, see Sect.~\ref{sec:preliminaries}). 
+One future direction of research is to quest for a smaller Turing-universal oritatami system.
 
 \begin{figure}[tb]
 \begin{tikzpicture}
@@ -93,8 +219,8 @@ In this paper we start a new line of study which concerns the alphabet size for 
 
 %Results
 \node at (2, 4) {$3n(n+1)+1$};
-\node at (2, 3) {$O(n)$};
-\node at (2, 2) {$O(n^2)$};
+\node at (2, 3) {$4n+14$};
+\node at (2, 2) {$9n(3n+1)+1$};
 \node at (2, 1) {$10n$ \cite{DHOPRSST2018}};
 
 \node at (4, 1) {$O(n^2)$};
@@ -104,7 +230,16 @@ In this paper we start a new line of study which concerns the alphabet size for 
 \label{fig:summary}
 \end{figure}
 
-In \cite{DHOPRSST2018}, Demaine et al. proved that at delay 1 and arity 1, upon the seed of length $n$, a deterministic oritatami system cannot fold into any conformation strictly longer than $10n$. 
+
+Closely related is the question of where not to look for universal systems, i.e., what are the limitations of simple oritatami system. 
+In search for simple oritatami systems, there are a number of restrictions one can pose on them:
+\begin{itemize}
+\item bounds on the relative speed of transcription to folding (delay), the number of bead types, or the number of hydrogen bonds per bead (arity);
+\item bounds on the length of the transcript or on the complexity of rules to decide what types of beads interact with each other (attraction rules);
+\item structural conditions on the transcript or the attraction rules.
+\end{itemize}
+%
+In \cite{DHOPRSST2018}, Demaine et al. proved that at delay 1 and arity 1, upon an initial structure of $n$ beads, a deterministic oritatami system cannot fold into any conformation of more than $10n$ beads, no matter how many bead types are available. 
 We consider this finiteness problem for unary oritatami systems under various settings of the values of delay and arity, which is formalized as follows. 
 
 \begin{problem}\label{prob:det_unary_length}
@@ -117,9 +252,10 @@ Results on this problem are summarized in Fig.~\ref{fig:summary}.
 
 
 %------------------------------------------------------
-	\section{Preliminaries}
+	\section{Preliminaries}\label{sec:preliminaries}
 %------------------------------------------------------
-Let $\Sigma$ be a set of types of abstract molecules, or \textit{beads}. 
+
+Let $\Sigma$ be a finite set of types of abstract molecules, or \textit{beads}. 
 A bead of type $a \in \Sigma$ is called an $a$-bead. 
 By $\Sigma^*$ and $\Sigma^\omega$, we denote the set of finite sequences of beads and that of one-way infinite sequences of beads, respectively. 
 The empty sequence is denoted by $\lambda$. 
@@ -156,8 +292,8 @@ An \textit{oritatami system} (OS) $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$
 \item a rule set $R \subseteq \Sigma \times \Sigma$, 
 \item a positive integer $\delta$ called the \textit{delay}, 
 \item a positive integer $\alpha$ called the \textit{arity}, 
-\item an initial $R$-valid conformation $\sigma \in C_{\le \alpha}(\Sigma)$ called the \textit{seed}, upon which 
-\item its (possibly infinite) \textit{transcript} $w \in \Sigma^* \cup \Sigma^\omega$ is to be folded by stabilizing beads of $w$ one at a time so as to minimize energy collaboratively with the succeeding $\delta{-}1$ nascent beads. 
+\item an initial $R$-valid conformation $\sigma \in C_{\le \alpha}(\Sigma)$ called the \textit{seed}, whose first bead is assumed to be at the origin $O$ without loss of generality, 
+\item a (possibly infinite) \textit{transcript} $w \in \Sigma^* \cup \Sigma^\omega$, which is to be folded upon the seed by stabilizing beads of $w$ one at a time so as to minimize energy collaboratively with the succeeding $\delta{-}1$ nascent beads. 
 \end{itemize}
 The energy of a conformation $C = (P, w, H)$, denoted by $\Delta G(C)$, is defined to be ${-}|H|$; the more bonds a conformation has, the more stable it gets. 
 The set $\mathcal{F}(\Xi)$ of conformations \textit{foldable} by the system $\Xi$ is recursively defined as: the seed $\sigma$ is in $\mathcal{F}(\Xi)$; and provided that an elongation $C_i$ of $\sigma$ by the prefix $w[1..i]$ be foldable (i.e., $C_0 = \sigma$), its further elongation $C_{i+1}$ by the next bead $w[i+1]$ is foldable if 
@@ -179,17 +315,12 @@ A conformation foldable by $\Xi$ is \textit{terminal} if none of its elongations
 The oritatami system $\Xi$ is \textit{deterministic} if for all $i \ge 0$, there exists at most one $C_{i+1}$ that satisfies \eqref{eq:OS_CF}. 
 A deterministic oritatami system folds into a unique terminal conformation. 
 An oritatami system with the empty rule set just folds into an arbitrary elongation of its seed nondeterministically. 
-Thus, the rule set is always assumed to be non-empty. 
+Thus, the rule set is reasonably assumed non-empty. 
 
 In this paper, we considerably focus on the unary oritatami system. 
-An oritatami system is \textit{unary} if its bead type set $\Sigma$ is of size 1. 
-Its sole bead type is denoted by $a$, that is, $\Sigma = \{a\}$. 
-Its only possible rule is $(a, a)$ so that the non-empty rule set assumption implies that its rule set is $R = \{(a, a)\}$. 
-Its transcript is a sequence of $a$-beads. 
-That is to say, the behavior of a unary oritatami system is fully determined by the delay, arity, and seed. 
-
-
-
+An oritatami system is \textit{unary} if it involves only one type of bead, say $a$, that is, $\Sigma = \{a\}$. 
+Its rule set is $R = \{(a, a)\}$. 
+Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it. 
 
 
 \begin{proposition}\label{prop:check_validity}
