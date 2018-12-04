@@ -104,6 +104,18 @@ In this paper we start a new line of study which concerns the alphabet size for 
 \label{fig:summary}
 \end{figure}
 
+In \cite{DHOPRSST2018}, Demaine et al. proved that at delay 1 and arity 1, upon the seed of length $n$, a deterministic oritatami system cannot fold into any conformation strictly longer than $10n$. 
+We consider this finiteness problem for unary oritatami systems under various settings of the values of delay and arity, which is formalized as follows. 
+
+\begin{problem}\label{prob:det_unary_length}
+Give an upper bound on the length of a transcript of a delay-$\delta$, arity-$\alpha$ deterministic unary oritatami system whose seed is of length $n$ by a function in $\delta$, $\alpha$, and $n$. 
+\end{problem}
+
+
+
+Results on this problem are summarized in Fig.~\ref{fig:summary}. 
+
+
 %------------------------------------------------------
 	\section{Preliminaries}
 %------------------------------------------------------
@@ -222,21 +234,6 @@ That is to say, the behavior of a unary oritatami system is fully determined by 
 %If the transcript length is polynomially bounded by the seed length, than the accepted language is in $\mathrm{P}$. 
 
 Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \mathrm{EXP}$, so we can conclude that OS which cannot deterministically fold transcripts of length exponential in the length of the seed are not computationally universal.
-
-%-------------------------------------------------------
-	\section{Problem description}
-%-------------------------------------------------------
-
-In \cite{DHOPRSST2018}, Demaine et al. proved that at delay 1 and arity 1, upon the seed of length $n$, a deterministic oritatami system cannot fold into any conformation strictly longer than $10n$. 
-We consider this finiteness problem for unary oritatami systems under various settings of the values of delay and arity, which is formalized as follows. 
-
-\begin{problem}\label{prob:det_unary_length}
-Give an upper bound on the length of a transcript of a delay-$\delta$, arity-$\alpha$ deterministic unary oritatami system whose seed is of length $n$ by a function in $\delta$, $\alpha$, and $n$. 
-\end{problem}
-
-
-
-Results on this problem are summarized in Fig.~\ref{fig:summary}. 
 
 
 \section{Case of arity $1$}
