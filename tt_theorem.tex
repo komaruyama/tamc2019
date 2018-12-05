@@ -477,8 +477,8 @@ However, then a bead at $p_4$ would be provided with a free hand, a contradictio
 
 	\node[above] at (180:1) {$p_1$};
 	\node[left] at (-120:1) {$p_2$};
-	\node[left] at (-60:1) {$p_3$};
 	\node[left, shift=(-120:1)] at (-60:1) {$p_3$};
+	\node[right] at (-60:1) {$p_4$};
 
 	\draw (180:1) circle [radius=0.05];
 	\draw (-120:1) circle [radius=0.05];
@@ -515,7 +515,7 @@ Now let us verify the claim.
 Suppose $w[i]$ were stabilized by just one bond. 
 There are three cases to be considered as depicted in Fig.~\ref{TTT_a3_w}, depending on the relative position of $w[i]$ to $w[i-2]$ and $w[i-1]$. 
 Since $S[i] = b$, at least one of the four neighbors of $w[i-1]$ must be empty. 
-If $w_3$ is free, then $w[i-2]$ must have used up all of its hands; otherwise, $w[i]$ would be stabilized also at $n_3$ nondeterministically, a contradiction. 
+If $n_3$ is free, then $w[i-2]$ must have used up all of its hands; otherwise, $w[i]$ would be stabilized also at $n_3$ nondeterministically, a contradiction. 
 Thus, $\alpha + 2 = 5$ neighbors of $w[i-2]$, that is, all of its neighbors, must be occupied. 
 Hence, $n_5$ is occupied. 
 (All the remaining arguments are based on this ``merry-go-round'' occupation. This works only if the circle of radius 2 around $w[i-1]$ is free from the singular bead). 
@@ -543,7 +543,7 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
  \centering
     \begin{tikzpicture}
       \draw[white] (60:2) circle [radius=0.05];
-      \node[above, white] at (60:2) {$n_adj$};
+      \node[right, white] at (60:2) {$n_{adj}$};
       
       \fill[shift=(180:1)] (0,0) circle [radius=0.1];
       \fill[shift=(180:0)] (0,0) circle [radius=0.1];
@@ -574,7 +574,7 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
     \begin{minipage}{0.3\hsize}
     \centering
      \begin{tikzpicture}
-      
+	\node[right, shift=(60:1), white] at (60:1) {$n_{adj}$};
       \fill[shift=(180:1)] (0,0) circle [radius=0.1];
       \fill[shift=(180:0)] (0,0) circle [radius=0.1];
       
@@ -601,8 +601,6 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
 	\node[above] at (120:1) {$n_3$};
 	\node[below] at (-120:1) {$n_4$};
 	\node[above, shift=(60:1)] at (0:1) {$n_{-1}$};
-	\node[above, shift=(60:1)] at (60:1) {$n_{-2}$};
-	\node[above, shift=(60:1)] at (120:1) {$n_{-3}$};
 	\node[below, shift=(180:1)] at (-120:1) {$n_5$};
     \end{tikzpicture}
     \end{minipage}
@@ -632,12 +630,10 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
 	\draw [shift=(120:1), shift=(180:1)] (0:0) circle [radius=0.05];
 	
  	\node[right] at (0:1) {$n_0$};
-	\node[above] at (60:1) {$n_1$};
+	\node[right] at (60:1) {$n_1$};
 	\node[below] at (-60:1) {$n_2$};
 	\node[below] at (-120:1) {$n_4$};
-	\node[above, shift=(120:1)] at (60:1) {$n_{-1}$};
-	\node[above, shift=(120:1)] at (120:1) {$n_{-2}$};
-	\node[above, shift=(120:1)] at (180:1) {$n_{-3}$};
+	\node[right, shift=(120:1)] at (60:1) {$n_{-1}$};
     \end{tikzpicture}
     \end{minipage}
     \end{tabular}
