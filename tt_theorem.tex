@@ -6,9 +6,12 @@
 Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$. The following statements hold.
 \begin{enumerate}
 \item At arity $\alpha \geq 3$, if $S[i] = t$ (i.e. the tunnel that stabilizes $w[i]$ is not singular) and $S[i+1] \neq \blacksquare$, then $\#bc(C_{i-1}) > \#bc(C_i)$.
-\item At arity $\alpha = 2$, if $n$ is the number of $bt$ in $S[i..j]$ for some $i,j$ such that $S[i] = b$ and $i < j$, then $\#bc(C_{i-2}) - \#bc(C_{j}) \geq n$.
+\item At arity $\alpha = 2$, if $m$ is the number of occurrences of $bt$ as a factor in $S[1..k]$ for an index $k$, then $\#bc(C_{0}) - m \geq \#bc(C_{k})$.
 \end{enumerate}
 \end{theorem}
+
+In order to prove this Tunnel Troll Theorem, we use the following three lemmas.
+%Let us introduce some lemmas for proving Tunnel Troll Theorem.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -272,22 +275,22 @@ Let $\Xi$ be a deterministic unary oritatami system of delay $\delta = 1$, arity
 If $S[i+2] = t_a$, the following statements hold.
 \begin{enumerate}
 \item If $w[i]$ forms at least one bond, $\#bc(C_{i-1}) > \#bc(C_{i+2})$.
-\item If $w[i]$ does not consumes any bond and $S[i] \in \{t_s, t_o \}$, $\#bc(C_{i-2}) > \#bc(C_{i+2})$.
-\item If $w[i]$ does not consumes any bond and $S[i] = t_a$, $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
+\item If $w[i]$ does not consume any bond and $S[i] \in \{t_s, t_o \}$, $\#bc(C_{i-2}) > \#bc(C_{i+2})$.
+\item If $w[i]$ does not consume any bond and $S[i] = t_a$, $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
 \end{enumerate}
 %If there are indices $i,j$ such that $S[i..j+1]$ is either $bbt^{(j-i-1)}b$ and $S[i+2] = t_a$ or $bt^\ell bt^{j-i-1-\ell}b$ for some $\ell$ and $S[i+l+2] = t_a$, then $\#bc(C_{i-1}) > \#bc(C_j)$.
 \end{lemma}
 
 \begin{proof}
 
-	We consider each statements. First we prove statement 1.
-	The bead $w[i+1]$ consumes one hand and provide nothing.
+	We consider each statement. First we prove Statement 1.
+	The bead $w[i+1]$ consumes one hand and provides nothing.
 	If $w[i]$ forms two bonds, then even if $w[i+2]$ provides two free hands, $\#bc(C_{i-1}) > \#bc(C_{i+2})$.
 	On the other hand, if it leaves a free hand, it will be used by $w[i+2]$, and hence, $w[i+2]$ does not increase the binding capability.
 	Thus, $\#bc(C_{i-1}) > \#bc(C_{i+2})$.
 	This argument actually work also for the case when $w[i]$ is stabilized rather by binding.
 	
-	Next we prove statement 2.
+	Let us proceed to Statement 2.
 	See Fig.~\ref{TTT_tunnelC_enter_usingBond}.
 	Consider the case when $w[i]$ is stabilized by a tunnel section of type $S$ or $O$.
 	As prove in Lemma~\ref{TTT_exit}, $\#bc(C_{i-2}) \geq \#bc(C_{i})$.%the increase of binding capability by $w[i-1]$ and $w[i]$ is at most 0.
@@ -295,20 +298,25 @@ If $S[i+2] = t_a$, the following statements hold.
 	Thus, $\#bc(C_{i-2}) > \#bc(C_{i+2})$.
 	This argument actually work also for the case when $w[i]$ is stabilized rather by binding.
 	
-	Finally, we prove statement 3.
-	Consider the case when $w[i]$ is stabilized by a tunnel section of type $A$ and $w[i]$ does not consumes any bond.
-	Then, $w[i-2]$ must consume two bonds; otherwise $w[i-2]$'s hands is used by $w[i]$.
-	The bead $w[i-1]$ consumes one hand and provide nothing.
+	Finally, we prove Statement 3.
+	%Consider the case when $w[i]$ is stabilized by a tunnel section of type $A$ and $w[i]$ does not consumes any bond.
+	In order for $w[i]$ not to bind, $w[i-2]$ must have already used up its hands.
+	% The bead $w[i-2]$ must consume two bonds ; otherwise $w[i-2]$'s hands is used by $w[i]$.
+	The bead $w[i-1]$ consumes one hand and provides nothing.
 	Thus,  $\#bc(C_{i-3}) - 1 \geq \#bc(C_{i})$.
-	Moreover, the bead $w[i+1]$ consumes one hand and provide nothing and $w[i]$'s hands is used by $w[i+2]$, and hence, $w[i+2]$ does not increase the binding capability.
-	Therefore, $\#bc(C_{i-3}) > \#bc(C_{i+2})$.
-	This argument actually work also for the case when $w[i]$ is stabilized rather by binding.
+	The bead $w[i+1]$ consumes one hand and provides nothing.
+	Finally, $w[i+2]$ uses one hand of $w[i]$, and hence, does not increase the binding capability.
+	Therefore, $\#bc(C_{i-3}) -2 \geq \#bc(C_{i+2})$.
+	This argument actually works also for the case when $w[i]$ is stabilized rather by binding. \qed
 \end{proof}
 
 \begin{figure}[tb]
   \begin{center}
+  \begin{tabular} {c c}
+  \begin{minipage}{0.48\hsize}
+  \centering
         \begin{tikzpicture}
-        \draw[->,white] (-70:0.1) -- (-70:3);
+        \draw[->, white, shift=(180:1), shift=(120:1)] (120:0.9) -- (120:0.1);
           \foreach \theta in {60,-60,120,0}{
             \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
           }
@@ -330,13 +338,51 @@ If $S[i+2] = t_a$, the following statements hold.
 
           \begin{scope}[shift=(-120:1)]
             \fill[blue](0,0) circle [radius=0.05];
-            \foreach \theta in {-120,-60,180}{
-              \draw[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.05];
-            }
             
           \end{scope}
         \end{tikzpicture}
-    \caption{Case of $S[i+2] = t_a$.}
+
+	\end{minipage}
+	
+	\begin{minipage}{0.48\hsize}     
+        \begin{tikzpicture}
+         \draw[->, white, shift=(180:1), shift=(120:1)] (120:0.9) -- (120:0.1);
+          \foreach \theta in {60,-60,120,0}{
+            \fill[transform canvas={shift=(\theta:1)}](0,0) circle [radius=0.1];
+          }
+          
+          \foreach \theta in {60,60,120,180}{
+            \fill[transform canvas={shift=(\theta:1)}, shift=(180:1)](120:1) circle [radius=0.1];
+          }
+
+          \fill[blue](180:1) circle [radius=0.05];
+          \fill[blue](0:0) circle [radius=0.05];
+          \fill[blue, shift=(180:1), shift=(120:1)](0:0) circle [radius=0.05];
+          \fill[blue, shift=(180:1), shift=(120:1)](-120:1) circle [radius=0.05];
+
+          
+          \draw[->, blue] (180:0.9) -- (180:0.1);
+          \draw[->, blue] (-120:0.1) -- (-120:0.9);
+          \draw[->, blue, shift=(180:1), shift=(120:1)] (-60:0.1) -- (-60:0.9);
+           \draw[->, blue, shift=(180:1), shift=(120:1)] (-120:0.9) -- (-120:0.1);
+
+          \node[below] at (180:1) {$w[i]$};
+          \node[above] at (0:0) {$w[i+1]$};
+          \node[below] at (-120:1) {$w[i+2]$};
+          \node[below left] at (-180:2) {$w[i-2]$};
+
+          \node[right] at (120:1) {$n_3$};
+          \node[right] at (60:1) {$n_2$};
+          \node[right] at (0:1) {$n_1$};
+
+          \begin{scope}[shift=(-120:1)]
+            \fill[blue](0,0) circle [radius=0.05];
+            
+          \end{scope}
+        \end{tikzpicture}
+        \end{minipage}
+        \end{tabular}
+    \caption{Case of $S[i] = t_a$ and $S[i+2] = t_a$: (Right) Moreover $w[i]$ does not consume any bond.}
     \label{TTT_tunnelC_enter_usingBond}
   \end{center}
 \end{figure}
@@ -375,21 +421,21 @@ Before the stabilization of $w[i]$, such a bead had two free neighbors, and henc
 Thus, $w[i]$ is to be bonded to these two beads, and it decreases the binding capability by at least 1. 
 It now suffices to check that this assumption holds no matter how $n_0, n_1, n_2$ are occupied as long as at least one of them is left free. 
 
-Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there are an indices $i$ ,$j$ such that $S[i+1..j+1] = bt^{(j-i-1)}b$ and all $S[i+2..j]$ are  $ t_s$ or  $t_o$.
-According to Lemma~\ref{TTT_entrance_Tab}, $\#bc(C_{i-1}) > \#bc(C_{i})$ and moreover that, according to Lemma~\ref{TTT_exit}, $\#bc(C_{i}) \geq \#bc(C_{j})$.
-Thus, binding capability of the conformation decrease per a subsequence $bt_s$ or $bt_o$.
+Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there are indices $i$, $j$ such that $S[i+1..j+1] = bt^{(j-i-1)}b$.
+If $S[i+2]$ is $ t_s$ or  $t_o$, then Lemma~\ref{TTT_entrance_Tab} implies $\#bc(C_{i-1}) > \#bc(C_{i})$ and  Lemma~\ref{TTT_exit} implies $\#bc(C_{i}) \geq \#bc(C_{j})$.
+Thus, binding capability decreases by 1 per a factor $bt_s$ or $bt_o$.
 
-On the other hand, we assume there are an indices $i$ ,$j$ such that $S[i+1..j+1] = bt^{(j-i-1)}b$ and there is a element of $S[i+2..j]$ such that it is $t_a$.
-All $S[i+3..j]$ do not contain $t_o$; otherwise $S[i+4..j+1]$ contain $\blacksquare$.
-Therefore, $S[i+2] = t_a$.
-According to Lemma~\ref{TTT_exit}, on statement 1, 2, $\#bc(C_{i-2}) > \#bc(C_{i+2})$ and if $i \leq j - 3$, $\#bc(C_{i+2}) \geq \#bc(C_{j})$.
+Now, we assume $S[i+2] = t_a$.
+%All $S[i+3..j]$ do not contain $t_a$; otherwise $S[i+4..j+1]$ contain $\blacksquare$.
+%Therefore, $S[i+2] = t_a$.
+According to Lemma~\ref{TTT_tunnelC_lemma}, on statement 1, 2, $\#bc(C_{i-2}) > \#bc(C_{i+2})$ and if $i \leq j - 3$, $\#bc(C_{i+2}) \geq \#bc(C_{j})$.
 Thus, binding capability of the conformation decrease per a subsequence $bt_a$ unless $w[i]$ does not consumes any bond.
 If $w[i]$ does not consumes any bond and $S[i] = t_a$, that is, $S[i-1..i+2] = bt_abt_a$, then $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
 In this case, two subsequences of $bt_a$ collaborate decreasing binding capability but eventually, two subsequences decrease two bond.
 That is, one subsequence decrease binding capability.
 
 
-Hence, if $S[i..j]$ contain n's subsequences of $bt$, $\#bc(C_{i-2}) - \#bc(C_{j}) \geq n$
+Hence, if $S[i..j]$ contain n's subsequences of $bt$, $\#bc(C_{i-2}) - n \geq \#bc(C_{j})$
 \qed
 
 
