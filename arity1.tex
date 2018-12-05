@@ -213,44 +213,44 @@ Case 2.(a) gives the same upper bound as case 1. Cases 2.(b)-(c) give the smalle
 \begin{proof}
 We will argue similarly to the $\delta=2$ case: when we stabilize beads outside $\hexagon_p^n$, we can only do so at points right next to one of the sides and even there only until we reach a corner. This yields the upper bound immediately.
 
-As before, let us assume that the last bead stabilized within $\hexagon_p^n$ is at point $(0,0)$ and the next bead is the first to be stabilized outside $\hexagon_p^n$ at point $(1,1)$. Depending on whether bead $i-1$ at point (0,0) has a free hand to form a bond or not, we distinguish two cases.
+As before, let us assume that the last bead stabilized within $\hexagon_p^n$ is at point $(0,0)$ and the next bead is the first to be stabilized outside $\hexagon_p^n$ at point $(1,1)$. Depending on whether bead $i-1$ at point (0,0) has a free hand to form a bond or not, we distinguish two cases.\\
 %\begin{enumerate}
-\noindent\textbf{Case 1.}  Bead $i-1$ at (0,0) has a free hand.\\ If the most stable conformation formed by beads $i, i+1, i+2$ adds only two  bonds, it will be nondeterministic because there are at least two possibilities, see Fig.~\ref{fig:beadi}. Therefore, it needs to make three new bonds to deterministically stabilize $i$.\\
+\noindent\textbf{Case 1.}  Bead $i-1$ at (0,0) has a free hand.\\ If the most stable conformation formed by beads $i, i+1, i+2$ adds only two  bonds, it will be nondeterministic because there are at least two possibilities (see Fig.~\ref{fig:beadi2}, except it starts from (0,0) not (1,1)). Therefore, it needs to make three new bonds to deterministically stabilize $i$.\\
 
-\begin{figure}
-  \begin{center}
-    \begin{tabular}{cc}
-      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
-        \fill (0.0, 0.0) circle [radius = 0.1];
-        \fill (0.5, 0.866) circle [radius = 0.1];
-        \fill (-0.5, 0.866) circle [radius = 0.1];
-        \fill (0.0, 1.732) circle [radius = 0.1];
-        \fill (0.0, 0.0) node [below] {$(0, 0)$};
-        \draw (0.0, 0.0) -- (0.5, 0.866);
-        \draw (0.5, 0.866) -- (-0.5, 0.866);
-        \draw (0.0, 1.732) -- (-0.5, 0.866);
-        \draw [dashed] [red] (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 0.0) -- (-0.5, 0.866);
-      \end{tikzpicture}
-
-      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
-        \fill (0.0, 0.0) circle [radius = 0.1];
-        \fill (-0.5, 0.866) circle [radius = 0.1];
-        \fill (0.5, 0.866) circle [radius = 0.1];
-        \fill (0.0, 1.732) circle [radius = 0.1];
-        \fill (0.0, 0.0) node [below] {$(0, 0)$};
-        \draw (0.0, 0.0) -- (-0.5, 0.866);
-        \draw (-0.5, 0.866) -- (0.5, 0.866);
-        \draw (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 0.0) -- (0.5, 0.866);
-        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
-      \end{tikzpicture}
-
-    \end{tabular}
-    \caption{Two conformations when bead $i-1$ at (0,0) has a free hand}
-    \label{fig:beadi}
-  \end{center}
-\end{figure}
+%\begin{figure}
+%  \begin{center}
+%    \begin{tabular}{cc}
+%      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+%        \fill (0.0, 0.0) circle [radius = 0.1];
+%        \fill (0.5, 0.866) circle [radius = 0.1];
+%        \fill (-0.5, 0.866) circle [radius = 0.1];
+%        \fill (0.0, 1.732) circle [radius = 0.1];
+%        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+%        \draw (0.0, 0.0) -- (0.5, 0.866);
+%        \draw (0.5, 0.866) -- (-0.5, 0.866);
+%        \draw (0.0, 1.732) -- (-0.5, 0.866);
+%        \draw [dashed] [red] (0.0, 1.732) -- (0.5, 0.866);
+%        \draw [dashed] [red] (0.0, 0.0) -- (-0.5, 0.866);
+%      \end{tikzpicture}
+%
+%      \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
+%        \fill (0.0, 0.0) circle [radius = 0.1];
+%        \fill (-0.5, 0.866) circle [radius = 0.1];
+%        \fill (0.5, 0.866) circle [radius = 0.1];
+%        \fill (0.0, 1.732) circle [radius = 0.1];
+%        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+%        \draw (0.0, 0.0) -- (-0.5, 0.866);
+%        \draw (-0.5, 0.866) -- (0.5, 0.866);
+%        \draw (0.0, 1.732) -- (0.5, 0.866);
+%        \draw [dashed] [red] (0.0, 0.0) -- (0.5, 0.866);
+%        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
+%      \end{tikzpicture}
+%
+%    \end{tabular}
+%    \caption{Two conformations when bead $i-1$ at (0,0) has a free hand}
+%    \label{fig:beadi}
+%  \end{center}
+%\end{figure}
 
 
 
@@ -351,7 +351,7 @@ As before, let us assume that the last bead stabilized within $\hexagon_p^n$ is 
       \end{tikzpicture}\\
 
     \end{tabular}
-    \caption{When beads $i, i+1, i+2$ make three hydrogen bonds \newline (c) there is an inactive bead at (-1,0). \newline (d) there is no bead at (-1,0).}
+    \caption{When beads $i, i+1, i+2$ make three hydrogen bonds (c) there is an inactive bead at (-1,0).  (d) there is no bead at (-1,0).}
     \label{fig:3bonds}
   \end{center}
 \end{figure}
@@ -539,8 +539,7 @@ There are five possible cases in which beads $i, i+1, i+2$ can add three bonds, 
   \end{center}
 \end{figure}
 
-%\end{enumerate}
-
+\qed
 \end{proof}
 
 We have shown that at $\alpha=1$ and  $\delta\in\{2,3\}$, unary oritatami systems can only fold finite length transcripts deterministically, and the length of that transcript is bounded by the size of the regular hexagon of radius $n$ plus the length of one side of the surrounding hexagon. This gives us the upper bound $|\hexagon_p^{n}|+(n+1)=3n^2+4n+2$,  where $n$ is the length of the seed, concluding the proof of Theorem~\ref{thm:d23a1}.
