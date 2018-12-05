@@ -50,7 +50,7 @@ Row $1$ is of length $4k-1$ and row $\ell+1$ is two beads shorter than row $\ell
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{./Fig/CI_Numbers}
+	\includegraphics[width=0.8\linewidth]{./Fig/CI_Numbers}
 	\caption{Quadratic length transcript folding deterministically into pyramid shape. Seed: thick black path. Transcript: thin blue path. Bonds: dashed red lines. }
 	\label{CI:big}
 \end{figure}
@@ -133,7 +133,12 @@ By the arguments above, the beads in row $i$ of the transcript are stabilized al
 \subsection{$\alpha = 1$, unary}
 \label{sec:unary}
 
-Let the point where the first transcript bead was fixed be $p$ and let $n=|\mathrm{seed}|+1$. We will argue about the situation when the first bead is stabilized outside $\hexagon_p^n$ (a hexagon of radius $n$). Let this be the $i$th bead of the transcript. Without loss of generality, we can translate the origin $(0,0)$ to the coordinates of bead $i-1$ (which is still in $\hexagon_p^n$), and we can assume that the bead outside the hexagon is fixed at $(1,1)$ (see Fig.~\ref{fig:hexagonOut}).
+In subsections~\ref{sec:unary}.1 and \ref{sec:unary}.2, we will argue that unary systems at arity $1$ and delay $2$ and $3$, respectively, cannot fold infinite transcripts deterministically. As we will see, in fact, the length of transcripts deterministically foldable by these systems has an upper bound quadratic in the length of the seed. The main result is the following theorem, which is a direct consequence of Lemma x and Lemma y from the next two subsections.
+\begin{theorem}[$\delta\in\{ 2,3\}, \alpha = 1$]\label{thm:d23a1}
+	Let $\Xi$ be a unary oritatami system of $\delta \in \{2,3\}$ and $\alpha = 1$. Starting with a seed of length $n$, $\Xi$ can yield only finite structures of size at most $3n^2+4n+2$.
+\end{theorem}
+
+Let us fix some common starting points for the next two subsections. Let the point where the first transcript bead was fixed be $p$ and let $n=|\mathrm{seed}|+1$. We will argue about the situation when the first bead is stabilized outside $\hexagon_p^n$ (a hexagon of radius $n$). Let this be the $i$th bead of the transcript. Without loss of generality, we can translate the origin $(0,0)$ to the coordinates of bead $i-1$ (which is still in $\hexagon_p^n$), and we can assume that bead $i$ is fixed at $(1,1)$ (see Fig.~\ref{fig:hexagonOut}).
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\linewidth]{./Fig/hexagonOut}
@@ -142,11 +147,16 @@ Let the point where the first transcript bead was fixed be $p$ and let $n=|\math
 \end{figure}
 
 \subsubsection{\ref{sec:unary}.1 \ \ $\delta = 2$\\}
+\begin{lemma}[$\delta=2, \alpha =1$]\label{lem:d2a1}
+	Let $\Xi$ be a unary oritatami system of $\delta=2$ and $\alpha = 1$. Starting with a seed of length $n$, $\Xi$ can yield only finite structures of size at most $3n^2+4n+2$.
+\end{lemma}
+\begin{proof}
+
 
 In the elongation that places bead $i$ at $(1,1)$ there are two possibilities:
 \begin{itemize}
 	\item $i$ forms a bond with a bead at $(1,0)$.
-	\item  $i$ does not bond to anything and $i+1$ is at $(2,1)$ bonding with a bead at $(2,0)$. If there is no bead at $(1,0)$, then placing $i$ at $(1,0)$ instead of $(1,1)$ results in the same number of bonds, leading to nondeterminism. Therefore, there has to be a bead at $(1,0)$ and it is inactive, otherwise it would bond to $i$. This is analogous to case 1. below.%as in Fig.~\ref{fig:hexagonOut1}.
+	\item  $i$ does not bond to anything and $i+1$ is at $(2,1)$ bonding with a bead at $(2,0)$. If there is no bead at $(1,0)$, then placing $i$ at $(1,0)$ instead of $(1,1)$ results in the same number of bonds, leading to nondeterminism. Therefore, there has to be a bead at $(1,0)$ and it is inactive, otherwise it would bond to $i$. This is analogous to case 1. below, with the only difference being that the bond between (1,1) and (1,0) is missing.%as in Fig.~\ref{fig:hexagonOut1}.
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.2\linewidth]{./Fig/hexagonOut1}
@@ -157,22 +167,21 @@ In the elongation that places bead $i$ at $(1,1)$ there are two possibilities:
 \end{itemize}
  
 %The only position with which $(1,1)$ can form a bond is $(1,0)$. This means that there is a bead at $(1,0)$, which bonds to bead $i$, otherwise there are other conformations in which beads $i$ and $i+1$ add one bond to the conformation, making the behavior nondeterministic.
-
-The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibilities result in nondeterministic behavior immediately, so we have two cases.
+Because of the above, we need only consider the case when $i$ binds to a bead at (1,0). The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibilities result in nondeterministic behavior immediately, so we have two cases.
 
 \begin{enumerate}
-	\item bead $i+1$ is fixed at $(2,1)$ and can bond with a bead at $(2,0)$. Now consider bead $i+2$. For $i+1$ to be fixed at $(2,1)$, $i+2$ needs to form a bond somewhere, otherwise $i+2$ could go to $(2,1)$ forming the bond with the bead at $(2,0)$ and there would be two conformations with the maximal $1$ bond. The only possibility is that there is a bead at $(3,0)$ and $i+2$ can bond with it when placed at $(3,1)$. We can apply the same argument inductively: there is some $m\geq 0$ such that grid points $(\ell,0)$ are occupied by active beads, for all $\ell\in \{2,\dots,2+m\}$, and there is no bead at $(3+m,0)$. Such an $m$ exists, and it is not greater than $n$. Then, bead $i+\ell$ is fixed at $(\ell+1,1)$ and bonds with $(\ell+1,0)$. However, bead $i+2+m$ cannot be fixed anywhere, because $i+2+m$ and $i+3+m$ can only add one bond to the conformation, and that is possible either with $i+2+m \rightarrow (2+m,1)$, $i+3+m \rightarrow (3+m,1)$ or with $i+2+m \rightarrow (2+m,2)$, $i+3+m \rightarrow (2+m,1)$. 
-	\begin{figure}
+	\item bead $i+1$ is fixed at $(2,1)$ and can bond with a bead at $(2,0)$ (see Fig.~\ref{fig:hexagonOut2}). Now consider bead $i+2$. For $i+1$ to be fixed at $(2,1)$, $i+2$ needs to form a bond somewhere, otherwise $i+2$ could go to $(2,1)$ forming the bond with the bead at $(2,0)$ and there would be two conformations with the maximal $1$ bond. The only possibility is that there is a bead at $(3,0)$ and $i+2$ can bond with it when placed at $(3,1)$. We can apply the same argument inductively: there is some $m\geq 0$ such that grid points $(\ell,0)$ are occupied by beads with free hands, for all $\ell\in \{2,\dots,2+m\}$, and there is no bead at $(3+m,0)$. Such an $m$ exists, and it is not greater than $n$, because those beads are all stabilized along the same side of $\hexagon_p^n$. Then, bead $i+\ell$ is fixed at $(\ell+1,1)$ and bonds with $(\ell+1,0)$. However, bead $i+2+m$ cannot be fixed anywhere, because $i+2+m$ and $i+3+m$ can only add one bond to the conformation, and that is possible either with $i+2+m \rightarrow (2+m,1)$, $i+3+m \rightarrow (3+m,1)$ or with $i+2+m \rightarrow (2+m,2)$, $i+3+m \rightarrow (2+m,1)$. Intuitively, when we reach a corner of the hexagon $\hexagon_p^n$, the next bead of the transcript cannot deterministically stabilize, as depicted in Fig.~\ref{fig:hexagonOut2}. In this case, the size of the transcript which was deterministically stabilized is bounded by the size of $\hexagon_p^n$ plus the length of one side of $\hexagon_p^{n+1}$, so by $(3n^2+3n+1)+(n+1)=3n^2+4n+2$.
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.9\linewidth]{./Fig/hexagonOut2}
 		\caption{When bead $i+2+m$ is fixed}
-		\label{fig:hexagonout2}
+		\label{fig:hexagonOut2}
 	\end{figure}
 	
 	\item bead $i+1$ is fixed at $(0,1)$. This is only possible if
 	\begin{enumerate}
-		\item there is an inactive bead at $(-1,0)$ and an active one at $(-2,0)$. This case is symmetrical to (1).
-		\item there is no bead at $(-1,0)$, bead $i+1$ can bond with bead $i-1$ at $(0,0)$ and the bead $i+2$ can be placed at $(-1,0)$ where it can bond with $(-2,0)$, $(-2,-1)$ or $(-1,-1)$. This leads to nondeterminism, because bead $i$ at $(-1,0)$ and bead $i+1$ at $(0,1)$ has two bonds, just as the original conformation.
+		\item there is an inactive bead at $(-1,0)$ and one with a free hand one at $(-2,0)$. This case is symmetrical to (1).
+		\item there is no bead at $(-1,0)$, bead $i+1$ can bond with bead $i-1$ at $(0,0)$ and the bead $i+2$ can be placed at $(-1,0)$ where it can bond with $(-2,0)$, $(-2,-1)$ or $(-1,-1)$. This leads to nondeterminism, because placing bead $i$ at $(-1,0)$ and bead $i+1$ at $(0,1)$ would yield two bonds, just as the original conformation.
 		\item there is a bead at $(-1,0)$ and bead $i+1$ can bond with that or with bead $i-1$ at $(0,0)$. However, this means that placing bead $i$ at $(0,1)$ at bead $i+1$ at $(1,1)$ creates the same number of hydrogen bonds, thus resulting in bead $i$ not being placed deterministically.
 		
 	\end{enumerate}
@@ -188,11 +197,20 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 	\includegraphics[width=0.8\linewidth]{./Fig/hexagonOut3n}
 	
 	\caption{When bead $i+1$ is fixed at (0,1)}
-	\label{fig:hexagonOut2}
+	\label{fig:hexagonOut3}
 \end{figure}
 
+Case 2.(a) gives the same upper bound as case 1. Cases 2.(b)-(c) give the smaller upper bound $|\hexagon_p^n|+1$, thereby concluding the proof.
+\end{proof}
 
 \subsubsection{\ref{sec:unary}.2 \ \ $\delta = 3$\\}
+
+\begin{lemma}[$\delta=3, \alpha =1$]\label{lem:d3a1}
+	Let $\Xi$ be a unary oritatami system of $\delta=3$ and $\alpha = 1$. Starting with a seed of length $n$, $\Xi$ can yield only finite structures of size at most $3n^2+4n+2$.
+\end{lemma}
+\begin{proof}
+We will argue similarly to the $\delta=2$ case: when we stabilize beads outside $\hexagon_p^n$, we can only do so at points right next to one of the sides and even there only until we reach a corner. This yields the upper bound immediately.
+
 As before, let us assume that the last bead stabilized within $\hexagon_p^n$ is at point $(0,0)$ and the next bead is the first to be stabilized outside $\hexagon_p^n$ at point $(1,1)$. Depending on whether bead $i-1$ at point (0,0) has a free hand to form a bond or not, we distinguish two cases.
 \begin{enumerate}
 \item  Bead $i-1$ at (0,0) has a free hand.\\ If the most stable conformation formed by beads $i, i+1, i+2$ adds only two  bonds, it will be nondeterministic because there are at least two possibilities, see Fig.~\ref{fig:beadi}. Therefore, it needs to make three new bonds to deterministically stabilize $i$.\\
@@ -482,4 +500,6 @@ There are five possible cases in which beads $i, i+1, i+2$ can add three bonds, 
 
 \end{enumerate}
 
-We have shown that at $\alpha=1$ and  $\delta=3$, unary oritatami systems can only fold finite length transcripts deterministically, and the length of that transcript is bounded by the size of the regular hexagon of radius $n+1$ surrounding the first bead of the transcript. This gives us the upper bound $|\hexagon_p^{n+1}|=3(n+1)^2+(n+1)^2+1$,  where $n$ is the length of the seed.
+\end{proof}
+
+We have shown that at $\alpha=1$ and  $\delta\in\{2,3\}$, unary oritatami systems can only fold finite length transcripts deterministically, and the length of that transcript is bounded by the size of the regular hexagon of radius $n$ plus the length of one side of the surrounding hexagon. This gives us the upper bound $|\hexagon_p^{n}|+(n+1)=3n^2+4n+2$,  where $n$ is the length of the seed, concluding the proof of Theorem~\ref{thm:d23a1}.
