@@ -671,28 +671,6 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
 
 
 
-
-\begin{theorem}[$\delta= 1, \alpha=2$]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield infinite structures but they are only zig-zag conformation in $w[27n^2 + 9n + 1]$.
-\end{theorem}
-
-\begin{proof}
- We assume $w[i]$ is the first bead outside $\hexagon^n_0$
- See Fig.~\ref{fig:ttt_d2}.
- If $w[i+1]$ elongated to west and $w[i+2]$ forms one bond, then $w[i+2]$ is stabilized at $p_3$; otherwise $w[i+2]$ forms two bonds.
- If $w[i+1]$ elongated to west and $w[i+2]$ is stabilized at $p_3$, $w[i+1..]$ form a zig-zag conformation.
-  If $w[i+1]$ elongated to east and $w[i+2]$ forms one bond, then $w[i+2]$ is stabilized at $p_2$; otherwise $w[i+2]$ forms two bonds.
- If $w[i+1]$ elongated to east and $w[i+2]$ is stabilized at $p_2$, $w[i+1..]$ is zig-zag conformation.
- Thus, if $w[i]$ is the first bead outside $\hexagon^k_0$ for some $k \geq n$, $\#bc(C_i) > \#bc(C_{i+1})$ or $w[i+1..]$ form a zig-zag conformation.
- 
- We assume $w[l]$ is the first bead outside $\hexagon^k_0$ and $w[m]$ is the first bead outside $\hexagon^{k+1}_0$ for some $k,l,m$ with $k<3n$. Let $s$ be a element of $S[l+1..m-1]$. If $s = b$, $s$ does not increase binding capability.
- If $s=t$, $s$ is a element of a subsequence $bt^+b$. This subsequence does not increase binding capability according to Theorem~\ref{TTT}. Thus, $\#bc(C_l) > \#bc(C_{m})$ or $w[l..]$ form a zig-zag conformation.
- 
- The seed $\sigma$ provides at most $2n$ binding capability, that is, $\#bc(C_0) \leq 2n$.
- Thus,  if  $w[i]$ is the first bead outside $\hexagon^{3n}_0$, then this conformation has no hand without $w[i-1]$ and $w[i]$.
- Hence, $w[27n^2 + 9n + 1..]$ form a zig-zag conformation.
-\end{proof}
-
 \begin{figure}[tb]
   \begin{center}
   \begin{tabular}{c c}
@@ -710,14 +688,11 @@ Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield 
       \draw[->, blue] (60:0.1) -- (60:0.9);
       \draw[->, blue, shift=(60:1)] (180:0.1) -- (180:0.9);
       
+      \draw[dotted, shift = (60:1)] (0:0) -- (-60:1);
+      
 
-	\node[above] at (180:1) {$p_1$};
-	\node[above] at (60:2) {$p_2$};
-	\node[above,shift=(120:1)]at (60:1) {$p_3$};
-	\node[above]at (0:1) {$p_4$};
+	\node[above,shift=(120:1)]at (60:1) {$p$};
 
-	\draw (180:1) circle [radius=0.05];
-	\draw (60:2) circle [radius=0.05];
 	\draw[shift=(120:1)] (60:1) circle [radius=0.05];
 
 	\node at (0:2.5) {$n$};
@@ -742,16 +717,12 @@ Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield 
        \draw[dashed, shift=(60:2)] (180:3) -- (0:1);
       \draw[->, blue] (60:0.1) -- (60:0.9);
       \draw[->, blue, shift=(60:1)] (0:0.1) -- (0:0.9);
+       \draw[dotted, shift = (60:1)] (0:0) -- (-60:1);
       
 
-	\node[above] at (180:1) {$p_1$};
-	\node[above] at (60:2) {$p_2$};
-	\node[above, shift=(120:1)]at (60:1) {$p_3$};
-	\node[above]at (0:1) {$p_4$};
+	\node[above] at (60:2) {$p$};
 
-	\draw (180:1) circle [radius=0.05];
 	\draw (60:2) circle [radius=0.05];
-	\draw[shift=(120:1)] (60:1) circle [radius=0.05];
 
 	\node at (0:2.5) {$n$};
 	\node[shift=(60:1)] at (0:2) {$n+1$};
@@ -763,8 +734,40 @@ Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield 
 	\end{tikzpicture}
     \end{minipage}
     \end{tabular}
-    \caption{The bead $w[i]$  the first bead outside $\hexagon^n_0$: (Left) $w[i+1]$ elongated to west, (Right) $w[i+1]$ elongated to east.}
+    \caption{The moment when the transcript steps outside $\hexagon^n_0$.}
     \label{fig:ttt_d2}
   \end{center}
 \end{figure}
 
+
+
+\begin{theorem}[$\delta= 1, \alpha=2$]
+Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield infinite structures but they are only zig-zag conformation in $w[27n^2 + 9n + 1]$.
+\end{theorem}
+
+\begin{proof}
+ We assume $w[i]$ is the first bead stabilized outside $\hexagon^n_0$.
+ See Fig.~\ref{fig:ttt_d2}.
+ The next bead $w[i+1]$ is to be bound for stabilization.
+ Hence, it goes to the west  or to the east (Fig.~\ref{fig:ttt_d2}).
+ Once $w[i+2]$ is stabilized at $p$, the remaining transcript folds into the zig-zag conformation.
+ In order to avoid this or nondeterminism, $w[i+2]$ must form two bonds; it thus decreases binding capability by 1.
+ Until when a bead is stabilized outside $\hexagon^{n+1}_0$, binding capability never increases because of arity being 2 and of the Tunnel Troll Theorem.
+ This means that, only at most $\#bc(C_0) \leq 2n$ times we can thus expand that hexagonal region.
+ In other words, outside $\hexagon^{3n}_0$ the transcript cannot help but fold into the zig-zag conformation. \qed
+ 
+% 
+% If $w[i+1]$ elongated to west and $w[i+2]$ forms one bond, then $w[i+2]$ is stabilized at $p_3$; otherwise $w[i+2]$ forms two bonds.
+% If $w[i+1]$ elongated to west and $w[i+2]$ is stabilized at $p_3$, $w[i+1..]$ form a zig-zag conformation.
+%  If $w[i+1]$ elongated to east and $w[i+2]$ forms one bond, then $w[i+2]$ is stabilized at $p_2$; otherwise $w[i+2]$ forms two bonds.
+% If $w[i+1]$ elongated to east and $w[i+2]$ is stabilized at $p_2$, $w[i+1..]$ is zig-zag conformation.
+% Thus, if $w[i]$ is the first bead outside $\hexagon^k_0$ for some $k \geq n$, $\#bc(C_i) > \#bc(C_{i+1})$ or $w[i+1..]$ form a zig-zag conformation.
+% 
+% We assume $w[l]$ is the first bead outside $\hexagon^k_0$ and $w[m]$ is the first bead outside $\hexagon^{k+1}_0$ for some $k,l,m$ with $k<3n$. Let $s$ be a element of $S[l+1..m-1]$. If $s = b$, $s$ does not increase binding capability.
+% If $s=t$, $s$ is a element of a subsequence $bt^+b$. This subsequence does not increase binding capability according to Theorem~\ref{TTT}. Thus, $\#bc(C_l) > \#bc(C_{m})$ or $w[l..]$ form a zig-zag conformation.
+% 
+% The seed $\sigma$ provides at most $2n$ binding capability, that is, $\#bc(C_0) \leq 2n$.
+% Thus,  if  $w[i]$ is the first bead outside $\hexagon^{3n}_0$, then this conformation has no hand without $w[i-1]$ and $w[i]$.
+% Hence, $w[27n^2 + 9n + 1..]$ form a zig-zag conformation.
+
+\end{proof}
