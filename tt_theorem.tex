@@ -425,18 +425,26 @@ Next, we consider the case of $\delta = 2, \alpha = 1$. We assume there are indi
 If $S[i+2]$ is $ t_s$ or  $t_o$, then Lemma~\ref{TTT_entrance_Tab} implies $\#bc(C_{i-1}) > \#bc(C_{i})$ and  Lemma~\ref{TTT_exit} implies $\#bc(C_{i}) \geq \#bc(C_{j})$.
 Thus, binding capability decreases by 1 per a factor $bt_s$ or $bt_o$.
 
-Now, we assume $S[i+2] = t_a$.
+
 %All $S[i+3..j]$ do not contain $t_a$; otherwise $S[i+4..j+1]$ contain $\blacksquare$.
 %Therefore, $S[i+2] = t_a$.
-According to Lemma~\ref{TTT_tunnelC_lemma}, on statement 1, 2, $\#bc(C_{i-2}) > \#bc(C_{i+2})$ and if $i \leq j - 3$, $\#bc(C_{i+2}) \geq \#bc(C_{j})$.
-Thus, binding capability of the conformation decrease per a subsequence $bt_a$ unless $w[i]$ does not consumes any bond.
-If $w[i]$ does not consumes any bond and $S[i] = t_a$, that is, $S[i-1..i+2] = bt_abt_a$, then $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
-In this case, two subsequences of $bt_a$ collaborate decreasing binding capability but eventually, two subsequences decrease two bond.
-That is, one subsequence decrease binding capability.
+Now, we assume $S[i+2] = t_a$.
+Then, we have to make sure that one troll is not double-counted.
+If $w[i]$ forms a bond, Lemmas~\ref{TTT_exit} and \ref{TTT_tunnelC_lemma} imply that binding capability decreases through this tunnel.
 
-
-Hence, if $S[i..j]$ contain n's subsequences of $bt$, $\#bc(C_{i-2}) - n \geq \#bc(C_{j})$
-\qed
+Assume $w[i]$ forms no bond.
+If $S[i] \in \{t_s, t_o\}$, Lemmas~\ref{TTT_exit} and \ref{TTT_tunnelC_lemma} imply $\#bc(C_{i-2}) > \#bc(C_{i+2})$.
+Observe that the bead $w[i-1]$ is at the entrance of the previous tunnel or inside.
+It is when a bead is stabilized at the entrance of a tunnel that the troll of the tunnel decreases binding capability.
+Thus, the inequality does not rely on the troll of previous tunnel.
+If $S[i] = t_a$, Lemma~\ref{TTT_tunnelC_lemma} implies $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
+The previous tunnel must be indeed a tunnel section of type A (see Fig.~\ref{TTT_tunnelC_enter_usingBond}).
+That is, this inequality involves two tunnels but its difference 2 enables us to consider that binding capability decreases by 1 through this tunnel. \qed
+%According to Lemma~\ref{TTT_tunnelC_lemma}, on Statement 1, 2, $\#bc(C_{i-2}) > \#bc(C_{i+2})$ and if $i \leq j - 3$, $\#bc(C_{i+2}) \geq \#bc(C_{j})$.
+%Thus, binding capability of the conformation decrease per a subsequence $bt_a$ unless $w[i]$ does not consumes any bond.
+%If $w[i]$ does not consumes any bond and $S[i] = t_a$, that is, $S[i-1..i+2] = bt_abt_a$, then $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
+%In this case, two subsequences of $bt_a$ collaborate decreasing binding capability but eventually, two subsequences decrease two bond.
+%That is, one subsequence decrease binding capability.
 
 
 
