@@ -426,13 +426,8 @@ Observe that the bead $w[i-1]$ is at the entrance of the previous tunnel or insi
 It is when a bead is stabilized at the entrance of a tunnel that the troll of the tunnel decreases binding capability.
 Thus, the inequality does not rely on the troll of previous tunnel.
 If $S[i] = t_a$, Lemma~\ref{TTT_tunnelC_lemma} implies $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
-The previous tunnel must be indeed a tunnel section of type A (see Fig.~\ref{TTT_tunnelC_enter_usingBond}).
-That is, this inequality involves two tunnels but its difference 2 enables us to consider that binding capability decreases by 1 through this tunnel. \qed
-%According to Lemma~\ref{TTT_tunnelC_lemma}, on Statement 1, 2, $\#bc(C_{i-2}) > \#bc(C_{i+2})$ and if $i \leq j - 3$, $\#bc(C_{i+2}) \geq \#bc(C_{j})$.
-%Thus, binding capability of the conformation decrease per a subsequence $bt_a$ unless $w[i]$ does not consumes any bond.
-%If $w[i]$ does not consumes any bond and $S[i] = t_a$, that is, $S[i-1..i+2] = bt_abt_a$, then $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
-%In this case, two subsequences of $bt_a$ collaborate decreasing binding capability but eventually, two subsequences decrease two bond.
-%That is, one subsequence decrease binding capability.
+%The previous tunnel must be indeed a tunnel section of type A (see Fig.~\ref{TTT_tunnelC_enter_usingBond}).
+This inequality involves two tunnels but its difference 2 enables us to consider that binding capability decreases by 1 through this tunnel. \qed
 
 
 
@@ -547,7 +542,8 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
  \begin{minipage}{0.3\hsize}
  \centering
     \begin{tikzpicture}
-      \draw[white] (0:0)-- (60:2);
+      \draw[white] (60:2) circle [radius=0.05];
+      \node[above, white] at (60:2) {$n_adj$};
       
       \fill[shift=(180:1)] (0,0) circle [radius=0.1];
       \fill[shift=(180:0)] (0,0) circle [radius=0.1];
