@@ -1,48 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2014/W32TeX)
+This is BibTeX, Version 0.99d (TeX Live 2015/W32TeX)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
 The style file: splncs03.bst
-Database file #1: tamc2019.bib.bib
-Warning--I didn't find a database entry for "DemaineDNA24"
-You've used 5 entries,
+Database file #1: tamc2019.bib
+You've used 6 entries,
             2785 wiz_defined-function locations,
-            627 strings with 5434 characters,
-and the built_in function-call counts, 3265 in all, are:
-= -- 265
-> -- 110
+            631 strings with 5472 characters,
+and the built_in function-call counts, 3592 in all, are:
+= -- 288
+> -- 117
 < -- 8
-+ -- 46
-- -- 40
-* -- 211
-:= -- 414
-add.period$ -- 8
-call.type$ -- 5
-change.case$ -- 43
++ -- 49
+- -- 42
+* -- 226
+:= -- 460
+add.period$ -- 9
+call.type$ -- 6
+change.case$ -- 46
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 287
-empty$ -- 276
-format.name$ -- 44
-if$ -- 716
+cite$ -- 6
+duplicate$ -- 319
+empty$ -- 316
+format.name$ -- 46
+if$ -- 789
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 63
-newline$ -- 20
-num.names$ -- 10
-pop$ -- 109
+int.to.str$ -- 6
+missing$ -- 70
+newline$ -- 23
+num.names$ -- 12
+pop$ -- 123
 preamble$ -- 1
-purify$ -- 30
+purify$ -- 33
 quote$ -- 0
-skip$ -- 91
+skip$ -- 100
 stack$ -- 0
-substring$ -- 172
-swap$ -- 171
+substring$ -- 185
+swap$ -- 182
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 22
 warning$ -- 0
-while$ -- 23
-width$ -- 6
-write$ -- 58
-(There was 1 warning)
+while$ -- 26
+width$ -- 7
+write$ -- 67
