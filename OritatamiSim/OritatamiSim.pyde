@@ -4,7 +4,7 @@ add_library('svg')
 
 import time
 
-input = "CI.oriconf.txt"
+input = ""
 
 cam = 0.0
 defaultCam = 0.0
@@ -57,7 +57,8 @@ def setup():
 #        confo.update({(i+1,0):2})
 #        path.append((i+1,0))
 #    
-#    confo.update({(9, -1): 2})
+    path.append([0,0])
+    confo.update({(0, 0): 1})
     
     if input != "":
         f = open(input, "r")

@@ -2,6 +2,7 @@
 
 
 
+\usepackage{enumitem}
 
 
 \usepackage{color}
@@ -21,15 +22,18 @@
 
 \usepackage{comment}
 
+\usepackage{wrapfig}
+
 
 \title{On the power of oritatami cotranscriptional folding with unary bead sequence\thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 granted to S.~Z.~F. and S.~S. and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~S.}
 }
 \titlerunning{Power of unary oritatami cotranscriptional folding}
 \author{
 Szil\'{a}rd Zsolt Fazekas\inst{1} \and 
-Kohei Maruyama \and
+Kohei Maruyama\thanks{Primary corresponding author (\email{k.maruyama@uec.ac.jp})} \and
 Reoto Morita \and \\
-Shinnosuke Seki\inst{2}\thanks{Corresponding author (\email{s.seki@uec.ac.jp})}}
+Shinnosuke Seki\inst{2}\thanks{Secondary corresponding author (\email{s.seki@uec.ac.jp})}
+}
 \institute{
 Akita University, 
 Graduate School of Engineering Science, 
@@ -203,32 +207,7 @@ The simulation involves a very large and complex oritatami system.
 This system is deterministic in the sense that every bead is stabilized uniquely point-wise as well as interaction-wise (for the formal definition, see Sect.~\ref{sec:preliminaries}). 
 One future direction of research is to quest for a smaller Turing-universal oritatami system.
 
-\begin{figure}[tb]
-\begin{tikzpicture}
 
-\node (origin) at (0, 0) {};
-
-\draw[-latex] (origin) -- ++(0:5) node[below] {$\delta$}; 
-\node at (2, -0.2) {1};
-\node at (4, -0.2) {2 and 3};
-\draw[-latex] (origin) -- ++(90:5) node[left] {$\alpha$}; 
-\node at (-0.2, 1) {1};
-\node at (-0.2, 2) {2};
-\node at (-0.2, 3) {3};
-\node at (-0.2, 4) {4};
-
-%Results
-\node at (2, 4) {$3n(n+1)+1$};
-\node at (2, 3) {$4n+14$};
-\node at (2, 2) {$9n(3n+1)+1$};
-\node at (2, 1) {$10n$ \cite{DHOPRSST2018}};
-
-\node at (4, 1) {$O(n^2)$};
-
-\end{tikzpicture}
-\caption{Summary of the results.}
-\label{fig:summary}
-\end{figure}
 
 
 Closely related is the question of where not to look for universal systems, i.e., what are the limitations of simple oritatami system. 
@@ -246,10 +225,97 @@ We consider this finiteness problem for unary oritatami systems under various se
 Give an upper bound on the length of a transcript of a delay-$\delta$, arity-$\alpha$ deterministic unary oritatami system whose seed is of length $n$ by a function in $\delta$, $\alpha$, and $n$. 
 \end{problem}
 
+\begin{figure}[tb]
+  \begin{center}
+    \begin{tikzpicture}
+      \fill (0,0) circle[radius = 0.1];
+      \fill (1.5,0) circle[radius = 0.1];
+      \fill (3,0) circle[radius = 0.1];
+      \fill (4.5,0) circle[radius = 0.1];
+      \fill (6,0) circle[radius = 0.1];
 
+      \draw[dashed] (0,0)--(1.5,0);
+      \draw[dashed] (1.5,0)--(3,0);
+      \draw[dashed] (3,0)--(4.5,0);
+      \draw[dashed] (4.5,0)--(6,0);
+      \draw[->] (0,0)--(60:0.75);
+      \draw[->] (1.5,0)--++(60:0.75);
+      \draw[->] (3,0)--++(60:0.75);
+      \draw[->] (4.5,0)--++(60:0.75);
+      \draw (0,0)--(60:1.5);
+      \draw (1.5,0)--++(60:1.5);
+      \draw (3,0)--++(60:1.5);
+      \draw (4.5,0)--++(60:1.5);
+      
+      \begin{scope}[shift=(60:1.5)]
+        \fill (0,0) circle[radius = 0.1];
+        \fill (1.5,0) circle[radius = 0.1];
+        \fill (3,0) circle[radius = 0.1];
+        \fill (4.5,0) circle[radius = 0.1];
+        \draw[dashed] (0,0)--(1.5,0);
+        \draw[dashed] (1.5,0)--(3,0);
+        \draw[dashed] (3,0)--(4.5,0);
+        \draw[->] (0,0)--(-60:0.75);
+        \draw[->] (1.5,0)--++(-60:0.75);
+        \draw[->] (3,0)--++(-60:0.75);
+        \draw[->] (4.5,0)--++(-60:0.75);
+        
+        \draw (0,0)--(-60:1.5);
+        \draw (1.5,0)--++(-60:1.5);
+        \draw (3,0)--++(-60:1.5);
+        \draw (4.5,0)--++(-60:1.5);
+      \end{scope}
+      
+    \end{tikzpicture}
+    \caption{The zig-zag conformation. This is the only one infinite conformation foldable deterministically by an unary oritatami ssytem at delay 1 and arity 2.}
+    \label{TTT_zigzag}
+  \end{center}
+\end{figure}
 
-Results on this problem are summarized in Fig.~\ref{fig:summary}. 
+\begin{figure}[tb]
+\centering
+\begin{tikzpicture}
 
+\node (origin) at (0, 0) {};
+
+\draw[-latex] (origin) -- ++(0:10) node[below] {$\delta$}; 
+\node at (2, -0.2) {1};
+\node at (4, -0.2) {2 and 3};
+\node at (6, -0.2) {4 and larger}; 
+\draw[-latex] (origin) -- ++(90:5) node[left] {$\alpha$}; 
+\node at (-0.2, 1) {1};
+\node at (-0.2, 2) {2};
+\node at (-0.2, 3) {3};
+\node at (-0.2, 4) {4};
+
+%Results
+\node at (2, 4) {$3n(n{+}1){+}1$};
+\node at (2, 3) {$4n{+}14$};
+\node at (2, 2.2) {$\infty$ but zigzag after};
+\node at (2, 1.8) {$(27n^2{+}9n{+}1)$-th bead};
+\node at (2, 1) {$10n$ \cite{DHOPRSST2018}};
+
+\node at (4, 1) {$3n^2{+}4n{+}1$};
+
+\end{tikzpicture}
+\caption{Upper bounds on the length of a conformation foldable by a deterministic unary oritatami system at delay $\delta$ and arity $\alpha$.
+At any combination of delay and arity without anything written, no upper bound is known yet.
+}
+\label{fig:summary}
+\end{figure}
+In this paper, we will solve this problem  completely at delay 1 and partially at arity 1 in Sect.~\ref{sect:upper}. 
+At delay 1, we will provide a quadratic upper bound $3n(n+1)+1$ for the case of arity being 4, while a linear upper bound $4n+14$ for arity 3. 
+At the delay 1 and arity 2, one infinite structure turns out to be foldable deterministically, which is the zigzag conformation shown in Fig.~\ref{TTT_zigzag}. 
+At arity 1, we will prove that at delay 2 or 3, the upper bound is $(3n+1)(n+1)$. 
+Upper bounds for longer delays remain open. These results as well as known upper bounds are summarized in Fig.~\ref{fig:summary}. 
+As shown at the end of Sect.~\ref{sec:preliminaries}, the stabilization of first $t$ beads of transcript by a determinisitc oritatami system can be simulated by a deterministic Turing machine within $t^3$ steps (Corollary~\ref{cor:DTIME3}). 
+Thus, the above mentioned upper bounds show that at delay 1 and arity 1, 3, or 4, or at delay 2 or 3 and arity 1, the class of deterministic unary oritatami systems is not Turing universal. 
+The Turing universal oritatami system by Geary et al. \cite{GeMeScSe2018} employs more than 500 types of beads. 
+Thus, this weakness result is not surprising at all. 
+The unary oritatami system might not be practical very much, though one bead may abstarct an oligonucleotide (a short sequence of nucleotides), and in that case, unary transcript can be a repetitive but nonunary sequence, which is not so unrealistic in experiments (see \cite{GearyAndersen2014}). 
+Nevertheless, this paper makes a first considerable step towards the characterization of non-Turing-universal oritatami systems. 
+
+As a result of independent significance, we show that increasing the delay from 1 to 2 enables an oritatami system to yield a conformation of quadratic length in $n$ as long as 5 types of beads are available. 
 
 %------------------------------------------------------
 	\section{Preliminaries}\label{sec:preliminaries}
@@ -342,8 +408,9 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 	\end{enumerate}	
 	Checking the condition in 2. can be done in $\mathcal{O}(|H|)$ time for any reasonable representation of $H$, hence the whole process takes $\mathcal{O}(|w|\cdot|H|)$ time.
 \end{proof}
+
 \begin{theorem}\label{thm:OS_to_2dTM}
-	There is an algorithm that simulates any oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$. 
+	There is an algorithm that simulates any deterministic oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$. 
 \end{theorem}
 \begin{proof}
 	Take any step in the computation, up to which some $i \ge 0$ first beads of $w$ have been stabilized, with the last bead at a point $p$. 
@@ -351,8 +418,8 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 	By Proposition~\ref{prop:check_validity}, we can check for each of these elongations whether its arity is at most $\alpha$ or not and whether it is $R$-valid or not in time $\mathcal{O}((2^4)^{\delta-1}\cdot2^5\cdot \delta\cdot|R|)=2^{\mathcal{O}(\delta)}\cdot|R|$.  Therefore, the total running time is $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$.
 \end{proof}
 
-\begin{corollary}
-	For fixed $\delta$ and $\alpha$, the class of problems solvable by oritatami systems $(\Sigma, R, \delta, \alpha, \sigma, w)$ is included in $\mathrm{DTIME}(n^3)$.
+\begin{corollary}\label{cor:DTIME3}
+	For fixed $\delta$, the class of problems solvable by deterministic oritatami systems $(\Sigma, R, \delta, \alpha, \sigma, w)$ is included in $\mathrm{DTIME}(|w|^3)$.
 \end{corollary}
 \begin{proof}
 	The claim follows from Theorem~\ref{thm:OS_to_2dTM} and the fact that $|R|$ is implicitly bounded by $|w|^2$.
@@ -367,18 +434,27 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \mathrm{EXP}$, so we can conclude that OS which cannot deterministically fold transcripts of length exponential in the length of the seed are not computationally universal.
 
 
-\section{Case of arity $1$}
+\section{Quadratic lower bound for delay 2, arity 1}\label{sect:lower}
+
+\input{arity1pyramid}
+
+%\section{Case of arity $1$}\label{sect:arity1}
 
 
-\input{arity1}
+%\input{arity1}
 
 
-\section{Case of delay $1$}
+%\section{Case of delay $1$}\label{sect:delay1}
+
+\section{Upper bounds for determinisitc unary oritatami systems at delay 1 or arity 1}\label{sect:upper}
+
 \input{tt_intro}
 \input{tt_theorem}
+\input{arity1upper}
 
 
-
+\subsection*{Acknowledgements}
+We thank Yo-Sub Han for his valuable comments on the contents of this paper. 
 
 \bibliographystyle{splncs03}
 \bibliography{tamc2019}
