@@ -820,76 +820,108 @@ Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$.
 
 
 \begin{proof}
-We consider cases which $w[i-1]$ is two distances away from the singular point.
-Let us show that $\#bc(C_{i-1}) > \#bc(C_i)$, that is, when $w[i]$ is stabilized, $w[i]$ uses at least two hands.
-Fig.\ref{TTT_a3_w} exhibits all the three kinds of possibility of stabilized $w[i]$.
-Suppose $w[i]$ were able to be stabilized with using one hand in each cases.
+In this proof, we shall verify the claim that when the bead $w[i]$ is stabilized with $S[i] = b$ and $S[i+1] \neq \blacksquare$, if the circle of radius 2 centered at its predecessor $w[i-1]$ is free from the singular point, then $w[i]$ must form at least 2 bonds. 
+Recall that the circle of radius 2 centered at the origin $O$, where the only candidate of singularity is, consists of 19 points including $O$. 
+In order for the bead at $O$ to be singular, its $\alpha+1 = 4$ neighbors must be occupied. 
+This means that there are at most 14 points where a bead find a singular bead within 2 points. 
+Therefore, the claim, once proved, and the Tunnel Troll Theorem imply that all but at most 14 beads strictly decrease the binding capability. 
+The binding capability of the seed is at most $3n$. 
+Consequently, this theorem holds. 
 
-% Then, $w[i]$ can be also stabilized at $n_3$. 
+Now let us verify the claim. 
+Suppose $w[i]$ were stabilized by just one bond. 
+There are three cases to be considered as depicted in Fig.~\ref{TTT_a3_w}, depending on the relative position of $w[i]$ to $w[i-2]$ and $w[i-1]$. 
+Since $S[i] = b$, at least one of the four neighbors of $w[i-1]$ must be empty. 
+If $w_3$ is free, then $w[i-2]$ must have used up all of its hands; otherwise, $w[i]$ would be stabilized also at $n_3$ nondeterministically, a contradiction. 
+Thus, $\alpha + 2 = 5$ neighbors of $w[i-2]$, that is, all of its neighbors, must be occupied. 
+Hence, $n_5$ is occupied. 
+(All the remaining arguments are based on this ``merry-go-round'' occupation. This works only if the circle of radius 2 around $w[i-1]$ is free from the singular bead). 
+In the same way, all the neighbors of $n_3$ turned out to be occupied in the clockwise order, but eventually, we would encounter a neighbor that is adjacent to also the point where $w[i]$ is supposed to go. 
+Thus, $n_3$ must be occupied (in the left and middle cases). 
+In the left case, $n_4$ is symmetric to $n_3$, and hence, it must be occupied, too. 
+Since $S[i] = b$, $n_1$ or $n_2$ must be free; assume $n_1$ is. 
+Going clockwise around $n_1$ implies that $n_{-1}$ is occupied, but the bead at $n_1$ has a free hand and would cause a nondeterminism. 
 
-\begin{paragraph}{Case of straight}
-\begin{itemize}
-\item[-] Case of $n_3$ is free\\
-The bead $w[i-2]$ must not have bonds because $w[i]$ is stabilized deterministically so that five neighbors of $w[i-2]$ must be occupied.
-Therefore $n_5$ must be occupied.
-We can continue this argument in clockwise manner to fill the neighbors of $n_3$ until $n_1$.
-However, two neighbors of $n_1$ must be free because they are $n_3$ and the point of $w[i]$, contradict.
+Let us focus on the remaining cases: middle and right. 
+Suppose that among the 5 neighbors of $w[i]$ at which $w[i-1]$ is not, only one can be occupied. 
+Otherwise, a bead without any hand is found at one of them, and staring from the point, merry-go-round occupies all the neighbors, but then $w[i+1]$ would lose its way to go. 
+In the middle case, this means $n_0$ is free. 
+Since $n_{-1}$ is free, so must be $n_2$. 
+Repeating this, we get that both $n_4$ and $n_5$ are free, but then $w[i-2]$ would have a free hand and a free neighbor, attract $w[i]$, and cause a nondeterminism. 
+Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one after another likewise, but then $w[i-2]$ would have a free hand and neighbor, a contradiction. 
+\qed
 
-\item[-] Otherwise\\
-Both $n_3$ and $n_4$ are occupied.
-One of $n_1$ and $n_2$ must be free because $S[i] = b$.
-We assume $n_1$ is free, then all neighbors of $n_1$ must be occupied because $n_3$ is occupied.
-However, one of neighbors $n_1$ is a point which $w[i]$ is stabilized, contradict.
-\end{itemize}
-
-Therefore, this case contradict assumption.
-\end{paragraph}
-
-\begin{paragraph}{Case of obtuse}
-\begin{itemize}
-\item[-] Case of $n_3$ is free\\
-Any neighbors of $n_3$ have to be occupied but the point which $w[i]$ is stabilized is free. Thus $n_3$ has to be occupied.
-\item[-] Case of $n_4$ is free\\
-The point $n_2$ must be occupied because $n_4$ is free and $n_5$ must be occupied.
-Therefore $n_0$ is occupied.
-The bead $w[i]$ forms just one bond so that one of $n_0, n_3$ leave some hands or both of them do not leave any bonds.\\
-If $n_0$ has some hands, then $n_3$ does not have any hands so that $n_{-3}$ is occupied. 
-We can continue this argument in clockwise manner to fill the neighbors of $w[i]$.
-That is, $S[i] = \blacksquare$, contradict.
-
-If $n_3$ has some hands, then $n_0$ does not have any hands so that neighbors of $w[i]$ are occupied. In the same previous way, contradict.\\
-If both of $n_0, n_3$ do not have any hands, then both of $n_{-1}, n_{-3}$ are occupied. If one of $n_{-1}, n_{-3}$ has some hands, the other does not have any hands so that $n_{-2}$ is occupied. If both of $n_{-1}, n_{-3}$ do not have any hands, $n_{-2}$ has to be occupied and $n_{-2}$ has some hands, contradict.
-\item[-] Case of $n_2$ is free\\
-Any neighbors of $n_2$ have to be occupied so that $n_0$ is occupied. Any neighbors of $n_0$ except $n_2$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_2$ has to be occupied.
-\item[-] Case of $n_0$ is free\\
-Any neighbors of $n_0$ have to be occupied so that $n_{-1}$ is occupied. Any neighbors of $n_{-1}$ except $n_0$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_0$ has to be occupied. 
-\end{itemize}
-\end{paragraph}
-
-
-
-\begin{paragraph}{Case of acute}
-\begin{itemize}
-\item[-] Case of $n_4$ is free\\
-The point $n_4$ and a point which is stabilized $w[i]$ are free so that  $w[i-2]$ has some bonds.
-However, $w[i]$ can be also stabilized $n_4$ in this case. Thus, $n_4$ has to be occupied.
-\item[-] Case of $n_2$ is free\\
-The point $n_0$ has to be occupied. The point $n_1$ has to be also occupied because five neighbors of $n_0$ must be occupied.
-We consider this case just like case of obtuse and that $n_4$ is free. Then if $w[i-2]$ binds $w[i]$, any $n_{-1}, n_{-2}, n_{-3}$ are occupied. If $n_1$ binds $w[i]$, this case is same. Also if $n_1$ and $w[i-2]$ do not have any hand, any $n_{-1}, n_{-2}, n_{-3}$ are occupied. Therefore, $w[i+1]$ cannot be provided.
-\item[-] Case of $n_0$ is free\\
-Any neighbors of $n_0$ have to be occupied so that $n_{1}$ is occupied. Any neighbors of $n_{1}$ except $n_0$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_0$ has to be occupied. 
-\item[-] Case of $n_1$ is free\\
-Any neighbors of $n_1$ have to be occupied so that $n_{-1}$ is occupied. Any neighbors of $n_{-1}$ except $n_1$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_1$ has to be occupied. 
-\end{itemize}
-
-Therefore, any situations contradict $S[i] = b$.
-\end{paragraph}\\
-
-
-Hence, $w[i]$ uses at least two bonds if $w[i-1]$ is at least two distances away the singular point.
-The size of $ \hexagon^2_0 = 19$ and this number contain the singular point, its successor and its three neighbors which is it binds to. Therefore 14 times  $w[i]$ can be stabilized by forming one bond.
-Therefore, a deterministic unary oritatami system at $\delta = 1$ and $\alpha = 3$ can yield only finite conformation of length is $2n + 14$.
 \end{proof}
+
+%We consider cases which $w[i-1]$ is two distances away from the singular point.
+%Let us show that $\#bc(C_{i-1}) > \#bc(C_i)$, that is, when $w[i]$ is stabilized, $w[i]$ uses at least two hands.
+%Fig.\ref{TTT_a3_w} exhibits all the three kinds of possibility of stabilized $w[i]$.
+%Suppose $w[i]$ were able to be stabilized with using one hand in each cases.
+%
+%% Then, $w[i]$ can be also stabilized at $n_3$. 
+%
+%\begin{paragraph}{Case of straight}
+%\begin{itemize}
+%\item[-] Case of $n_3$ is free\\
+%The bead $w[i-2]$ must not have bonds because $w[i]$ is stabilized deterministically so that five neighbors of $w[i-2]$ must be occupied.
+%Therefore $n_5$ must be occupied.
+%We can continue this argument in clockwise manner to fill the neighbors of $n_3$ until $n_1$.
+%However, two neighbors of $n_1$ must be free because they are $n_3$ and the point of $w[i]$, contradict.
+%
+%\item[-] Otherwise\\
+%Both $n_3$ and $n_4$ are occupied.
+%One of $n_1$ and $n_2$ must be free because $S[i] = b$.
+%We assume $n_1$ is free, then all neighbors of $n_1$ must be occupied because $n_3$ is occupied.
+%However, one of neighbors $n_1$ is a point which $w[i]$ is stabilized, contradict.
+%\end{itemize}
+%
+%Therefore, this case contradict assumption.
+%\end{paragraph}
+%
+%\begin{paragraph}{Case of obtuse}
+%\begin{itemize}
+%\item[-] Case of $n_3$ is free\\
+%Any neighbors of $n_3$ have to be occupied but the point which $w[i]$ is stabilized is free. Thus $n_3$ has to be occupied.
+%\item[-] Case of $n_4$ is free\\
+%The point $n_2$ must be occupied because $n_4$ is free and $n_5$ must be occupied.
+%Therefore $n_0$ is occupied.
+%The bead $w[i]$ forms just one bond so that one of $n_0, n_3$ leave some hands or both of them do not leave any bonds.\\
+%If $n_0$ has some hands, then $n_3$ does not have any hands so that $n_{-3}$ is occupied. 
+%We can continue this argument in clockwise manner to fill the neighbors of $w[i]$.
+%That is, $S[i] = \blacksquare$, contradict.
+%
+%If $n_3$ has some hands, then $n_0$ does not have any hands so that neighbors of $w[i]$ are occupied. In the same previous way, contradict.\\
+%If both of $n_0, n_3$ do not have any hands, then both of $n_{-1}, n_{-3}$ are occupied. If one of $n_{-1}, n_{-3}$ has some hands, the other does not have any hands so that $n_{-2}$ is occupied. If both of $n_{-1}, n_{-3}$ do not have any hands, $n_{-2}$ has to be occupied and $n_{-2}$ has some hands, contradict.
+%\item[-] Case of $n_2$ is free\\
+%Any neighbors of $n_2$ have to be occupied so that $n_0$ is occupied. Any neighbors of $n_0$ except $n_2$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_2$ has to be occupied.
+%\item[-] Case of $n_0$ is free\\
+%Any neighbors of $n_0$ have to be occupied so that $n_{-1}$ is occupied. Any neighbors of $n_{-1}$ except $n_0$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_0$ has to be occupied. 
+%\end{itemize}
+%\end{paragraph}
+%
+%
+%
+%\begin{paragraph}{Case of acute}
+%\begin{itemize}
+%\item[-] Case of $n_4$ is free\\
+%The point $n_4$ and a point which is stabilized $w[i]$ are free so that  $w[i-2]$ has some bonds.
+%However, $w[i]$ can be also stabilized $n_4$ in this case. Thus, $n_4$ has to be occupied.
+%\item[-] Case of $n_2$ is free\\
+%The point $n_0$ has to be occupied. The point $n_1$ has to be also occupied because five neighbors of $n_0$ must be occupied.
+%We consider this case just like case of obtuse and that $n_4$ is free. Then if $w[i-2]$ binds $w[i]$, any $n_{-1}, n_{-2}, n_{-3}$ are occupied. If $n_1$ binds $w[i]$, this case is same. Also if $n_1$ and $w[i-2]$ do not have any hand, any $n_{-1}, n_{-2}, n_{-3}$ are occupied. Therefore, $w[i+1]$ cannot be provided.
+%\item[-] Case of $n_0$ is free\\
+%Any neighbors of $n_0$ have to be occupied so that $n_{1}$ is occupied. Any neighbors of $n_{1}$ except $n_0$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_0$ has to be occupied. 
+%\item[-] Case of $n_1$ is free\\
+%Any neighbors of $n_1$ have to be occupied so that $n_{-1}$ is occupied. Any neighbors of $n_{-1}$ except $n_1$ have to be also occupied but the point which is stabilized $w[i]$ is free. Thus $n_1$ has to be occupied. 
+%\end{itemize}
+%
+%Therefore, any situations contradict $S[i] = b$.
+%\end{paragraph}\\
+%
+%
+%Hence, $w[i]$ uses at least two bonds if $w[i-1]$ is at least two distances away the singular point.
+%The size of $ \hexagon^2_0 = 19$ and this number contain the singular point, its successor and its three neighbors which is it binds to. Therefore 14 times  $w[i]$ can be stabilized by forming one bond.
+%Therefore, a deterministic unary oritatami system at $\delta = 1$ and $\alpha = 3$ can yield only finite conformation of length is $2n + 14$.
 
 
 \begin{figure}
