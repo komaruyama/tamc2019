@@ -207,8 +207,8 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (0.0, 1.732) -- (-0.5, 0.866);
-        \draw [dotted] [red] (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dotted] [red] (0.0, 0.0) -- (-0.5, 0.866);
+        \draw [dashed] [red] (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dashed] [red] (0.0, 0.0) -- (-0.5, 0.866);
       \end{tikzpicture}
 
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
@@ -220,8 +220,8 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
         \draw (0.0, 0.0) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (0.5, 0.866);
         \draw (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dotted] [red] (0.0, 0.0) -- (0.5, 0.866);
-        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dashed] [red] (0.0, 0.0) -- (0.5, 0.866);
+        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
       \end{tikzpicture}
 
     \end{tabular}
@@ -232,13 +232,13 @@ The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibi
 
 
 
-There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see Fig.~\ref{fig:3bonds}. However, if it makes three bonds once, such as in Fig.~\ref{fig:3bonds}, it will need to make three bonds forever to be deterministic. Similarly to case 1. in the previous section, (a), (b) and (c)in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a first corner of $\hexagon_p^n$ and  (e) in Fig.~\ref{fig:3bonds} become nondeterministic finally, as in Fig.~\ref{fig:hexcorner}, when it reaches a second corner of $\hexagon_p^n$. (d) in Fig.~\ref{fig:3bonds} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (-1,0) and bond with (-2,0), bead $i+1$ can be placed (0,1) and bond with (0,0) and bead $i+2$ can be placed (1,1) and bond with (0,1).
+There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see Fig.~\ref{fig:3bonds}. If there are beads having a free hand at (1,0) and (-1,0), there will be at least two possibilities in Fig.~\ref{fig:beadi-1} when a bead $i-1$ is fixed at (0,0). It is nondeterministic and beads $i-1, i, i+1$ needs to make three hydrogen bonds to prevent from it. That is, it is impossible to put beads having a free hand at (-1,0), (0,0) and (1,0). It is impossible to realize (b) and (e) in Fig.~\ref{fig:3bonds}. (d) in Fig.~\ref{fig:3bonds} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (-1,0) and bond with (-2,0), bead $i+1$ can be placed (0,1) and bond with (0,0) and bead $i+2$ can be placed (1,1) and bond with (0,1). If it makes three bonds once, such as (a) and (c) in Fig.~\ref{fig:3bonds}, it will need to make three bonds forever to be deterministic. Similarly to case 1. in the previous section, (a) and (c) in Fig.~\ref{fig:3bonds} become nondeterministic finally when it reaches a first corner of $\hexagon_p^n$.
 
 
 
 \begin{figure}
   \begin{center}
-    \begin{tabular}{ccc}
+    \begin{tabular}{ccccc}
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
         \fill (1.0, 0.0) circle [radius = 0.1];
@@ -252,9 +252,9 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.5, 0.866) -- (2.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
         \fill (1.5, -0.5) node [below] {(a)};
       \end{tikzpicture}
 
@@ -271,11 +271,11 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (-0.5, 0.866) -- (-1.0, 0.0);
-        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (-0.5, 0.866) -- (-1.0, 0.0);
+        \draw [dashed] [red] (-1.5, 0.866) -- (-2.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(b)};
-      \end{tikzpicture}\\
+      \end{tikzpicture}
 
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
@@ -290,9 +290,9 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
-        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dashed] [red] (-1.5, 0.866) -- (-2.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(c)};
       \end{tikzpicture}
 
@@ -308,9 +308,9 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
-        \draw [dotted] [red] (-1.5, 0.866) -- (-2.0, 0.0);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dashed] [red] (-1.5, 0.866) -- (-2.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(d)};
       \end{tikzpicture}
 
@@ -326,9 +326,9 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (-1.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (-0.5, 0.866) -- (0.0, 0.0);
-        \draw [dotted] [red] (-1.5, 0.866) -- (-1.0, 0.0);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (-0.5, 0.866) -- (0.0, 0.0);
+        \draw [dashed] [red] (-1.5, 0.866) -- (-1.0, 0.0);
         \fill (-0.5, -0.5) node [below] {(e)};
       \end{tikzpicture}\\
 
@@ -338,53 +338,43 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
   \end{center}
 \end{figure}
 
-
-
 \begin{figure}
   \begin{center}
-    \begin{tabular}{ccc}
+    \begin{tabular}{cc}
+
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
-        \fill (2.0, 0.0) circle [radius = 0.1];
-        \fill (3.0, 0.0) circle [radius = 0.1];
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-1.0, 0.0) circle [radius = 0.1];
         \fill (0.5, 0.866) circle [radius = 0.1];
-        \fill [blue] (1.5, 0.866) circle [radius = 0.1];
-        \fill [blue] (2.5, 0.866) circle [radius = 0.1];
-        \fill [blue] (3.5, 0.866) circle [radius = 0.1];
-        \draw [blue] (0.5, 0.866) -- (1.5, 0.866);
-        \draw [blue] (1.5, 0.866) -- (2.5, 0.866);
-        \draw [blue] (2.5, 0.866) -- (3.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
-        \draw [dashed] (3.5, -0.866) -- (3.0, 0.0);
-        \draw [dashed] (0.5, 0.0) -- (3.0, 0.0);
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (-0.5, 0.866) -- (0.0, 0.0);
       \end{tikzpicture}
 
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (1.0, 0.0) circle [radius = 0.1];
-        \fill (2.0, 0.0) circle [radius = 0.1];
-        \fill (3.0, 0.0) circle [radius = 0.1];
+        \fill (0.0, 0.0) circle [radius = 0.1];
+        \fill (-1.0, 0.0) circle [radius = 0.1];
         \fill (0.5, 0.866) circle [radius = 0.1];
-        \fill [blue] (1.5, 0.866) circle [radius = 0.1];
-        \fill [blue] (2.5, 0.866) circle [radius = 0.1];
-        \fill [blue] (1.0, 1.732) circle [radius = 0.1];
-        \draw [blue] (0.5, 0.866) -- (1.0, 1.732);
-        \draw [blue] (1.5, 0.866) -- (1.0, 1.732);
-        \draw [blue] (1.5, 0.866) -- (2.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
-        \draw [dashed] (3.5, -0.866) -- (3.0, 0.0);
-        \draw [dashed] (0.5, 0.0) -- (3.0, 0.0);
+        \fill (-0.5, 0.866) circle [radius = 0.1];
+        \fill (0.0, 0.0) node [below] {$(0, 0)$};
+        \fill (0.5, 0.866) node [above] {$(1, 1)$};
+        \draw (0.0, 0.0) -- (0.5, 0.866);
+        \draw (0.5, 0.866) -- (-0.5, 0.866);
+        \draw [dashed] [red] (-1.0, 0.0) -- (0.0, 0.0);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
       \end{tikzpicture}
 
     \end{tabular}
-    \caption{Being nondeterministic when reaching a corner of $\hexagon_p^n$}
-    \label{fig:hexcorner}
+    \caption{When a bead$i-1$ is fixed at (0,0)}
+    \label{fig:beadi-1}
   \end{center}
 \end{figure}
-
 
 
 \textbf{B.} Next, let us assume that bead $i$'s predecessor at (0,0) has no free hand and that there is a bead at (1,0) which has a free hand. If there is a bead at (1,0) and beads $i, i+1, i+2$ make only two hydrogen bonds, it will become nondeterministic as in Fig.~\ref{fig:beadat(1,0)}. That is, beads $i, i+1, i+2$ need to make three bonds to stabilize $i$. If they make three hydrogen bonds, the situation is analogous to \textbf{A}. There should not be any bead having a free hand at (1,0) or (-1,0) to prevent from becoming \textbf{A}. Let us discuss the moment after bead $i$ is fixed outside $\hexagon_p^n$. Now bead $i$ has a free hand. If beads $i+1, i+2, i+3$ can form only two bonds, it will be nondeterministic because there are at least two possible such structures, as in Fig.~\ref{fig:beadi2}. Hence, they need to form three bonds to deterministically stabilize, such as in Fig.~\ref{fig:3bonds2}. (a) in Fig~\ref{fig:3bonds2} becomes \textbf{A} because it makes three hydrogen bonds. (b) in Fig.~\ref{fig:3bonds2} becomes nondeterministic when bead $i$ is fixed because bead $i$ can be fixed at (1,0).\\
@@ -402,12 +392,13 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \fill (1.0, 1.732) circle [radius = 0.1];
         \fill (0.0, 0.0) node [below] {$(0, 0)$};
         \fill (0.5, 0.866) node [left] {$(1, 1)$};
+        \fill (1.0, 0.0) node [below] {$(1, 0)$};
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.0, 1.732) -- (1.5, 0.866);
-        \draw [dotted] [red] (1.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (1.0, 1.732) -- (0.5, 0.866);
-        \draw [dotted] [red] (1.0, 1.732) -- (0.5, 0.866);
+        \draw [dashed] [red] (1.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (1.0, 1.732) -- (0.5, 0.866);
+        \draw [dashed] [red] (1.0, 1.732) -- (0.5, 0.866);
       \end{tikzpicture}
 
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
@@ -418,11 +409,12 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \fill (0.0, 1.732) circle [radius = 0.1];
         \fill (0.0, 0.0) node [below] {$(0, 0)$};
         \fill (-0.5, 0.866) node [left] {$(0, 1)$};
+        \fill (1.0, 0.0) node [below] {$(1, 0)$};
         \draw (0.0, 0.0) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (0.5, 0.866);
         \draw (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dotted] [red] (0.5, 0.866) -- (1.0, 0.0);
-        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dashed] [red] (0.5, 0.866) -- (1.0, 0.0);
+        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
       \end{tikzpicture}
 
     \end{tabular}
@@ -444,8 +436,8 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (0.5, 0.866);
         \draw (0.5, 0.866) -- (-0.5, 0.866);
         \draw (0.0, 1.732) -- (-0.5, 0.866);
-        \draw [dotted] [red] (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dotted] [red] (0.0, 0.0) -- (-0.5, 0.866);
+        \draw [dashed] [red] (0.0, 1.732) -- (0.5, 0.866);
+        \draw [dashed] [red] (0.0, 0.0) -- (-0.5, 0.866);
       \end{tikzpicture}
 
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
@@ -457,8 +449,8 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.0, 0.0) -- (-0.5, 0.866);
         \draw (-0.5, 0.866) -- (0.5, 0.866);
         \draw (0.0, 1.732) -- (0.5, 0.866);
-        \draw [dotted] [red] (0.0, 0.0) -- (0.5, 0.866);
-        \draw [dotted] [red] (0.0, 1.732) -- (-0.5, 0.866);
+        \draw [dashed] [red] (0.0, 0.0) -- (0.5, 0.866);
+        \draw [dashed] [red] (0.0, 1.732) -- (-0.5, 0.866);
       \end{tikzpicture}
 
     \end{tabular}
@@ -471,7 +463,7 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
 
 \begin{figure}
   \begin{center}
-    \begin{tabular}{ccc}
+    \begin{tabular}{cc}
 
       \begin{tikzpicture}[thick,scale=0.8, every node/.style={scale=0.8}]
         \fill (0.0, 0.0) circle [radius = 0.1];
@@ -489,9 +481,9 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.5, 0.866) -- (2.5, 0.866);
         \draw (2.5, 0.866) -- (3.5, 0.866);
-        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
-        \draw [dotted] [red] (3.5, 0.866) -- (4.0, 0.0);
+        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dashed] [red] (3.5, 0.866) -- (4.0, 0.0);
         \fill (1.5, -0.5) node [below] {(a)};
       \end{tikzpicture}
       
@@ -510,9 +502,9 @@ There are the five cases in which beads $i, i+1, i+2$ can have three bonds, see 
         \draw (0.5, 0.866) -- (1.5, 0.866);
         \draw (1.5, 0.866) -- (2.5, 0.866);
         \draw (2.5, 0.866) -- (3.5, 0.866);
-        \draw [dotted] [red] (1.5, 0.866) -- (2.0, 0.0);
-        \draw [dotted] [red] (2.5, 0.866) -- (3.0, 0.0);
-        \draw [dotted] [red] (3.5, 0.866) -- (4.0, 0.0);
+        \draw [dashed] [red] (1.5, 0.866) -- (2.0, 0.0);
+        \draw [dashed] [red] (2.5, 0.866) -- (3.0, 0.0);
+        \draw [dashed] [red] (3.5, 0.866) -- (4.0, 0.0);
         \fill (1.5, -0.5) node [below] {(b)};
       \end{tikzpicture}\\
 
