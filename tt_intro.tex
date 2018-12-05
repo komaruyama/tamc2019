@@ -179,8 +179,18 @@ We also let $S$ take the value $\blacksquare$ for halt (due to the lack of free 
 
 %If a bead is stabilized through a tunnel section, then it can provide some bonds. Let us consider bonds of $C_i$. $C_i$ is represented $C = (W,P,H)$ where $|W| = i + n$ $C_i$ contains $\alpha \cdot (i + n) - 2|H|$ bonds because $C_i$ consists of $i + n$ beads and a bead has just $\alpha$ bonds and then $2 |H|$ of the those bonds are already used. However, even if a bead has an available bond, $w[j]$ $(j > i)$ might not be able to use this bond because the bond has possibility that it is blocked by transcripts $w[i+1..j-1]$. Number of $binding\ capabilities$ does not contain that case so that it is at most $\alpha \cdot (i + n) - 2|H|$.
 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.5\linewidth]{Fig/jordan_curve.png}
+\caption{}
+\label{fig:Jordan}
+\end{figure}
+
 %We say that point $p$ is reachable from a conformation $C$ if there exists a directed path $P^\prime$ from the last point of $C$ that does not cross the path of $C$. 
-We say that a neighbor of a point $p$ is reachable from a conformation $C$ if there exists an elongation of $C$ in which a bead occupies the neighbor and it binds with a bead at $p$. 
+We say that a neighbor of a point $p$ is \textit{reachable} from a conformation $C$ if there exists an elongation of $C$ in which a bead occupies the neighbor and it binds with a bead at $p$. 
+For example, in Fig.~\ref{fig:Jordan}, the transcript $w$ is about to step into a tunnel. 
+The wall beads $w[i-\ell]$ and $w[i-k]$ are both older than the bead at the entrance, $w[i]$. 
+Even if $w[i]$ leaves a free neighbor, the neighbor is not reachable because the the path of a conformation must be non-self-intersecting, and its subpath between these two wall beads divides the plane into two regions, one of which includes the entrance of the tunnel and the other of which includes the exit (Jordan curve theorem \cite{Hales2007}). 
 Taking this reachability into account, we define the \textit{binding capability} of a conformation as the number of free bonds of its beads available geometrically for elongations of $C$.
 It is defined formally as follows: 
 
