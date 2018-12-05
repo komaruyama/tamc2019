@@ -1,50 +1,5 @@
 
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \fill (0,0) circle[radius = 0.1];
-      \fill (1.5,0) circle[radius = 0.1];
-      \fill (3,0) circle[radius = 0.1];
-      \fill (4.5,0) circle[radius = 0.1];
-      \fill (6,0) circle[radius = 0.1];
 
-      \draw[dashed] (0,0)--(1.5,0);
-      \draw[dashed] (1.5,0)--(3,0);
-      \draw[dashed] (3,0)--(4.5,0);
-      \draw[dashed] (4.5,0)--(6,0);
-      \draw[->] (0,0)--(60:0.75);
-      \draw[->] (1.5,0)--++(60:0.75);
-      \draw[->] (3,0)--++(60:0.75);
-      \draw[->] (4.5,0)--++(60:0.75);
-      \draw (0,0)--(60:1.5);
-      \draw (1.5,0)--++(60:1.5);
-      \draw (3,0)--++(60:1.5);
-      \draw (4.5,0)--++(60:1.5);
-      
-      \begin{scope}[shift=(60:1.5)]
-        \fill (0,0) circle[radius = 0.1];
-        \fill (1.5,0) circle[radius = 0.1];
-        \fill (3,0) circle[radius = 0.1];
-        \fill (4.5,0) circle[radius = 0.1];
-        \draw[dashed] (0,0)--(1.5,0);
-        \draw[dashed] (1.5,0)--(3,0);
-        \draw[dashed] (3,0)--(4.5,0);
-        \draw[->] (0,0)--(-60:0.75);
-        \draw[->] (1.5,0)--++(-60:0.75);
-        \draw[->] (3,0)--++(-60:0.75);
-        \draw[->] (4.5,0)--++(-60:0.75);
-        
-        \draw (0,0)--(-60:1.5);
-        \draw (1.5,0)--++(-60:1.5);
-        \draw (3,0)--++(-60:1.5);
-        \draw (4.5,0)--++(-60:1.5);
-      \end{scope}
-      
-    \end{tikzpicture}
-    \caption{zig-zag conformation}
-    \label{TTT_zigzag}
-  \end{center}
-\end{figure}
 
 
 In this section, we consider Problem~\ref{prob:det_unary_length} at delay 1. Our result, cases of arity 1 and 3 can only yield finite structures of size $O (n)$, and cases of arity 4 and more can only yield finite structures which is size of $O (n^2)$, and a case of arity 2 can yield infinite structures but they are only the zig-zag conformation shown in Fig.~\ref{TTT_zigzag}. 
