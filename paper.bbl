@@ -13,6 +13,10 @@ Demaine, E., Hendricks, J., Olsen, M., Patitz, M.J., Rogers, T.A., Schabanel,
   (2018), see its arXiv version for the finiteness considered in this paper:
   https://arxiv.org/abs/1807.04682
 
+\bibitem{GearyAndersen2014}
+Geary, C., Andersen, E.S.: Design principles for single-stranded {RNA} origami
+  structures. In: Proc. DNA 20. LNCS, vol. 8727, pp. 1--19. Springer (2014)
+
 \bibitem{GeMeScSe2016}
 Geary, C., Meunier, P.E., Schabanel, N., Seki, S.: Programming biomolecules
   that fold greedily during transcription. In: Proc. MFCS 2016. LIPIcs,
