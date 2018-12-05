@@ -297,7 +297,7 @@ If $S[i+2] = t_a$, the following statements hold.
 	Thus, $\#bc(C_{i-2}) > \#bc(C_{i+2})$.
 	This argument actually work also for the case when $w[i]$ is stabilized rather by binding.
 	
-	Finally, we prove Statement 3.
+	We finalize this proof by showing Statement 3.
 	In order for $w[i]$ not to bind, $w[i-2]$ must have already used up its hands.
 	The bead $w[i-1]$ consumes one hand and provides nothing.
 	Thus,  $\#bc(C_{i-3}) - 1 \geq \#bc(C_{i})$.
@@ -395,9 +395,9 @@ If $S[i+2] = t_a$, the following statements hold.
 %For unary transcripts at $\delta = 1$, if a bead has no free hand, then at least $\alpha + 2$ of its neighbors have to be occpied.
 %\end{lemma}
 
-\proof{Proof of Tunnel Troll Theorem}
+Now we are ready to prove the Tunnel Troll Theorem.
 
-
+\begin{proof}%{Proof of Tunnel Troll Theorem}
 Let us first consider cases of $\delta \geq 3, \alpha = 1$. 
 See Fig.~\ref{TTT_tunnel_exit}. Consider the stabilization of $w[i]$. 
 This bead $w[i]$, once stabilized, shares two neighbors with its predecessor $w[i-1]$, which are denoted by $n_3, n_4$. 
@@ -428,7 +428,7 @@ Thus, the inequality does not rely on the troll of previous tunnel.
 If $S[i] = t_a$, Lemma~\ref{TTT_tunnelC_lemma} implies $\#bc(C_{i-3}) - 2 \geq \#bc(C_{i+2})$.
 %The previous tunnel must be indeed a tunnel section of type A (see Fig.~\ref{TTT_tunnelC_enter_usingBond}).
 This inequality involves two tunnels but its difference 2 enables us to consider that binding capability decreases by 1 through this tunnel. \qed
-
+\end{proof}
 
 
 
@@ -443,7 +443,7 @@ This inequality involves two tunnels but its difference 2 enables us to consider
 
 
 \begin{theorem}[$\delta = 1, \alpha = 4$]
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite conformation of length is $3n^2  + 3n + 1$.
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite conformation of length $3n^2  + 3n + 1$.
 \end{theorem}
 
 \begin{proof}
@@ -497,7 +497,7 @@ However, then a bead at $p_4$ would be provided with a free hand, a contradictio
 
 
 \begin{theorem}[$\delta = 1, \alpha = 3$]
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length is $4n + 14$.
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length $4n + 14$.
 \end{theorem}
 
 
@@ -720,7 +720,8 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
 
 
 \begin{theorem}[$\delta= 1, \alpha=2$]
-Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield infinite structures but they are only zig-zag conformation in $w[27n^2 + 9n + 1]$.
+Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 2$.
+It can yield an infinite structure, but the transcript folds into the zig-zag conformation after its ($27n^2 + 9n +1$)-th bead.
 \end{theorem}
 
 \begin{proof}
