@@ -331,11 +331,6 @@ If $S[i+2] = t_a$, the following statements hold.
           \node[below left] at (180:1) {$w[i]$};
           \node[above] at (0:0) {$w[i+1]$};
           \node[below] at (-120:1) {$w[i+2]$};
-
-          \node[right] at (120:1) {$n_3$};
-          \node[right] at (60:1) {$n_2$};
-          \node[right] at (0:1) {$n_1$};
-
           \begin{scope}[shift=(-120:1)]
             \fill[blue](0,0) circle [radius=0.05];
             
@@ -370,10 +365,6 @@ If $S[i+2] = t_a$, the following statements hold.
           \node[above] at (0:0) {$w[i+1]$};
           \node[below] at (-120:1) {$w[i+2]$};
           \node[below left] at (-180:2) {$w[i-2]$};
-
-          \node[right] at (120:1) {$n_3$};
-          \node[right] at (60:1) {$n_2$};
-          \node[right] at (0:1) {$n_1$};
 
           \begin{scope}[shift=(-120:1)]
             \fill[blue](0,0) circle [radius=0.05];
@@ -517,13 +508,6 @@ However, then a bead at $p_4$ would be provided with a free hand, a contradictio
 Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length is $4n + 14$.
 \end{theorem}
 
-%Both $n_3$ and $n_4$ are occupied because $S[i] = t$ or $t^\times$.
-%Suppose $w[i]$ were stabilized without any bond.
-%Then, all neighbors of $n_3$ must be occupied as long as the bead at $n_3$ is not singular; otherwise, a bead at $n_3$ would be capable of forming a bond with $w[i]$.
-%That is, $n_1$ is occupied.
-%We can continue this argument in clockwise manner to fill the neighbors of $w[i]$ until a singular bead is encountered, if any.
-%If needed, the same argument is applied starting from $n_4$ in counter-clockwise manner.
-%Thus, all neighbors of $w[i]$ must be occupied but then $S[i+1] = \blacksquare$, contradiction. \qed
 
 
 \begin{proof}
@@ -756,18 +740,4 @@ Let $\Xi$ be a unary oritatami system of $\delta = 1, \alpha = 2$. It can yield 
  This means that, only at most $\#bc(C_0) \leq 2n$ times we can thus expand that hexagonal region.
  In other words, outside $\hexagon^{3n}_0$ the transcript cannot help but fold into the zig-zag conformation. \qed
  
-% 
-% If $w[i+1]$ elongated to west and $w[i+2]$ forms one bond, then $w[i+2]$ is stabilized at $p_3$; otherwise $w[i+2]$ forms two bonds.
-% If $w[i+1]$ elongated to west and $w[i+2]$ is stabilized at $p_3$, $w[i+1..]$ form a zig-zag conformation.
-%  If $w[i+1]$ elongated to east and $w[i+2]$ forms one bond, then $w[i+2]$ is stabilized at $p_2$; otherwise $w[i+2]$ forms two bonds.
-% If $w[i+1]$ elongated to east and $w[i+2]$ is stabilized at $p_2$, $w[i+1..]$ is zig-zag conformation.
-% Thus, if $w[i]$ is the first bead outside $\hexagon^k_0$ for some $k \geq n$, $\#bc(C_i) > \#bc(C_{i+1})$ or $w[i+1..]$ form a zig-zag conformation.
-% 
-% We assume $w[l]$ is the first bead outside $\hexagon^k_0$ and $w[m]$ is the first bead outside $\hexagon^{k+1}_0$ for some $k,l,m$ with $k<3n$. Let $s$ be a element of $S[l+1..m-1]$. If $s = b$, $s$ does not increase binding capability.
-% If $s=t$, $s$ is a element of a subsequence $bt^+b$. This subsequence does not increase binding capability according to Theorem~\ref{TTT}. Thus, $\#bc(C_l) > \#bc(C_{m})$ or $w[l..]$ form a zig-zag conformation.
-% 
-% The seed $\sigma$ provides at most $2n$ binding capability, that is, $\#bc(C_0) \leq 2n$.
-% Thus,  if  $w[i]$ is the first bead outside $\hexagon^{3n}_0$, then this conformation has no hand without $w[i-1]$ and $w[i]$.
-% Hence, $w[27n^2 + 9n + 1..]$ form a zig-zag conformation.
-
 \end{proof}
