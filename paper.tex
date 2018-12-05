@@ -27,9 +27,10 @@
 \titlerunning{Power of unary oritatami cotranscriptional folding}
 \author{
 Szil\'{a}rd Zsolt Fazekas\inst{1} \and 
-Kohei Maruyama \and
+Kohei Maruyama\thanks{Primary corresponding author (\email{k.maruyama@uec.ac.jp})} \and
 Reoto Morita \and \\
-Shinnosuke Seki\inst{2}\thanks{Corresponding author (\email{s.seki@uec.ac.jp})}}
+Shinnosuke Seki\inst{2}\thanks{Secondary corresponding author (\email{s.seki@uec.ac.jp})}
+}
 \institute{
 Akita University, 
 Graduate School of Engineering Science, 
@@ -342,8 +343,9 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 	\end{enumerate}	
 	Checking the condition in 2. can be done in $\mathcal{O}(|H|)$ time for any reasonable representation of $H$, hence the whole process takes $\mathcal{O}(|w|\cdot|H|)$ time.
 \end{proof}
+
 \begin{theorem}\label{thm:OS_to_2dTM}
-	There is an algorithm that simulates any oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$. 
+	There is an algorithm that simulates any deterministic oritatami system $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ in time $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$. 
 \end{theorem}
 \begin{proof}
 	Take any step in the computation, up to which some $i \ge 0$ first beads of $w$ have been stabilized, with the last bead at a point $p$. 
@@ -352,7 +354,7 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 \end{proof}
 
 \begin{corollary}
-	For fixed $\delta$ and $\alpha$, the class of problems solvable by oritatami systems $(\Sigma, R, \delta, \alpha, \sigma, w)$ is included in $\mathrm{DTIME}(n^3)$.
+	For fixed $\delta$ and $\alpha$, the class of problems solvable by deterministic oritatami systems $(\Sigma, R, \delta, \alpha, \sigma, w)$ is included in $\mathrm{DTIME}(n^3)$.
 \end{corollary}
 \begin{proof}
 	The claim follows from Theorem~\ref{thm:OS_to_2dTM} and the fact that $|R|$ is implicitly bounded by $|w|^2$.
