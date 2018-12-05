@@ -303,12 +303,11 @@ At any combination of delay and arity without anything written, no upper bound i
 }
 \label{fig:summary}
 \end{figure}
-In this paper, we will solve this problem partially at arity 1 in Sect.~\ref{sect:arity1} and completely at delay 1 in Sect.~\ref{sect:delay1}. 
-Concretely speaking, we will prove that at arity 1 and delay 2 or 3, the upper bound is $(3n+1)(n+1)$. 
-Upper bounds for longer delays remain open. 
+In this paper, we will solve this problem  completely at delay 1and partially at arity 1 in Sect.~\ref{sect:upper}. 
 At delay 1, we will provide a quadratic upper bound $3n(n+1)+1$ for the case of arity being 4, while a linear upper bound $4n+14$ for arity 3. 
 At the delay 1 and arity 2, one infinite structure turns out to be foldable deterministically, which is the zigzag conformation shown in Fig.~\ref{TTT_zigzag}. 
-These results as well as known upper bounds are summarized in Fig.~\ref{fig:summary}. 
+At arity 1, we will prove that at delay 2 or 3, the upper bound is $(3n+1)(n+1)$. 
+Upper bounds for longer delays remain open. These results as well as known upper bounds are summarized in Fig.~\ref{fig:summary}. 
 As shown at the end of Sect.~\ref{sec:preliminaries}, the stabilization of first $t$ beads of transcript by a determinisitc oritatami system can be simulated by a deterministic Turing machine within $t^3$ steps (Corollary~\ref{cor:DTIME3}). 
 Thus, the above mentioned upper bounds show that at delay 1 and arity 1, 3, or 4, or at delay 2 or 3 and arity 1, the class of deterministic unary oritatami systems is not Turing universal. 
 The Turing universal oritatami system by Geary et al. \cite{GeMeScSe2018} employs more than 500 types of beads. 
@@ -447,11 +446,11 @@ Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \math
 
 %\section{Case of delay $1$}\label{sect:delay1}
 
-\section{Upper bounds for delay 1 or arity 1}
+\section{Upper bounds for determinisitc unary oritatami systems at delay 1 or arity 1}\label{sect:upper}
 
-\input{arity1upper}
 \input{tt_intro}
 \input{tt_theorem}
+\input{arity1upper}
 
 
 \subsection*{Acknowledgements}
