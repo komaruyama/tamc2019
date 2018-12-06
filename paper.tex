@@ -308,11 +308,11 @@ At delay 1, we will provide a quadratic upper bound $3n(n+1)+1$ for the case of 
 At the delay 1 and arity 2, one infinite structure turns out to be foldable deterministically, which is the zigzag conformation shown in Fig.~\ref{TTT_zigzag}. 
 At arity 1, we will prove that at delay 2 or 3, the upper bound is $(3n+1)(n+1)$. 
 Upper bounds for longer delays remain open. These results as well as known upper bounds are summarized in Fig.~\ref{fig:summary}. 
-As shown at the end of Sect.~\ref{sec:preliminaries}, the stabilization of first $t$ beads of transcript by a determinisitc oritatami system can be simulated by a deterministic Turing machine within $t^3$ steps (Corollary~\ref{cor:DTIME3}). 
+As shown at the end of Sect.~\ref{sec:preliminaries}, the stabilization of the first $t$ beads of transcript by a deterministic oritatami system can be simulated by a deterministic Turing machine within $t^3$ steps (Corollary~\ref{cor:DTIME3}). 
 Thus, the above mentioned upper bounds show that at delay 1 and arity 1, 3, or 4, or at delay 2 or 3 and arity 1, the class of deterministic unary oritatami systems is not Turing universal. 
 The Turing universal oritatami system by Geary et al. \cite{GeMeScSe2018} employs more than 500 types of beads. 
 Thus, this weakness result is not surprising at all. 
-The unary oritatami system might not be practical very much, though one bead may abstarct an oligonucleotide (a short sequence of nucleotides), and in that case, unary transcript can be a repetitive but nonunary sequence, which is not so unrealistic in experiments (see \cite{GearyAndersen2014}). 
+The unary oritatami system might not be practical very much, though one bead may abstract an oligonucleotide (a short sequence of nucleotides), and in that case, unary transcript can be a repetitive but nonunary sequence, which is not so unrealistic in experiments (see \cite{GearyAndersen2014}). 
 Nevertheless, this paper makes a first considerable step towards the characterization of non-Turing-universal oritatami systems. 
 
 As a result of independent significance, we show that increasing the delay from 1 to 2 enables an oritatami system to yield a conformation of quadratic length in $n$ as long as 5 types of beads are available. 
@@ -344,7 +344,7 @@ The \textit{length} of $C$ is defined to be the length of its transcript $w$ (th
 A \textit{rule set} $R \subseteq \Sigma \times \Sigma$ is a symmetric relation over $\Sigma$, that is, for all bead types $a, b \in \Sigma$, $(a, b) \in R$ implies $(b, a) \in R$. 
 A bond $\{i, j\} \in H$ is \textit{valid with respect to $R$}, or simply $R$-valid, if $(w[i], w[j]) \in R$. 
 This conformation $C$ is \textit{$R$-valid} if all of its bonds are $R$-valid. 
-For an integer $\alpha \ge 1$, $C$ is \textit{of arity $\alpha$} if it contains a bead that forms $\alpha$ bonds but none of its bead forms more. 
+For an integer $\alpha \ge 1$, $C$ is \textit{of arity $\alpha$} if it contains a bead that forms $\alpha$ bonds but none of its beads forms more. 
 By $\mathcal{C}_{\le \alpha}(\Sigma)$, we denote the set of all conformations over $\Sigma$ whose arity is at most $\alpha$; its argument $\Sigma$ is omitted whenever $\Sigma$ is clear from the context. 
 
 The oritatami system grows conformations by an operation called elongation. 
@@ -407,6 +407,7 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 		\item answer YES and HALT
 	\end{enumerate}	
 	Checking the condition in 2. can be done in $\mathcal{O}(|H|)$ time for any reasonable representation of $H$, hence the whole process takes $\mathcal{O}(|w|\cdot|H|)$ time.
+	\qed
 \end{proof}
 
 \begin{theorem}\label{thm:OS_to_2dTM}
@@ -416,6 +417,7 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 	Take any step in the computation, up to which some $i \ge 0$ first beads of $w$ have been stabilized, with the last bead at a point $p$. 
 	The number of all possible elongations of the current conformation by the next $\delta$-beads is $(6 \times 5^{\delta-1}) \times ((2^4)^{\delta-1} \times 2^5) \in 2^{O(\delta)}$. 
 	By Proposition~\ref{prop:check_validity}, we can check for each of these elongations whether its arity is at most $\alpha$ or not and whether it is $R$-valid or not in time $\mathcal{O}((2^4)^{\delta-1}\cdot2^5\cdot \delta\cdot|R|)=2^{\mathcal{O}(\delta)}\cdot|R|$.  Therefore, the total running time is $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$.
+	\qed
 \end{proof}
 
 \begin{corollary}\label{cor:DTIME3}
@@ -423,6 +425,7 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 \end{corollary}
 \begin{proof}
 	The claim follows from Theorem~\ref{thm:OS_to_2dTM} and the fact that $|R|$ is implicitly bounded by $|w|^2$.
+	\qed
 \end{proof}
 
 %\begin{corollary}\label{polytranscript}
@@ -431,7 +434,9 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 
 %If the transcript length is polynomially bounded by the seed length, than the accepted language is in $\mathrm{P}$. 
 
-Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \mathrm{EXP}$, so we can conclude that OS which cannot deterministically fold transcripts of length exponential in the length of the seed are not computationally universal.
+Considering the following decision problem: given an oritatami system, integer $i$, and a point $p$, decides whether the bead $w[i]$ is stabilized at $p$. 
+By Corollary~\ref{cor:DTIME3}, this problem is in $\mathrm{P}$ for a fixed delay $\delta$.
+Because of the time hierarchy theorems, we know that $\mathrm{P}\subsetneq \mathrm{EXP}$ (see, e.g., \cite{AroraBarak2009}), so we can conclude that OS which cannot deterministically fold transcripts of length exponential in the length of the seed are not computationally universal.
 
 
 \section{Quadratic lower bound for delay 2, arity 1}\label{sect:lower}

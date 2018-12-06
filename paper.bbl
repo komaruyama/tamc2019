@@ -2,6 +2,10 @@
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 
+\bibitem{AroraBarak2009}
+Arora, S., Barak, B.: Computational Complexity: A Modern Approach. Cambridge
+  University Press (2009)
+
 \bibitem{Cook2004}
 Cook, M.: Universality in elementary cellular automata. Complex Systems  15,
   1--40 (2004)
@@ -31,6 +35,10 @@ Geary, C., Meunier, P.E., Schabanel, N., Seki, S.: Proving the {T}uring
 Geary, C., Rothemund, P.W.K., Andersen, E.S.: A single-stranded architecture
   for cotranscriptional folding of {RNA} nanostructures. Science  345(6198),
   799--804 (2014)
+
+\bibitem{Hales2007}
+Hales, T.C.: The {J}ordan curve theorem, formally and informally. The American
+  Mathematical Monthly  114(10),  882--894 (2007)
 
 \bibitem{Pratchett1992}
 Pratchett, T.: Troll Bridge. Pan Books (1992)
