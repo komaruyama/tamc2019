@@ -79,4 +79,21 @@
   pages   = {882-894},
 }
 
+@Book{AroraBarak2009,
+  title     = {Computational Complexity: A Modern Approach},
+  publisher = {Cambridge University Press},
+  year      = {2009},
+  author    = {Sanjeev Arora and Boaz Barak},
+}
+
+@Article{YanYin2017,
+  author  = {Dongran Han and Xiaodong Qi and Cameron Myhrvold and Bei Wang and Mingjie Dai and Shuoxing Jiang and Maxwell Bates and Yan Liu and Byoungkwon An and Fei Zhang and Hao Yan and Peng Yin},
+  title   = {Single-Stranded {DNA} and {RNA} Origami},
+  journal = {Science},
+  year    = {2017},
+  volume  = {358},
+  number  = {6369},
+  pages   = {1402},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

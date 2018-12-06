@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 
@@ -16,6 +16,11 @@ Demaine, E., Hendricks, J., Olsen, M., Patitz, M.J., Rogers, T.A., Schabanel,
   folding in oritatami. In: Proc. DNA24. LNCS, vol. 11145, pp. 19--36. Springer
   (2018), see its arXiv version for the finiteness considered in this paper:
   https://arxiv.org/abs/1807.04682
+
+\bibitem{EKOMSSSO2018}
+Elonen, A., Kawamata, I., Oesinghaus, L., A.Mohammad, Seitsonen, J., Suzuki,
+  Y., Simmel, F.C., Orponen, P.: Algorithmic design of 3d wireframes {RNA}
+  polyhedral. DNA 24 poster (2018)
 
 \bibitem{GearyAndersen2014}
 Geary, C., Andersen, E.S.: Design principles for single-stranded {RNA} origami
@@ -39,6 +44,11 @@ Geary, C., Rothemund, P.W.K., Andersen, E.S.: A single-stranded architecture
 \bibitem{Hales2007}
 Hales, T.C.: The {J}ordan curve theorem, formally and informally. The American
   Mathematical Monthly  114(10),  882--894 (2007)
+
+\bibitem{YanYin2017}
+Han, D., Qi, X., Myhrvold, C., Wang, B., Dai, M., Jiang, S., Bates, M., Liu,
+  Y., An, B., Zhang, F., Yan, H., Yin, P.: Single-stranded {DNA} and {RNA}
+  origami. Science  358(6369),  1402 (2017)
 
 \bibitem{Pratchett1992}
 Pratchett, T.: Troll Bridge. Pan Books (1992)

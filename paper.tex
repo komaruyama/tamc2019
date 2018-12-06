@@ -24,6 +24,8 @@
 
 \usepackage{wrapfig}
 
+\usepackage{hyperref}
+
 
 \title{On the power of oritatami cotranscriptional folding with unary bead sequence\thanks{This work is supported in part by KAKENHI Grant-in-Aid for Challenging Research (Exploratory) No.~18K19779 granted to S.~Z.~F. and S.~S. and JST Program to Disseminate Tenure Tracking System No.~6F36 granted to S.~S.}
 }
@@ -50,8 +52,11 @@ Graduate School of Informatics and Engineering,
 \maketitle
 
 \begin{abstract}
-We investigate simple oritatami systems in an attempt to establish lower bounds on the size and complexity of computationally universal systems. 
-In particular, we look at oritatami systems, where the folding sequence consists of a number of beads of the same type and show that under reasonable assumptions, these systems are not universal.
+An oritatami system is a novel mathematical model of RNA cotranscriptional folding, which has recently proven extremely significant in information processing in organisms and also controllable artificially in a test tube to construct an artificial structure by folding an RNA sequence.  
+This model has turned out to be Turing universal. 
+One next step is to simplify the Turing universal oritatami system and another is to characterize weaker oritatami systems as we may not need Turing universality for applications. 
+%We investigate simple oritatami systems in an attempt to establish lower bounds on the size and complexity of computationally universal systems. 
+In this paper, we look at oritatami systems that folds a unary sequence, and show that under reasonable assumptions, these systems are not universal.
 \end{abstract}
 
 %------------------------------------------------------
@@ -187,20 +192,24 @@ In particular, we look at oritatami systems, where the folding sequence consists
 \end{minipage}
 \caption{
 (Left) RNA origami. 
-(Right) an abstraction of its product, i.e., an RNA tile, as a configuration of an oritatami system. A dot $\bullet$ in the figure on the right represents a sequence of 3-4 nucleotides, and the solid arrow and dashed lines represent its RNA transcript and interactions (respectively) based on hydrogen bonds between nucleotides.
+(Right) an abstraction of its product, i.e., an RNA tile, as a configuration of an oritatami system. 
+A dot $\bullet$ in the figure on the right represents a sequence of 3-4 nucleotides (oligonucleotides). 
+The solid arrow and dashed lines represent respectively its RNA transcript and interactions based on hydrogen bonds between nucleotides.
 }
 \label{fig:rna_origami}
 \end{figure}
 
-Transcription is the first essential step of gene expression, in which a DNA template sequence is copied into a single stranded RNA sequence by a `molecular Xerox' called RNA polymerase, letter by letter according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$. 
+Transcription is the first essential step of gene expression, in which a DNA template sequence is copied into a single stranded RNA sequence of nucleotides {\tt A}, {\tt C}, {\tt G}, and {\tt U}  (letter of RNA alphabet) by a `molecular Xerox' called RNA polymerase, nucleotide by nucleotide according to the complimentarity relation ${\tt A} \rightarrow {\tt U}$, ${\tt G} \rightarrow {\tt C}$, ${\tt C} \rightarrow {\tt G}$, and ${\tt T} \rightarrow {\tt A}$. 
 The copied RNA sequence is called \textit{transcript}. 
-The transcript starts folding upon itself into intricate structures immediately after it emerges from the polymerase, as illustrated in Fig.~\ref{fig:rna_origami} (Left). 
+The transcript does NOT remain single-stranded until it is fully synthesized. 
+It rather starts folding upon itself into intricate stable conformations (structures) primarily via hydrogen bonds, immediately after it emerges from the polymerase, as illustrated in Fig.~\ref{fig:rna_origami} (Left). 
 
 
 
 In a recent breakthrough in molecular engineering by Geary, Rothemund and Andersen~\cite{GearyRothemundAndersen2014} the co-transcriptional folding of RNA is controlled by careful design of the DNA template. As demonstrated in laboratory, this method, called RNA Origami, makes it possible to cotranscriptionally self-assemble a unique RNA rectangular tile highly probably (see Fig.~\ref{fig:rna_origami} (Left)). 
+This breakthrough and the design of RNA tile has encouraged the research on the nano-scale RNA structure self-assembly so that several successful attempts to self-assemble artificial structures by folding a single-stranded RNA sequence \cite{EKOMSSSO2018,YanYin2017}. 
 Geary et al.~\cite{GeMeScSe2016} proposed a mathematical model for this process, called oritatami system. 
-In this model, an RNA structure is abstracted as a directed path with information on hydrogen-based interaction (bonds) over the triangular grid graph $\mathbb{T}$ as illustrated in Fig.~\ref{fig:rna_origami}. 
+In this model, an oligonucleotide (a short sequence of RNA nucleotides) is considered to be a bead and an RNA structure is abstracted as a directed path with information on hydrogen-based interaction (bonds) between beads over the triangular grid graph $\mathbb{T}$ as illustrated in Fig.~\ref{fig:rna_origami}. 
 An oritatami system folds a transcript of abstract molecules (beads) of finite number of types over $\mathbb{T}$. 
 This model has been just proved efficiently Turing universal in \cite{GeMeScSe2018} by simulating cyclic tag systems introduced by Cook~\cite{Cook2004}. 
 The simulation involves a very large and complex oritatami system. 
@@ -267,7 +276,7 @@ Give an upper bound on the length of a transcript of a delay-$\delta$, arity-$\a
       \end{scope}
       
     \end{tikzpicture}
-    \caption{The zig-zag conformation. This is the only one infinite conformation foldable deterministically by an unary oritatami ssytem at delay 1 and arity 2.}
+    \caption{The zig-zag conformation. This is the only one infinite conformation foldable deterministically by an unary oritatami system at delay 1 and arity 2.}
     \label{TTT_zigzag}
   \end{center}
 \end{figure}
@@ -376,6 +385,7 @@ C \xrightarrow{R}^*_{w[i+2...i+k]}C', k\le \delta, C' \in \mathcal{C}_{\le \alph
 \end{equation}
 %
 Then we say that the bead $w[i+1]$ and the bonds it forms are \textit{stabilized} according to $C_{i+1}$. 
+The easiest way to understand this stabilization process should be the video available at \href{https://www.dailymotion.com/video/x3cdj35}{\tt https://www.dailymotion.com/video/x3cdj35}, in which the Turing universal oritatami system by Geary et al. \cite{GeMeScSe2018}, whose delay is 3, is running. 
 Note that an arity-$\alpha$ oritatami system cannot fold any conformation of arity larger than $\alpha$. 
 A conformation foldable by $\Xi$ is \textit{terminal} if none of its elongations is foldable by $\Xi$. 
 The oritatami system $\Xi$ is \textit{deterministic} if for all $i \ge 0$, there exists at most one $C_{i+1}$ that satisfies \eqref{eq:OS_CF}. 
