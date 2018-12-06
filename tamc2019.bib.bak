@@ -5,7 +5,8 @@
   title     = {Know When to Fold 'Em: Self-assembly of Shapes by Folding in Oritatami},
   booktitle = {Proc. DNA24},
   year      = {2018},
-  volume    = {LNCS 11145},
+  volume    = {11145},
+  series    = {LNCS},
   pages     = {19-36},
   publisher = {Springer},
   note      = {See its arXiv version for the finiteness considered in this paper: https://arxiv.org/abs/1807.04682},
@@ -48,6 +49,34 @@
   year    = {2004},
   volume  = {15},
   pages   = {1-40},
+}
+
+@Book{Pratchett1992,
+  title     = {Troll Bridge},
+  publisher = {Pan Books},
+  year      = {1992},
+  author    = {Terry Pratchett},
+}
+
+@InProceedings{GearyAndersen2014,
+  author    = {Cody Geary and Ebbe S. Andersen},
+  title     = {Design Principles for Single-Stranded {RNA} Origami Structures},
+  booktitle = {Proc. DNA 20},
+  year      = {2014},
+  volume    = {8727},
+  series    = {LNCS},
+  pages     = {1-19},
+  publisher = {Springer},
+}
+
+@Article{Hales2007,
+  author  = {Thomas. C. Hales},
+  title   = {The {J}ordan Curve Theorem, Formally and Informally},
+  journal = {The American Mathematical Monthly},
+  year    = {2007},
+  volume  = {114},
+  number  = {10},
+  pages   = {882-894},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
