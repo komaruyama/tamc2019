@@ -3,46 +3,53 @@
 %\subsection{$\alpha = 1$, arbitrary alphabets}
 First we present a lower bound construction for arity $1$ systems. At $\alpha=1$, having delay $\delta=2$ allows the deterministic folding of quadratic length transcripts compared with $\delta=1$, where, as stated before, the maximum length is linear in the length of the seed. We demonstrate this with an infinite family of OS, which fold deterministically a transcript of length $\frac{(n-1)^2}{4}$ starting from a given seed of length $n$.
 
-Consider the following $\delta=2$, $\alpha=1$ system with bead types $\{0,1,2,3,4\}$ and attraction rules $\{(1,1),(2,2), (3,3),(4,4)\}$. Let the seed $\sigma$ be a conformation of a $4k+1$ long bead sequence of the form $(1020)^k0$, such that bead $\sigma[i]$ of the seed is stabilized at point $(i,0)$, for all $1\leq i\leq 4k-1$. Bead $4k$ is at $(4k-1,-1)$ and bead $4k+1$ is at $(4k,0)$.
+Consider the following $\delta=2$, $\alpha=1$ system with bead types $\{0,1,\dots,8\}$ and attraction rules $\{(i,i) \mid 1\leq i\leq 8\}$. Let the seed $\sigma$ be a conformation of a $4k+1$ long bead sequence of the form $(10205060)^{k/2}0$ and $(10205060)^{(k-1)/2}(1020)0$, for $k$ even and odd, respectively. Bead $\sigma[i]$ of the seed is stabilized at point $(i,0)$, for all $1\leq i\leq 4k-1$. Bead $4k$ is at $(4k-1,-1)$ and bead $4k+1$ is at $(4k,0)$.
 \vspace{0.1cm}
 
-The transcript is $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$, where $\mathrm{row}_\ell$, for $\ell\in \{1,\dots, 2k\}$ is given in the table of Fig.~\ref{table:transcript}.
-\begin{figure}[h]
-	\begin{minipage}{.49\textwidth}
-		%\centering
-		\begin{tabular}{l|l}
-			\multicolumn{2}{c}{Transcript $w$}\\
-			\multicolumn{2}{c}{}  \\
-			$k$ odd & \hspace{0.3cm} $k$ even\\\hline
-			& \\
-			$(2413)^{k-1}241$\hspace{0.3cm} & \hspace{0.3cm} $(2413)^{k-1}241$\\
-			$(4231)^{k-1}4$   &  \hspace{0.3cm} $(4231)^{k-1}4$  \\
-			$(1324)^{k-2}132$ &  \hspace{0.3cm} $(1324)^{k-2}132$\\
-			$(3142)^{k-2}3$   &  \hspace{0.3cm} $(3142)^{k-2}3$ \\
-			\vdots			 &  \hspace{0.3cm} \vdots\\
-			$(1324)^1 132$	 &  \hspace{0.3cm} $(2413)^{1} 241$\\
-			$(3142)^1 3$		 & \hspace{0.3cm} $(4231)^1 4$\\
-			$(2413)^0 241$	 &  \hspace{0.3cm} $(1324)^0 132$\\
-			$(4231)^0 4$		 & \hspace{0.3cm} $(3142)^0 3$\\
-		\end{tabular}
-	\end{minipage}
-	%\scriptsize
-	\begin{minipage}{.49\textwidth}
-		%\centering
-		\begin{tabular}{|l|c|}
-			\hline
-			\hspace{1.2cm}row $\ell$ & $\ell\mod 4$ \\\hline
-			 & \\
-			\hspace{0.1cm}$(2413)^{k-\lfloor (\ell+1)/2\rfloor}241$ \hspace{0.1cm} &  $\textrm{ }\ell\equiv 1\mod 4\textrm{ }$\\
-			\hspace{0.1cm}$(4231)^{k-\lfloor (\ell+1)/2\rfloor}4$   &  $\textrm{ }\ell\equiv 2 \mod 4\textrm{ }$ \\
-			\hspace{0.1cm}$(1324)^{k-\lfloor (\ell+1)/2\rfloor}132$ &  $\textrm{ }\ell\equiv 3 \mod 4\textrm{ }$ \\
-			\hspace{0.1cm}$(3142)^{k-\lfloor (\ell+1)/2\rfloor}3$   &  $\textrm{ }\ell\equiv 4 \mod 4\textrm{ }$ \\\hline
-		\end{tabular}
-	
-	\end{minipage}
-	\caption{Transcript of pyramid-like conformation at delay $2$, arity $1$.}
-	\label{table:transcript}
-\end{figure}
+The transcript is $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$, where 
+\begin{itemize}
+	\item $\mathrm{row}_1=(24136857)^{(k-1)/2}241$ if $k$ is odd, and $\mathrm{row}_1=(68572413)^{k/2-1}6857241$ if $k$ is even;
+	\item $\mathrm{row}_{i+1}=(\mathrm{row}_i[2..|\mathrm{row}_i|-1])^r$ for $i\in \{1,\dots, 2k-1\}$, that is each row is the reverse of the previous without the first and last bead.
+\end{itemize}
+
+
+%The transcript is $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$, where $\mathrm{row}_\ell$, for $\ell\in \{1,\dots, 2k\}$ is given in the table of Fig.~\ref{table:transcript}.
+%\begin{figure}[h]
+%%	\begin{minipage}{.49\textwidth}
+%%		%\centering
+%%		\begin{tabular}{l|l}
+%%			\multicolumn{2}{c}{Transcript $w$}\\
+%%			\multicolumn{2}{c}{}  \\
+%%			$k$ odd & \hspace{0.3cm} $k$ even\\\hline
+%%			& \\
+%%			$(24136857)^{(k-1)/2}241$\hspace{0.3cm} & \hspace{0.3cm} $(2413)^{k-1}241$\\
+%%			$42(75863142)^{k-1}314$   &  \hspace{0.3cm} $(4231)^{k-1}4$  \\
+%%			$13(68572413)^{k-2}2$ &  \hspace{0.3cm} $(1324)^{k-2}132$\\
+%%			$(3142)^{k-2}3$   &  \hspace{0.3cm} $(3142)^{k-2}3$ \\
+%%			\vdots			 &  \hspace{0.3cm} \vdots\\
+%%			$(1324)^1 132$	 &  \hspace{0.3cm} $(2413)^{1} 241$\\
+%%			$(3142)^1 3$		 & \hspace{0.3cm} $(4231)^1 4$\\
+%%			$(2413)^0 241$	 &  \hspace{0.3cm} $(1324)^0 132$\\
+%%			$(4231)^0 4$		 & \hspace{0.3cm} $(3142)^0 3$\\
+%%		\end{tabular}
+%%	\end{minipage}
+%	%\scriptsize
+%	\begin{minipage}{.99\textwidth}
+%		\centering
+%		\begin{tabular}{|l|c|}
+%			\hline
+%			\hspace{1.2cm}row $\ell$ & $\ell\mod 4$ \\\hline
+%			 & \\
+%			\hspace{0.1cm}$(24136857)^{k-\lfloor (\ell+1)/2\rfloor}241$ \hspace{0.1cm} &  $\textrm{ }\ell\equiv 1\mod 4\textrm{ }$\\
+%			\hspace{0.1cm}$(4231)^{k-\lfloor (\ell+1)/2\rfloor}4$   &  $\textrm{ }\ell\equiv 2 \mod 4\textrm{ }$ \\
+%			\hspace{0.1cm}$(1324)^{k-\lfloor (\ell+1)/2\rfloor}132$ &  $\textrm{ }\ell\equiv 3 \mod 4\textrm{ }$ \\
+%			\hspace{0.1cm}$(3142)^{k-\lfloor (\ell+1)/2\rfloor}3$   &  $\textrm{ }\ell\equiv 4 \mod 4\textrm{ }$ \\\hline
+%		\end{tabular}
+%	
+%	\end{minipage}
+%	\caption{Transcript of pyramid-like conformation at delay $2$, arity $1$.}
+%	\label{table:transcript}
+%\end{figure}
 
 The transcript above is written in rows which correspond to beads in the conformation stabilized along the same row on the grid. To simplify the argument we will use \textit{row} both for the transcript above and for the conformation it stabilizes in (note that in the figure the row index grows from bottom to top). 
 
