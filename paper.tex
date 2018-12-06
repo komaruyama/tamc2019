@@ -407,6 +407,7 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 		\item answer YES and HALT
 	\end{enumerate}	
 	Checking the condition in 2. can be done in $\mathcal{O}(|H|)$ time for any reasonable representation of $H$, hence the whole process takes $\mathcal{O}(|w|\cdot|H|)$ time.
+	\qed
 \end{proof}
 
 \begin{theorem}\label{thm:OS_to_2dTM}
@@ -416,6 +417,7 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 	Take any step in the computation, up to which some $i \ge 0$ first beads of $w$ have been stabilized, with the last bead at a point $p$. 
 	The number of all possible elongations of the current conformation by the next $\delta$-beads is $(6 \times 5^{\delta-1}) \times ((2^4)^{\delta-1} \times 2^5) \in 2^{O(\delta)}$. 
 	By Proposition~\ref{prop:check_validity}, we can check for each of these elongations whether its arity is at most $\alpha$ or not and whether it is $R$-valid or not in time $\mathcal{O}((2^4)^{\delta-1}\cdot2^5\cdot \delta\cdot|R|)=2^{\mathcal{O}(\delta)}\cdot|R|$.  Therefore, the total running time is $2^{\mathcal{O}(\delta)}\cdot |R|\cdot|w|$.
+	\qed
 \end{proof}
 
 \begin{corollary}\label{cor:DTIME3}
@@ -423,6 +425,7 @@ Its transcript is a sequence of $a$-beads so that nothing can be hardcoded on it
 \end{corollary}
 \begin{proof}
 	The claim follows from Theorem~\ref{thm:OS_to_2dTM} and the fact that $|R|$ is implicitly bounded by $|w|^2$.
+	\qed
 \end{proof}
 
 %\begin{corollary}\label{polytranscript}
