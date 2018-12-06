@@ -443,14 +443,14 @@ This inequality involves two tunnels but its difference 2 enables us to consider
 
 
 \begin{theorem}[$\delta = 1, \alpha = 4$]
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 4$. It can yield only finite conformation of length $3n^2  + 3n + 1$.
+The terminal conformation of a deterministic unary oritatami system of $\delta = 1, \alpha = 4$ is of length at most $3n^2  + 3n + 1$.
 \end{theorem}
 
 \begin{proof}
-Consider the moment when a bead $b$ is stabilized outside $\hexagon_O^n$ for the first time. 
-See Fig.~\ref{TTT_a4_first}.
-There is only one bead available to stabilize $b$ there, which is $b_1$. 
-In order for $b$ to avoid nondeterminism, hence, none of the beads around should not attract $b$. 
+Consider the moment when a bead, say $b$, is stabilized outside $\hexagon_O^n$ for the first time.
+The bead must be bound a bead at the periphery of $\hexagon_O^n$ as depicted in Fig.~\ref{TTT_a4_first}.
+%There is only one bead available to stabilize $b$ there, which is $b_1$. 
+In order to avoid nondeterminism, the bead $b$ must not be attracted anyhow else by beads around. 
 
 The point $p_1$ must be empty because a bead there would have at least two free neighbors and hence is provided with a free hand. 
 If there is a bead at $p_2$, $n$ must be at least 2 so that the bead is not singular. 
@@ -470,6 +470,8 @@ However, then a bead at $p_4$ would be provided with a free hand, a contradictio
 	\fill (0,0) circle [radius=0.1];
         \fill[blue] (60:1) circle [radius=0.05];
         \fill (0:1) circle [radius=0.1];
+        
+	\draw[dotted, thick] (1, 0) -- ++(120:1);
       
       \draw[dashed] (180:2) -- (0:2);
       \draw[dashed, shift=(60:1)] (180:2.5) -- (0:1.5);
@@ -497,7 +499,7 @@ However, then a bead at $p_4$ would be provided with a free hand, a contradictio
 
 
 \begin{theorem}[$\delta = 1, \alpha = 3$]
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 3$. It can yield only finite conformations of length $4n + 14$.
+The terminal conformation of a deterministic unary oritatami system of $\delta = 1, \alpha = 3$ is of length at most $4n + 14$.
 \end{theorem}
 
 
@@ -662,7 +664,7 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
       \draw[->, blue] (60:0.1) -- (60:0.9);
       \draw[->, blue, shift=(60:1)] (180:0.1) -- (180:0.9);
       
-      \draw[dotted, shift = (60:1)] (0:0) -- (-60:1);
+      \draw[dotted, thick, shift = (60:1)] (0:0) -- (-60:1);
       
 
 	\node[above,shift=(120:1)]at (60:1) {$p$};
@@ -691,7 +693,7 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
        \draw[dashed, shift=(60:2)] (180:3) -- (0:1);
       \draw[->, blue] (60:0.1) -- (60:0.9);
       \draw[->, blue, shift=(60:1)] (0:0.1) -- (0:0.9);
-       \draw[dotted, shift = (60:1)] (0:0) -- (-60:1);
+       \draw[dotted, thick, shift = (60:1)] (0:0) -- (-60:1);
       
 
 	\node[above] at (60:2) {$p$};
@@ -716,8 +718,7 @@ Even in the right case, the points $n_1, n_0, n_2, n_4$ turn out to be free one 
 
 
 \begin{theorem}[$\delta= 1, \alpha=2$]
-Let $\Xi$ be a deterministic unary oritatami system of $\delta = 1, \alpha = 2$.
-It can yield an infinite structure, but the transcript folds into the zig-zag conformation after its $(27n^2 + 9n +1)$-th bead.
+A deterministic unary oritatami system of $\delta = 1, \alpha = 2$ can fold into an infinite conformation, but its transcript folds into the zig-zag conformation (Fig.~\ref{TTT_zigzag}) after its $(27n^2 + 9n +1)$-th bead.
 \end{theorem}
 
 \begin{proof}

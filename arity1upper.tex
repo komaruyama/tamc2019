@@ -1,40 +1,41 @@
 
 
-\subsection{$\alpha = 1$, unary}
+\subsection{Quadratic upper bounds for arity 1 and delay 2 or 3}
 \label{sec:unary}
 
-In this section we will argue that unary systems at arity $1$ and delay $2$ and $3$, respectively, cannot fold infinite transcripts deterministically. As we will see, in fact, the length of transcripts deterministically foldable by these systems has an upper bound quadratic in the length of the seed. The main result is the following theorem, which is a direct consequence of Lemma~\ref{lem:d2a1}  and Lemma~\ref{lem:d3a1} which follow.
+In this section we will argue that unary systems at arity $1$ and delay $2$ and $3$, respectively, cannot fold infinite transcripts deterministically. As we will see, in fact, the length of transcripts deterministically foldable by these systems has an upper bound quadratic in the length $n$ of the seed. The main result is the following theorem, which is a direct consequence of Lemmas~\ref{lem:d2a1}  and \ref{lem:d3a1} which follow.
 \begin{theorem}[$\delta\in\{ 2,3\}, \alpha = 1$]\label{thm:d23a1}
-	Let $\Xi$ be a unary oritatami system of $\delta \in \{2,3\}$ and $\alpha = 1$. Starting with a seed of length $n$, $\Xi$ can yield only finite structures of size at most $3n^2+4n+2$.
+	A deterministic unary oritatami system at arity $\alpha = 1$ and delay $\delta \in \{2,3\}$ can fold into a terminal conformation of length at most $3n^2+4n+2$.
 \end{theorem}
 
-Let us fix some common starting points for the next two subsections. Let the point where the first transcript bead was fixed be $p$ and let $n=|\mathrm{seed}|+1$. We will argue about the situation when the first bead is stabilized outside $\hexagon_p^n$ (a hexagon of radius $n$). Let this be the $i$th bead of the transcript. Without loss of generality, we can translate the origin $(0,0)$ to the coordinates of bead $i-1$ (which is still in $\hexagon_p^n$), and we can assume that bead $i$ is fixed at $(1,1)$ (see Fig.~\ref{fig:hexagonOut}).
-\begin{figure}
+%\begin{figure}
+\begin{wrapfigure}{r}{0.5\linewidth}
 	\centering
-	\includegraphics[width=0.3\linewidth]{./Fig/hexagonOut}
+	\includegraphics[width=0.4\linewidth]{./Fig/hexagonOut}
 	\caption{$\hexagon_p^n$ and the position $(1,1)$ of the first bead fixed outside of it.}
 	\label{fig:hexagonOut}
-\end{figure}
+\end{wrapfigure}
+%\end{figure}
 
+Let us fix some common starting points for Lemmas~\ref{lem:d2a1} and \ref{lem:d3a1}. Let the point where the first transcript bead was fixed be $p$ and let $n=|\mathrm{seed}|+1$. We will argue about the situation when the first bead is stabilized outside $\hexagon_p^n$ (a hexagon of radius $n$). Let this be the $i$th bead of the transcript. Without loss of generality, we can translate the origin $(0,0)$ to the coordinates of bead $i-1$ (which is still in $\hexagon_p^n$), and we can assume that bead $i$ is fixed at $(1,1)$ (see Fig.~\ref{fig:hexagonOut}).
 
 %\subsubsection{\ref{sec:unary}.1 \ \ $\delta = 2$\\}
 \begin{lemma}[$\delta=2, \alpha =1$]\label{lem:d2a1}
-	Let $\Xi$ be a unary oritatami system of $\delta=2$ and $\alpha = 1$. Starting with a seed of length $n$, $\Xi$ can yield only finite structures of size at most $3n^2+4n+2$.
+	A deterministic unary oritatami system of $\delta=2$ and $\alpha = 1$ can fold into a conformation of length at most $3n^2+4n+2$.
 \end{lemma}
 \begin{proof}
-
-In the elongation that places bead $i$ at $(1,1)$ there are two possibilities:
+In the elongation that places bead $i$ at $(1,1)$ there are two possibilities. 
 \begin{itemize}
 	\item $i$ forms a bond with a bead at $(1,0)$.
 	\item  $i$ does not bond to anything and $i+1$ is at $(2,1)$ bonding with a bead at $(2,0)$. If there is no bead at $(1,0)$, then placing $i$ at $(1,0)$ instead of $(1,1)$ results in the same number of bonds, leading to nondeterminism. Therefore, there has to be a bead at $(1,0)$ and it is inactive, otherwise it would bond to $i$. This is analogous to case 1. below, with the only difference being that the bond between (1,1) and (1,0) is missing.%as in Fig.~\ref{fig:hexagonOut1}.
+\end{itemize}
+
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.2\linewidth]{./Fig/hexagonOut1}
 		%\caption{}
 		\label{fig:hexagonOut1}
 	\end{figure}
-	
-\end{itemize}
  
 %The only position with which $(1,1)$ can form a bond is $(1,0)$. This means that there is a bead at $(1,0)$, which bonds to bead $i$, otherwise there are other conformations in which beads $i$ and $i+1$ add one bond to the conformation, making the behavior nondeterministic.
 Because of the above, we need only consider the case when $i$ binds to a bead at (1,0). The next bead, $i+1$, can be fixed at $(2,1)$ or at $(0,1)$ as all other possibilities result in nondeterministic behavior immediately, so we have two cases.
@@ -60,7 +61,7 @@ there is no bead at $(-1,0)$, bead $i+1$ can bond with bead $i-1$ at $(0,0)$ and
 
 
 
-\begin{figure}
+\begin{figure}[tb]
 	\centering
 	%\includegraphics[width=0.3\linewidth]{./hexagonOut1}
 	%\hspace{10mm} %
@@ -71,12 +72,13 @@ there is no bead at $(-1,0)$, bead $i+1$ can bond with bead $i-1$ at $(0,0)$ and
 \end{figure}
 
 Case 2.(a) gives the same upper bound as case 1. Cases 2.(b)-(c) give the smaller upper bound $|\hexagon_p^n|+1$, thereby concluding the proof.
+\qed
 \end{proof}
 
 %\subsubsection{\ref{sec:unary}.2 \ \ $\delta = 3$\\}
 
 \begin{lemma}[$\delta=3, \alpha =1$]\label{lem:d3a1}
-	Let $\Xi$ be a unary oritatami system of $\delta=3$ and $\alpha = 1$. Starting with a seed of length $n$, $\Xi$ can yield only finite structures of size at most $3n^2+4n+2$.
+	A deterministic unary oritatami system of $\delta=3$ and $\alpha = 1$ can fold into a terminal conformation of length at most $3n^2+4n+2$.
 \end{lemma}
 \begin{proof}
 We will argue similarly to the $\delta=2$ case: when we stabilize beads outside $\hexagon_p^n$, we can only do so at points right next to one of the sides and even there only until we reach a corner. This yields the upper bound immediately.

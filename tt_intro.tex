@@ -2,7 +2,7 @@
 
 
 
-In this section, we consider Problem~\ref{prob:det_unary_length} at delay 1. 
+In this section, we consider Problem~\ref{prob:det_unary_length} at delay 1 first and then at arity 1. 
 Let $\Xi = (\Sigma, R, \delta, \alpha, \sigma, w)$ be a deterministic oritatami system of delay 1. 
 For $i \geq 0$ let $C_i$ be the unique elongation of $\sigma$ by $w[1..i]$, that is, foldable by $\Xi$. Hence $C_0 = \sigma$.
 
@@ -179,7 +179,7 @@ We also let $S$ take the value $\blacksquare$ for halt (due to the lack of free 
 \centering
 \includegraphics[width=0.5\linewidth]{Fig/jordan_curve.png}
 \caption{A tunnel divides the world into two. 
-Getting through the tunnel leads us to another world. 
+%Getting through the tunnel leads us to another world. 
 }
 \label{fig:Jordan}
 \end{figure}
@@ -206,7 +206,7 @@ This is because for such a bead $w[k]$, $|R_k| = 0$.
 We now prove that in ``almost all'' tunnels is a troll domiciled and robs the transcript of binding capability (the original story is from \cite{Pratchett1992}). 
 Originally, we tried to find a troll in every tunnel but failed; a troll seems to dislike the very first bead $w[1]$, or its property that only $\alpha$+1 beads around may take all hands of $w[1]$ thanks to the absence of its predecessor; any other bead must be surrounded by at least $\alpha+2$ beads in order to be free from free hand because a bead cannot bind with its predecessor or successor. 
 We call a bead \textit{singular} if it is surrounded by only $\alpha+1$ beads but forms $\alpha$ bonds. 
-Any bead but $w[1]$ can be singular because of their predecessor and successor. 
+No bead but $w[1]$ can be singular because of their predecessor and successor. 
 A tunnel is \textit{singular} if its entrance or exit is next to $w[1]$ that is singular. 
 There can be at most 3 tunnels around one bead so that no more than 3 tunnels can be singular. 
 A singular tunnel will be denoted with the superscript $\times$ like $t_s^\times$ or $t^\times$. 
