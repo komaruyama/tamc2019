@@ -202,7 +202,7 @@ def drawBead(x, y, type):
     ellipseMode(RADIUS)
     ellipse(rx, ry, 0.2*zoom*unit, 0.2*zoom*unit)
     
-    textFont(loadFont("Utopia-Bold-48.vlw"))
+    #textFont(loadFont("Utopia-Bold-48.vlw"))
     textAlign(CENTER, CENTER)
     textSize(zoom*unit*0.2)
     fill(0)
