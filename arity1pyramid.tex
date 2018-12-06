@@ -1,7 +1,14 @@
-
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{./Fig/CI_NumbersNew}
+	\caption{Quadratic length transcript folding deterministically into pyramid shape. Seed: thick black path. Transcript: thin blue path. Bonds: dashed red lines. }
+	\label{CI:big}
+\end{figure}
 
 %\subsection{$\alpha = 1$, arbitrary alphabets}
 First we present a lower bound construction for arity $1$ systems. At $\alpha=1$, having delay $\delta=2$ allows the deterministic folding of quadratic length transcripts compared with $\delta=1$, where, as stated before, the maximum length is linear in the length of the seed. We demonstrate this with an infinite family of OS, which fold deterministically a transcript of length $\frac{(n-1)^2}{4}$ starting from a given seed of length $n$.
+
+
 
 Consider the following $\delta=2$, $\alpha=1$ system with bead types $\{0,1,\dots,8\}$ and attraction rules $\{(i,i) \mid 1\leq i\leq 8\}$. Let the seed $\sigma$ be a conformation of a $4k+1$ long bead sequence of the form $(10205060)^{k/2}0$ and $(10205060)^{(k-1)/2}(1020)0$, for $k$ even and odd, respectively. Bead $\sigma[i]$ of the seed is stabilized at point $(i,0)$, for all $1\leq i\leq 4k-1$. Bead $4k$ is at $(4k-1,-1)$ and bead $4k+1$ is at $(4k,0)$.
 \vspace{0.1cm}
@@ -9,7 +16,7 @@ Consider the following $\delta=2$, $\alpha=1$ system with bead types $\{0,1,\dot
 The transcript is $w=\mathrm{row}_1\cdots \mathrm{row}_{2k}$, where 
 \begin{itemize}
 	\item $\mathrm{row}_1=(24136857)^{(k-1)/2}241$ if $k$ is odd, and $\mathrm{row}_1=(68572413)^{k/2-1}6857241$ if $k$ is even;
-	\item $\mathrm{row}_{i+1}=(\mathrm{row}_i[2..|\mathrm{row}_i|-1])^r$ for $i\in \{1,\dots, 2k-1\}$, that is each row is the reverse of the previous without the first and last bead.
+	\item $\mathrm{row}_{i+1}=(\mathrm{row}_i[2..|\mathrm{row}_i|-1])^r$ for $i\in \{1,\dots, 2k-1\}$, where $w^r$ is the reverse of $w$. In other words, each row is the reverse of the previous without its first and last bead.
 \end{itemize}
 
 
@@ -55,34 +62,29 @@ The transcript above is written in rows which correspond to beads in the conform
 
 Row $1$ is of length $4k-1$ and row $\ell+1$ is two beads shorter than row $\ell$, so the length of the whole transcript is $|w|=4k^2=\frac{(4k+1-1)^2}{4}=\frac{(|\sigma|-1)^2}{4}$. As an example, see Fig.~\ref{CI:big}, where $k=5$, so the length of the seed is $4k+1=21$ and the transcript is $4k^2 = 100$ beads long.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{./Fig/CI_NumbersNew}
-	\caption{Quadratic length transcript folding deterministically into pyramid shape. Seed: thick black path. Transcript: thin blue path. Bonds: dashed red lines. }
-	\label{CI:big}
-\end{figure}
 
 
-Stabilizing the first bead of row $j$ goes as follows (see Fig.~\ref{CI:turn}):
+
+Stabilizing the first bead of a row goes by binding to the penultimate bead of the previous row, as they are of the same type according to how we constructed the transcript, and they have free hands (see Fig.~\ref{CI:turn}).
 %\begin{itemize}
 %	\item $\bf j\equiv 1\mod 4$: the first two beads are $24$, and the preceding bead is stabilized at $(4k-\frac{j-1}{2}, j-1)$. The $2$ can only bind to the $2$ which occurred two beads before at $(4k-\frac{j+1}{2}, j-1)$, and $4$ cannot bind anywhere, so the $2$ is stabilized at $(4k-\frac{j-1}{2},j)$.
 %\end{itemize}
 
-\begin{center}
-	\begin{tabular}{|c|c|c|c|c|@{}m{0pt}@{}}
-		%\renewcommand{\arraystretch}{2}
-	$j\mod 4$					& first bead 	& predecessor at		& first bead binds to		& first stabilizes at\\
-						\hline
-	$\equiv 1$	& 2		& $(4k-\frac{j-1}{2}, j-1)$		& $(4k-\frac{j+1}{2}, j-1)$	& $(4k-\frac{j+1}{2}, j)$& $\mathrm{ }$\newline $\mathrm{ }$\\
-	\hline
-	$\equiv 2$	& 4				& $(\frac{3j}{2}-1,j-1)$		& $(\frac{3j}{2},j-1)$		& $(\frac{3j}{2},j)$ & $\mathrm{ }$\newline $\mathrm{ }$\\
-	\hline
-	$\equiv 3$	& 1				& $(4k-\frac{j-1}{2}, j-1)$		& $(4k-\frac{j+1}{2}, j-1)$	& $(4k-\frac{j+1}{2}, j)$ & $\mathrm{ }$\newline $\mathrm{ }$ \\
-	\hline
-	$\equiv 4$	& 3				& $(\frac{3j}{2}-1,j-1)$		& $(\frac{3j}{2},j-1)$		& $(\frac{3j}{2},j)$ & $\mathrm{ }$\newline $\mathrm{ }$ \\
-	\hline		
-	\end{tabular}
-\end{center}
+%\begin{center}
+%	\begin{tabular}{|c|c|c|c|c|@{}m{0pt}@{}}
+%		%\renewcommand{\arraystretch}{2}
+%	$j\mod 4$					& first bead 	& predecessor at		& first bead binds to		& first stabilizes at\\
+%						\hline
+%	$\equiv 1$	& 2		& $(4k-\frac{j-1}{2}, j-1)$		& $(4k-\frac{j+1}{2}, j-1)$	& $(4k-\frac{j+1}{2}, j)$& $\mathrm{ }$\newline $\mathrm{ }$\\
+%	\hline
+%	$\equiv 2$	& 4				& $(\frac{3j}{2}-1,j-1)$		& $(\frac{3j}{2},j-1)$		& $(\frac{3j}{2},j)$ & $\mathrm{ }$\newline $\mathrm{ }$\\
+%	\hline
+%	$\equiv 3$	& 1				& $(4k-\frac{j-1}{2}, j-1)$		& $(4k-\frac{j+1}{2}, j-1)$	& $(4k-\frac{j+1}{2}, j)$ & $\mathrm{ }$\newline $\mathrm{ }$ \\
+%	\hline
+%	$\equiv 4$	& 3				& $(\frac{3j}{2}-1,j-1)$		& $(\frac{3j}{2},j-1)$		& $(\frac{3j}{2},j)$ & $\mathrm{ }$\newline $\mathrm{ }$ \\
+%	\hline		
+%	\end{tabular}
+%\end{center}
 
 
 
@@ -96,7 +98,7 @@ Stabilizing the first bead of row $j$ goes as follows (see Fig.~\ref{CI:turn}):
 		\includegraphics[align=c,height=1in]{./Fig/CI_1n}\\
 		\bigskip
 		
-		(a) First transcript bead
+		(a) First transcript bead 
 	\end{minipage}%
 	\begin{minipage}{.2\textwidth}
 		\centering
@@ -115,14 +117,14 @@ Stabilizing the first bead of row $j$ goes as follows (see Fig.~\ref{CI:turn}):
 		
 		(c) Portions of row $1$
 	\end{minipage}
-	\caption{Fixing transcript beads in odd rows}
+	\caption{Fixing transcript beads in first row, when $k$ is odd}
 	\label{CI:1-4}
 \end{figure}
 
 
-As for the other beads, in rows $j\equiv 1,3\mod 4$, beads of type $1$ and $3$ bind to a bead in row $j-1$. In rows $j\equiv 2,4\mod 4$ beads of type $2$ and $4$ can bind to a bead in row $j-1$.  This is true for row $1$, because beads of type $1$ and $3$ from row $1$ can only bind to every second bead of the seed, whereas beads of type $2$ and $4$ from row $1$ cannot bind to anything (Fig.~\ref{CI:1-4}, (c)). Once this dynamic holds for a row, it holds inductively for the next, as a bead that binds to another loses its only free hand at arity $1$.
+As for the other beads, in rows $j\equiv 1,3\mod 4$, beads of type $1,2,5,6$ bind to a bead in row $j-1$. In rows $j\equiv 2,4\mod 4$ beads of type $3,4,7,8$ can bind to a bead in row $j-1$.  This is true for row $1$, because beads of type $1,2,5,6$ from row $1$ can only bind to every second bead of the seed, whereas the other beads of row $1$ cannot bind to anything (Fig.~\ref{CI:1-4}, (c)). Once this dynamic holds for a row, it holds inductively for the next, as a bead that binds to another loses its only free hand at arity $1$.
 
-Within one row of the transcript, no bead can bind to a preceding bead, because if there is a previous bead of the same type in that row, it is stabilized at a distance of four and the system has delay $2$.
+Within one row of the transcript, no bead $i$ can bind to a preceding bead, because if there is a previous bead of the same type in that row, it is stabilized at a distance of at least $6$ from any point where $i$ could be placed.
 
 By the arguments above, the beads in row $i$ of the transcript are stabilized along row $i$ on the grid, forming the pyramid-like conformation from Fig.~\ref{CI:big}.
 
